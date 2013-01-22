@@ -1,14 +1,14 @@
 # Gmail Notifr #
 
-A MacRuby Gmail Notifier for Mac OS X
+A Gmail Notifier for Mac OS X
 
-_Note: The RubyCocoa implementation has been moved to the [rubycocoa](https://github.com/ashchan/gmail-notifr/tree/rubycocoa) branch._
+_Note: the Objective-C rewriting is in the process…_
 
 ![screenshot](http://ashchan.github.com/gmail-notifr/gmail-notifr-screen.png)
 
 ## Yet Another Gmail Notifier ##
 
-[Gmail Notifr](http://ashchan.com/projects/gmail-notifr) is written in MacRuby with these features:
+[Gmail Notifr](http://ashchan.com/projects/gmail-notifr) has these features:
 
 * Support multiple accounts.
 * Separate check and notification setting for each account.
@@ -16,51 +16,44 @@ _Note: The RubyCocoa implementation has been moved to the [rubycocoa](https://gi
 * Support Google hosted account.
 * Check mail at a specified interval.
 * Growl &amp; sound notifications.
-* Small &amp; fast. *
+* Small &amp; fast.
 * Sparkle automatic updates.
 * No background daemon processes installed as Google's official notifier.
 * Open Source &amp; free!
 
-_* MacRuby is private framework on Lion, Gmail Notifr needs to embed the framework so the final size is kind of 'big' comparing to RubyCocoa version. Memory usage is bigger (30MB+) due to the same reason._
 
 ## Requirements ##
 
 * Mac OS X 10.6 (Snow Leopard) or higher
 * An Intel 64-bit machine
-* [MacRuby](http://macruby.com/) 1.0 (nightly build, 2011-07-22 or newer)
-* [BridgeSupport](http://bridgesupport.macosforge.org/trac/wiki) Preview 3
+
+## Note ##
+
+* The [MacRuby implementation](https://github.com/ashchan/gmail-notifr) will be stopped soon. A [macruby](https://github.com/ashchan/gmail-notifr-objc/tree/macruby) branch was also created.
+
+* The RubyCocoa implementation has been moved to the [rubycocoa](https://github.com/ashchan/gmail-notifr-objc/tree/rubycocoa) branch.
+
 
 ## How to Build ##
 
-The Xcode project depends on [MacRuby Keychain Wrapper](https://github.com/ashchan/macruby-keychain-wrapper). It is added as a submodule. So don't forget to fetch it:
+    git clone --recursive https://github.com/ashchan/gmail-notifr-objc.git
 
-    git clone https://github.com/ashchan/gmail-notifr.git
-    git submodule init
-    git submodule update
+Then build and run with Xcode.
 
-or use --recursive option:
+## Updates, Changelog &amp; Feedback ##
 
-    git clone --recursive https://github.com/ashchan/gmail-notifr.git
-
-## Updates, Changelog & Feedback ##
-
-Feedback is welcome! Leave a message on the [feedback](http://blog.ashchan.com/archive/2008/10/29/gmail-notifr-changelog/) page, or create a github [issue](https://github.com/ashchan/gmail-notifr/issues), or tweet the author [@ashchan](http://twitter.com/#!/ashchan).
+Feedback is welcome! Leave a message on the [feedback](http://blog.ashchan.com/archive/2008/10/29/gmail-notifr-changelog/) page, or create a github [issue](https://github.com/ashchan/gmail-notifr-objc/issues), or tweet the author [@ashchan](https://twitter.com/ashchan).
 
 View the full [changelog](http://assets.ashchan.com/gmailnotifr/release_notes.html).
 
 Visit [project home page](http://ashchan.com/projects/gmail-notifr) for more information.
 
-## Binary Download ##
-
-* [https://github.com/ashchan/gmail-notifr/downloads](https://github.com/ashchan/gmail-notifr/downloads)
-
-_Note: versions <= 0.5.2 do NOT run on OS X Lion._
 
 ## License ##
 
 (The MIT License)
 
-Copyright (c) 2008 - 2012 [James Chen](http://ashchan.com/) ([@ashchan](http://twitter.com/#!/ashchan))
+Copyright (c) 2008 - 2013 [James Chen](http://ashchan.com/) ([@ashchan](https://twitter.com/ashchan))
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
