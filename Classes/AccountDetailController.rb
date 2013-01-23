@@ -45,7 +45,7 @@ class AccountDetailController < NSWindowController
 
   def awakeFromNib
     @soundList.removeAllItems
-    @soundList.addItemWithTitle(GNSound::SOUND_NONE)
+    @soundList.addItemWithTitle(SOUND_NONE)
     @soundList.menu.addItem(NSMenuItem.separatorItem)
     GNSound.all.each { |s| @soundList.addItemWithTitle(s) }
     @soundList.selectItemWithTitle(@account.sound)
@@ -58,7 +58,7 @@ class AccountDetailController < NSWindowController
 
     @browserList.removeAllItems
     @browserList.addItemsWithTitles(GNBrowser.all.map(&:first))
-    @browserList.selectItemWithTitle(GNBrowser.getName(@account.browser))
+    @browserList.selectItemWithTitle(GNBrowser.getNameByIdentifier(@account.browser))
 
     @usernameLabel.setTitleWithMnemonic(NSLocalizedString("Username:"))
     @passwordLabel.setTitleWithMnemonic(NSLocalizedString("Password:"))
@@ -84,7 +84,7 @@ class AccountDetailController < NSWindowController
     @account.growl = @growl.state == NSOnState ? true : false
     @account.username = @username.stringValue
     @account.password = @password.stringValue
-    @account.browser = GNBrowser.getIdentifier(@browserList.titleOfSelectedItem)
+    @account.browser = GNBrowser.getIdentifierByName(@browserList.titleOfSelectedItem)
     @account.save
 
     closeWindow

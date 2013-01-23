@@ -69,9 +69,9 @@ class ApplicationController
     checkerForAccount(account).reset
   end
 
-  def openURL(url, browserIdentifier = GNBrowser::DEFAULT)
+  def openURL(url, browserIdentifier = DEFAULT_BROWSER_IDENTIFIER)
     nsurl = NSURL.URLWithString(url)
-    unless GNBrowser.default?(browserIdentifier)
+    unless GNBrowser.isDefault(browserIdentifier)
       NSWorkspace.sharedWorkspace.openURLs([nsurl],
                                            withAppBundleIdentifier: browserIdentifier,
                                            options: NSWorkspaceLaunchDefault,
@@ -365,7 +365,7 @@ class ApplicationController
     openInboxForAccountName(account.username, account.browser)
   end
 
-  def openInboxForAccountName(name, browserIdentifier = GNBrowser::DEFAULT)
+  def openInboxForAccountName(name, browserIdentifier = DEFAULT_BROWSER_IDENTIFIER)
     openURL(GNAccount.baseurl_for(name), browserIdentifier)
   end
 

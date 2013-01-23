@@ -22,4 +22,8 @@ OpenWithChrome = "OpenWithChrome"
 PreferencesSelection = "PreferencesSelection"
 Accounts = "Accounts"
 
-KeychainService = "GmailNotifr";
+KeychainService = "GmailNotifr"
+
+SOUND_NONE = "None"
+
+DEFAULT_BROWSER_IDENTIFIER = "default"

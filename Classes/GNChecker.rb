@@ -199,7 +199,7 @@ class GNChecker
       end
       notifyNotificationCenter(@account.username, unreadCount)
     end
-    if shouldNotify && @account.sound != GNSound::SOUND_NONE && sound = NSSound.soundNamed(@account.sound)
+    if shouldNotify && @account.sound != SOUND_NONE && sound = NSSound.soundNamed(@account.sound)
       sound.play
     end
   end

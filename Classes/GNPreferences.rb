@@ -30,7 +30,7 @@ class GNPreferences
     if @accounts.count == 0 && usernames = defaults.stringArrayForKey("usernames")
       interval = defaults.integerForKey("interval")
       growl = defaults.boolForKey("growl")
-      sound = defaults.stringForKey("sound") || GNSound::SOUND_NONE
+      sound = defaults.stringForKey("sound") || SOUND_NONE
 
       usernames.each do |u|
         account = GNAccount.alloc.initWithNameIntervalEnabledGrowlSound(u, interval, true, growl, sound)
