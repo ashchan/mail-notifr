@@ -45,18 +45,24 @@ class GNPreferences
       writeBack
     end
 
-    @autoLaunch = GNStartItems.alloc.init.isSet
+    @autoLaunch = autoLaunch?
     @showUnreadCount = defaults.boolForKey(ShowUnreadCount)
 
     self
   end
 
   def autoLaunch?
-    GNStartItems.alloc.init.isSet
+    NSApp.isInLoginItems == 1
   end
 
   def autoLaunch=(val)
-    GNStartItems.alloc.init.set(val)
+    if val != autoLaunch?
+      if val
+        NSApp.addToLoginItems
+      else
+        NSApp.removeFromLoginItems
+      end
+    end
   end
 
   def showUnreadCount?
