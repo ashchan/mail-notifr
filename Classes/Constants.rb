@@ -17,10 +17,7 @@ GNAccountsReorderedNotification = "GNAccountsReorderedNotification"
 PrefsToolbarItemAccounts = "prefsToolbarItemAccounts"
 PrefsToolbarItemSettings = "prefsToolbarItemSettings"
 
-ShowUnreadCount = "ShowUnreadCount"
-OpenWithChrome = "OpenWithChrome"
 PreferencesSelection = "PreferencesSelection"
-Accounts = "Accounts"
 
 KeychainService = "GmailNotifr"
 

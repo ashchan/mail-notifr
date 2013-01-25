@@ -26,9 +26,9 @@ class PrefsSettingsViewController <  NSViewController
   def loadView
     super
     @autoLaunch.setTitle(NSLocalizedString("Launch at login"))
-    @autoLaunch.setState(GNPreferences.sharedInstance.autoLaunch? ? NSOnState : NSOffState)
+    @autoLaunch.setState(GNPreferences.sharedInstance.autoLaunch ? NSOnState : NSOffState)
     @showUnreadCount.setTitle(NSLocalizedString("Show unread count in menu bar"))
-    @showUnreadCount.setState(GNPreferences.sharedInstance.showUnreadCount? ? NSOnState : NSOffState)
+    @showUnreadCount.setState(GNPreferences.sharedInstance.showUnreadCount ? NSOnState : NSOffState)
   end
 
   def saveAutoLaunch(sender)

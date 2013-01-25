@@ -40,7 +40,7 @@ class GNChecker
   end
 
   def messageCount
-    return 0 unless @account && @account.enabled?
+    return 0 unless @account && @account.enabled
     @messageCount || 0
   end
 
@@ -48,7 +48,7 @@ class GNChecker
     cleanup
     NSNotificationCenter.defaultCenter.postNotificationName(GNCheckingAccountNotification, object:self, userInfo:{:guid => @account.guid})
 
-    if @account && @account.enabled?
+    if @account && @account.enabled
       @timer = NSTimer.scheduledTimerWithTimeInterval(@account.interval * 60, target:self, selector:'checkMail', userInfo:nil, repeats:true)
       check!
     else
@@ -162,7 +162,7 @@ class GNChecker
       }
     end
 
-    shouldNotify = @account.enabled? && @messages.size > 0
+    shouldNotify = @account.enabled && @messages.size > 0
     if shouldNotify
       newestDate = @messages.map { |m| m[:date] }.sort[-1]
 

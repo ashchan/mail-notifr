@@ -51,7 +51,7 @@ class AccountDetailController < NSWindowController
     @soundList.selectItemWithTitle(@account.sound)
 
     @interval.setTitleWithMnemonic(@account.interval.to_s)
-    @accountEnabled.setState(@account.enabled? ? NSOnState : NSOffState)
+    @accountEnabled.setState(@account.enabled ? NSOnState : NSOffState)
     @growl.setState(@account.growl ? NSOnState : NSOffState)
     @username.setTitleWithMnemonic(@account.username)
     @password.setTitleWithMnemonic(@account.password)

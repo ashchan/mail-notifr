@@ -111,7 +111,7 @@ class ApplicationController
 
   def updateMenuBarCount(notification = nil)
     msgCount = messageCount
-    if GNPreferences.sharedInstance.showUnreadCount? && msgCount > 0
+    if GNPreferences.sharedInstance.showUnreadCount && msgCount > 0
       @status_item.setTitle(msgCount.to_s)
     else
       @status_item.setTitle('')
@@ -197,7 +197,7 @@ class ApplicationController
       (count - 1).downto(DEFAULT_ACCOUNT_SUBMENU_COUNT) { |idx| menuItem.submenu.removeItemAtIndex(idx) }
     end
 
-    if account.enabled?
+    if account.enabled
       checker = checkerForAccount(account)
 
       if checker.connectionError?
@@ -236,7 +236,7 @@ class ApplicationController
   end
 
   def growlNotificationWasClicked(clickContext)
-    openInboxForAccountName(clickContext, GNAccount.accountByName(clickContext).browser) if clickContext
+    openInboxForAccountName(clickContext, GNAccount.accountByUsername(clickContext).browser) if clickContext
   end
 
   def growlNotificationTimedOut(clickContext)
@@ -321,11 +321,11 @@ class ApplicationController
     #check menu item
     checkItem = accountMenu.addItemWithTitle(NSLocalizedString("Check"), action:"checkAccount:", keyEquivalent:"")
     checkItem.target = self
-    checkItem.enabled = account.enabled?
+    checkItem.enabled = account.enabled
 
     #enable/disable menu item
     enableAccountItem = accountMenu.addItemWithTitle(
-      account.enabled? ? NSLocalizedString("Disable Account") : NSLocalizedString("Enable Account"),
+      account.enabled ? NSLocalizedString("Disable Account") : NSLocalizedString("Enable Account"),
       action:"toggleAccount:", keyEquivalent:""
     )
     enableAccountItem.target = self
@@ -357,8 +357,8 @@ class ApplicationController
 
   def updateMenuItemAccountEnabled(account)
     menu = menuItemForAccount(account).submenu
-    menu.itemAtIndex(ENABLE_MENUITEM_POS).title = account.enabled? ? NSLocalizedString("Disable Account") : NSLocalizedString("Enable Account")
-    menu.itemAtIndex(CHECK_MENUITEM_POS).enabled = account.enabled?
+    menu.itemAtIndex(ENABLE_MENUITEM_POS).title = account.enabled ? NSLocalizedString("Disable Account") : NSLocalizedString("Enable Account")
+    menu.itemAtIndex(CHECK_MENUITEM_POS).enabled = account.enabled
   end
 
   def openInboxForAccount(account)

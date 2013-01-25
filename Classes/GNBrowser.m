@@ -10,12 +10,11 @@
 
 @implementation GNBrowser
 
-#warning DEFAULT_BROWSER_IDENTIFIER duplicates in Constants
-NSString *const DEFAULT_BROWSER_IDENTIFIER = @"default";
+NSString *const DefaultBrowserIdentifier = @"default";
 
 + (NSArray *)all {
     return @[
-        @[@"Default", DEFAULT_BROWSER_IDENTIFIER],
+        @[@"Default", DefaultBrowserIdentifier],
         @[@"Safari", @"com.apple.Safari"],
         @[@"Google Chrome", @"com.google.Chrome"],
         @[@"Firefox", @"org.mozilla.firefox"]

@@ -49,7 +49,7 @@ class PrefsAccountsViewController <  NSViewController
       when "AccountName"
         account.username
       when "EnableStatus"
-        account.enabled?
+        account.enabled
       end
     end
   end

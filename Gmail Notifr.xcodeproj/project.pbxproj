@@ -12,22 +12,20 @@
 		1A1374AC13DFF96500DA76C3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1374AB13DFF96500DA76C3 /* Security.framework */; };
 		1A74EA9014F0998400C8D491 /* GNBrowser.m in Resources */ = {isa = PBXBuildFile; fileRef = 1A74EA8F14F0998400C8D491 /* GNBrowser.m */; };
 		1A78C6FA16AE9BE9007E53C4 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 1A78C6F916AE9BE8007E53C4 /* Growl Registration Ticket.growlRegDict */; };
-		1A7A954712D2097000F4D5F3 /* keychain.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952412D2097000F4D5F3 /* keychain.rb */; };
-		1A7A954812D2097000F4D5F3 /* exception.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952612D2097000F4D5F3 /* exception.rb */; };
-		1A7A954912D2097000F4D5F3 /* generic_item.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952712D2097000F4D5F3 /* generic_item.rb */; };
-		1A7A954A12D2097000F4D5F3 /* internet_item.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952812D2097000F4D5F3 /* internet_item.rb */; };
-		1A7A954B12D2097000F4D5F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A7A952912D2097000F4D5F3 /* README.md */; };
 		1A7E678F16AF897B00F848D6 /* GNSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC712748771006832E4 /* GNSound.m */; };
 		1A7E679116AF8B3A00F848D6 /* Constants.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1A7E679016AF8B3A00F848D6 /* Constants.rb */; };
 		1A7E67CD16B01B4D00F848D6 /* GNBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A74EA8F14F0998400C8D491 /* GNBrowser.m */; };
+		1A7E67CF16B0B8C900F848D6 /* GNPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC612748771006832E4 /* GNPreferences.m */; };
+		1A7E67DC16B2AB3B00F848D6 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7E67DB16B2AB3B00F848D6 /* SSKeychain.m */; };
+		1A7E67DE16B2AD3200F848D6 /* GNAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC312748771006832E4 /* GNAccount.m */; };
 		1AC3DCBB12748752006832E4 /* AccountDetailController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB612748752006832E4 /* AccountDetailController.rb */; };
 		1AC3DCBC12748752006832E4 /* ApplicationController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB712748752006832E4 /* ApplicationController.rb */; };
 		1AC3DCBD12748752006832E4 /* PreferencesController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB812748752006832E4 /* PreferencesController.rb */; };
 		1AC3DCBE12748752006832E4 /* PrefsAccountsViewController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB912748752006832E4 /* PrefsAccountsViewController.rb */; };
 		1AC3DCBF12748752006832E4 /* PrefsSettingsViewController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCBA12748752006832E4 /* PrefsSettingsViewController.rb */; };
-		1AC3DCCC12748771006832E4 /* GNAccount.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC312748771006832E4 /* GNAccount.rb */; };
+		1AC3DCCC12748771006832E4 /* GNAccount.m in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC312748771006832E4 /* GNAccount.m */; };
 		1AC3DCCD12748771006832E4 /* GNChecker.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC412748771006832E4 /* GNChecker.rb */; };
-		1AC3DCCF12748771006832E4 /* GNPreferences.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC612748771006832E4 /* GNPreferences.rb */; };
+		1AC3DCCF12748771006832E4 /* GNPreferences.m in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC612748771006832E4 /* GNPreferences.m */; };
 		1AC3DCD012748771006832E4 /* GNSound.m in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC712748771006832E4 /* GNSound.m */; };
 		1AC3DDE01275CF44006832E4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC3DDDF1275CF44006832E4 /* Sparkle.framework */; };
 		1AC3DDEB1275CF8E006832E4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AC3DDDF1275CF44006832E4 /* Sparkle.framework */; };
@@ -95,23 +93,22 @@
 		1A1374AB13DFF96500DA76C3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		1A74EA8F14F0998400C8D491 /* GNBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNBrowser.m; path = Classes/GNBrowser.m; sourceTree = "<group>"; };
 		1A78C6F916AE9BE8007E53C4 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = SOURCE_ROOT; };
-		1A7A952412D2097000F4D5F3 /* keychain.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = keychain.rb; sourceTree = "<group>"; };
-		1A7A952612D2097000F4D5F3 /* exception.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = exception.rb; sourceTree = "<group>"; };
-		1A7A952712D2097000F4D5F3 /* generic_item.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = generic_item.rb; sourceTree = "<group>"; };
-		1A7A952812D2097000F4D5F3 /* internet_item.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = internet_item.rb; sourceTree = "<group>"; };
-		1A7A952912D2097000F4D5F3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		1A7E678516AF7FA200F848D6 /* GmailNotifr_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmailNotifr_Prefix.pch; sourceTree = "<group>"; };
 		1A7E678916AF836B00F848D6 /* GNSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNSound.h; path = Classes/GNSound.h; sourceTree = "<group>"; };
 		1A7E679016AF8B3A00F848D6 /* Constants.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = Constants.rb; path = Classes/Constants.rb; sourceTree = "<group>"; };
 		1A7E67CC16B0180C00F848D6 /* GNBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNBrowser.h; path = Classes/GNBrowser.h; sourceTree = "<group>"; };
+		1A7E67CE16B0B86700F848D6 /* GNPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNPreferences.h; path = Classes/GNPreferences.h; sourceTree = "<group>"; };
+		1A7E67DA16B2AB3B00F848D6 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Libs/sskeychain/SSKeychain.h; sourceTree = "<group>"; };
+		1A7E67DB16B2AB3B00F848D6 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Libs/sskeychain/SSKeychain.m; sourceTree = "<group>"; };
+		1A7E67DD16B2AD1300F848D6 /* GNAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNAccount.h; path = Classes/GNAccount.h; sourceTree = "<group>"; };
 		1AC3DCB612748752006832E4 /* AccountDetailController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = AccountDetailController.rb; path = Classes/AccountDetailController.rb; sourceTree = "<group>"; };
 		1AC3DCB712748752006832E4 /* ApplicationController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = ApplicationController.rb; path = Classes/ApplicationController.rb; sourceTree = "<group>"; };
 		1AC3DCB812748752006832E4 /* PreferencesController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = PreferencesController.rb; path = Classes/PreferencesController.rb; sourceTree = "<group>"; };
 		1AC3DCB912748752006832E4 /* PrefsAccountsViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = PrefsAccountsViewController.rb; path = Classes/PrefsAccountsViewController.rb; sourceTree = "<group>"; };
 		1AC3DCBA12748752006832E4 /* PrefsSettingsViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = PrefsSettingsViewController.rb; path = Classes/PrefsSettingsViewController.rb; sourceTree = "<group>"; };
-		1AC3DCC312748771006832E4 /* GNAccount.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNAccount.rb; path = Classes/GNAccount.rb; sourceTree = "<group>"; };
+		1AC3DCC312748771006832E4 /* GNAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNAccount.m; path = Classes/GNAccount.m; sourceTree = "<group>"; };
 		1AC3DCC412748771006832E4 /* GNChecker.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNChecker.rb; path = Classes/GNChecker.rb; sourceTree = "<group>"; };
-		1AC3DCC612748771006832E4 /* GNPreferences.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = GNPreferences.rb; path = Classes/GNPreferences.rb; sourceTree = "<group>"; };
+		1AC3DCC612748771006832E4 /* GNPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNPreferences.m; path = Classes/GNPreferences.m; sourceTree = "<group>"; };
 		1AC3DCC712748771006832E4 /* GNSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSound.m; path = Classes/GNSound.m; sourceTree = "<group>"; };
 		1AC3DDDF1275CF44006832E4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Libs/Sparkle.framework; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -234,34 +231,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1A7A949712D2091200F4D5F3 /* lib */ = {
+		1A7A949712D2091200F4D5F3 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				1A7E67D916B2AB2800F848D6 /* SSKeychain */,
 				A56634141633433300E4C57F /* NSAppLoginItems */,
-				1A7A94F212D2097000F4D5F3 /* macruby-keychain-wrapper */,
 			);
-			name = lib;
+			name = Vendor;
 			sourceTree = "<group>";
 		};
-		1A7A94F212D2097000F4D5F3 /* macruby-keychain-wrapper */ = {
+		1A7E67D916B2AB2800F848D6 /* SSKeychain */ = {
 			isa = PBXGroup;
 			children = (
-				1A7A952412D2097000F4D5F3 /* keychain.rb */,
-				1A7A952512D2097000F4D5F3 /* lib */,
-				1A7A952912D2097000F4D5F3 /* README.md */,
+				1A7E67DA16B2AB3B00F848D6 /* SSKeychain.h */,
+				1A7E67DB16B2AB3B00F848D6 /* SSKeychain.m */,
 			);
-			name = "macruby-keychain-wrapper";
-			path = "Libs/macruby-keychain-wrapper";
-			sourceTree = "<group>";
-		};
-		1A7A952512D2097000F4D5F3 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				1A7A952612D2097000F4D5F3 /* exception.rb */,
-				1A7A952712D2097000F4D5F3 /* generic_item.rb */,
-				1A7A952812D2097000F4D5F3 /* internet_item.rb */,
-			);
-			path = lib;
+			name = SSKeychain;
 			sourceTree = "<group>";
 		};
 		1AC3DCB512748735006832E4 /* Controllers */ = {
@@ -280,9 +265,11 @@
 			isa = PBXGroup;
 			children = (
 				1A7E679016AF8B3A00F848D6 /* Constants.rb */,
-				1AC3DCC312748771006832E4 /* GNAccount.rb */,
+				1A7E67DD16B2AD1300F848D6 /* GNAccount.h */,
+				1AC3DCC312748771006832E4 /* GNAccount.m */,
 				1AC3DCC412748771006832E4 /* GNChecker.rb */,
-				1AC3DCC612748771006832E4 /* GNPreferences.rb */,
+				1A7E67CE16B0B86700F848D6 /* GNPreferences.h */,
+				1AC3DCC612748771006832E4 /* GNPreferences.m */,
 				1A7E678916AF836B00F848D6 /* GNSound.h */,
 				1AC3DCC712748771006832E4 /* GNSound.m */,
 				1A7E67CC16B0180C00F848D6 /* GNBrowser.h */,
@@ -294,7 +281,7 @@
 		29B97314FDCFA39411CA2CEA /* Gmail Notifr */ = {
 			isa = PBXGroup;
 			children = (
-				1A7A949712D2091200F4D5F3 /* lib */,
+				1A7A949712D2091200F4D5F3 /* Vendor */,
 				172754AE1075979200D0347B /* Tests */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -453,15 +440,10 @@
 				1AC3DCBD12748752006832E4 /* PreferencesController.rb in Resources */,
 				1AC3DCBE12748752006832E4 /* PrefsAccountsViewController.rb in Resources */,
 				1AC3DCBF12748752006832E4 /* PrefsSettingsViewController.rb in Resources */,
-				1AC3DCCC12748771006832E4 /* GNAccount.rb in Resources */,
+				1AC3DCCC12748771006832E4 /* GNAccount.m in Resources */,
 				1AC3DCCD12748771006832E4 /* GNChecker.rb in Resources */,
-				1AC3DCCF12748771006832E4 /* GNPreferences.rb in Resources */,
+				1AC3DCCF12748771006832E4 /* GNPreferences.m in Resources */,
 				1AC3DCD012748771006832E4 /* GNSound.m in Resources */,
-				1A7A954712D2097000F4D5F3 /* keychain.rb in Resources */,
-				1A7A954812D2097000F4D5F3 /* exception.rb in Resources */,
-				1A7A954912D2097000F4D5F3 /* generic_item.rb in Resources */,
-				1A7A954A12D2097000F4D5F3 /* internet_item.rb in Resources */,
-				1A7A954B12D2097000F4D5F3 /* README.md in Resources */,
 				1A74EA9014F0998400C8D491 /* GNBrowser.m in Resources */,
 				43D99F1416AD8151005AD039 /* AccountDetail.xib in Resources */,
 				43D99F1516AD8151005AD039 /* app.icns in Resources */,
@@ -500,9 +482,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				A56634131633432300E4C57F /* NSApplication+LoginItems.m in Sources */,
 				1A7E678F16AF897B00F848D6 /* GNSound.m in Sources */,
 				1A7E67CD16B01B4D00F848D6 /* GNBrowser.m in Sources */,
+				1A7E67DE16B2AD3200F848D6 /* GNAccount.m in Sources */,
+				1A7E67CF16B0B8C900F848D6 /* GNPreferences.m in Sources */,
+				1A7E67DC16B2AB3B00F848D6 /* SSKeychain.m in Sources */,
+				A56634131633432300E4C57F /* NSApplication+LoginItems.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

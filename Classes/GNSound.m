@@ -9,7 +9,7 @@
 #import "GNSound.h"
 #import <AppKit/NSSound.h>
 
-// NSString *const SOUND_NONE = @"None";
+NSString *const SoundNone = @"None";
 
 @implementation GNSound
 
