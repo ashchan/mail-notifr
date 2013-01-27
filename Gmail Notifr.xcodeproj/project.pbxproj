@@ -21,7 +21,7 @@
 		1A7E67DE16B2AD3200F848D6 /* GNAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC312748771006832E4 /* GNAccount.m */; };
 		1AB7FD1116B538040040BBCE /* PrefsAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FD1016B538040040BBCE /* PrefsAccountsViewController.m */; };
 		1AB7FD1416B54EDD0040BBCE /* GNPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FD1316B54EDD0040BBCE /* GNPreferencesController.m */; };
-		1AC3DCBB12748752006832E4 /* AccountDetailController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB612748752006832E4 /* AccountDetailController.rb */; };
+		1AB7FD1716B5593F0040BBCE /* GNAccountDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FD1616B5593F0040BBCE /* GNAccountDetailController.m */; };
 		1AC3DCBC12748752006832E4 /* ApplicationController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB712748752006832E4 /* ApplicationController.rb */; };
 		1AC3DCCC12748771006832E4 /* GNAccount.m in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC312748771006832E4 /* GNAccount.m */; };
 		1AC3DCCD12748771006832E4 /* GNChecker.m in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC412748771006832E4 /* GNChecker.m */; };
@@ -97,7 +97,8 @@
 		1AB7FD1016B538040040BBCE /* PrefsAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrefsAccountsViewController.m; path = Classes/PrefsAccountsViewController.m; sourceTree = "<group>"; };
 		1AB7FD1216B54EDD0040BBCE /* GNPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNPreferencesController.h; path = Classes/GNPreferencesController.h; sourceTree = "<group>"; };
 		1AB7FD1316B54EDD0040BBCE /* GNPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNPreferencesController.m; path = Classes/GNPreferencesController.m; sourceTree = "<group>"; };
-		1AC3DCB612748752006832E4 /* AccountDetailController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = AccountDetailController.rb; path = Classes/AccountDetailController.rb; sourceTree = "<group>"; };
+		1AB7FD1516B5593F0040BBCE /* GNAccountDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNAccountDetailController.h; path = Classes/GNAccountDetailController.h; sourceTree = "<group>"; };
+		1AB7FD1616B5593F0040BBCE /* GNAccountDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNAccountDetailController.m; path = Classes/GNAccountDetailController.m; sourceTree = "<group>"; };
 		1AC3DCB712748752006832E4 /* ApplicationController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = ApplicationController.rb; path = Classes/ApplicationController.rb; sourceTree = "<group>"; };
 		1AC3DCC312748771006832E4 /* GNAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNAccount.m; path = Classes/GNAccount.m; sourceTree = "<group>"; };
 		1AC3DCC412748771006832E4 /* GNChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNChecker.m; path = Classes/GNChecker.m; sourceTree = "<group>"; };
@@ -280,13 +281,14 @@
 			isa = PBXGroup;
 			children = (
 				1AC3DCB712748752006832E4 /* ApplicationController.rb */,
-				1AC3DCB612748752006832E4 /* AccountDetailController.rb */,
 				1AB7FD1216B54EDD0040BBCE /* GNPreferencesController.h */,
 				1AB7FD1316B54EDD0040BBCE /* GNPreferencesController.m */,
 				1AB7FD0F16B538040040BBCE /* PrefsAccountsViewController.h */,
 				1AB7FD1016B538040040BBCE /* PrefsAccountsViewController.m */,
 				1A5B800C16B5328A00A6AE2B /* PrefsSettingsViewController.h */,
 				1A5B800D16B5328A00A6AE2B /* PrefsSettingsViewController.m */,
+				1AB7FD1516B5593F0040BBCE /* GNAccountDetailController.h */,
+				1AB7FD1616B5593F0040BBCE /* GNAccountDetailController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -428,7 +430,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE339F70D74FCDD00ADB6EE /* rb_main.rb in Resources */,
-				1AC3DCBB12748752006832E4 /* AccountDetailController.rb in Resources */,
 				1AC3DCBC12748752006832E4 /* ApplicationController.rb in Resources */,
 				1AC3DCCC12748771006832E4 /* GNAccount.m in Resources */,
 				1AC3DCCD12748771006832E4 /* GNChecker.m in Resources */,
@@ -481,6 +482,7 @@
 				1A5B800E16B5328A00A6AE2B /* PrefsSettingsViewController.m in Sources */,
 				1AB7FD1116B538040040BBCE /* PrefsAccountsViewController.m in Sources */,
 				1AB7FD1416B54EDD0040BBCE /* GNPreferencesController.m in Sources */,
+				1AB7FD1716B5593F0040BBCE /* GNAccountDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

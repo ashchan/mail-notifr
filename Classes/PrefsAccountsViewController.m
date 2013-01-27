@@ -9,6 +9,7 @@
 #import "PrefsAccountsViewController.h"
 #import "GNPreferences.h"
 #import "GNAccount.h"
+#import "GNAccountDetailController.h"
 
 @interface PrefsAccountsViewController () <NSTableViewDataSource, NSTableViewDelegate>
 
@@ -117,8 +118,7 @@ NSString *const PBOARD_DRAG_TYPE = @"GNDragType";
 
 - (IBAction)startAddingAccount:(id)sender {
     GNAccount *account = [[GNAccount alloc] initWithUsername:@"username" interval:0 enabled:YES growl:YES sound:nil browser:nil];
-#warning hook this after rewriting AccountDetailController
-    //AccountDetailController.editAccountOnWindow(account, view.superview.window)
+    [GNAccountDetailController editAccount:account onWindow:[[[self view] superview] window]];
 }
 
 - (void)endAddingAccount:(id)sender {
@@ -137,8 +137,7 @@ NSString *const PBOARD_DRAG_TYPE = @"GNDragType";
 
 - (IBAction)startEditingAccount:(id)sender {
     if ([self currentAccount]) {
-#warning hook this after rewriting AccountDetailController
-        //AccountDetailController.editAccountOnWindow(account, view.superview.window)
+        [GNAccountDetailController editAccount:[self currentAccount] onWindow:[[[self view] superview] window]];
     }
 }
 
