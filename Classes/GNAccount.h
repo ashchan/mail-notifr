@@ -17,7 +17,7 @@ extern NSString *const KeychainServiceName;
 @property (copy) NSString *password;
 @property (copy) NSString *browser;
 @property (copy) NSString *sound;
-@property (assign) NSInteger interval;
+@property (nonatomic, assign) NSInteger interval;
 @property (assign) BOOL enabled;
 @property (assign) BOOL growl;
 

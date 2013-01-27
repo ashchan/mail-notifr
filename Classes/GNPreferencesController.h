@@ -10,7 +10,7 @@
 
 @interface GNPreferencesController : NSWindowController
 
-@property (strong) NSArray *modules;
+@property (nonatomic, strong) NSArray *modules;
 
 + (GNPreferencesController *)sharedController;
 
