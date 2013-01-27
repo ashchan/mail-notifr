@@ -6,6 +6,21 @@
 #  Copyright (c) 2008 ashchan.com. All rights reserved.
 #
 
+GNShowUnreadCountChangedNotification = "GNShowUnreadCountChanged"
+GNAccountAddedNotification = "GNAccountAddedNotification"
+GNAccountRemovedNotification = "GNAccountRemovedNotification"
+GNAccountChangedNotification = "GNAccountChangedNotification"
+GNAccountMenuUpdateNotification = "GNAccountMenuUpdateNotification"
+GNCheckingAccountNotification = "GNCheckingAccountNotification"
+GNAccountsReorderedNotification = "GNAccountsReorderedNotification"
+
+PrefsToolbarItemAccounts = "prefsToolbarItemAccounts"
+PrefsToolbarItemSettings = "prefsToolbarItemSettings"
+
+PreferencesSelection = "PreferencesSelection"
+
+SOUND_NONE = "None"
+DEFAULT_BROWSER_IDENTIFIER = "default"
 
 class ApplicationController
   KInternetEventClass = KAEGetURL = 'GURL'.unpack('N').first
@@ -200,11 +215,11 @@ class ApplicationController
     if account.enabled
       checker = checkerForAccount(account)
 
-      if checker.connectionError?
+      if checker.hasConnectionError == 1
         errorItem = menuItem.submenu.addItemWithTitle(NSLocalizedString("Connection Error"), action:nil, keyEquivalent:"")
         errorItem.enabled = false
         menuItem.setImage(@error_icon)
-      elsif checker.userError?
+      elsif checker.hasUserError == 1
         errorItem = menuItem.submenu.addItemWithTitle(NSLocalizedString("Username/password Wrong"), action:nil, keyEquivalent:"")
         errorItem.enabled = false
         menuItem.setImage(@error_icon)
@@ -292,11 +307,11 @@ class ApplicationController
   end
 
   def checkerForAccount(account)
-    @checkers.find { |c| c.forAccount?(account) }
+    @checkers.find { |c| c.isForAccount(account) }
   end
 
   def checkerForGuid(guid)
-    @checkers.find { |c| c.forGuid?(guid) }
+    @checkers.find { |c| c.isForGuid(guid) }
   end
 
   def messageCount
