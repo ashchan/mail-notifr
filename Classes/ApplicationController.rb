@@ -307,11 +307,11 @@ class ApplicationController
   end
 
   def checkerForAccount(account)
-    @checkers.find { |c| c.isForAccount(account) }
+    @checkers.find { |c| c.isForAccount(account) == 1 }
   end
 
   def checkerForGuid(guid)
-    @checkers.find { |c| c.isForGuid(guid) }
+    @checkers.find { |c| c.isForGuid(guid) == 1 }
   end
 
   def messageCount
