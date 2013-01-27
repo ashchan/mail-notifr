@@ -13,7 +13,7 @@
 
 NSString *const PrefsToolbarItemAccounts                = @"prefsToolbarItemAccounts";
 NSString *const PrefsToolbarItemSettings                = @"prefsToolbarItemSettings";
-NSString *const PreferencesSelection                    = @"PreferencesSelection";
+NSString *const GNPreferencesSelection                  = @"PreferencesSelection";
 NSString *const GNShowUnreadCountChangedNotification    = @"GNShowUnreadCountChangedNotification";
 NSString *const GNAccountAddedNotification              = @"GNAccountAddedNotification";
 NSString *const GNAccountRemovedNotification            = @"GNAccountRemovedNotification";
@@ -36,7 +36,7 @@ NSString *const DefaultsKeyShowUnreadCount  = @"ShowUnreadCount";
 }
 
 + (void)setupDefaults {
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ DefaultsKeyShowUnreadCount: @(YES), PreferencesSelection: PrefsToolbarItemAccounts }];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ DefaultsKeyShowUnreadCount: @(YES), GNPreferencesSelection: PrefsToolbarItemAccounts }];
 }
 
 - (id)init {

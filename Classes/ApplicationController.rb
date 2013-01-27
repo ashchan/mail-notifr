@@ -14,8 +14,6 @@ GNAccountMenuUpdateNotification = "GNAccountMenuUpdateNotification"
 GNCheckingAccountNotification = "GNCheckingAccountNotification"
 GNAccountsReorderedNotification = "GNAccountsReorderedNotification"
 
-PreferencesSelection = "PreferencesSelection"
-
 SOUND_NONE = "None"
 DEFAULT_BROWSER_IDENTIFIER = "default"
 
@@ -114,7 +112,7 @@ class ApplicationController
 
   def showPreferencesWindow(sender)
     NSApplication.sharedApplication.activateIgnoringOtherApps(true)
-    PreferencesController.sharedController.showWindow(sender)
+    GNPreferencesController.sharedController.showWindow(sender)
   end
 
   def donate(sender)
