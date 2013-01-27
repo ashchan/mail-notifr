@@ -381,7 +381,7 @@ class ApplicationController
   end
 
   def openInboxForAccountName(name, browserIdentifier = DEFAULT_BROWSER_IDENTIFIER)
-    openURL(GNAccount.baseurl_for(name), browserIdentifier)
+    openURL(GNAccount.baseUrlForUsername(name), browserIdentifier)
   end
 
   def registerMailtoHandler

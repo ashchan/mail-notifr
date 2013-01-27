@@ -194,10 +194,14 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
                                    iconData:nil
                                    priority:0
                                    isSticky:NO
-                               clickContext:title];
+                               clickContext:title
+                                 identifier:title];
 }
 
 - (void)notifyNotificationCenterWithTitle:(NSString *)title description:(NSString *)description {
+    // NC support is through Growl SDK 2
+    return;
+
     if (NSClassFromString(@"NSUserNotificationCenter")) {
         NSUserNotification *notification = [[NSUserNotification alloc] init];
         [notification setValue:title forKey:@"title"];
