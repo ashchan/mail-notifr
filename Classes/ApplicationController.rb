@@ -15,7 +15,6 @@ GNCheckingAccountNotification = "GNCheckingAccountNotification"
 GNAccountsReorderedNotification = "GNAccountsReorderedNotification"
 
 PrefsToolbarItemAccounts = "prefsToolbarItemAccounts"
-PrefsToolbarItemSettings = "prefsToolbarItemSettings"
 
 PreferencesSelection = "PreferencesSelection"
 
@@ -126,7 +125,7 @@ class ApplicationController
 
   def updateMenuBarCount(notification = nil)
     msgCount = messageCount
-    if GNPreferences.sharedInstance.showUnreadCount && msgCount > 0
+    if GNPreferences.sharedInstance.showUnreadCount == 1 && msgCount > 0
       @status_item.setTitle(msgCount.to_s)
     else
       @status_item.setTitle('')
