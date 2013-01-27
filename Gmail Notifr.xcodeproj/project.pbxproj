@@ -92,7 +92,7 @@
 		1A7E67DA16B2AB3B00F848D6 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Libs/sskeychain/SSKeychain.h; sourceTree = "<group>"; };
 		1A7E67DB16B2AB3B00F848D6 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Libs/sskeychain/SSKeychain.m; sourceTree = "<group>"; };
 		1A7E67DD16B2AD1300F848D6 /* GNAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNAccount.h; path = Classes/GNAccount.h; sourceTree = "<group>"; };
-		1A7E67DF16B41A4700F848D6 /* GNChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNChecker.h; sourceTree = "<group>"; };
+		1AB7FD0E16B537D20040BBCE /* GNChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNChecker.h; path = Classes/GNChecker.h; sourceTree = "<group>"; };
 		1AC3DCB612748752006832E4 /* AccountDetailController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = AccountDetailController.rb; path = Classes/AccountDetailController.rb; sourceTree = "<group>"; };
 		1AC3DCB712748752006832E4 /* ApplicationController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = ApplicationController.rb; path = Classes/ApplicationController.rb; sourceTree = "<group>"; };
 		1AC3DCB812748752006832E4 /* PreferencesController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = PreferencesController.rb; path = Classes/PreferencesController.rb; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 			children = (
 				1A7E67DD16B2AD1300F848D6 /* GNAccount.h */,
 				1AC3DCC312748771006832E4 /* GNAccount.m */,
-				1A7E67DF16B41A4700F848D6 /* GNChecker.h */,
+				1AB7FD0E16B537D20040BBCE /* GNChecker.h */,
 				1AC3DCC412748771006832E4 /* GNChecker.m */,
 				1A7E67CE16B0B86700F848D6 /* GNPreferences.h */,
 				1AC3DCC612748771006832E4 /* GNPreferences.m */,
