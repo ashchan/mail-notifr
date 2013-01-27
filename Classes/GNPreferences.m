@@ -12,11 +12,13 @@
 #import "GNAccount.h"
 
 NSString *const PrefsToolbarItemAccounts                = @"prefsToolbarItemAccounts";
+NSString *const PrefsToolbarItemSettings                = @"prefsToolbarItemSettings";
 NSString *const PreferencesSelection                    = @"PreferencesSelection";
 NSString *const GNShowUnreadCountChangedNotification    = @"GNShowUnreadCountChangedNotification";
 NSString *const GNAccountAddedNotification              = @"GNAccountAddedNotification";
 NSString *const GNAccountRemovedNotification            = @"GNAccountRemovedNotification";
 NSString *const GNAccountChangedNotification            = @"GNAccountChangedNotification";
+NSString *const GNAccountsReorderedNotification         = @"GNAccountsReorderedNotification";
 
 NSString *const DefaultsKeyAccounts         = @"Accounts";
 NSString *const DefaultsKeyShowUnreadCount  = @"ShowUnreadCount";
@@ -93,6 +95,19 @@ NSString *const DefaultsKeyShowUnreadCount  = @"ShowUnreadCount";
 - (void)saveAccount:(id)account {
     [self writeBack];
     [[NSNotificationCenter defaultCenter] postNotificationName:GNAccountChangedNotification object:self userInfo:@{@"guid": [account guid]}];
+}
+
+- (void)moveAccountFromRow:(NSUInteger)row toRow:(NSUInteger)newRow {
+    if (row < newRow) {
+        [_accounts insertObject:_accounts[row] atIndex:newRow];
+        [_accounts removeObjectAtIndex:row];
+    } else {
+        GNAccount *account = _accounts[row];
+        [_accounts removeObjectAtIndex:row];
+        [_accounts insertObject:account atIndex:newRow];
+    }
+    [self writeBack];
+    [[NSNotificationCenter defaultCenter] postNotificationName:GNAccountsReorderedNotification object:nil];
 }
 
 - (void)writeBack {

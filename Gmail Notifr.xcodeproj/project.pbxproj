@@ -19,10 +19,10 @@
 		1A7E67CF16B0B8C900F848D6 /* GNPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC612748771006832E4 /* GNPreferences.m */; };
 		1A7E67DC16B2AB3B00F848D6 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7E67DB16B2AB3B00F848D6 /* SSKeychain.m */; };
 		1A7E67DE16B2AD3200F848D6 /* GNAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC312748771006832E4 /* GNAccount.m */; };
+		1AB7FD1116B538040040BBCE /* PrefsAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FD1016B538040040BBCE /* PrefsAccountsViewController.m */; };
 		1AC3DCBB12748752006832E4 /* AccountDetailController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB612748752006832E4 /* AccountDetailController.rb */; };
 		1AC3DCBC12748752006832E4 /* ApplicationController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB712748752006832E4 /* ApplicationController.rb */; };
 		1AC3DCBD12748752006832E4 /* PreferencesController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB812748752006832E4 /* PreferencesController.rb */; };
-		1AC3DCBE12748752006832E4 /* PrefsAccountsViewController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCB912748752006832E4 /* PrefsAccountsViewController.rb */; };
 		1AC3DCCC12748771006832E4 /* GNAccount.m in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC312748771006832E4 /* GNAccount.m */; };
 		1AC3DCCD12748771006832E4 /* GNChecker.m in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC412748771006832E4 /* GNChecker.m */; };
 		1AC3DCCF12748771006832E4 /* GNPreferences.m in Resources */ = {isa = PBXBuildFile; fileRef = 1AC3DCC612748771006832E4 /* GNPreferences.m */; };
@@ -93,10 +93,11 @@
 		1A7E67DB16B2AB3B00F848D6 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Libs/sskeychain/SSKeychain.m; sourceTree = "<group>"; };
 		1A7E67DD16B2AD1300F848D6 /* GNAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNAccount.h; path = Classes/GNAccount.h; sourceTree = "<group>"; };
 		1AB7FD0E16B537D20040BBCE /* GNChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNChecker.h; path = Classes/GNChecker.h; sourceTree = "<group>"; };
+		1AB7FD0F16B538040040BBCE /* PrefsAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefsAccountsViewController.h; path = Classes/PrefsAccountsViewController.h; sourceTree = "<group>"; };
+		1AB7FD1016B538040040BBCE /* PrefsAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrefsAccountsViewController.m; path = Classes/PrefsAccountsViewController.m; sourceTree = "<group>"; };
 		1AC3DCB612748752006832E4 /* AccountDetailController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = AccountDetailController.rb; path = Classes/AccountDetailController.rb; sourceTree = "<group>"; };
 		1AC3DCB712748752006832E4 /* ApplicationController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = ApplicationController.rb; path = Classes/ApplicationController.rb; sourceTree = "<group>"; };
 		1AC3DCB812748752006832E4 /* PreferencesController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = PreferencesController.rb; path = Classes/PreferencesController.rb; sourceTree = "<group>"; };
-		1AC3DCB912748752006832E4 /* PrefsAccountsViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = PrefsAccountsViewController.rb; path = Classes/PrefsAccountsViewController.rb; sourceTree = "<group>"; };
 		1AC3DCC312748771006832E4 /* GNAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNAccount.m; path = Classes/GNAccount.m; sourceTree = "<group>"; };
 		1AC3DCC412748771006832E4 /* GNChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNChecker.m; path = Classes/GNChecker.m; sourceTree = "<group>"; };
 		1AC3DCC612748771006832E4 /* GNPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNPreferences.m; path = Classes/GNPreferences.m; sourceTree = "<group>"; };
@@ -280,7 +281,8 @@
 				1AC3DCB612748752006832E4 /* AccountDetailController.rb */,
 				1AC3DCB712748752006832E4 /* ApplicationController.rb */,
 				1AC3DCB812748752006832E4 /* PreferencesController.rb */,
-				1AC3DCB912748752006832E4 /* PrefsAccountsViewController.rb */,
+				1AB7FD0F16B538040040BBCE /* PrefsAccountsViewController.h */,
+				1AB7FD1016B538040040BBCE /* PrefsAccountsViewController.m */,
 				1A5B800C16B5328A00A6AE2B /* PrefsSettingsViewController.h */,
 				1A5B800D16B5328A00A6AE2B /* PrefsSettingsViewController.m */,
 			);
@@ -427,7 +429,6 @@
 				1AC3DCBB12748752006832E4 /* AccountDetailController.rb in Resources */,
 				1AC3DCBC12748752006832E4 /* ApplicationController.rb in Resources */,
 				1AC3DCBD12748752006832E4 /* PreferencesController.rb in Resources */,
-				1AC3DCBE12748752006832E4 /* PrefsAccountsViewController.rb in Resources */,
 				1AC3DCCC12748771006832E4 /* GNAccount.m in Resources */,
 				1AC3DCCD12748771006832E4 /* GNChecker.m in Resources */,
 				1AC3DCCF12748771006832E4 /* GNPreferences.m in Resources */,
@@ -477,6 +478,7 @@
 				1A7E67DC16B2AB3B00F848D6 /* SSKeychain.m in Sources */,
 				A56634131633432300E4C57F /* NSApplication+LoginItems.m in Sources */,
 				1A5B800E16B5328A00A6AE2B /* PrefsSettingsViewController.m in Sources */,
+				1AB7FD1116B538040040BBCE /* PrefsAccountsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

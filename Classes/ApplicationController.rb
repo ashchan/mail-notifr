@@ -14,8 +14,6 @@ GNAccountMenuUpdateNotification = "GNAccountMenuUpdateNotification"
 GNCheckingAccountNotification = "GNCheckingAccountNotification"
 GNAccountsReorderedNotification = "GNAccountsReorderedNotification"
 
-PrefsToolbarItemAccounts = "prefsToolbarItemAccounts"
-
 PreferencesSelection = "PreferencesSelection"
 
 SOUND_NONE = "None"

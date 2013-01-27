@@ -9,8 +9,6 @@
 #import "PrefsSettingsViewController.h"
 #import "GNPreferences.h"
 
-NSString *const PrefsToolbarItemSettings = @"prefsToolbarItemSettings";
-
 @interface PrefsSettingsViewController ()
 
 @property (weak) IBOutlet NSButton *autoLaunchCheckBox;

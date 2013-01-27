@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const PrefsToolbarItemAccounts;
+extern NSString *const PrefsToolbarItemSettings;
+extern NSString *const GNAccountAddedNotification;
+extern NSString *const GNAccountChangedNotification;
+extern NSString *const GNAccountsReorderedNotification;
+
 @interface GNPreferences : NSObject
 
 @property (retain, readonly) NSMutableArray *accounts;
@@ -21,5 +27,6 @@
 - (void)addAccount:(id)account;
 - (void)removeAccount:(id)account;
 - (void)saveAccount:(id)account;
+- (void)moveAccountFromRow:(NSUInteger)row toRow:(NSUInteger)newRow;
 
 @end
