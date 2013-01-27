@@ -24,12 +24,12 @@ _Note: the Objective-C rewriting is in the process…_
 
 ## Requirements ##
 
-* Mac OS X 10.6 (Snow Leopard) or higher
+* Mac OS X 10.7 (Lion) or higher
 * An Intel 64-bit machine
 
 ## Note ##
 
-* The [MacRuby implementation](https://github.com/ashchan/gmail-notifr) will be stopped soon. A [macruby](https://github.com/ashchan/gmail-notifr-objc/tree/macruby) branch was also created.
+* The [MacRuby implementation](https://github.com/ashchan/gmail-notifr) has be stopped. A [macruby](https://github.com/ashchan/gmail-notifr-objc/tree/macruby) branch was also created.
 
 * The RubyCocoa implementation has been moved to the [rubycocoa](https://github.com/ashchan/gmail-notifr-objc/tree/rubycocoa) branch.
 
