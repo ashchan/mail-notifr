@@ -60,16 +60,6 @@
 		A56634131633432300E4C57F /* NSApplication+LoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = A56634121633432300E4C57F /* NSApplication+LoginItems.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		1A8277B013D928CB00B436BB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8D1107260486CEB800E47090;
-			remoteInfo = "Gmail Notifr";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		172754B4107597CF00D0347B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -370,24 +360,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXLegacyTarget section */
-		1A8277AC13D9287000B436BB /* Deployment */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "--compile --embed --bs";
-			buildConfigurationList = 1A8277AD13D9287000B436BB /* Build configuration list for PBXLegacyTarget "Deployment" */;
-			buildPhases = (
-			);
-			buildToolPath = /usr/local/bin/macruby_deploy;
-			buildWorkingDirectory = "";
-			dependencies = (
-				1A8277B113D928CB00B436BB /* PBXTargetDependency */,
-			);
-			name = Deployment;
-			passBuildSettingsInEnvironment = 1;
-			productName = Deployment;
-		};
-/* End PBXLegacyTarget section */
-
 /* Begin PBXNativeTarget section */
 		8D1107260486CEB800E47090 /* Gmail Notifr */ = {
 			isa = PBXNativeTarget;
@@ -440,7 +412,6 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Gmail Notifr */,
-				1A8277AC13D9287000B436BB /* Deployment */,
 			);
 		};
 /* End PBXProject section */
@@ -509,14 +480,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		1A8277B113D928CB00B436BB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D1107260486CEB800E47090 /* Gmail Notifr */;
-			targetProxy = 1A8277B013D928CB00B436BB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		43D99EEB16AD8151005AD039 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -568,52 +531,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		1A8277AE13D9287000B436BB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUGGING_SYMBOLS = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-			};
-			name = Debug;
-		};
-		1A8277AF13D9287000B436BB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-			};
-			name = Release;
-		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -633,7 +550,7 @@
 				GCC_PREFIX_HEADER = GmailNotifr_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "Gmail Notifr";
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = binary;
@@ -661,7 +578,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "Gmail Notifr";
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = binary;
@@ -677,6 +594,7 @@
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
@@ -690,6 +608,7 @@
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 			};
@@ -698,15 +617,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1A8277AD13D9287000B436BB /* Build configuration list for PBXLegacyTarget "Deployment" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1A8277AE13D9287000B436BB /* Debug */,
-				1A8277AF13D9287000B436BB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Gmail Notifr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
