@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 ashchan.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
-@interface GNApplicationController : NSObject
+@interface GNApplicationController : NSObject<NSApplicationDelegate>
 
 @end

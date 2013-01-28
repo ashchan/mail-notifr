@@ -13,6 +13,15 @@
 
 @property (strong) IBOutlet NSMenu *menu;
 
+@property (weak) IBOutlet NSMenuItem *menuItemCheckAll;
+@property (weak) IBOutlet NSMenuItem *menuItemPreferences;
+@property (weak) IBOutlet NSMenuItem *menuItemCheckUpdate;
+@property (weak) IBOutlet NSMenuItem *menuItemAbout;
+@property (weak) IBOutlet NSMenuItem *menuItemDonate;
+@property (weak) IBOutlet NSMenuItem *menuItemQuit;
+
+@property (strong) NSStatusItem *statusItem;
+
 @end
 
 @implementation GNApplicationController {
@@ -25,7 +34,7 @@
     NSImage *_errorIcon;
 }
 
-- (void)awakeFromNib {
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     _appIcon        = [NSImage imageNamed:@"app"];
     _appAltIcon     = [NSImage imageNamed:@"app_a"];
     _mailIcon       = [NSImage imageNamed:@"mail"];
@@ -34,12 +43,14 @@
     _checkAltIcon   = [NSImage imageNamed:@"check_a"];
     _errorIcon      = [NSImage imageNamed:@"error"];
 
-    NSStatusItem *statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    [statusItem setHighlightMode:YES];
-    [statusItem setMenu:self.menu];
+    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    [self.statusItem setHighlightMode:YES];
+    [self.statusItem setMenu:self.menu];
 
-    [statusItem setImage:_appIcon];
-    [statusItem setAlternateImage:_appAltIcon];
+    [self localizeMenuItems];
+    
+    [self.statusItem setImage:_appIcon];
+    [self.statusItem setAlternateImage:_appAltIcon];
 
     [GNPreferences setupDefaults];
     
@@ -422,4 +433,14 @@
  end
 
  */
+
+- (void)localizeMenuItems {
+    [self.menuItemCheckAll setTitleWithMnemonic:NSLocalizedString(@"Check All", nil)];
+    [self.menuItemPreferences setTitleWithMnemonic:NSLocalizedString(@"Preferences...", nil)];
+    [self.menuItemCheckUpdate setTitleWithMnemonic:NSLocalizedString(@"Check for Updates...", nil)];
+    [self.menuItemAbout setTitleWithMnemonic:NSLocalizedString(@"About Gmail Notifr", nil)];
+    [self.menuItemDonate setTitleWithMnemonic:NSLocalizedString(@"Donate...", nil)];
+    [self.menuItemQuit setTitleWithMnemonic:NSLocalizedString(@"Quit Gmail Notifr", nil)];
+}
+
 @end
