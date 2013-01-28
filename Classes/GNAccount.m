@@ -137,7 +137,7 @@ NSString *const KeychainServiceName = @"GmailNotifr";
 
 - (NSString *)generateUUID {
     CFUUIDRef uuidObj = CFUUIDCreate(nil);
-    NSString *uuidString = (__bridge NSString*)CFUUIDCreateString(nil, uuidObj);
+    NSString *uuidString = (__bridge_transfer NSString*)CFUUIDCreateString(nil, uuidObj);
     CFRelease(uuidObj);
     return uuidString;
 }
