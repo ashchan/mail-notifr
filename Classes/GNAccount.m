@@ -8,11 +8,11 @@
 
 // a normal gmail account, or a google hosted email account
 
-#include "GNAccount.h"
-#include "SSKeychain.h"
-#include "GNSound.h"
-#include "GNBrowser.h"
-#include "GNPreferences.h"
+#import "GNAccount.h"
+#import "SSKeychain.h"
+#import "GNSound.h"
+#import "GNBrowser.h"
+#import "GNPreferences.h"
 
 @implementation GNAccount
 

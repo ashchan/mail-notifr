@@ -118,7 +118,6 @@ NSString *const DefaultsKeyShowUnreadCount  = @"ShowUnreadCount";
     [[NSUserDefaults standardUserDefaults] setObject:archivedAccounts forKey:DefaultsKeyAccounts];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
-    // save accounts to default keychain
     for (id account in _accounts) {
         [SSKeychain setPassword:[account password] forService:KeychainServiceName account:[account username]];
     }

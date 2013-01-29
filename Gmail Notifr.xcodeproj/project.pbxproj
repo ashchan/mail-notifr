@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0947BF16B7F21D004584B3 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0947BE16B7F21D004584B3 /* SSKeychain.m */; };
 		1A8F667016B5817000396E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F666F16B5817000396E44 /* main.m */; };
 		1A8F667516B5837800396E44 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AB7FE3216B57B430040BBCE /* Growl.framework */; };
 		1A8F667616B5837A00396E44 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AB7FE3316B57B430040BBCE /* Sparkle.framework */; };
@@ -14,7 +15,6 @@
 		1AB7FD8116B578740040BBCE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FD8016B578740040BBCE /* Cocoa.framework */; };
 		1AB7FDA416B57A270040BBCE /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FDA216B57A270040BBCE /* Growl Registration Ticket.growlRegDict */; };
 		1AB7FE1816B57AEE0040BBCE /* NSApplication+LoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FDF216B57AEE0040BBCE /* NSApplication+LoginItems.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1AB7FE2316B57AEE0040BBCE /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE0616B57AEE0040BBCE /* SSKeychain.m */; };
 		1AB7FE3416B57B430040BBCE /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3216B57B430040BBCE /* Growl.framework */; };
 		1AB7FE3516B57B430040BBCE /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3316B57B430040BBCE /* Sparkle.framework */; };
 		1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3616B57B4E0040BBCE /* Security.framework */; };
@@ -66,6 +66,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A0947BD16B7F21D004584B3 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Libs/sskeychain/SSKeychain/SSKeychain.h; sourceTree = "<group>"; };
+		1A0947BE16B7F21D004584B3 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Libs/sskeychain/SSKeychain/SSKeychain.m; sourceTree = "<group>"; };
 		1A8F666F16B5817000396E44 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		1A8F66A416B5FBB400396E44 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1A8F66A616B5FC9400396E44 /* Spanish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Spanish; path = Resources/Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -82,8 +84,6 @@
 		1AB7FDA316B57A270040BBCE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		1AB7FDF116B57AEE0040BBCE /* NSApplication+LoginItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+LoginItems.h"; sourceTree = "<group>"; };
 		1AB7FDF216B57AEE0040BBCE /* NSApplication+LoginItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+LoginItems.m"; sourceTree = "<group>"; };
-		1AB7FE0516B57AEE0040BBCE /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
-		1AB7FE0616B57AEE0040BBCE /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		1AB7FE3216B57B430040BBCE /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Libs/Growl.framework; sourceTree = "<group>"; };
 		1AB7FE3316B57B430040BBCE /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Libs/Sparkle.framework; sourceTree = "<group>"; };
 		1AB7FE3616B57B4E0040BBCE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -152,6 +152,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A0947BC16B7F20B004584B3 /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				1A0947BD16B7F21D004584B3 /* SSKeychain.h */,
+				1A0947BE16B7F21D004584B3 /* SSKeychain.m */,
+			);
+			name = SSKeychain;
+			sourceTree = "<group>";
+		};
 		1A8F666C16B5809100396E44 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,8 +272,8 @@
 		1AB7FDEE16B57AE10040BBCE /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				1A0947BC16B7F20B004584B3 /* SSKeychain */,
 				1AB7FDEF16B57AEE0040BBCE /* NSAppLoginItems */,
-				1AB7FDFF16B57AEE0040BBCE /* sskeychain */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -277,16 +286,6 @@
 			);
 			name = NSAppLoginItems;
 			path = Libs/NSAppLoginItems;
-			sourceTree = "<group>";
-		};
-		1AB7FDFF16B57AEE0040BBCE /* sskeychain */ = {
-			isa = PBXGroup;
-			children = (
-				1AB7FE0516B57AEE0040BBCE /* SSKeychain.h */,
-				1AB7FE0616B57AEE0040BBCE /* SSKeychain.m */,
-			);
-			name = sskeychain;
-			path = Libs/sskeychain;
 			sourceTree = "<group>";
 		};
 		1AB7FE3E16B57B740040BBCE /* Resources */ = {
@@ -422,7 +421,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AB7FE1816B57AEE0040BBCE /* NSApplication+LoginItems.m in Sources */,
-				1AB7FE2316B57AEE0040BBCE /* SSKeychain.m in Sources */,
 				1AB7FE4916B57B9C0040BBCE /* GNAccountDetailController.m in Sources */,
 				1AB7FE4A16B57B9C0040BBCE /* GNApplicationController.m in Sources */,
 				1AB7FE4B16B57B9C0040BBCE /* GNPreferencesController.m in Sources */,
@@ -434,6 +432,7 @@
 				1AB7FE5B16B57BAD0040BBCE /* GNPreferences.m in Sources */,
 				1AB7FE5C16B57BAD0040BBCE /* GNSound.m in Sources */,
 				1A8F667016B5817000396E44 /* main.m in Sources */,
+				1A0947BF16B7F21D004584B3 /* SSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

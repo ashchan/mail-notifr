@@ -46,10 +46,11 @@
 }
 
 + (void)editAccount:(GNAccount *)account onWindow:(NSWindow *)window {
-    GNAccountDetailController *controller = [[GNAccountDetailController alloc] initWithAccount:account];
-    [NSApp beginSheet:[controller window]
+    static GNAccountDetailController *_accountDetailController;
+    _accountDetailController = [[GNAccountDetailController alloc] initWithAccount:account];
+    [NSApp beginSheet:[_accountDetailController window]
        modalForWindow:window
-        modalDelegate:controller
+        modalDelegate:_accountDetailController
        didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
           contextInfo:nil];
 }
