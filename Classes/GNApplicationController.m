@@ -128,7 +128,7 @@
 - (void)accountRemoved:(NSNotification *)notification {
     NSMenuItem *item = [self menuItemForGuid:[notification userInfo][@"guid"]];
     [[_statusItem menu] removeItem:item];
-    GNChecker *checker = [self checkerForAccount:[notification userInfo][@"guid"]];
+    GNChecker *checker = [self checkerForGuid:[notification userInfo][@"guid"]];
     [checker cleanupAndQuit];
     [_checkers removeObject:checker];
     [self updateMenuBarCount:notification];
