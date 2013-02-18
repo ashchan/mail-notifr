@@ -104,7 +104,6 @@
     [account save];
 
     [self updateMenuItemAccountEnabled:account];
-    [[self checkerForAccount:account] reset];
 }
 
 - (void)openMessage:(id)sender {
