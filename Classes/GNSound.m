@@ -19,19 +19,22 @@ NSString *const SoundNone = @"None";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         allSounds = [[NSMutableArray alloc] init];
-        NSArray *knownSoundTypes = [NSSound soundUnfilteredFileTypes];
+        NSArray *knownSoundTypes = [NSSound soundUnfilteredTypes];
         NSArray *libs = NSSearchPathForDirectoriesInDomains(
             NSLibraryDirectory,
             NSUserDomainMask | NSLocalDomainMask | NSSystemDomainMask,
             YES);
 
         NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
         for (NSString *folder in libs) {
             NSString *folderName = [folder stringByAppendingPathComponent:@"Sounds"];
             BOOL isDir;
             if ([fileManager fileExistsAtPath:folderName isDirectory:&isDir] && isDir) {
                 for (NSString *file in [fileManager contentsOfDirectoryAtPath:folderName error:nil]) {
-                    if ([knownSoundTypes containsObject:[file pathExtension]]) {
+                    NSString *absoluteFile = [folderName stringByAppendingPathComponent:file];
+                    NSString *fileType = [workspace typeOfFile:absoluteFile error:nil];
+                    if (fileType && [knownSoundTypes containsObject:fileType]) {
                         [allSounds addObject:[file stringByDeletingPathExtension]];
                     }
                 }
