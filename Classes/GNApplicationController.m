@@ -374,7 +374,7 @@ const NSUInteger DEFAULT_ACCOUNT_SUBMENU_COUNT  = 4;
         }
 
         // recent check timestamp
-        NSString *timestampTitle = [NSLocalizedString(@"Last Checked:", nil) stringByAppendingString:[notification userInfo][@"checkedAt"]];
+        NSString *timestampTitle = [[NSLocalizedString(@"Last Checked:", nil) stringByAppendingString:@" "] stringByAppendingString:[notification userInfo][@"checkedAt"]];
         [[[menuItem submenu] addItemWithTitle:timestampTitle action:nil keyEquivalent:@""] setEnabled:NO];
     }
 
