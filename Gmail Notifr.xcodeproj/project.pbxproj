@@ -135,7 +135,7 @@
 		1AB7FF5716B57DB70040BBCE /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Resources/Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AB7FF5816B57DC40040BBCE /* nl */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nl; path = Resources/nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AB7FF5A16B57DE30040BBCE /* ru */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ru; path = Resources/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		61DA8B26171292C400B37FE0 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		61DA8B2817129CA800B37FE0 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = Resources/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -472,7 +472,7 @@
 				1A8F66A916B5FDDC00396E44 /* fr-CA */,
 				1A8F66AA16B5FDF300396E44 /* zh-CN */,
 				1A8F66AC16B5FE7600396E44 /* nb */,
-				61DA8B26171292C400B37FE0 /* ko */,
+				61DA8B2817129CA800B37FE0 /* ko */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
