@@ -163,16 +163,25 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
     }
 }
 
-- (NSString *)normalizeMessageLink:(NSString *)link {
+- (NSString *)normalizeMessageLink:(NSString *)link messageID: (NSString*)messageID {
     NSString *result = [link copy];
     if ([self.account.username rangeOfString:@"@"].length > 0) {
         NSString *domain = [self.account.username componentsSeparatedByString:@"@"][1];
         if (![domain isEqualToString:@"gmail.com"] && ![domain isEqualToString:@"googlemail.com"]) {
-            result = [link stringByReplacingOccurrencesOfString:@"/mail?" withString:[NSString stringWithFormat:@"/a/%@/?", domain]];
+            NSString *newLink = [[NSArray arrayWithObjects:@"/a/", domain, @"#inbox/", messageID, @"?", nil] componentsJoinedByString:@""];
+            result = [link stringByReplacingOccurrencesOfString:@"/mail?" withString:newLink];
         }
     }
-
     return result;
+}
+
+- (NSString *)extractMessageID:(NSString *)link {
+    NSError* error = nil;
+    NSRegularExpression *idRegex = [NSRegularExpression regularExpressionWithPattern:@"message_id=(\\w+)" options:0 error:&error];
+    NSArray *matches = [idRegex matchesInString:link options:0 range:NSMakeRange(0, [link length])];
+    
+    NSTextCheckingResult *match = matches[0];
+    return [link substringWithRange:[match rangeAtIndex:1]];
 }
 
 - (NSDate *)dateFromString:(NSString *)string {
@@ -227,8 +236,10 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
             NSString *issued = [[messageElement elementsForName:@"issued"][0] stringValue];
             issued = [issued stringByReplacingOccurrencesOfString:@"T24" withString:@"T23"];
 
+            NSString *link = [[[messageElement elementsForName:@"link"][0] attributeForName:@"href"] stringValue];
+            
             NSDictionary *messageObject = @{
-                @"link":    [self normalizeMessageLink:[[[messageElement elementsForName:@"link"][0] attributeForName:@"href"] stringValue]],
+                @"link":    [self normalizeMessageLink:link messageID:[self extractMessageID:link]],
                 @"author":  [[[messageElement elementsForName:@"author"][0] elementsForName:@"name"][0] stringValue],
                 @"subject": [[messageElement elementsForName:@"title"][0] stringValue],
                 @"id":      [[messageElement elementsForName:@"id"][0] stringValue],
