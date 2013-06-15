@@ -41,6 +41,8 @@
     NSMutableArray *_checkers;
 }
 
+const NSInteger EXTRA_CHECK_INTERVAL = 30;
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [self loadIcons];
 
@@ -96,6 +98,10 @@
 - (void)openInbox:(id)sender {
     NSString *guid = [[sender title] isEqualToString:NSLocalizedString(@"Open Inbox", nil)] ? [[sender menu] title] : [[sender submenu] title];
     [self openInboxForAccount:[self accountForGuid:guid]];
+
+    // Check this account a short while after opening its inbox, so we don't have to check it
+    // again manually just to clear the inbox count, since any unread mail is probably read now.
+    [[self checkerForGuid:guid] checkAfterInterval:EXTRA_CHECK_INTERVAL];
 }
 
 - (void)toggleAccount:(id)sender {

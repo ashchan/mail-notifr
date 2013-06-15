@@ -57,6 +57,14 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
     return [self isAccountEnabled] ? _messageCount : 0;
 }
 
+- (void)checkAfterInterval:(NSInteger)interval {
+    [NSTimer scheduledTimerWithTimeInterval:interval
+                                     target:self
+                                   selector:@selector(check)
+                                   userInfo:nil
+                                    repeats:NO];
+}
+
 - (void)reset {
     [self cleanup];
     [[NSNotificationCenter defaultCenter] postNotificationName:GNCheckingAccountNotification object:self userInfo:@{@"guid": self.account.guid}];

@@ -20,6 +20,7 @@ extern NSString *const GNAccountMenuUpdateNotification;
 - (BOOL)isForGuid:(NSString *)guid;
 - (NSArray *)messages;
 - (NSUInteger)messageCount;
+- (void)checkAfterInterval:(NSInteger)interval;
 - (void)reset;
 - (void)cleanupAndQuit;
 - (BOOL)hasUserError;
