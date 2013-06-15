@@ -185,10 +185,18 @@
     if ([[GNPreferences sharedInstance].accounts count] > 0) {
         GNAccount *account = [GNPreferences sharedInstance].accounts[0];
         NSString *link = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
-        NSString *url = [NSString stringWithFormat:@"%@?view=cm&tf=0&fs=1&to=%@&%@&su=",
+        NSArray *urlComponents = [link componentsSeparatedByString:@"?"];
+        NSString *recipients = [urlComponents[0] stringByReplacingOccurrencesOfString:@"mailto:" withString:@""];
+        NSString *additionalParameters = @"";
+        if ([urlComponents count] > 1) {
+            // For some reason, Gmail does not interpret the query parameter "subject" correctly, and needs "su" instead.
+            additionalParameters = [[NSString stringWithFormat:@"&%@",
+                                     urlComponents[1]] stringByReplacingOccurrencesOfString:@"subject" withString:@"su"];
+        }
+        NSString *url = [NSString stringWithFormat:@"%@?view=cm&tf=0&fs=1&to=%@%@",
                             [account baseUrl],
-                            [[link componentsSeparatedByString:@"?"][0] stringByReplacingOccurrencesOfString:@"mailto:" withString:@""],
-                            [link componentsSeparatedByString:@"?"][1]];
+                            recipients,
+                            additionalParameters];
         [self openURL:[NSURL URLWithString:url] withBrowserIdentifier:account.browser];
     }
 }
