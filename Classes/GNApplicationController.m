@@ -191,7 +191,7 @@
         if ([urlComponents count] > 1) {
             // For some reason, Gmail does not interpret the query parameter "subject" correctly, and needs "su" instead.
             additionalParameters = [[NSString stringWithFormat:@"&%@",
-                                     urlComponents[1]] stringByReplacingOccurrencesOfString:@"subject" withString:@"su"];
+                                     urlComponents[1]] stringByReplacingOccurrencesOfString:@"subject=" withString:@"su="];
         }
         NSString *url = [NSString stringWithFormat:@"%@?view=cm&tf=0&fs=1&to=%@%@",
                             [account baseUrl],
