@@ -84,7 +84,7 @@
     [[GNPreferencesController sharedController] showWindow:sender];
 }
 
-- (IBAction)donate:(id)sedner {
+- (IBAction)donate:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.pledgie.com/campaigns/2046"]];
 }
 
@@ -250,7 +250,7 @@
 - (GNChecker *)checkerForAccount:(GNAccount *)account {
     for (GNChecker *checker in _checkers) {
         if ([checker isForAccount:account]) {
-            return checker;;
+            return checker;
         }
     }
 
@@ -260,7 +260,7 @@
 - (GNChecker *)checkerForGuid:(NSString *)guid {
     for (GNChecker *checker in _checkers) {
         if ([checker isForGuid:guid]) {
-            return checker;;
+            return checker;
         }
     }
 
