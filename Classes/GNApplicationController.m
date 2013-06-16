@@ -41,8 +41,6 @@
     NSMutableArray *_checkers;
 }
 
-const NSInteger EXTRA_CHECK_INTERVAL = 30;
-
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [self loadIcons];
 
@@ -101,7 +99,11 @@ const NSInteger EXTRA_CHECK_INTERVAL = 30;
 
     // Check this account a short while after opening its inbox, so we don't have to check it
     // again manually just to clear the inbox count, since any unread mail is probably read now.
-    [[self checkerForGuid:guid] checkAfterInterval:EXTRA_CHECK_INTERVAL];
+    // This can only be activated by a hidden default.
+    NSTimeInterval autoCheckInterval = [GNPreferences sharedInstance].autoCheckAfterInboxInterval;
+    if (autoCheckInterval > 0) {
+        [[self checkerForGuid:guid] checkAfterInterval:autoCheckInterval];
+    }
 }
 
 - (void)toggleAccount:(id)sender {
