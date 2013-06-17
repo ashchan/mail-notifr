@@ -84,7 +84,7 @@
     [[GNPreferencesController sharedController] showWindow:sender];
 }
 
-- (IBAction)donate:(id)sedner {
+- (IBAction)donate:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.pledgie.com/campaigns/2046"]];
 }
 
@@ -96,6 +96,14 @@
 - (void)openInbox:(id)sender {
     NSString *guid = [[sender title] isEqualToString:NSLocalizedString(@"Open Inbox", nil)] ? [[sender menu] title] : [[sender submenu] title];
     [self openInboxForAccount:[self accountForGuid:guid]];
+
+    // Check this account a short while after opening its inbox, so we don't have to check it
+    // again manually just to clear the inbox count, since any unread mail is probably read now.
+    // This can only be activated by a hidden default.
+    NSTimeInterval autoCheckInterval = [GNPreferences sharedInstance].autoCheckAfterInboxInterval;
+    if (autoCheckInterval > 0) {
+        [[self checkerForGuid:guid] checkAfterInterval:autoCheckInterval];
+    }
 }
 
 - (void)toggleAccount:(id)sender {
@@ -250,7 +258,7 @@
 - (GNChecker *)checkerForAccount:(GNAccount *)account {
     for (GNChecker *checker in _checkers) {
         if ([checker isForAccount:account]) {
-            return checker;;
+            return checker;
         }
     }
 
@@ -260,7 +268,7 @@
 - (GNChecker *)checkerForGuid:(NSString *)guid {
     for (GNChecker *checker in _checkers) {
         if ([checker isForGuid:guid]) {
-            return checker;;
+            return checker;
         }
     }
 

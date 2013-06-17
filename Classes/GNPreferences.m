@@ -20,8 +20,9 @@ NSString *const GNAccountRemovedNotification            = @"GNAccountRemovedNoti
 NSString *const GNAccountChangedNotification            = @"GNAccountChangedNotification";
 NSString *const GNAccountsReorderedNotification         = @"GNAccountsReorderedNotification";
 
-NSString *const DefaultsKeyAccounts         = @"Accounts";
-NSString *const DefaultsKeyShowUnreadCount  = @"ShowUnreadCount";
+NSString *const DefaultsKeyAccounts                     = @"Accounts";
+NSString *const DefaultsKeyShowUnreadCount              = @"ShowUnreadCount";
+NSString *const DefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxInterval";
 
 // a simple wrapper for preferences values
 @implementation GNPreferences
@@ -49,6 +50,11 @@ NSString *const DefaultsKeyShowUnreadCount  = @"ShowUnreadCount";
 
         self.autoLaunch = [self inLoginItems];
         self.showUnreadCount = [[NSUserDefaults standardUserDefaults] boolForKey:DefaultsKeyShowUnreadCount];
+
+        // This is a hidden setting which can only be set from the Terminal or similar:
+        //     defaults write com.ashchan.GmailNotifr AutoCheckAfterInboxInterval -float 30.0
+        // The below property will be 0 if the key did not exist in the user defaults.
+        self.autoCheckAfterInboxInterval = [[NSUserDefaults standardUserDefaults] doubleForKey:DefaultsKeyAutoCheckAfterInboxInterval];
     }
 
     return self;
