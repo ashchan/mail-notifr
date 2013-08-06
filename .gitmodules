@@ -1,6 +1,3 @@
 [submodule "Libs/NSAppLoginItems"]
 	path = Libs/NSAppLoginItems
   url = https://github.com/ashchan/NSAppLoginItems.git
-[submodule "Libs/sskeychain"]
-	path = Libs/sskeychain
-	url = https://github.com/soffes/sskeychain.git
