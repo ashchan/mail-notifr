@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A0947BF16B7F21D004584B3 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0947BE16B7F21D004584B3 /* SSKeychain.m */; };
 		1A8F667016B5817000396E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F666F16B5817000396E44 /* main.m */; };
 		1A8F667516B5837800396E44 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AB7FE3216B57B430040BBCE /* Growl.framework */; };
 		1A8F667616B5837A00396E44 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AB7FE3316B57B430040BBCE /* Sparkle.framework */; };
@@ -49,6 +48,7 @@
 		1AB7FF0116B57D280040BBCE /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0016B57D280040BBCE /* Credits.html */; };
 		1AB7FF0616B57D510040BBCE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0216B57D510040BBCE /* InfoPlist.strings */; };
 		1AB7FF0716B57D510040BBCE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0416B57D510040BBCE /* Localizable.strings */; };
+		57FAFF128FD0443D9B7C2B68 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4323DEE8514AE59A4FA9C9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,8 +66,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1A0947BD16B7F21D004584B3 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Libs/sskeychain/SSKeychain/SSKeychain.h; sourceTree = "<group>"; };
-		1A0947BE16B7F21D004584B3 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Libs/sskeychain/SSKeychain/SSKeychain.m; sourceTree = "<group>"; };
 		1A8F666F16B5817000396E44 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		1A8F66A416B5FBB400396E44 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1A8F66A616B5FC9400396E44 /* Spanish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Spanish; path = Resources/Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -135,7 +133,9 @@
 		1AB7FF5716B57DB70040BBCE /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Resources/Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AB7FF5816B57DC40040BBCE /* nl */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nl; path = Resources/nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AB7FF5A16B57DE30040BBCE /* ru */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ru; path = Resources/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		305081CBF585414684382940 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		61DA8B2817129CA800B37FE0 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = Resources/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CB4323DEE8514AE59A4FA9C9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,21 +147,13 @@
 				1AB7FD8116B578740040BBCE /* Cocoa.framework in Frameworks */,
 				1AB7FE3416B57B430040BBCE /* Growl.framework in Frameworks */,
 				1AB7FE3516B57B430040BBCE /* Sparkle.framework in Frameworks */,
+				57FAFF128FD0443D9B7C2B68 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A0947BC16B7F20B004584B3 /* SSKeychain */ = {
-			isa = PBXGroup;
-			children = (
-				1A0947BD16B7F21D004584B3 /* SSKeychain.h */,
-				1A0947BE16B7F21D004584B3 /* SSKeychain.m */,
-			);
-			name = SSKeychain;
-			sourceTree = "<group>";
-		};
 		1A8F666C16B5809100396E44 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +192,7 @@
 				1AB7FE3316B57B430040BBCE /* Sparkle.framework */,
 				1AB7FD8016B578740040BBCE /* Cocoa.framework */,
 				1AB7FD8216B578740040BBCE /* Other Frameworks */,
+				CB4323DEE8514AE59A4FA9C9 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -220,6 +213,7 @@
 				1A8F666F16B5817000396E44 /* main.m */,
 				1AB7FDA116B57A270040BBCE /* GmailNotifr_Prefix.pch */,
 				1AB7FDA316B57A270040BBCE /* Info.plist */,
+				305081CBF585414684382940 /* Pods.xcconfig */,
 			);
 			name = "Supporting Files";
 			path = "Gmail Notifr";
@@ -273,7 +267,6 @@
 		1AB7FDEE16B57AE10040BBCE /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				1A0947BC16B7F20B004584B3 /* SSKeychain */,
 				1AB7FDEF16B57AEE0040BBCE /* NSAppLoginItems */,
 			);
 			name = Vendor;
@@ -330,10 +323,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AB7FD9A16B578740040BBCE /* Build configuration list for PBXNativeTarget "Gmail Notifr" */;
 			buildPhases = (
+				3FD9F5F8CDFE4E0B85D996B1 /* Check Pods Manifest.lock */,
 				1AB7FD7816B578740040BBCE /* Sources */,
 				1AB7FD7916B578740040BBCE /* Frameworks */,
 				1AB7FD7A16B578740040BBCE /* Resources */,
 				1A8F667416B5836700396E44 /* CopyFiles */,
+				02DC7EDF0107491FB89FF76A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -417,6 +412,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		02DC7EDF0107491FB89FF76A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3FD9F5F8CDFE4E0B85D996B1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1AB7FD7816B578740040BBCE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -434,7 +462,6 @@
 				1AB7FE5B16B57BAD0040BBCE /* GNPreferences.m in Sources */,
 				1AB7FE5C16B57BAD0040BBCE /* GNSound.m in Sources */,
 				1A8F667016B5817000396E44 /* main.m in Sources */,
-				1A0947BF16B7F21D004584B3 /* SSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +562,7 @@
 		};
 		1AB7FD9B16B578740040BBCE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 305081CBF585414684382940 /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -551,6 +579,7 @@
 		};
 		1AB7FD9C16B578740040BBCE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 305081CBF585414684382940 /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
