@@ -20,7 +20,6 @@
 
 @property (weak) IBOutlet NSMenuItem *menuItemCheckAll;
 @property (weak) IBOutlet NSMenuItem *menuItemPreferences;
-@property (weak) IBOutlet NSMenuItem *menuItemCheckUpdate;
 @property (weak) IBOutlet NSMenuItem *menuItemAbout;
 @property (weak) IBOutlet NSMenuItem *menuItemDonate;
 @property (weak) IBOutlet NSMenuItem *menuItemQuit;
@@ -315,7 +314,6 @@ const NSUInteger DEFAULT_ACCOUNT_SUBMENU_COUNT  = 4;
 - (void)localizeMenuItems {
     [self.menuItemCheckAll setTitleWithMnemonic:NSLocalizedString(@"Check All", nil)];
     [self.menuItemPreferences setTitleWithMnemonic:NSLocalizedString(@"Preferences...", nil)];
-    [self.menuItemCheckUpdate setTitleWithMnemonic:NSLocalizedString(@"Check for Updates...", nil)];
     [self.menuItemAbout setTitleWithMnemonic:NSLocalizedString(@"About Gmail Notifr", nil)];
     [self.menuItemDonate setTitleWithMnemonic:NSLocalizedString(@"Donate...", nil)];
     [self.menuItemQuit setTitleWithMnemonic:NSLocalizedString(@"Quit Gmail Notifr", nil)];

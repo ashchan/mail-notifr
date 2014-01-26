@@ -9,13 +9,11 @@
 /* Begin PBXBuildFile section */
 		1A8F667016B5817000396E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F666F16B5817000396E44 /* main.m */; };
 		1A8F667516B5837800396E44 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AB7FE3216B57B430040BBCE /* Growl.framework */; };
-		1A8F667616B5837A00396E44 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AB7FE3316B57B430040BBCE /* Sparkle.framework */; };
 		1A8F66A516B5FBB400396E44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8F66A316B5FBB400396E44 /* MainMenu.xib */; };
 		1AB7FD8116B578740040BBCE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FD8016B578740040BBCE /* Cocoa.framework */; };
 		1AB7FDA416B57A270040BBCE /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FDA216B57A270040BBCE /* Growl Registration Ticket.growlRegDict */; };
 		1AB7FE1816B57AEE0040BBCE /* NSApplication+LoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FDF216B57AEE0040BBCE /* NSApplication+LoginItems.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1AB7FE3416B57B430040BBCE /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3216B57B430040BBCE /* Growl.framework */; };
-		1AB7FE3516B57B430040BBCE /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3316B57B430040BBCE /* Sparkle.framework */; };
 		1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3616B57B4E0040BBCE /* Security.framework */; };
 		1AB7FE3B16B57B630040BBCE /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FE3816B57B630040BBCE /* AccountDetail.xib */; };
 		1AB7FE3C16B57B630040BBCE /* PreferencesAccounts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FE3916B57B630040BBCE /* PreferencesAccounts.xib */; };
@@ -59,7 +57,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1A8F667516B5837800396E44 /* Growl.framework in CopyFiles */,
-				1A8F667616B5837A00396E44 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +80,6 @@
 		1AB7FDF116B57AEE0040BBCE /* NSApplication+LoginItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+LoginItems.h"; sourceTree = "<group>"; };
 		1AB7FDF216B57AEE0040BBCE /* NSApplication+LoginItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+LoginItems.m"; sourceTree = "<group>"; };
 		1AB7FE3216B57B430040BBCE /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Libs/Growl.framework; sourceTree = "<group>"; };
-		1AB7FE3316B57B430040BBCE /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Libs/Sparkle.framework; sourceTree = "<group>"; };
 		1AB7FE3616B57B4E0040BBCE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1AB7FE3816B57B630040BBCE /* AccountDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountDetail.xib; path = Resources/AccountDetail.xib; sourceTree = "<group>"; };
 		1AB7FE3916B57B630040BBCE /* PreferencesAccounts.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesAccounts.xib; path = Resources/PreferencesAccounts.xib; sourceTree = "<group>"; };
@@ -146,7 +142,6 @@
 				1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */,
 				1AB7FD8116B578740040BBCE /* Cocoa.framework in Frameworks */,
 				1AB7FE3416B57B430040BBCE /* Growl.framework in Frameworks */,
-				1AB7FE3516B57B430040BBCE /* Sparkle.framework in Frameworks */,
 				57FAFF128FD0443D9B7C2B68 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,7 +184,6 @@
 			children = (
 				1AB7FE3616B57B4E0040BBCE /* Security.framework */,
 				1AB7FE3216B57B430040BBCE /* Growl.framework */,
-				1AB7FE3316B57B430040BBCE /* Sparkle.framework */,
 				1AB7FD8016B578740040BBCE /* Cocoa.framework */,
 				1AB7FD8216B578740040BBCE /* Other Frameworks */,
 				CB4323DEE8514AE59A4FA9C9 /* libPods.a */,
@@ -345,7 +339,7 @@
 		1AB7FD7316B578740040BBCE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = ashchan.com;
 			};
 			buildConfigurationList = 1AB7FD7616B578740040BBCE /* Build configuration list for PBXProject "Gmail Notifr" */;
@@ -511,7 +505,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -541,7 +534,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
