@@ -34,12 +34,6 @@
                         <action selector="showAbout:" target="381" id="459"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Donate..." id="528">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="donate:" target="381" id="529"/>
-                    </connections>
-                </menuItem>
                 <menuItem isSeparatorItem="YES" id="379"/>
                 <menuItem title="Quit Gmail Notifr" id="376">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -54,7 +48,6 @@
                 <outlet property="menu" destination="373" id="382"/>
                 <outlet property="menuItemAbout" destination="378" id="536"/>
                 <outlet property="menuItemCheckAll" destination="384" id="537"/>
-                <outlet property="menuItemDonate" destination="528" id="539"/>
                 <outlet property="menuItemPreferences" destination="385" id="540"/>
                 <outlet property="menuItemQuit" destination="376" id="541"/>
             </connections>

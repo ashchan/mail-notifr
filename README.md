@@ -56,4 +56,4 @@ Visit [project home page](http://ashchan.com/projects/gmail-notifr) for more inf
 
 [The MIT License](http://jameschen.mit-license.org/license.html)
 
-Copyright (c) 2008 - 2013 [James Chen](http://ashchan.com/) ([@ashchan](https://twitter.com/ashchan))
+Copyright (c) 2008 - 2014 [James Chen](http://ashchan.com/) ([@ashchan](https://twitter.com/ashchan))

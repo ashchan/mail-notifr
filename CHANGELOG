@@ -1,3 +1,12 @@
+h3. 0.8.0 (Mar 17, 2013)
+* Smaller binary size and memory usage. The app has been re-written (yes again) in Objective-C.
+* Click Notification Center items to open account. If growl is installed and enabled growl notificatin will be used instead.
+* Bugfix: Auto launch not working on some 10.8 machines.
+* Optimized icon for retina.
+
+h3. 0.7.0 (Sep 16, 2012)
+* Mountain Lion 10.8 support. Basic Notification Center feature was also added.
+
 h3. 0.6.4 (Feb 25, 2012)
 * Bugfix: crash on adding new account (bug in v0.6.3).
 
