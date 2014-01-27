@@ -8,12 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1A8F667016B5817000396E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F666F16B5817000396E44 /* main.m */; };
-		1A8F667516B5837800396E44 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AB7FE3216B57B430040BBCE /* Growl.framework */; };
 		1A8F66A516B5FBB400396E44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8F66A316B5FBB400396E44 /* MainMenu.xib */; };
 		1AB7FD8116B578740040BBCE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FD8016B578740040BBCE /* Cocoa.framework */; };
-		1AB7FDA416B57A270040BBCE /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FDA216B57A270040BBCE /* Growl Registration Ticket.growlRegDict */; };
 		1AB7FE1816B57AEE0040BBCE /* NSApplication+LoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FDF216B57AEE0040BBCE /* NSApplication+LoginItems.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1AB7FE3416B57B430040BBCE /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3216B57B430040BBCE /* Growl.framework */; };
 		1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3616B57B4E0040BBCE /* Security.framework */; };
 		1AB7FE3B16B57B630040BBCE /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FE3816B57B630040BBCE /* AccountDetail.xib */; };
 		1AB7FE3C16B57B630040BBCE /* PreferencesAccounts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FE3916B57B630040BBCE /* PreferencesAccounts.xib */; };
@@ -56,7 +53,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1A8F667516B5837800396E44 /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,11 +71,9 @@
 		1AB7FD8416B578740040BBCE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1AB7FD8516B578740040BBCE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1AB7FDA116B57A270040BBCE /* GmailNotifr_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmailNotifr_Prefix.pch; sourceTree = SOURCE_ROOT; };
-		1AB7FDA216B57A270040BBCE /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = SOURCE_ROOT; };
 		1AB7FDA316B57A270040BBCE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		1AB7FDF116B57AEE0040BBCE /* NSApplication+LoginItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+LoginItems.h"; sourceTree = "<group>"; };
 		1AB7FDF216B57AEE0040BBCE /* NSApplication+LoginItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+LoginItems.m"; sourceTree = "<group>"; };
-		1AB7FE3216B57B430040BBCE /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Libs/Growl.framework; sourceTree = "<group>"; };
 		1AB7FE3616B57B4E0040BBCE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1AB7FE3816B57B630040BBCE /* AccountDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountDetail.xib; path = Resources/AccountDetail.xib; sourceTree = "<group>"; };
 		1AB7FE3916B57B630040BBCE /* PreferencesAccounts.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesAccounts.xib; path = Resources/PreferencesAccounts.xib; sourceTree = "<group>"; };
@@ -141,7 +135,6 @@
 			files = (
 				1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */,
 				1AB7FD8116B578740040BBCE /* Cocoa.framework in Frameworks */,
-				1AB7FE3416B57B430040BBCE /* Growl.framework in Frameworks */,
 				57FAFF128FD0443D9B7C2B68 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				1AB7FE3616B57B4E0040BBCE /* Security.framework */,
-				1AB7FE3216B57B430040BBCE /* Growl.framework */,
 				1AB7FD8016B578740040BBCE /* Cocoa.framework */,
 				1AB7FD8216B578740040BBCE /* Other Frameworks */,
 				CB4323DEE8514AE59A4FA9C9 /* libPods.a */,
@@ -282,7 +274,6 @@
 				1AB7FED316B57C520040BBCE /* Icons */,
 				1AB7FF0216B57D510040BBCE /* InfoPlist.strings */,
 				1AB7FF0416B57D510040BBCE /* Localizable.strings */,
-				1AB7FDA216B57A270040BBCE /* Growl Registration Ticket.growlRegDict */,
 				1AB7FF0016B57D280040BBCE /* Credits.html */,
 			);
 			name = Resources;
@@ -378,7 +369,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AB7FDA416B57A270040BBCE /* Growl Registration Ticket.growlRegDict in Resources */,
 				1AB7FE3B16B57B630040BBCE /* AccountDetail.xib in Resources */,
 				1AB7FE3C16B57B630040BBCE /* PreferencesAccounts.xib in Resources */,
 				1AB7FE3D16B57B630040BBCE /* PreferencesSettings.xib in Resources */,
@@ -564,6 +554,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GmailNotifr_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -581,6 +572,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GmailNotifr_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

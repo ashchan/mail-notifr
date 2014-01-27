@@ -8,13 +8,12 @@
 
 #import "GNApplicationController.h"
 #import "GNPreferences.h"
-#import <Growl/GrowlApplicationBridge.h>
 #import "GNAccount.h"
 #import "GNBrowser.h"
 #import "GNChecker.h"
 #import "GNPreferencesController.h"
 
-@interface GNApplicationController () <GrowlApplicationBridgeDelegate>
+@interface GNApplicationController () <NSUserNotificationCenterDelegate>
 
 @property (strong) IBOutlet NSMenu *menu;
 
@@ -58,7 +57,7 @@
 
     [self registerMailtoHandler];
 
-    [self registerGrowl];
+    [self registerNotification];
 
     [self setupMenu];
 
@@ -208,18 +207,13 @@
     }
 }
 
-- (void)registerGrowl {
-    [GrowlApplicationBridge setGrowlDelegate:self];
+- (void)registerNotification {
+    [NSUserNotificationCenter defaultUserNotificationCenter].delegate = self;
 }
 
-- (NSString *)applicationNameForGrowl {
-    return @"Gmail Notifr";
-}
-
-- (void)growlNotificationWasClicked:(id)clickContext {
-    if (clickContext) {
-        [self openInboxForAccountName:clickContext browser:[GNAccount accountByUsername:clickContext].browser];
-    }
+- (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
+    [center removeDeliveredNotification:notification];
+    [self openInboxForAccountName:notification.title browser:[GNAccount accountByUsername:notification.title].browser];
 }
 
 - (void)setupMenu {

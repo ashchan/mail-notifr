@@ -8,7 +8,6 @@
 
 #import "GNChecker.h"
 #import "GNAccount.h"
-#import <Growl/GrowlApplicationBridge.h>
 #import "GNSound.h"
 
 NSString *const GNCheckingAccountNotification   = @"GNCheckingAccountNotification";
@@ -204,27 +203,11 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
     return [dateFormatter dateFromString:string];
 }
 
-- (void)notifyGrowlWithTitle:(NSString *)title description:(NSString *)description {
-    [GrowlApplicationBridge notifyWithTitle:title
-                                description:description
-                           notificationName:@"new_messages"
-                                   iconData:nil
-                                   priority:0
-                                   isSticky:NO
-                               clickContext:title
-                                 identifier:title];
-}
-
-- (void)notifyNotificationCenterWithTitle:(NSString *)title description:(NSString *)description {
-    // NC support is through Growl SDK 2
-    return;
-
-    if (NSClassFromString(@"NSUserNotificationCenter")) {
-        NSUserNotification *notification = [[NSUserNotification alloc] init];
-        [notification setValue:title forKey:@"title"];
-        [notification setValue:description forKey:@"subtitle"];
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-    }
+- (void)notifyNotificationCenterWithTitle:(NSString *)title subtitle:(NSString *)subtitle {
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    notification.title = title;
+    notification.subtitle = subtitle;
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
 - (void)processXMLWithData:(NSData *)data statusCode:(NSInteger)statusCode {
@@ -315,10 +298,8 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
         NSString *unreadCount = [NSString stringWithFormat:unreadCountFormat, _messageCount];
                 
         if (self.account.growl) {
-            [self notifyGrowlWithTitle:self.account.username description:[@[unreadCount, notification] componentsJoinedByString:@"\n\n"]];
+            [self notifyNotificationCenterWithTitle:self.account.username subtitle:[@[unreadCount, notification] componentsJoinedByString:@"\n\n"]];
         }
-
-        [self notifyNotificationCenterWithTitle:self.account.username description:unreadCount];
     }
 
     if (shouldNotify && ![self.account.sound isEqualToString:SoundNone]) {
