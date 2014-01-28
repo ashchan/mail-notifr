@@ -212,8 +212,12 @@
 }
 
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
-    [center removeDeliveredNotification:notification];
     [self openInboxForAccountName:notification.title browser:[GNAccount accountByUsername:notification.title].browser];
+    for (NSUserNotification *noti in center.deliveredNotifications) {
+        if ([noti.title isEqualToString:notification.title]) {
+            [center removeDeliveredNotification:noti];
+        }
+    }
 }
 
 - (void)setupMenu {
