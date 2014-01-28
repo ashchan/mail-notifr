@@ -6,8 +6,6 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>Gmail Notifr</string>
-	<key>CFBundleIconFile</key>
-	<string>app</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.ashchan.GmailNotifr</string>
 	<key>CFBundleInfoDictionaryVersion</key>
