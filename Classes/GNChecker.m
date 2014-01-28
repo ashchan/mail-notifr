@@ -203,10 +203,11 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
     return [dateFormatter dateFromString:string];
 }
 
-- (void)notifyNotificationCenterWithTitle:(NSString *)title subtitle:(NSString *)subtitle {
+- (void)notifyNotificationCenterWithTitle:(NSString *)title subtitle:(NSString *)subtitle description:(NSString *)description {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     notification.title = title;
     notification.subtitle = subtitle;
+    notification.informativeText = description;
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
@@ -298,7 +299,7 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
         NSString *unreadCount = [NSString stringWithFormat:unreadCountFormat, _messageCount];
                 
         if (self.account.growl) {
-            [self notifyNotificationCenterWithTitle:self.account.username subtitle:[@[unreadCount, notification] componentsJoinedByString:@"\n\n"]];
+            [self notifyNotificationCenterWithTitle:self.account.username subtitle:unreadCount description:notification];
         }
     }
 
