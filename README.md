@@ -15,9 +15,11 @@ A Gmail Notifier for Mac OS X
 * Check mail at a specified interval.
 * Growl &amp; sound notifications.
 * Small &amp; fast.
-* Sparkle automatic updates.
+* ~~Sparkle automatic updates.~~ (removed in 0.9.0)
 * No background daemon processes installed as Google's official notifier.
-* Open Source &amp; free!
+* Open Source!
+* 0.9.0 and below are free!
+* 1.0 and above are available on [Mac App Store](http://bit.ly/gmail-notifr-store).
 
 
 ## Requirements ##
@@ -56,6 +58,6 @@ Visit [project home page](http://ashchan.com/projects/gmail-notifr) for more inf
 
 [The MIT License](http://jameschen.mit-license.org/license.html)
 
-**Binary or modification is NOT allowed to submit to Apple App Store without my written permission!**
+**Binary or modification is NOT allowed to submit to Apple App Store without written permission!**
 
 Copyright (c) 2008 - 2014 [James Chen](http://ashchan.com/) ([@ashchan](https://twitter.com/ashchan))
