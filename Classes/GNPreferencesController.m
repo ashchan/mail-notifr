@@ -12,7 +12,9 @@
 #import "PrefsSettingsViewController.h"
 #import "GNPreferences.h"
 
-@interface GNPreferencesController () <NSToolbarDelegate>
+@interface GNPreferencesController () <NSToolbarDelegate, NSWindowDelegate>
+
+@property (strong) id eventMonitor;
 
 @end
 
@@ -38,7 +40,8 @@
     if (self = [super init]) {
         NSWindow *prefsWindow = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 550, 260) styleMask:NSTitledWindowMask | NSClosableWindowMask backing:NSBackingStoreBuffered defer:YES];
         [prefsWindow setShowsToolbarButton:NO];
-        [self setWindow:prefsWindow];
+        prefsWindow.delegate = self;
+        self.window = prefsWindow;
         [self setupToolbar];
     }
 
@@ -46,8 +49,29 @@
 }
 
 - (void)showWindow:(id)sender {
+    if (!self.eventMonitor) {
+        self.eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:^NSEvent *(NSEvent *event) {
+            NSUInteger flags = [event modifierFlags] & NSDeviceIndependentModifierFlagsMask;
+            NSString *key = [event charactersIgnoringModifiers];
+            if (flags == NSCommandKeyMask && [key isEqualToString:@"w"] && [event.window isEqualTo:self.window]) {
+                [self.window performClose:nil];
+                return nil;
+            }
+
+            return event;
+        }];
+    }
+
     [[self window] center];
     [super showWindow:sender];
+}
+
+- (BOOL)windowShouldClose:(id)sender {
+    if (self.eventMonitor) {
+        [NSEvent removeMonitor:self.eventMonitor];
+        self.eventMonitor = nil;
+    }
+    return YES;
 }
 
 - (void)setModules:(NSArray *)newModules {
