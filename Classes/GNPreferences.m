@@ -7,9 +7,9 @@
 //
 
 #import "GNPreferences.h"
-#import "NSApplication+LoginItems.h"
 #import "SSKeychain.h"
 #import "GNAccount.h"
+#import "StartAtLoginController.h"
 
 NSString *const PrefsToolbarItemAccounts                = @"prefsToolbarItemAccounts";
 NSString *const PrefsToolbarItemSettings                = @"prefsToolbarItemSettings";
@@ -25,7 +25,9 @@ NSString *const DefaultsKeyShowUnreadCount              = @"ShowUnreadCount";
 NSString *const DefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxInterval";
 
 // a simple wrapper for preferences values
-@implementation GNPreferences
+@implementation GNPreferences {
+    StartAtLoginController *_startAtLoginController;
+}
 
 + (GNPreferences *)sharedInstance {
     static GNPreferences *instance;
@@ -48,7 +50,8 @@ NSString *const DefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxI
             [_accounts addObject:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
         }
 
-        self.autoLaunch = [self inLoginItems];
+        _startAtLoginController = [[StartAtLoginController alloc] initWithIdentifier:@"com.ashchan.GmailNotifrHelper"];
+
         self.showUnreadCount = [[NSUserDefaults standardUserDefaults] boolForKey:DefaultsKeyShowUnreadCount];
 
         // This is a hidden setting which can only be set from the Terminal or similar:
@@ -61,16 +64,12 @@ NSString *const DefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxI
 }
 
 - (BOOL)autoLaunch {
-    return [self inLoginItems];
+    return [_startAtLoginController startAtLogin];
 }
 
 - (void)setAutoLaunch:(BOOL)val {
-    if (val != [self inLoginItems]) {
-        if (val) {
-            [NSApp addToLoginItems];
-        } else {
-            [NSApp removeFromLoginItems];
-        }
+    if (val != self.autoLaunch) {
+        _startAtLoginController.startAtLogin = val;
     }
 }
 
@@ -127,12 +126,6 @@ NSString *const DefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxI
     for (id account in _accounts) {
         [SSKeychain setPassword:[account password] forService:KeychainServiceName account:[account username]];
     }
-}
-
-#pragma mark - Private Methods
-
-- (BOOL)inLoginItems {
-    return [NSApp isInLoginItems];
 }
 
 @end

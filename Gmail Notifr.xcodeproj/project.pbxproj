@@ -43,16 +43,30 @@
 		1AB7FF0616B57D510040BBCE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0216B57D510040BBCE /* InfoPlist.strings */; };
 		1AB7FF0716B57D510040BBCE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0416B57D510040BBCE /* Localizable.strings */; };
 		1ACD6FF01897FE3C00103E15 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACD6FEF1897FE3C00103E15 /* Images.xcassets */; };
+		1AFB7F49189FC04700B82441 /* StartAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFB7F48189FC04700B82441 /* StartAtLoginController.m */; };
+		1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */; };
+		1AFB7F4E189FC4B100B82441 /* GmailNotifrHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AFB7F41189FBDA100B82441 /* GmailNotifrHelper.app */; };
 		57FAFF128FD0443D9B7C2B68 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4323DEE8514AE59A4FA9C9 /* libPods.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1AFB7F40189FBDA100B82441 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AFB7F3B189FBDA100B82441 /* GmailNotifrHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1AFB7F04189FBDA000B82441;
+			remoteInfo = GmailNotifrHelper;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		1A8F667416B5836700396E44 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
 			files = (
+				1AFB7F4E189FC4B100B82441 /* GmailNotifrHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +138,10 @@
 		1AB7FF5A16B57DE30040BBCE /* ru */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ru; path = Resources/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1ACD6FEE1897F56300103E15 /* Gmail Notifr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Gmail Notifr.entitlements"; sourceTree = SOURCE_ROOT; };
 		1ACD6FEF1897FE3C00103E15 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Gmail Notifr/Images.xcassets"; sourceTree = "<group>"; };
+		1AFB7F3B189FBDA100B82441 /* GmailNotifrHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GmailNotifrHelper.xcodeproj; path = GmailNotifrHelper/GmailNotifrHelper.xcodeproj; sourceTree = "<group>"; };
+		1AFB7F47189FC04700B82441 /* StartAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginController.h; path = Libs/StartAtLoginController/StartAtLoginController.h; sourceTree = "<group>"; };
+		1AFB7F48189FC04700B82441 /* StartAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginController.m; path = Libs/StartAtLoginController/StartAtLoginController.m; sourceTree = "<group>"; };
+		1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		305081CBF585414684382940 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		61DA8B2817129CA800B37FE0 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = Resources/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB4323DEE8514AE59A4FA9C9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */,
 				1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */,
 				1AB7FD8116B578740040BBCE /* Cocoa.framework in Frameworks */,
 				57FAFF128FD0443D9B7C2B68 /* libPods.a in Frameworks */,
@@ -157,6 +176,7 @@
 		1AB7FD7116B578740040BBCE = {
 			isa = PBXGroup;
 			children = (
+				1AFB7F3B189FBDA100B82441 /* GmailNotifrHelper.xcodeproj */,
 				1A8F666C16B5809100396E44 /* Classes */,
 				1AB7FE3E16B57B740040BBCE /* Resources */,
 				1AB7FD8716B578740040BBCE /* Supporting Files */,
@@ -176,6 +196,7 @@
 		1AB7FD7F16B578740040BBCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */,
 				1AB7FE3616B57B4E0040BBCE /* Security.framework */,
 				1AB7FD8016B578740040BBCE /* Cocoa.framework */,
 				1AB7FD8216B578740040BBCE /* Other Frameworks */,
@@ -255,6 +276,7 @@
 		1AB7FDEE16B57AE10040BBCE /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				1AFB7F4A189FC05900B82441 /* StartAtLoginController */,
 				1AB7FDEF16B57AEE0040BBCE /* NSAppLoginItems */,
 			);
 			name = Vendor;
@@ -301,6 +323,23 @@
 				1AB7FEE216B57C6B0040BBCE /* mail@2x.tiff */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		1AFB7F3C189FBDA100B82441 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1AFB7F41189FBDA100B82441 /* GmailNotifrHelper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1AFB7F4A189FC05900B82441 /* StartAtLoginController */ = {
+			isa = PBXGroup;
+			children = (
+				1AFB7F47189FC04700B82441 /* StartAtLoginController.h */,
+				1AFB7F48189FC04700B82441 /* StartAtLoginController.m */,
+			);
+			name = StartAtLoginController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,12 +408,28 @@
 			mainGroup = 1AB7FD7116B578740040BBCE;
 			productRefGroup = 1AB7FD7D16B578740040BBCE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1AFB7F3C189FBDA100B82441 /* Products */;
+					ProjectRef = 1AFB7F3B189FBDA100B82441 /* GmailNotifrHelper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1AB7FD7B16B578740040BBCE /* Gmail Notifr */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1AFB7F41189FBDA100B82441 /* GmailNotifrHelper.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = GmailNotifrHelper.app;
+			remoteRef = 1AFB7F40189FBDA100B82441 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1AB7FD7A16B578740040BBCE /* Resources */ = {
@@ -451,6 +506,7 @@
 				1AB7FE4A16B57B9C0040BBCE /* GNApplicationController.m in Sources */,
 				1AB7FE4B16B57B9C0040BBCE /* GNPreferencesController.m in Sources */,
 				1AB7FE4C16B57B9C0040BBCE /* PrefsAccountsViewController.m in Sources */,
+				1AFB7F49189FC04700B82441 /* StartAtLoginController.m in Sources */,
 				1AB7FE4D16B57B9C0040BBCE /* PrefsSettingsViewController.m in Sources */,
 				1AB7FE5816B57BAD0040BBCE /* GNAccount.m in Sources */,
 				1AB7FE5916B57BAD0040BBCE /* GNBrowser.m in Sources */,
@@ -586,6 +642,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libs\"",
