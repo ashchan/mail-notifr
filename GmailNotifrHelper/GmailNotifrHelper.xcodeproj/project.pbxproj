@@ -25,7 +25,6 @@
 		1AFB7F15189FBDA000B82441 /* GmailNotifrHelper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GmailNotifrHelper-Prefix.pch"; sourceTree = "<group>"; };
 		1AFB7F19189FBDA000B82441 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AFB7F1A189FBDA000B82441 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1AFB7F26189FBDA000B82441 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		1AFB7F44189FBE5400B82441 /* GmailNotifrHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GmailNotifrHelper.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				1AFB7F07189FBDA000B82441 /* Cocoa.framework */,
-				1AFB7F26189FBDA000B82441 /* XCTest.framework */,
 				1AFB7F09189FBDA000B82441 /* Other Frameworks */,
 			);
 			name = Frameworks;
