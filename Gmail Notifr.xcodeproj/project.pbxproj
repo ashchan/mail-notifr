@@ -10,7 +10,6 @@
 		1A8F667016B5817000396E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F666F16B5817000396E44 /* main.m */; };
 		1A8F66A516B5FBB400396E44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8F66A316B5FBB400396E44 /* MainMenu.xib */; };
 		1AB7FD8116B578740040BBCE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FD8016B578740040BBCE /* Cocoa.framework */; };
-		1AB7FE1816B57AEE0040BBCE /* NSApplication+LoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FDF216B57AEE0040BBCE /* NSApplication+LoginItems.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3616B57B4E0040BBCE /* Security.framework */; };
 		1AB7FE3B16B57B630040BBCE /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FE3816B57B630040BBCE /* AccountDetail.xib */; };
 		1AB7FE3C16B57B630040BBCE /* PreferencesAccounts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FE3916B57B630040BBCE /* PreferencesAccounts.xib */; };
@@ -86,8 +85,6 @@
 		1AB7FD8516B578740040BBCE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1AB7FDA116B57A270040BBCE /* GmailNotifr_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmailNotifr_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		1AB7FDA316B57A270040BBCE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
-		1AB7FDF116B57AEE0040BBCE /* NSApplication+LoginItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+LoginItems.h"; sourceTree = "<group>"; };
-		1AB7FDF216B57AEE0040BBCE /* NSApplication+LoginItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+LoginItems.m"; sourceTree = "<group>"; };
 		1AB7FE3616B57B4E0040BBCE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1AB7FE3816B57B630040BBCE /* AccountDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountDetail.xib; path = Resources/AccountDetail.xib; sourceTree = "<group>"; };
 		1AB7FE3916B57B630040BBCE /* PreferencesAccounts.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesAccounts.xib; path = Resources/PreferencesAccounts.xib; sourceTree = "<group>"; };
@@ -277,19 +274,8 @@
 			isa = PBXGroup;
 			children = (
 				1AFB7F4A189FC05900B82441 /* StartAtLoginController */,
-				1AB7FDEF16B57AEE0040BBCE /* NSAppLoginItems */,
 			);
 			name = Vendor;
-			sourceTree = "<group>";
-		};
-		1AB7FDEF16B57AEE0040BBCE /* NSAppLoginItems */ = {
-			isa = PBXGroup;
-			children = (
-				1AB7FDF116B57AEE0040BBCE /* NSApplication+LoginItems.h */,
-				1AB7FDF216B57AEE0040BBCE /* NSApplication+LoginItems.m */,
-			);
-			name = NSAppLoginItems;
-			path = Libs/NSAppLoginItems;
 			sourceTree = "<group>";
 		};
 		1AB7FE3E16B57B740040BBCE /* Resources */ = {
@@ -501,7 +487,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AB7FE1816B57AEE0040BBCE /* NSApplication+LoginItems.m in Sources */,
 				1AB7FE4916B57B9C0040BBCE /* GNAccountDetailController.m in Sources */,
 				1AB7FE4A16B57B9C0040BBCE /* GNApplicationController.m in Sources */,
 				1AB7FE4B16B57B9C0040BBCE /* GNPreferencesController.m in Sources */,
