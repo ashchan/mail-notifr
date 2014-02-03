@@ -341,6 +341,7 @@
 				1AB7FD7A16B578740040BBCE /* Resources */,
 				1A8F667416B5836700396E44 /* CopyFiles */,
 				02DC7EDF0107491FB89FF76A /* Copy Pods Resources */,
+				1AE35A75189FF6A00000D6E3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -464,6 +465,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		1AE35A75189FF6A00000D6E3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rm \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/Contents/Library/LoginItems/GmailNotifrHelper.app/Contents/embedded.provisionprofile\"";
 		};
 		3FD9F5F8CDFE4E0B85D996B1 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

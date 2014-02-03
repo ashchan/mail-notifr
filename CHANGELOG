@@ -1,3 +1,6 @@
+h3 1.0.1 (Feb 4, 2014)
+* Fix Launch at login
+* Allow closing Preferences window via CMD+W
 
 h3 (App Store) 1.0 (Jan 31, 2014)
 * 1.0 and above will update on App Store only
