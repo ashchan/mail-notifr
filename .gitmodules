@@ -1,6 +1,3 @@
-[submodule "Libs/NSAppLoginItems"]
-	path = Libs/NSAppLoginItems
-  url = https://github.com/ashchan/NSAppLoginItems.git
 [submodule "Libs/StartAtLoginController"]
 	path = Libs/StartAtLoginController
 	url = https://github.com/alexzielenski/StartAtLoginController.git
