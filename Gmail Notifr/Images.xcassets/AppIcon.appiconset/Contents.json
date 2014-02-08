@@ -3,7 +3,7 @@
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "app16x16.png",
+      "filename" : "Gmail_16x16.png",
       "scale" : "1x"
     },
     {
@@ -15,7 +15,7 @@
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "app32x32.png",
+      "filename" : "Gmail_32x32-1.png",
       "scale" : "1x"
     },
     {
@@ -27,7 +27,7 @@
     {
       "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "app128x128.png",
+      "filename" : "Gmail_128x128-1.png",
       "scale" : "1x"
     },
     {
@@ -39,7 +39,7 @@
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "app256x256.png",
+      "filename" : "Gmail_256x256-1.png",
       "scale" : "1x"
     },
     {
@@ -51,7 +51,7 @@
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "app512x512.png",
+      "filename" : "Gmail_512x512-1.png",
       "scale" : "1x"
     },
     {
