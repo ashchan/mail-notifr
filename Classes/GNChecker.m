@@ -274,13 +274,13 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
     if (shouldNotify) {
         NSMutableArray *info = [[NSMutableArray alloc] init];
         for (NSDictionary *message in _messages) {
-            NSString *messageInfo = [[message objectForKey:@"subject"] stringByAppendingFormat:@"\nFrom: %@", [message objectForKey:@"author"]];
+            NSString *messageInfo = [[message objectForKey:@"subject"] stringByAppendingFormat:@" (From: %@)", [message objectForKey:@"author"]];
             [info addObject:messageInfo];
         }
 
-        NSString *notification = [info componentsJoinedByString:@"\n------------------------------\n\n"];
+        NSString *notification = [info componentsJoinedByString:@"\n"];
         if (_messageCount > [_messages count]) {
-            notification = [notification stringByAppendingString:@"\n\n..."];
+            notification = [notification stringByAppendingString:@"\n..."];
         }
 
         NSString *unreadCountFormat;
