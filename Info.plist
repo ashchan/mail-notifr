@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>Gmail Notifr</string>
+	<string>Mail Notifr</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.ashchan.GmailNotifr</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -24,7 +24,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>134</string>
+	<string>136</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>
