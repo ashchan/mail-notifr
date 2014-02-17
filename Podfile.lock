@@ -1,10 +1,13 @@
 PODS:
+  - KASeparatorLine (1.0)
   - SSKeychain (1.2.0)
 
 DEPENDENCIES:
+  - KASeparatorLine (~> 1.0)
   - SSKeychain (~> 1.2.0)
 
 SPEC CHECKSUMS:
+  KASeparatorLine: 1f2d677504177084204b180f5bd15c271decd579
   SSKeychain: 2fe90c92034129d9615a508529b601a520f297d1
 
 COCOAPODS: 0.29.0
