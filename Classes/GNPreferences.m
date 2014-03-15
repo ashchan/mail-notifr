@@ -9,7 +9,7 @@
 #import "GNPreferences.h"
 #import "SSKeychain.h"
 #import "GNAccount.h"
-#import "StartAtLoginController.h"
+#import <StartAtLoginController.h>
 
 NSString *const PrefsToolbarItemAccounts                = @"prefsToolbarItemAccounts";
 NSString *const PrefsToolbarItemSettings                = @"prefsToolbarItemSettings";

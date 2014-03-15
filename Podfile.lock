@@ -1,13 +1,20 @@
 PODS:
   - KASeparatorLine (1.0)
   - SSKeychain (1.2.0)
+  - StartAtLoginController (0.0.1)
 
 DEPENDENCIES:
   - KASeparatorLine (~> 1.0)
   - SSKeychain (~> 1.2.0)
+  - StartAtLoginController (from `Podspecs/StartAtLoginController.podspec`)
+
+EXTERNAL SOURCES:
+  StartAtLoginController:
+    :podspec: Podspecs/StartAtLoginController.podspec
 
 SPEC CHECKSUMS:
   KASeparatorLine: 1f2d677504177084204b180f5bd15c271decd579
   SSKeychain: 2fe90c92034129d9615a508529b601a520f297d1
+  StartAtLoginController: 29d9820b129a4804fe1bcf3900e6ed33e7da8a25
 
 COCOAPODS: 0.29.0
