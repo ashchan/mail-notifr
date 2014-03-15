@@ -40,7 +40,7 @@ Gmail Notifr was originally written in RubyCocoa, then MacRuby, and recently Obj
 
 [CocoaPods](http://cocoapods.org) is required.
 
-    git clone --recursive https://github.com/ashchan/gmail-notifr-objc.git
+    git clone https://github.com/ashchan/gmail-notifr-objc.git
     pod install
 
 Then open `Gmail Notifr.Gmail Notifr.xcworkspace`, build and run with Xcode.
