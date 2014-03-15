@@ -191,16 +191,22 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
     return [link substringWithRange:[match rangeAtIndex:1]];
 }
 
-- (NSDate *)dateFromString:(NSString *)string {
+- (NSDate *)dateFromString:(NSString *)input {
     static NSDateFormatter *dateFormatter;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-        [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     });
 
-    return [dateFormatter dateFromString:string];
+    NSDate *date = [dateFormatter dateFromString:input];
+    // date string like 2009-08-29T24:56:52Z and 2014-03-09T02:30:00Z woule
+    // cause parse failure, in these edge cases return a wrong but legal date
+    if (!date) {
+        date = [NSDate dateWithTimeIntervalSinceNow:-60 * 60];
+    }
+    return date;
 }
 
 - (void)notifyNotificationCenterWithTitle:(NSString *)title subtitle:(NSString *)subtitle description:(NSString *)description {
@@ -217,17 +223,11 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
     if (statusCode == 200) {
         NSXMLDocument *feed = [[NSXMLDocument alloc] initWithData:data options:0 error:nil];
         _messageCount = [[[feed nodesForXPath:@"/feed/fullcount" error:nil][0] stringValue] integerValue];
-        
+
         // return first 10 messages
         NSArray *messageNodes = [feed nodesForXPath:@"/feed/entry" error:nil];
         for (NSUInteger i = 0; i < MIN(_messageCount, 10); i++) {
             NSXMLElement *messageElement = messageNodes[i];
-            // gmail atom gives time string like 2009-08-29T24:56:52Z
-            // note 24 causes ArgumentError: argument out of range
-            // make it 23 and guess it won't matter too much
-            NSString *issued = [[messageElement elementsForName:@"issued"][0] stringValue];
-            issued = [issued stringByReplacingOccurrencesOfString:@"T24" withString:@"T23"];
-
             NSString *link = [[[messageElement elementsForName:@"link"][0] attributeForName:@"href"] stringValue];
             
             NSDictionary *messageObject = @{
@@ -235,7 +235,7 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
                 @"author":  [[[messageElement elementsForName:@"author"][0] elementsForName:@"name"][0] stringValue],
                 @"subject": [[messageElement elementsForName:@"title"][0] stringValue],
                 @"id":      [[messageElement elementsForName:@"id"][0] stringValue],
-                @"date":    [self dateFromString:issued],
+                @"date":    [self dateFromString:[[messageElement elementsForName:@"issued"][0] stringValue]],
                 @"summary": [[messageElement elementsForName:@"summary"][0] stringValue]
             };
             [_messages addObject:messageObject];
