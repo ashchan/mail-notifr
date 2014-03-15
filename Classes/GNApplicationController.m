@@ -22,8 +22,8 @@
 @property (weak) IBOutlet NSMenuItem *menuItemCheckAll;
 @property (weak) IBOutlet NSMenuItem *menuItemPreferences;
 @property (weak) IBOutlet NSMenuItem *menuItemAbout;
-@property (weak) IBOutlet NSMenuItem *menuItemDonate;
 @property (weak) IBOutlet NSMenuItem *menuItemQuit;
+@property (weak) IBOutlet NSMenuItem *menuItemRate;
 
 @property (strong) NSStatusItem *statusItem;
 
@@ -88,8 +88,8 @@
     [[GNPreferencesController sharedController] showWindow:sender];
 }
 
-- (IBAction)donate:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.pledgie.com/campaigns/2046"]];
+- (IBAction)rateOnAppStore:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/app/gmail-notifr/id808154494?ls=1&mt=12"]];
 }
 
 - (void)checkAccount:(id)sender {
@@ -319,8 +319,8 @@ const NSUInteger DEFAULT_ACCOUNT_SUBMENU_COUNT  = 4;
     [self.menuItemCheckAll setTitleWithMnemonic:NSLocalizedString(@"Check All", nil)];
     [self.menuItemPreferences setTitleWithMnemonic:NSLocalizedString(@"Preferences...", nil)];
     [self.menuItemAbout setTitleWithMnemonic:NSLocalizedString(@"About Gmail Notifr", nil)];
-    [self.menuItemDonate setTitleWithMnemonic:NSLocalizedString(@"Donate...", nil)];
     [self.menuItemQuit setTitleWithMnemonic:NSLocalizedString(@"Quit Gmail Notifr", nil)];
+    [self.menuItemRate setTitleWithMnemonic:NSLocalizedString(@"Rate on App Store", nil)];
 }
 
 - (void)createMenuForAccount:(GNAccount *)account atIndex:(NSUInteger)index {
