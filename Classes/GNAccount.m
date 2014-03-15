@@ -9,7 +9,7 @@
 // a normal gmail account, or a google hosted email account
 
 #import "GNAccount.h"
-#import "SSKeychain.h"
+#import <SSKeychain.h>
 #import "GNSound.h"
 #import "GNBrowser.h"
 #import "GNPreferences.h"

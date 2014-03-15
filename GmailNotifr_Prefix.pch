@@ -20,3 +20,4 @@ extern NSString *const GNAccountChangedNotification;
 extern NSString *const GNAccountsReorderedNotification;
 extern NSString *const GNCheckingAccountNotification;
 extern NSString *const GNAccountMenuUpdateNotification;
+extern NSString *const GNDefaultsKeyCheckAllShortcut;

@@ -7,5 +7,5 @@ Pod::Spec.new do |s|
   s.source       =  { :git => 'https://github.com/alexzielenski/StartAtLoginController.git' }
   s.license      =  'MIT'
 
-  s.source_files =  %w(StartAtLoginController.h StartAtLoginController.m)
+  s.source_files =  'StartAtLoginController.{h,m}'
 end

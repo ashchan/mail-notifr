@@ -12,6 +12,8 @@
 #import "GNBrowser.h"
 #import "GNChecker.h"
 #import "GNPreferencesController.h"
+#import <MASShortcut.h>
+#import <MASShortcut+UserDefaults.h>
 
 @interface GNApplicationController () <NSUserNotificationCenterDelegate>
 
@@ -62,6 +64,10 @@
     [self setupMenu];
 
     [self setupCheckers];
+
+    [MASShortcut registerGlobalShortcutWithUserDefaultsKey:GNDefaultsKeyCheckAllShortcut handler:^{
+        [self checkAll:nil];
+    }];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification {

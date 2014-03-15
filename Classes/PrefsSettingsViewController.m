@@ -8,11 +8,18 @@
 
 #import "PrefsSettingsViewController.h"
 #import "GNPreferences.h"
+#import <MASShortcutView.h>
+#import <MASShortcutView+UserDefaults.h>
+
+NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut";
 
 @interface PrefsSettingsViewController ()
 
 @property (weak) IBOutlet NSButton *autoLaunchCheckBox;
 @property (weak) IBOutlet NSButton *showUnreadCountCheckBox;
+@property (weak) IBOutlet MASShortcutView *checkAllShortcutView;
+@property (weak) IBOutlet NSTextField *shortcutsLabel;
+@property (weak) IBOutlet NSTextField *shortcutCheckAllLabel;
 
 @end
 
@@ -43,6 +50,9 @@
     [self.autoLaunchCheckBox setState:[GNPreferences sharedInstance].autoLaunch ? NSOnState : NSOffState];
     [self.showUnreadCountCheckBox setTitle:NSLocalizedString(@"Show unread count in menu bar", nil)];
     [self.showUnreadCountCheckBox setState:[GNPreferences sharedInstance].showUnreadCount ? NSOnState : NSOffState];
+    self.shortcutsLabel.stringValue = NSLocalizedString(@"shortcuts.label", nil);
+    self.shortcutCheckAllLabel.stringValue = NSLocalizedString(@"shortcuts.checkall.label", nil);
+    self.checkAllShortcutView.associatedUserDefaultsKey = GNDefaultsKeyCheckAllShortcut;
 }
 
 - (IBAction)saveAutoLaunch:(id)sender {
