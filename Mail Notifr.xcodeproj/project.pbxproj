@@ -30,8 +30,6 @@
 		1AB7FEE716B57C6B0040BBCE /* app@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FED816B57C6B0040BBCE /* app@2x.tiff */; };
 		1AB7FEE816B57C6B0040BBCE /* check_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FED916B57C6B0040BBCE /* check_a.tiff */; };
 		1AB7FEE916B57C6B0040BBCE /* check_a@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FEDA16B57C6B0040BBCE /* check_a@2x.tiff */; };
-		1AB7FEEA16B57C6B0040BBCE /* check.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FEDB16B57C6B0040BBCE /* check.tiff */; };
-		1AB7FEEB16B57C6B0040BBCE /* check@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FEDC16B57C6B0040BBCE /* check@2x.tiff */; };
 		1AB7FEEC16B57C6B0040BBCE /* error.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FEDD16B57C6B0040BBCE /* error.tiff */; };
 		1AB7FEED16B57C6B0040BBCE /* error@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FEDE16B57C6B0040BBCE /* error@2x.tiff */; };
 		1AB7FEEE16B57C6B0040BBCE /* mail_a.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FEDF16B57C6B0040BBCE /* mail_a.tiff */; };
@@ -416,8 +414,6 @@
 				1AB7FEE716B57C6B0040BBCE /* app@2x.tiff in Resources */,
 				1AB7FEE816B57C6B0040BBCE /* check_a.tiff in Resources */,
 				1AB7FEE916B57C6B0040BBCE /* check_a@2x.tiff in Resources */,
-				1AB7FEEA16B57C6B0040BBCE /* check.tiff in Resources */,
-				1AB7FEEB16B57C6B0040BBCE /* check@2x.tiff in Resources */,
 				1AB7FEEC16B57C6B0040BBCE /* error.tiff in Resources */,
 				1AB7FEED16B57C6B0040BBCE /* error@2x.tiff in Resources */,
 				1AB7FEEE16B57C6B0040BBCE /* mail_a.tiff in Resources */,

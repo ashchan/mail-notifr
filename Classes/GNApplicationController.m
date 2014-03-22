@@ -34,8 +34,6 @@
     NSImage *_appAltIcon;
     NSImage *_mailIcon;
     NSImage *_mailAltIcon;
-    NSImage *_checkIcon;
-    NSImage *_checkAltIcon;
     NSImage *_errorIcon;
 
     NSMutableArray *_checkers;
@@ -161,8 +159,6 @@
 
 - (void)accountChecking:(NSNotification *)notification {
     [_statusItem setToolTip:NSLocalizedString(@"Checking Mail", nil)];
-    [_statusItem setImage:_checkIcon];
-    [_statusItem setAlternateImage:_checkAltIcon];
 }
 
 - (void)loadIcons {
@@ -170,8 +166,6 @@
     _appAltIcon     = [NSImage imageNamed:@"app_a"];
     _mailIcon       = [NSImage imageNamed:@"mail"];
     _mailAltIcon    = [NSImage imageNamed:@"mail_a"];
-    _checkIcon      = [NSImage imageNamed:@"check"];
-    _checkAltIcon   = [NSImage imageNamed:@"check_a"];
     _errorIcon      = [NSImage imageNamed:@"error"];
 }
 
