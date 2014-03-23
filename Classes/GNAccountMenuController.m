@@ -44,7 +44,7 @@ static const NSUInteger kDefaultAccountSubmenuCount   = 4;
     [accountMenu setAutoenablesItems:NO];
 
     NSMenuItem *openInboxItem = [accountMenu addItemWithTitle:NSLocalizedString(@"Open Inbox", nil) action:@selector(openInbox:) keyEquivalent:@""];
-    [openInboxItem setTarget:self];
+    [openInboxItem setTarget:target];
     [openInboxItem setEnabled:YES];
 
     NSMenuItem *checkItem = [accountMenu addItemWithTitle:NSLocalizedString(@"Check", nil) action:@selector(checkAccount:) keyEquivalent:@""];
