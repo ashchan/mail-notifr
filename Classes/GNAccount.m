@@ -16,11 +16,11 @@
 
 @implementation GNAccount
 
-const NSInteger MIN_INTERVAL        = 1;
-const NSInteger MAX_INTERVAL        = 900;
-const NSInteger DEFAULT_INTERVAL    = 30;
+static const NSInteger kMinInterval        = 1;
+static const NSInteger kMaxInterval        = 900;
+static const NSInteger kDefaultInterval    = 30;
 
-NSString *const KeychainServiceName = @"GmailNotifr";
+NSString *const GNAccountKeychainServiceName = @"GmailNotifr";
 
 - (id)initWithUsername:(NSString *)username
               interval:(NSInteger)interval
@@ -30,18 +30,18 @@ NSString *const KeychainServiceName = @"GmailNotifr";
                browser:(NSString *)browser {
     if (self = [super init]) {
         self.username   = [username copy];
-        self.interval   = MAX(interval, DEFAULT_INTERVAL);
+        self.interval   = MAX(interval, kDefaultInterval);
         self.enabled    = enabled;
         self.growl      = growl;
         if (sound) {
             self.sound  = [sound copy];
         } else {
-            self.sound  = [SoundNone copy];
+            self.sound  = [GNSoundNone copy];
         }
         if (browser) {
             self.browser = [browser copy];
         } else {
-            self.browser = [DefaultBrowserIdentifier copy];
+            self.browser = [GNBrowserDefaultIdentifier copy];
         }
 
         [self fetchPassword];
@@ -76,7 +76,7 @@ NSString *const KeychainServiceName = @"GmailNotifr";
 }
 
 - (void)setInterval:(NSInteger)val {
-    _interval = val <= MAX_INTERVAL && val >= MIN_INTERVAL ? val : DEFAULT_INTERVAL;
+    _interval = val <= kMaxInterval && val >= kMinInterval ? val : kDefaultInterval;
 }
 
 - (NSString *)baseUrl {
@@ -125,7 +125,7 @@ NSString *const KeychainServiceName = @"GmailNotifr";
 #pragma mark - Private Methods
 
 - (void)fetchPassword {
-    self.password = [SSKeychain passwordForService:KeychainServiceName account:self.username];
+    self.password = [SSKeychain passwordForService:GNAccountKeychainServiceName account:self.username];
     if (!self.password) {
         self.password = @"";
     }

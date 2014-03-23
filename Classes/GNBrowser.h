@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const DefaultBrowserIdentifier;
+extern NSString *const GNBrowserDefaultIdentifier;
 
 @interface GNBrowser : NSObject
 

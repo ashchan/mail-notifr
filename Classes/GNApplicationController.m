@@ -282,7 +282,7 @@
 }
 
 - (void)openInboxForAccountName:(NSString *)name browser:(NSString *)browser {
-    NSString *browserIdentier = browser ? browser : DefaultBrowserIdentifier;
+    NSString *browserIdentier = browser ? browser : GNBrowserDefaultIdentifier;
     [self openURL:[NSURL URLWithString:[GNAccount baseUrlForUsername:name]] withBrowserIdentifier:browserIdentier];
 }
 

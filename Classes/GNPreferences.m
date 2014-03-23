@@ -20,9 +20,9 @@ NSString *const GNAccountRemovedNotification            = @"GNAccountRemovedNoti
 NSString *const GNAccountChangedNotification            = @"GNAccountChangedNotification";
 NSString *const GNAccountsReorderedNotification         = @"GNAccountsReorderedNotification";
 
-NSString *const DefaultsKeyAccounts                     = @"Accounts";
-NSString *const DefaultsKeyShowUnreadCount              = @"ShowUnreadCount";
-NSString *const DefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxInterval";
+static NSString *const kDefaultsKeyAccounts                     = @"Accounts";
+static NSString *const kDefaultsKeyShowUnreadCount              = @"ShowUnreadCount";
+static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxInterval";
 
 // a simple wrapper for preferences values
 @implementation GNPreferences {
@@ -39,25 +39,25 @@ NSString *const DefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxI
 }
 
 + (void)setupDefaults {
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ DefaultsKeyShowUnreadCount: @(YES), GNPreferencesSelection: PrefsToolbarItemAccounts }];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ kDefaultsKeyShowUnreadCount: @(YES), GNPreferencesSelection: PrefsToolbarItemAccounts }];
 }
 
 - (id)init {
     if (self = [super init]) {
         _accounts = [[NSMutableArray alloc] init];
-        NSArray *archivedAccounts = [[NSUserDefaults standardUserDefaults] objectForKey:DefaultsKeyAccounts];
+        NSArray *archivedAccounts = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultsKeyAccounts];
         for (id data in archivedAccounts) {
             [_accounts addObject:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
         }
 
         _startAtLoginController = [[StartAtLoginController alloc] initWithIdentifier:@"com.ashchan.GmailNotifrHelper"];
 
-        self.showUnreadCount = [[NSUserDefaults standardUserDefaults] boolForKey:DefaultsKeyShowUnreadCount];
+        self.showUnreadCount = [[NSUserDefaults standardUserDefaults] boolForKey:kDefaultsKeyShowUnreadCount];
 
         // This is a hidden setting which can only be set from the Terminal or similar:
         //     defaults write com.ashchan.GmailNotifr AutoCheckAfterInboxInterval -float 30.0
         // The below property will be 0 if the key did not exist in the user defaults.
-        self.autoCheckAfterInboxInterval = [[NSUserDefaults standardUserDefaults] doubleForKey:DefaultsKeyAutoCheckAfterInboxInterval];
+        self.autoCheckAfterInboxInterval = [[NSUserDefaults standardUserDefaults] doubleForKey:kDefaultsKeyAutoCheckAfterInboxInterval];
     }
 
     return self;
@@ -74,11 +74,11 @@ NSString *const DefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxI
 }
 
 - (BOOL)showUnreadCount {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:DefaultsKeyShowUnreadCount];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kDefaultsKeyShowUnreadCount];
 }
 
 - (void)setShowUnreadCount:(BOOL)val {
-    [[NSUserDefaults standardUserDefaults] setBool:val forKey:DefaultsKeyShowUnreadCount];
+    [[NSUserDefaults standardUserDefaults] setBool:val forKey:kDefaultsKeyShowUnreadCount];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:GNShowUnreadCountChangedNotification object:self];
 }
@@ -91,7 +91,7 @@ NSString *const DefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxI
 
 - (void)removeAccount:(id)account {
     NSString *guid = [[account guid] copy];
-    [SSKeychain deletePasswordForService:KeychainServiceName account:[account username]];
+    [SSKeychain deletePasswordForService:GNAccountKeychainServiceName account:[account username]];
     [_accounts removeObject:account];
     [self writeBack];
     [[NSNotificationCenter defaultCenter] postNotificationName:GNAccountRemovedNotification object:self userInfo:@{@"guid": guid}];
@@ -120,11 +120,11 @@ NSString *const DefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxI
     for (id account in _accounts) {
         [archivedAccounts addObject:[NSKeyedArchiver archivedDataWithRootObject:account]];
     }
-    [[NSUserDefaults standardUserDefaults] setObject:archivedAccounts forKey:DefaultsKeyAccounts];
+    [[NSUserDefaults standardUserDefaults] setObject:archivedAccounts forKey:kDefaultsKeyAccounts];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     for (id account in _accounts) {
-        [SSKeychain setPassword:[account password] forService:KeychainServiceName account:[account username]];
+        [SSKeychain setPassword:[account password] forService:GNAccountKeychainServiceName account:[account username]];
     }
 }
 

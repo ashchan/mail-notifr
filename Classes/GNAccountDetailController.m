@@ -57,7 +57,7 @@
 
 - (void)awakeFromNib {
     [self.soundList removeAllItems];
-    [self.soundList addItemWithTitle:SoundNone];
+    [self.soundList addItemWithTitle:GNSoundNone];
     [[self.soundList menu] addItem:[NSMenuItem separatorItem]];
     for (NSString *sound in [GNSound all]) {
         [self.soundList addItemWithTitle:sound];

@@ -20,7 +20,7 @@
 
 @end
 
-NSString *const PBOARD_DRAG_TYPE = @"GNDragType";
+static NSString *const kPasteboardDragType = @"GNDragType";
 
 @implementation PrefsAccountsViewController
 
@@ -50,7 +50,7 @@ NSString *const PBOARD_DRAG_TYPE = @"GNDragType";
     [self.editButton setTitle:NSLocalizedString(@"Edit", nil)];
     [self.accountList setTarget:self];
     [self.accountList setDoubleAction:@selector(startEditingAccount:)];
-    [self.accountList registerForDraggedTypes:@[PBOARD_DRAG_TYPE]];
+    [self.accountList registerForDraggedTypes:@[kPasteboardDragType]];
     [self forceRefresh];
 }
 
@@ -86,8 +86,8 @@ NSString *const PBOARD_DRAG_TYPE = @"GNDragType";
 }
 
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
-    [pboard declareTypes:@[PBOARD_DRAG_TYPE] owner:self];
-    [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:rowIndexes] forType:PBOARD_DRAG_TYPE];
+    [pboard declareTypes:@[kPasteboardDragType] owner:self];
+    [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:rowIndexes] forType:kPasteboardDragType];
     return YES;
 }
 
@@ -100,7 +100,7 @@ NSString *const PBOARD_DRAG_TYPE = @"GNDragType";
 }
 
 - (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id <NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
-    NSData *rowData = [[info draggingPasteboard] dataForType:PBOARD_DRAG_TYPE];
+    NSData *rowData = [[info draggingPasteboard] dataForType:kPasteboardDragType];
     NSUInteger oldRow = [[NSKeyedUnarchiver unarchiveObjectWithData:rowData] firstIndex];
     [[GNPreferences sharedInstance] moveAccountFromRow:oldRow toRow:row];
     [tableView reloadData];

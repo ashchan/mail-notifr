@@ -10,11 +10,11 @@
 
 @implementation GNBrowser
 
-NSString *const DefaultBrowserIdentifier = @"default";
+NSString *const GNBrowserDefaultIdentifier = @"default";
 
 + (NSArray *)all {
     return @[
-        @[@"Default", DefaultBrowserIdentifier],
+        @[@"Default", GNBrowserDefaultIdentifier],
         @[@"Safari", @"com.apple.Safari"],
         @[@"Google Chrome", @"com.google.Chrome"],
         @[@"Firefox", @"org.mozilla.firefox"]

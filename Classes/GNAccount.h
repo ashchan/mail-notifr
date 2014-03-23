@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const KeychainServiceName;
+extern NSString *const GNAccountKeychainServiceName;
 
 @interface GNAccount : NSObject <NSCoding>
 

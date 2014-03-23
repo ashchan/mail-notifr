@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const SoundNone;
+extern NSString *const GNSoundNone;
 
 @interface GNSound : NSObject
 

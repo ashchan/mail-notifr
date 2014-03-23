@@ -303,7 +303,7 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
         }
     }
 
-    if (shouldNotify && ![self.account.sound isEqualToString:SoundNone]) {
+    if (shouldNotify && ![self.account.sound isEqualToString:GNSoundNone]) {
         [[NSSound soundNamed:self.account.sound] play];
     }
 }
