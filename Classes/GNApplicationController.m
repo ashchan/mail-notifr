@@ -124,9 +124,12 @@
 - (void)accountAdded:(NSNotification *)notification {
     GNAccount *account = [self accountForGuid:[notification userInfo][@"guid"]];
     [self createMenuForAccount:account atIndex:[[GNPreferences sharedInstance].accounts count] - 1];
+
     GNChecker *checker = [[GNChecker alloc] initWithAccount:account];
     [_checkers addObject:checker];
     [checker reset];
+
+    [self updateCheckAllMenu];
 }
 
 - (void)accountChanged:(NSNotification *)notification {
@@ -138,10 +141,13 @@
 - (void)accountRemoved:(NSNotification *)notification {
     GNAccountMenuController *menuController = [self menuControllerForGuid:[notification userInfo][@"guid"]];
     [menuController detach];
+
     GNChecker *checker = [self checkerForGuid:[notification userInfo][@"guid"]];
     [checker cleanupAndQuit];
     [_checkers removeObject:checker];
+
     [self updateMenuBarCount:notification];
+    [self updateCheckAllMenu];
 }
 
 - (void)accountsReordered:(NSNotification *)notification {
@@ -307,8 +313,13 @@
 
 #pragma mark - Menu Manipulation
 
+- (void)updateCheckAllMenu {
+    NSString *stringToLocalize = [[GNPreferences sharedInstance].accounts count] <= 1 ? @"Check" : @"Check All";
+    [self.menuItemCheckAll setTitleWithMnemonic:NSLocalizedString(stringToLocalize, nil)];
+}
+
 - (void)localizeMenuItems {
-    [self.menuItemCheckAll setTitleWithMnemonic:NSLocalizedString(@"Check All", nil)];
+    [self updateCheckAllMenu];
     [self.menuItemPreferences setTitleWithMnemonic:NSLocalizedString(@"Preferences...", nil)];
     [self.menuItemAbout setTitleWithMnemonic:NSLocalizedString(@"About Gmail Notifr", nil)];
     [self.menuItemQuit setTitleWithMnemonic:NSLocalizedString(@"Quit Gmail Notifr", nil)];
