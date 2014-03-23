@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */; };
 		1A8F667016B5817000396E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F666F16B5817000396E44 /* main.m */; };
 		1A8F66A516B5FBB400396E44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8F66A316B5FBB400396E44 /* MainMenu.xib */; };
 		1AB7FD8116B578740040BBCE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FD8016B578740040BBCE /* Cocoa.framework */; };
@@ -68,6 +69,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNAccountMenuController.h; path = Classes/GNAccountMenuController.h; sourceTree = "<group>"; };
+		1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNAccountMenuController.m; path = Classes/GNAccountMenuController.m; sourceTree = "<group>"; };
 		1A8F666F16B5817000396E44 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		1A8F66A416B5FBB400396E44 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1A8F66A616B5FC9400396E44 /* Spanish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Spanish; path = Resources/Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 			children = (
 				1AB7FE4116B57B9C0040BBCE /* GNApplicationController.h */,
 				1AB7FE4216B57B9C0040BBCE /* GNApplicationController.m */,
+				1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */,
+				1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */,
 				1AB7FE4316B57B9C0040BBCE /* GNPreferencesController.h */,
 				1AB7FE4416B57B9C0040BBCE /* GNPreferencesController.m */,
 				1AB7FE3F16B57B9C0040BBCE /* GNAccountDetailController.h */,
@@ -475,6 +480,7 @@
 				1AB7FE4D16B57B9C0040BBCE /* PrefsSettingsViewController.m in Sources */,
 				1AB7FE5816B57BAD0040BBCE /* GNAccount.m in Sources */,
 				1AB7FE5916B57BAD0040BBCE /* GNBrowser.m in Sources */,
+				1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */,
 				1AB7FE5A16B57BAD0040BBCE /* GNChecker.m in Sources */,
 				1AB7FE5B16B57BAD0040BBCE /* GNPreferences.m in Sources */,
 				1AB7FE5C16B57BAD0040BBCE /* GNSound.m in Sources */,

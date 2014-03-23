@@ -6,14 +6,15 @@
 //  Copyright (c) 2013 ashchan.com. All rights reserved.
 //
 
+#import <MASShortcut.h>
+#import <MASShortcut+UserDefaults.h>
 #import "GNApplicationController.h"
 #import "GNPreferences.h"
 #import "GNAccount.h"
 #import "GNBrowser.h"
 #import "GNChecker.h"
 #import "GNPreferencesController.h"
-#import <MASShortcut.h>
-#import <MASShortcut+UserDefaults.h>
+#import "GNAccountMenuController.h"
 
 @interface GNApplicationController () <NSUserNotificationCenterDelegate>
 
@@ -34,9 +35,9 @@
     NSImage *_appAltIcon;
     NSImage *_mailIcon;
     NSImage *_mailAltIcon;
-    NSImage *_errorIcon;
 
     NSMutableArray *_checkers;
+    NSMutableArray *_accountMenuControllers;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -135,8 +136,8 @@
 }
 
 - (void)accountRemoved:(NSNotification *)notification {
-    NSMenuItem *item = [self menuItemForGuid:[notification userInfo][@"guid"]];
-    [[_statusItem menu] removeItem:item];
+    GNAccountMenuController *menuController = [self menuControllerForGuid:[notification userInfo][@"guid"]];
+    [menuController detach];
     GNChecker *checker = [self checkerForGuid:[notification userInfo][@"guid"]];
     [checker cleanupAndQuit];
     [_checkers removeObject:checker];
@@ -144,17 +145,19 @@
 }
 
 - (void)accountsReordered:(NSNotification *)notification {
-    NSMutableDictionary *menuItems = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *menuControllers = [[NSMutableDictionary alloc] init];
     for (GNAccount *account in [GNPreferences sharedInstance].accounts) {
-        NSMenuItem *menuItem = [self menuItemForGuid:account.guid];
-        [[_statusItem menu] removeItem:menuItem];
-        menuItems[account.guid] = menuItem;
+        GNAccountMenuController *controller = [self menuControllerForGuid:account.guid];
+        [controller detach];
+        menuControllers[account.guid] = controller;
     }
 
     for (NSUInteger i = 0; i < [[GNPreferences sharedInstance].accounts count]; i++) {
         GNAccount *account = [GNPreferences sharedInstance].accounts[i];
-        [self addAccountMenuItem:menuItems[account.guid] atIndex:i];
+        [menuControllers[account.guid] attachAtIndex:i actionTarget:self];
     }
+
+    [self checkAll:nil];
 }
 
 - (void)accountChecking:(NSNotification *)notification {
@@ -166,7 +169,6 @@
     _appAltIcon     = [NSImage imageNamed:@"app_a"];
     _mailIcon       = [NSImage imageNamed:@"mail"];
     _mailAltIcon    = [NSImage imageNamed:@"mail_a"];
-    _errorIcon      = [NSImage imageNamed:@"error"];
 }
 
 - (void)registerObservers {
@@ -221,6 +223,7 @@
 }
 
 - (void)setupMenu {
+    _accountMenuControllers = [[NSMutableArray alloc] init];
     for (NSUInteger i = 0; i < [[GNPreferences sharedInstance].accounts count]; i++) {
         GNAccount *account = [GNPreferences sharedInstance].accounts[i];
         [self createMenuForAccount:account atIndex:i];
@@ -304,11 +307,6 @@
 
 #pragma mark - Menu Manipulation
 
-const NSUInteger ACCOUNT_MENUITEM_POS           = 2;
-const NSUInteger CHECK_MENUITEM_POS             = 1;
-const NSUInteger ENABLE_MENUITEM_POS            = 2;
-const NSUInteger DEFAULT_ACCOUNT_SUBMENU_COUNT  = 4;
-
 - (void)localizeMenuItems {
     [self.menuItemCheckAll setTitleWithMnemonic:NSLocalizedString(@"Check All", nil)];
     [self.menuItemPreferences setTitleWithMnemonic:NSLocalizedString(@"Preferences...", nil)];
@@ -318,79 +316,21 @@ const NSUInteger DEFAULT_ACCOUNT_SUBMENU_COUNT  = 4;
 }
 
 - (void)createMenuForAccount:(GNAccount *)account atIndex:(NSUInteger)index {
-    NSMenu *accountMenu = [[NSMenu alloc] initWithTitle:account.guid];
-    [accountMenu setAutoenablesItems:NO];
-
-    NSMenuItem *openInboxItem = [accountMenu addItemWithTitle:NSLocalizedString(@"Open Inbox", nil) action:@selector(openInbox:) keyEquivalent:@""];
-    [openInboxItem setTarget:self];
-    [openInboxItem setEnabled:YES];
-
-    NSMenuItem *checkItem = [accountMenu addItemWithTitle:NSLocalizedString(@"Check", nil) action:@selector(checkAccount:) keyEquivalent:@""];
-    [checkItem setTarget:self];
-    [checkItem setEnabled:account.enabled];
-
-    NSMenuItem *enableAccountItem = [accountMenu addItemWithTitle:account.enabled ? NSLocalizedString(@"Disable Account", nil) : NSLocalizedString(@"Enable Account", nil)
-                                                           action:@selector(toggleAccount:)
-                                                    keyEquivalent:@""];
-    [enableAccountItem setTarget:self];
-    [enableAccountItem setEnabled:YES];
-
-    [accountMenu addItem:[NSMenuItem separatorItem]];
-
-    NSMenuItem *accountItem = [[NSMenuItem alloc] init];
-    [accountItem setTitle:account.username];
-    [accountItem setSubmenu:accountMenu];
-    [accountItem setTarget:self];
-    [accountItem setAction:@selector(openInbox:)];
-
-    [self addAccountMenuItem:accountItem atIndex:index];
+    GNAccountMenuController *menuContrller = [[GNAccountMenuController alloc] initWithStatusItem:self.statusItem GNAccount:account];
+    [_accountMenuControllers addObject:menuContrller];
+    [menuContrller attachAtIndex:index actionTarget:self];
 }
 
 - (void)updateAccountMenuItem:(NSNotification *)notification {
     GNAccount *account = [self accountForGuid:[notification userInfo][@"guid"]];
-    NSMenuItem *menuItem = [self menuItemForAccount:account];
-    [menuItem setTitle:account.username];
-
-    NSUInteger count = [[[menuItem submenu] itemArray] count];
-    if (count > DEFAULT_ACCOUNT_SUBMENU_COUNT) {
-        for (NSUInteger i = count - 1; i >= DEFAULT_ACCOUNT_SUBMENU_COUNT; i--) {
-            [[menuItem submenu] removeItemAtIndex:i];
-        }
-    }
-
-    if (account.enabled) {
-        GNChecker *checker = [self checkerForAccount:account];
-        if ([checker hasConnectionError] || [checker hasUserError]) {
-            NSString *title = [checker hasConnectionError] ? NSLocalizedString(@"Connection Error", nil) : NSLocalizedString(@"Username/password Wrong", nil);
-            NSMenuItem *errorItem = [[menuItem submenu] addItemWithTitle:title action:nil keyEquivalent:@""];
-            [errorItem setEnabled:NO];
-            [menuItem setImage:_errorIcon];
-        } else {
-            // messages list
-            for (NSDictionary *message in [checker messages]) {
-                NSMenuItem *messageItem = [[menuItem submenu] addItemWithTitle:[NSString stringWithFormat:@"%@: %@", message[@"author"], message[@"subject"]]
-                                                                        action:@selector(openMessage:)
-                                                                 keyEquivalent:@""];
-                [messageItem setToolTip:message[@"summary"]];
-                [messageItem setEnabled:YES];
-                [messageItem setRepresentedObject:message[@"link"]];
-                [messageItem setTarget:self];
-            }
-
-            [menuItem setImage:nil];
-            [menuItem setTitle:[NSString stringWithFormat:@"%@ (%lu)", account.username, [checker messageCount]]];
-        }
- 
-        if ([checker messageCount] > 0) {
-            [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-        }
-
-        // recent check timestamp
-        NSString *timestampTitle = [[NSLocalizedString(@"Last Checked:", nil) stringByAppendingString:@" "] stringByAppendingString:[notification userInfo][@"checkedAt"]];
-        [[[menuItem submenu] addItemWithTitle:timestampTitle action:nil keyEquivalent:@""] setEnabled:NO];
-    }
-
+    GNAccountMenuController *menuController = [self menuControllerForGuid:account.guid];
+    [menuController updateWithChecker:[self checkerForAccount:account]];
     [self updateMenuBarCount:notification];
+}
+
+- (void)updateMenuItemAccountEnabled:(GNAccount *)account {
+    GNAccountMenuController *controller = [self menuControllerForGuid:account.guid];
+    [controller updateStatus];
 }
 
 - (void)updateMenuBarCount:(NSNotification *)notification {
@@ -426,28 +366,14 @@ const NSUInteger DEFAULT_ACCOUNT_SUBMENU_COUNT  = 4;
     }
 }
 
-- (void)addAccountMenuItem:(NSMenuItem *)item atIndex:(NSUInteger)index {
-    [[_statusItem menu] insertItem:item atIndex:ACCOUNT_MENUITEM_POS + index];
-}
-
-- (NSMenuItem *)menuItemForAccount:(GNAccount *)account {
-    return [self menuItemForGuid:account.guid];
-}
-
-- (NSMenuItem *)menuItemForGuid:(NSString *)guid {
-    for (NSMenuItem *item in [[_statusItem menu] itemArray]) {
-        if ([[[item submenu] title] isEqualToString:guid]) {
-            return item;
+- (GNAccountMenuController *)menuControllerForGuid:(NSString *)guid {
+    for (GNAccountMenuController *controller in _accountMenuControllers) {
+        if ([controller.guid isEqualToString:guid]) {
+            return controller;
         }
     }
 
     return nil;
-}
-
-- (void)updateMenuItemAccountEnabled:(GNAccount *)account {
-    NSMenu *menu = [[self menuItemForAccount:account] submenu];
-    [menu itemAtIndex:ENABLE_MENUITEM_POS].title = account.enabled ? NSLocalizedString(@"Disable Account", nil) : NSLocalizedString(@"Enable Account", nil);
-    [menu itemAtIndex:CHECK_MENUITEM_POS].enabled = account.enabled;
 }
 
 @end

@@ -15,6 +15,8 @@ extern NSString *const GNAccountMenuUpdateNotification;
 
 @interface GNChecker : NSObject
 
+@property (nonatomic, copy) NSString *lastCheckedAt;
+
 - (id)initWithAccount:(GNAccount *)account;
 - (BOOL)isForAccount:(GNAccount *)account;
 - (BOOL)isForGuid:(NSString *)guid;

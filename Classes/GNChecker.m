@@ -170,6 +170,10 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
     }
 }
 
+- (NSString *)lastCheckedAt {
+    return [self checkedAt];
+}
+
 - (NSString *)normalizeMessageLink:(NSString *)link messageID: (NSString*)messageID {
     NSString *result = [link copy];
     if ([self.account.username rangeOfString:@"@"].length > 0) {
