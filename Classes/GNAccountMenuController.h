@@ -13,8 +13,8 @@
 
 @interface GNAccountMenuController : NSObject
 
-@property (nonatomic, copy, readonly) NSString *guid;
-@property (nonatomic, assign) NSUInteger index;
+@property (copy, readonly) NSString *guid;
+@property (assign) BOOL singleMode;
 
 - (instancetype)initWithStatusItem:(NSStatusItem *)statusItem GNAccount:(GNAccount *)account;
 - (void)attachAtIndex:(NSInteger *)index actionTarget:(id)target;

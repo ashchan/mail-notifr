@@ -92,12 +92,12 @@
 }
 
 - (void)checkAccount:(id)sender {
-    GNAccount *account = [self accountForGuid:[[sender menu] title]];
+    GNAccount *account = [self accountForGuid:[sender representedObject]];
     [[self checkerForAccount:account] reset];
 }
 
 - (void)openInbox:(id)sender {
-    NSString *guid = [[sender title] isEqualToString:NSLocalizedString(@"Open Inbox", nil)] ? [[sender menu] title] : [[sender submenu] title];
+    NSString *guid = [sender representedObject];
     [self openInboxForAccount:[self accountForGuid:guid]];
 
     // Check this account a short while after opening its inbox, so we don't have to check it
@@ -110,11 +110,12 @@
 }
 
 - (void)toggleAccount:(id)sender {
-    GNAccount *account = [self accountForGuid:[[sender menu] title]];
+    GNAccount *account = [self accountForGuid:[sender representedObject]];
     account.enabled = !account.enabled;
     [account save];
 
     [self updateMenuItemAccountEnabled:account];
+    [self updateCheckAllMenu];
 }
 
 - (void)openMessage:(id)sender {
@@ -122,6 +123,14 @@
 }
 
 - (void)accountAdded:(NSNotification *)notification {
+    if ([_accountMenuControllers count] == 1) {
+        GNAccountMenuController *firstAccountMenuController = [_accountMenuControllers firstObject];
+        [firstAccountMenuController detach];
+        firstAccountMenuController.singleMode = NO;
+        [firstAccountMenuController attachAtIndex:0 actionTarget:self];
+        [[_checkers firstObject] reset];
+    }
+
     GNAccount *account = [self accountForGuid:[notification userInfo][@"guid"]];
     [self createMenuForAccount:account atIndex:[[GNPreferences sharedInstance].accounts count] - 1];
 
@@ -141,12 +150,22 @@
 - (void)accountRemoved:(NSNotification *)notification {
     GNAccountMenuController *menuController = [self menuControllerForGuid:[notification userInfo][@"guid"]];
     [menuController detach];
+    [_accountMenuControllers removeObject:menuController];
 
     GNChecker *checker = [self checkerForGuid:[notification userInfo][@"guid"]];
     [checker cleanupAndQuit];
     [_checkers removeObject:checker];
 
-    [self updateMenuBarCount:notification];
+    if ([_accountMenuControllers count] == 1) {
+        GNAccountMenuController *singleAccountMenuController = [_accountMenuControllers firstObject];
+        [singleAccountMenuController detach];
+        singleAccountMenuController.singleMode = YES;
+        [singleAccountMenuController attachAtIndex:0 actionTarget:self];
+        [self checkAll:nil];
+    } else {
+        [self updateMenuBarCount:notification];
+    }
+
     [self updateCheckAllMenu];
 }
 
@@ -316,6 +335,10 @@
 - (void)updateCheckAllMenu {
     NSString *stringToLocalize = [[GNPreferences sharedInstance].accounts count] <= 1 ? @"Check" : @"Check All";
     [self.menuItemCheckAll setTitleWithMnemonic:NSLocalizedString(stringToLocalize, nil)];
+    NSArray *enabledAccounts = [[GNPreferences sharedInstance].accounts filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject enabled];
+    }]];
+    [self.menuItemCheckAll setEnabled:[enabledAccounts count] > 0];
 }
 
 - (void)localizeMenuItems {
@@ -327,9 +350,10 @@
 }
 
 - (void)createMenuForAccount:(GNAccount *)account atIndex:(NSUInteger)index {
-    GNAccountMenuController *menuContrller = [[GNAccountMenuController alloc] initWithStatusItem:self.statusItem GNAccount:account];
-    [_accountMenuControllers addObject:menuContrller];
-    [menuContrller attachAtIndex:index actionTarget:self];
+    GNAccountMenuController *menuController = [[GNAccountMenuController alloc] initWithStatusItem:self.statusItem GNAccount:account];
+    menuController.singleMode = [[GNPreferences sharedInstance].accounts count] == 1;
+    [_accountMenuControllers addObject:menuController];
+    [menuController attachAtIndex:index actionTarget:self];
 }
 
 - (void)updateAccountMenuItem:(NSNotification *)notification {

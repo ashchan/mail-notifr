@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13D17" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
@@ -12,16 +12,16 @@
                 <outlet property="delegate" destination="381" id="535"/>
             </connections>
         </customObject>
-        <menu id="373">
+        <menu autoenablesItems="NO" id="373">
             <items>
-                <menuItem title="Check All" id="384">
+                <menuItem title="Check All" enabled="NO" id="384">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="checkAll:" target="381" id="534"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="509"/>
-                <menuItem isSeparatorItem="YES" id="456"/>
+                <menuItem isSeparatorItem="YES" tag="10001" id="509"/>
+                <menuItem isSeparatorItem="YES" tag="10002" id="456"/>
                 <menuItem title="Preferences..." id="385">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

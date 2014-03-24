@@ -10,27 +10,26 @@
 #import "GNAccount.h"
 #import "GNChecker.h"
 
-static const NSUInteger kAccountMenuItemPos           = 2;
-static const NSUInteger kCheckMenuItemPos             = 1;
-static const NSUInteger kEnableMenuItemPos            = 2;
-static const NSUInteger kDefaultAccountSubmenuCount   = 4;
+static const NSInteger kTopSeparatorMenuItemTag      = 10001;
+static const NSInteger kBottomSeparatorMenuItemTag   = 10002;
+static const NSInteger kAboveMessagesMenuItemTag     = 10003;
 
 @interface GNAccountMenuController ()
 
-@property (nonatomic, weak) NSStatusItem *statusItem;
-@property (nonatomic, strong) GNAccount *account;
+@property (weak) NSStatusItem *statusItem;
+@property (strong) GNAccount *account;
+@property (strong) NSMenuItem *checkMenuItem;
+@property (strong) NSMenuItem *enableAccountMenuItem;
 
 @end
 
 @implementation GNAccountMenuController {
-    NSImage *_errorIcon;
 }
 
 - (instancetype)initWithStatusItem:(NSStatusItem *)statusItem GNAccount:(GNAccount *)account {
     if (self = [super init]) {
         _statusItem     = statusItem;
         _account        = account;
-        _errorIcon      = [NSImage imageNamed:@"error"];
     }
     return self;
 }
@@ -40,89 +39,139 @@ static const NSUInteger kDefaultAccountSubmenuCount   = 4;
 }
 
 - (void)attachAtIndex:(NSInteger *)index actionTarget:(id)target {
-    NSMenu *accountMenu = [[NSMenu alloc] initWithTitle:self.guid];
-    [accountMenu setAutoenablesItems:NO];
-
-    NSMenuItem *openInboxItem = [accountMenu addItemWithTitle:NSLocalizedString(@"Open Inbox", nil) action:@selector(openInbox:) keyEquivalent:@""];
+    NSMenuItem *openInboxItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Open Inbox", nil) action:@selector(openInbox:) keyEquivalent:@""];
+    [openInboxItem setRepresentedObject:self.guid];
     [openInboxItem setTarget:target];
     [openInboxItem setEnabled:YES];
 
-    NSMenuItem *checkItem = [accountMenu addItemWithTitle:NSLocalizedString(@"Check", nil) action:@selector(checkAccount:) keyEquivalent:@""];
-    [checkItem setTarget:target];
-    [checkItem setEnabled:self.account.enabled];
+    self.checkMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Check", nil) action:@selector(checkAccount:) keyEquivalent:@""];
+    [self.checkMenuItem setRepresentedObject:self.guid];
+    [self.checkMenuItem setTarget:target];
+    [self.checkMenuItem setEnabled:self.account.enabled];
+    self.checkMenuItem.hidden = self.singleMode;
 
-    NSMenuItem *enableAccountItem = [accountMenu addItemWithTitle:self.account.enabled ? NSLocalizedString(@"Disable Account", nil) : NSLocalizedString(@"Enable Account", nil)
-                                                           action:@selector(toggleAccount:)
-                                                    keyEquivalent:@""];
-    [enableAccountItem setTarget:target];
-    [enableAccountItem setEnabled:YES];
+    self.enableAccountMenuItem = [[NSMenuItem alloc] initWithTitle:self.account.enabled ? NSLocalizedString(@"Disable Account", nil) : NSLocalizedString(@"Enable Account", nil)
+                                                            action:@selector(toggleAccount:)
+                                                     keyEquivalent:@""];
+    [self.enableAccountMenuItem setRepresentedObject:self.guid];
+    [self.enableAccountMenuItem setTarget:target];
+    [self.enableAccountMenuItem setEnabled:YES];
+    self.enableAccountMenuItem.tag = kAboveMessagesMenuItemTag;
 
-    [accountMenu addItem:[NSMenuItem separatorItem]];
+    if (self.singleMode) {
+        NSUInteger indexForTopSeparator = [self indexForMenuItemWithTag:kTopSeparatorMenuItemTag];
+        [self.statusItem.menu insertItem:openInboxItem atIndex:++indexForTopSeparator];
+        [self.statusItem.menu insertItem:self.checkMenuItem atIndex:++indexForTopSeparator];
+        [self.statusItem.menu insertItem:self.enableAccountMenuItem atIndex:++indexForTopSeparator];
+    } else {
+        NSMenu *accountMenu = [[NSMenu alloc] initWithTitle:self.guid];
+        [accountMenu setAutoenablesItems:NO];
 
-    NSMenuItem *accountItem = [[NSMenuItem alloc] init];
-    [accountItem setTitle:self.account.username];
-    [accountItem setSubmenu:accountMenu];
-    [accountItem setTarget:target];
-    [accountItem setAction:@selector(openInbox:)];
+        [accountMenu addItem:openInboxItem];
+        [accountMenu addItem:self.checkMenuItem];
+        [accountMenu addItem:self.enableAccountMenuItem];
 
-    [self addAccountMenuItem:accountItem atIndex:index];
+        NSMenuItem *accountItem = [[NSMenuItem alloc] init];
+        [accountItem setTitle:self.account.username];
+        [accountItem setRepresentedObject:self.guid];
+        [accountItem setSubmenu:accountMenu];
+        [accountItem setTarget:target];
+        [accountItem setAction:@selector(openInbox:)];
+
+        [self addAccountMenuItem:accountItem atIndex:index];
+    }
 }
 
 - (void)detach {
-    [self.statusItem.menu removeItem:[self menuItem]];
+    if (self.singleMode) {
+        NSUInteger indexForTopSeparator = [self indexForMenuItemWithTag:kTopSeparatorMenuItemTag];
+        NSUInteger indexForBottomSeparator = [self indexForMenuItemWithTag:kBottomSeparatorMenuItemTag];
+        NSInteger numbersOfItemsToRemove = indexForBottomSeparator - indexForTopSeparator - 1;
+        for (; numbersOfItemsToRemove-- > 0;) {
+            [self.statusItem.menu removeItemAtIndex:indexForTopSeparator + 1];
+        }
+    } else {
+        [self.statusItem.menu removeItem:[self menuItem]];
+    }
 }
 
 - (void)updateStatus {
-    NSMenu *menu = [[self menuItem] submenu];
-    [menu itemAtIndex:kEnableMenuItemPos].title = self.account.enabled ? NSLocalizedString(@"Disable Account", nil) : NSLocalizedString(@"Enable Account", nil);
-    [menu itemAtIndex:kCheckMenuItemPos].enabled = self.account.enabled;
+    self.enableAccountMenuItem.title = self.account.enabled ? NSLocalizedString(@"Disable Account", nil) : NSLocalizedString(@"Enable Account", nil);
+    self.checkMenuItem.enabled = self.account.enabled;
 }
 
 - (void)updateWithChecker:(GNChecker *)checker {
-    NSMenuItem *menuItem = [self menuItem];
-    [menuItem setTitle:self.account.username];
+    NSMenu *menu = self.singleMode ? [self.statusItem menu] : [[self menuItem] submenu];
+    NSUInteger indexForInsert = self.singleMode ? [self indexForMenuItemWithTag:kAboveMessagesMenuItemTag] : [self indexForSubMenuItemWithTag:kAboveMessagesMenuItemTag];
+    if (!self.singleMode) {
+        [[self menuItem] setTitle:self.account.username];
+    }
 
-    NSUInteger count = [[[menuItem submenu] itemArray] count];
-    if (count > kDefaultAccountSubmenuCount) {
-        for (NSUInteger i = count - 1; i >= kDefaultAccountSubmenuCount; i--) {
-            [[menuItem submenu] removeItemAtIndex:i];
+    [self removeMessagesMenuItems];
+
+    if (!self.account.enabled) {
+        return;
+    }
+
+    if ([checker hasConnectionError] || [checker hasUserError]) {
+        [menu insertItem:[NSMenuItem separatorItem] atIndex:++indexForInsert];
+        NSString *title = [checker hasConnectionError] ? NSLocalizedString(@"Connection Error", nil) : NSLocalizedString(@"Username/password Wrong", nil);
+        NSMenuItem *errorItem = [[NSMenuItem alloc] initWithTitle:title action:nil keyEquivalent:@""];
+        [errorItem setEnabled:NO];
+        [menu insertItem:errorItem atIndex:++indexForInsert];
+        if (!self.singleMode) {
+            [[self menuItem] setImage:[NSImage imageNamed:@"error"]];
+        }
+    } else {
+        [menu insertItem:[NSMenuItem separatorItem] atIndex:++indexForInsert];
+        // messages list
+        for (NSDictionary *message in [checker messages]) {
+            NSMenuItem *messageItem = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@: %@", message[@"author"], message[@"subject"]]
+                                                                 action:@selector(openMessage:)
+                                                          keyEquivalent:@""];
+            [messageItem setToolTip:message[@"summary"]];
+            [messageItem setEnabled:YES];
+            [messageItem setRepresentedObject:message[@"link"]];
+            [messageItem setTarget:self.enableAccountMenuItem.target];
+            [menu insertItem:messageItem atIndex:++indexForInsert];
+        }
+
+        if (!self.singleMode) {
+            [[self menuItem] setImage:nil];
+            [[self menuItem] setTitle:[NSString stringWithFormat:@"%@ (%lu)", self.account.username, [checker messageCount]]];
         }
     }
 
-    if (self.account.enabled) {
-        if ([checker hasConnectionError] || [checker hasUserError]) {
-            NSString *title = [checker hasConnectionError] ? NSLocalizedString(@"Connection Error", nil) : NSLocalizedString(@"Username/password Wrong", nil);
-            NSMenuItem *errorItem = [[menuItem submenu] addItemWithTitle:title action:nil keyEquivalent:@""];
-            [errorItem setEnabled:NO];
-            [menuItem setImage:_errorIcon];
-        } else {
-            // messages list
-            for (NSDictionary *message in [checker messages]) {
-                NSMenuItem *messageItem = [[menuItem submenu] addItemWithTitle:[NSString stringWithFormat:@"%@: %@", message[@"author"], message[@"subject"]]
-                                                                        action:@selector(openMessage:)
-                                                                 keyEquivalent:@""];
-                [messageItem setToolTip:message[@"summary"]];
-                [messageItem setEnabled:YES];
-                [messageItem setRepresentedObject:message[@"link"]];
-                [messageItem setTarget:self];
-            }
+    if ([checker messageCount] > 0) {
+        [menu insertItem:[NSMenuItem separatorItem] atIndex:++indexForInsert];
+    }
 
-            [menuItem setImage:nil];
-            [menuItem setTitle:[NSString stringWithFormat:@"%@ (%lu)", self.account.username, [checker messageCount]]];
-        }
- 
-        if ([checker messageCount] > 0) {
-            [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-        }
+    // recent check timestamp
+    NSString *timestampTitle = [[NSLocalizedString(@"Last Checked:", nil) stringByAppendingString:@" "] stringByAppendingString:checker.lastCheckedAt];
+    NSMenuItem *lastCheckedMenuItem = [[NSMenuItem alloc] initWithTitle:timestampTitle action:nil keyEquivalent:@""];
+    lastCheckedMenuItem.enabled = NO;
+    [menu insertItem:lastCheckedMenuItem atIndex:++indexForInsert];
+}
 
-        // recent check timestamp
-        NSString *timestampTitle = [[NSLocalizedString(@"Last Checked:", nil) stringByAppendingString:@" "] stringByAppendingString:checker.lastCheckedAt];
-        [[[menuItem submenu] addItemWithTitle:timestampTitle action:nil keyEquivalent:@""] setEnabled:NO];
+- (void)removeMessagesMenuItems {
+    if (self.singleMode) {
+        NSUInteger indexForMessagesSeparator = [self indexForMenuItemWithTag:kAboveMessagesMenuItemTag];
+        NSUInteger indexForBottomSeparator = [self indexForMenuItemWithTag:kBottomSeparatorMenuItemTag];
+        NSInteger numbersOfItemsToRemove = indexForBottomSeparator - indexForMessagesSeparator - 1;
+        for (; numbersOfItemsToRemove-- > 0;) {
+            [self.statusItem.menu removeItemAtIndex:indexForMessagesSeparator + 1];
+        }
+    } else {
+        NSUInteger indexForMessagesSeparator = [self indexForSubMenuItemWithTag:kAboveMessagesMenuItemTag];
+        NSInteger numbersOfItemsToRemove = [[[[self menuItem] submenu] itemArray] count] - indexForMessagesSeparator - 1;
+        for (; numbersOfItemsToRemove-- > 0;) {
+            [[[self menuItem] submenu] removeItemAtIndex:indexForMessagesSeparator + 1];
+        }
     }
 }
 
 - (void)addAccountMenuItem:(NSMenuItem *)item atIndex:(NSUInteger)index {
-    [self.statusItem.menu insertItem:item atIndex:kAccountMenuItemPos + index];
+    [self.statusItem.menu insertItem:item atIndex:[self accountMenuItemPos] + index];
 }
 
 - (NSMenuItem *)menuItem {
@@ -137,6 +186,30 @@ static const NSUInteger kDefaultAccountSubmenuCount   = 4;
     }
 
     return nil;
+}
+
+- (NSUInteger)indexForMenuItemWithTag:(NSUInteger)tag {
+    for (NSUInteger idx = 0; idx < [[self.statusItem.menu itemArray] count]; ++idx) {
+        if (tag == ((NSMenuItem *)[self.statusItem.menu itemArray][idx]).tag) {
+            return idx;
+        }
+    }
+    NSAssert(FALSE, @"Should find menu item for tag");
+    return NSNotFound;
+}
+
+- (NSUInteger)accountMenuItemPos {
+    return [self indexForMenuItemWithTag:kTopSeparatorMenuItemTag] + 1;
+}
+
+- (NSUInteger)indexForSubMenuItemWithTag:(NSUInteger)tag {
+    for (NSUInteger idx = 0; idx < [[[[self menuItem] submenu] itemArray] count]; ++idx) {
+        if (tag == ((NSMenuItem *)[[[self menuItem] submenu] itemArray][idx]).tag) {
+            return idx;
+        }
+    }
+    NSAssert(FALSE, @"Should find sub menu item for tag");
+    return NSNotFound;
 }
 
 @end
