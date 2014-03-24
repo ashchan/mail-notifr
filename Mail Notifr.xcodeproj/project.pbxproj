@@ -128,6 +128,7 @@
 		1AB7FF5716B57DB70040BBCE /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Resources/Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AB7FF5816B57DC40040BBCE /* nl */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nl; path = Resources/nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AB7FF5A16B57DE30040BBCE /* ru */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ru; path = Resources/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1ABE684F18E02A22008CB343 /* Polish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Polish; path = Resources/Polish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1ACD6FEE1897F56300103E15 /* Gmail Notifr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Gmail Notifr.entitlements"; sourceTree = SOURCE_ROOT; };
 		1ACD6FEF1897FE3C00103E15 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Gmail Notifr/Images.xcassets"; sourceTree = "<group>"; };
 		1AFB7F3B189FBDA100B82441 /* GmailNotifrHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GmailNotifrHelper.xcodeproj; path = GmailNotifrHelper/GmailNotifrHelper.xcodeproj; sourceTree = "<group>"; };
@@ -367,6 +368,7 @@
 				"fr-CA",
 				"zh-CN",
 				ko,
+				Polish,
 			);
 			mainGroup = 1AB7FD7116B578740040BBCE;
 			productRefGroup = 1AB7FD7D16B578740040BBCE /* Products */;
@@ -523,6 +525,7 @@
 				1A8F66AA16B5FDF300396E44 /* zh-CN */,
 				1A8F66AC16B5FE7600396E44 /* nb */,
 				61DA8B2817129CA800B37FE0 /* ko */,
+				1ABE684F18E02A22008CB343 /* Polish */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
