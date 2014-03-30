@@ -31,26 +31,19 @@
 @end
 
 @implementation GNApplicationController {
-    NSImage *_appIcon;
-    NSImage *_appAltIcon;
-    NSImage *_mailIcon;
-    NSImage *_mailAltIcon;
-
     NSMutableArray *_checkers;
     NSMutableArray *_accountMenuControllers;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [self loadIcons];
-
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     [self.statusItem setHighlightMode:YES];
     [self.statusItem setMenu:self.menu];
 
     [self localizeMenuItems];
-    
-    [self.statusItem setImage:_appIcon];
-    [self.statusItem setAlternateImage:_appAltIcon];
+
+    [self.statusItem setImage:[NSImage imageNamed:@"app"]];
+    [self.statusItem setAlternateImage:[NSImage imageNamed:@"alt"]];
 
     [GNPreferences setupDefaults];
 
@@ -187,13 +180,6 @@
 
 - (void)accountChecking:(NSNotification *)notification {
     [_statusItem setToolTip:NSLocalizedString(@"Checking Mail", nil)];
-}
-
-- (void)loadIcons {
-    _appIcon        = [NSImage imageNamed:@"app"];
-    _appAltIcon     = [NSImage imageNamed:@"app_a"];
-    _mailIcon       = [NSImage imageNamed:@"mail"];
-    _mailAltIcon    = [NSImage imageNamed:@"mail_a"];
 }
 
 - (void)registerObservers {
@@ -392,12 +378,10 @@
         }
 
         [_statusItem setToolTip:[NSString stringWithFormat:toolTipFormat, messageCount]];
-        [_statusItem setImage:_mailIcon];
-        [_statusItem setAlternateImage:_mailAltIcon];
+        [_statusItem setImage:[NSImage imageNamed:@"mail"]];
     } else {
         [_statusItem setToolTip:@""];
-        [_statusItem setImage:_appIcon];
-        [_statusItem setAlternateImage:_appAltIcon];
+        [_statusItem setImage:[NSImage imageNamed:@"app"]];
     }
 }
 
