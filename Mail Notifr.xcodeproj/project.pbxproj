@@ -59,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A3A772718FCB020002F61E6 /* Finnish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Finnish; path = Resources/Finnish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNAccountMenuController.h; path = Classes/GNAccountMenuController.h; sourceTree = "<group>"; };
 		1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNAccountMenuController.m; path = Classes/GNAccountMenuController.m; sourceTree = "<group>"; };
 		1A8F666F16B5817000396E44 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
@@ -331,6 +332,7 @@
 				"zh-CN",
 				ko,
 				Polish,
+				Finnish,
 			);
 			mainGroup = 1AB7FD7116B578740040BBCE;
 			productRefGroup = 1AB7FD7D16B578740040BBCE /* Products */;
@@ -478,6 +480,7 @@
 				1A8F66AC16B5FE7600396E44 /* nb */,
 				61DA8B2817129CA800B37FE0 /* ko */,
 				1ABE684F18E02A22008CB343 /* Polish */,
+				1A3A772718FCB020002F61E6 /* Finnish */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
