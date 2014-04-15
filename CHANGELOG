@@ -1,3 +1,8 @@
+h3 1.2.1 (Apr 15, 2014)
+* Remove the annoying checking (arrow) icon
+* Update menu icons (blue icon for having new messages)
+* Add Finnish localization
+
 h3 1.2.0 (Mar 29, 2014)
 * Show messages under top level menu if there's only one account
 * Add Polish localization
