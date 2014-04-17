@@ -1,3 +1,7 @@
+h3 1.2.2 (Apr 17, 2014)
+* Add shortcut (CMD+V) for pasting password
+* Improve localizations
+
 h3 1.2.1 (Apr 15, 2014)
 * Remove the annoying checking (arrow) icon
 * Update menu icons (blue icon for having new messages)
