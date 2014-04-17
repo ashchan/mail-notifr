@@ -10,6 +10,7 @@
 		1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */; };
 		1A8F667016B5817000396E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F666F16B5817000396E44 /* main.m */; };
 		1A8F66A516B5FBB400396E44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8F66A316B5FBB400396E44 /* MainMenu.xib */; };
+		1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */; };
 		1AB7FD8116B578740040BBCE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FD8016B578740040BBCE /* Cocoa.framework */; };
 		1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3616B57B4E0040BBCE /* Security.framework */; };
 		1AB7FE3B16B57B630040BBCE /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FE3816B57B630040BBCE /* AccountDetail.xib */; };
@@ -68,6 +69,8 @@
 		1A8F66A916B5FDDC00396E44 /* fr-CA */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Resources/fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A8F66AC16B5FE7600396E44 /* nb */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nb; path = Resources/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A96BC9F18FFBAB7000BD5D3 /* zh_CN */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = zh_CN; path = Resources/zh_CN.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AAB5C9418FFF04C0020A73E /* GNSecureTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNSecureTextField.h; path = Classes/GNSecureTextField.h; sourceTree = "<group>"; };
+		1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSecureTextField.m; path = Classes/GNSecureTextField.m; sourceTree = "<group>"; };
 		1AB7FD7C16B578740040BBCE /* Mail Notifr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mail Notifr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB7FD8016B578740040BBCE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1AB7FD8316B578740040BBCE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -228,6 +231,8 @@
 				1AB7FE3816B57B630040BBCE /* AccountDetail.xib */,
 				1AB7FE3916B57B630040BBCE /* PreferencesAccounts.xib */,
 				1AB7FE3A16B57B630040BBCE /* PreferencesSettings.xib */,
+				1AAB5C9418FFF04C0020A73E /* GNSecureTextField.h */,
+				1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -430,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */,
 				1AB7FE4916B57B9C0040BBCE /* GNAccountDetailController.m in Sources */,
 				1AB7FE4A16B57B9C0040BBCE /* GNApplicationController.m in Sources */,
 				1AB7FE4B16B57B9C0040BBCE /* GNPreferencesController.m in Sources */,
