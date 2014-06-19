@@ -64,11 +64,11 @@
     }
     [self.soundList selectItemWithTitle:self.account.sound];
 
-    [self.interval setTitleWithMnemonic:[NSString stringWithFormat:@"%ld", self.account.interval]];
+    [self.interval setStringValue:[NSString stringWithFormat:@"%ld", self.account.interval]];
     [self.accountEnabled setState:self.account.enabled ? NSOnState : NSOffState];
     [self.growl setState:self.account.growl ? NSOnState : NSOffState];
-    [self.username setTitleWithMnemonic:self.account.username];
-    [self.password setTitleWithMnemonic:self.account.password];
+    [self.username setStringValue:self.account.username];
+    [self.password setStringValue:self.account.password];
 
     [self.browserList removeAllItems];
     for (NSArray *browser in [GNBrowser all]) {
@@ -76,15 +76,15 @@
     }
     [self.browserList selectItemWithTitle:[GNBrowser getNameByIdentifier:self.account.browser]];
 
-    [self.usernameLabel setTitleWithMnemonic:NSLocalizedString(@"Username:", nil)];
-    [self.passwordLabel setTitleWithMnemonic:NSLocalizedString(@"Password:", nil)];
-    [self.checkLabel setTitleWithMnemonic:NSLocalizedString(@"Check for new mail every", nil)];
-    [self.minuteLabel setTitleWithMnemonic:NSLocalizedString(@"minutes", nil)];
+    [self.usernameLabel setStringValue:NSLocalizedString(@"Username:", nil)];
+    [self.passwordLabel setStringValue:NSLocalizedString(@"Password:", nil)];
+    [self.checkLabel setStringValue:NSLocalizedString(@"Check for new mail every", nil)];
+    [self.minuteLabel setStringValue:NSLocalizedString(@"minutes", nil)];
     [self.accountEnabled setTitle:NSLocalizedString(@"Enable this account", nil)];
     [self.growl setTitle:NSLocalizedString(@"Use Growl Notification", nil)];
-    [self.soundLabel setTitleWithMnemonic:NSLocalizedString(@"Play sound:", nil)];
-    [self.browserLabel setTitleWithMnemonic:NSLocalizedString(@"Open in browser:", nil)];
-    [self.hint setTitleWithMnemonic:NSLocalizedString(@"To add a Google Hosted Account, specify the full email address as username, eg: admin@ashchan.com.", nil)];
+    [self.soundLabel setStringValue:NSLocalizedString(@"Play sound:", nil)];
+    [self.browserLabel setStringValue:NSLocalizedString(@"Open in browser:", nil)];
+    [self.hint setStringValue:NSLocalizedString(@"To add a Google Hosted Account, specify the full email address as username, eg: admin@ashchan.com.", nil)];
     [self.cancelButton setTitle:NSLocalizedString(@"Cancel", nil)];
     [self.okButton setTitle:NSLocalizedString(@"OK", nil)];
 }
