@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 ashchan.com. All rights reserved.
 //
 
+@import AppKit.NSSound;
 #import "GNAccountDetailController.h"
-#import <AppKit/NSSound.h>
 #import "GNAccount.h"
 #import "GNBrowser.h"
 #import "GNSound.h"

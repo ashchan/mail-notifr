@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 ashchan.com. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
 #import "AppDelegate.h"
 
 int main(int argc, const char * argv[])

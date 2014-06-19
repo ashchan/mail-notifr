@@ -17,9 +17,9 @@ EXTERNAL SOURCES:
     :podspec: Podspecs/StartAtLoginController.podspec
 
 SPEC CHECKSUMS:
-  KASeparatorLine: 1f2d677504177084204b180f5bd15c271decd579
+  KASeparatorLine: 2beb11f7b70d589e4cf84f7c7a63eb99bd9676fe
   MASShortcut: 576dcb235df82cfcb7be399c05f5881486d893c7
-  SSKeychain: 2fe90c92034129d9615a508529b601a520f297d1
+  SSKeychain: dc9746ffd1bde9dffca39b6c878cd61263e6e9a4
   StartAtLoginController: e7e7b6ec15b90d548ee0acf390160eccd2539a8e
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.33.1

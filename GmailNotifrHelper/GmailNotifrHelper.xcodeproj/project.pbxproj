@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1AFB7F08189FBDA000B82441 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFB7F07189FBDA000B82441 /* Cocoa.framework */; };
 		1AFB7F12189FBDA000B82441 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AFB7F10189FBDA000B82441 /* InfoPlist.strings */; };
 		1AFB7F14189FBDA000B82441 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFB7F13189FBDA000B82441 /* main.m */; };
 		1AFB7F1B189FBDA000B82441 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFB7F1A189FBDA000B82441 /* AppDelegate.m */; };
@@ -15,10 +14,6 @@
 
 /* Begin PBXFileReference section */
 		1AFB7F04189FBDA000B82441 /* GmailNotifrHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GmailNotifrHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1AFB7F07189FBDA000B82441 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		1AFB7F0A189FBDA000B82441 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		1AFB7F0B189FBDA000B82441 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		1AFB7F0C189FBDA000B82441 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1AFB7F0F189FBDA000B82441 /* GmailNotifrHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GmailNotifrHelper-Info.plist"; sourceTree = "<group>"; };
 		1AFB7F11189FBDA000B82441 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AFB7F13189FBDA000B82441 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -33,7 +28,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AFB7F08189FBDA000B82441 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,7 +38,6 @@
 			isa = PBXGroup;
 			children = (
 				1AFB7F0D189FBDA000B82441 /* GmailNotifrHelper */,
-				1AFB7F06189FBDA000B82441 /* Frameworks */,
 				1AFB7F05189FBDA000B82441 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,25 +48,6 @@
 				1AFB7F04189FBDA000B82441 /* GmailNotifrHelper.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		1AFB7F06189FBDA000B82441 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1AFB7F07189FBDA000B82441 /* Cocoa.framework */,
-				1AFB7F09189FBDA000B82441 /* Other Frameworks */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1AFB7F09189FBDA000B82441 /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1AFB7F0A189FBDA000B82441 /* AppKit.framework */,
-				1AFB7F0B189FBDA000B82441 /* CoreData.framework */,
-				1AFB7F0C189FBDA000B82441 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		1AFB7F0D189FBDA000B82441 /* GmailNotifrHelper */ = {
@@ -196,6 +170,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -233,6 +208,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;

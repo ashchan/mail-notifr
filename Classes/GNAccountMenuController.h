@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 ashchan.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @class GNAccount;
 @class GNChecker;
