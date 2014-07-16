@@ -1,10 +1,8 @@
-# Gmail Notifr #
+# Mail Notifr (Formly Gmail Notifr) #
 
 A Gmail Notifier for Mac OS X
 
 ![screenshot](https://raw.github.com/ashchan/gmail-notifr-objc/master/screenshot.png)
-
-## Yet Another Gmail Notifier ##
 
 [Gmail Notifr](http://bit.ly/gmail-notifr-store) features:
 
@@ -41,9 +39,10 @@ Gmail Notifr was originally written in RubyCocoa, then MacRuby, and recently Obj
 [CocoaPods](http://cocoapods.org) is required.
 
     git clone https://github.com/ashchan/gmail-notifr-objc.git
+    cd gmail-notifr-objc
     pod install
 
-Then open `Gmail Notifr.Gmail Notifr.xcworkspace`, build and run with Xcode.
+Then open `Mail Notifr.xcworkspace`, build and run with Xcode.
 
 ## Updates, Changelog &amp; Feedback ##
 
