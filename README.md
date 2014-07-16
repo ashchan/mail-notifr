@@ -1,4 +1,4 @@
-# Mail Notifr (Formly Gmail Notifr) #
+# Mail Notifr (Formerly Gmail Notifr) #
 
 A Gmail Notifier for Mac OS X
 
