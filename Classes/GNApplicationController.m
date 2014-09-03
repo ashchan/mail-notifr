@@ -382,6 +382,7 @@
     } else {
         [_statusItem setToolTip:@""];
         [_statusItem setImage:[NSImage imageNamed:@"app"]];
+        [self.statusItem.image setTemplate:YES];
     }
 }
 
