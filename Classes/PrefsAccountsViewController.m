@@ -36,7 +36,7 @@ static NSString *const kPasteboardDragType = @"GNDragType";
 }
 
 - (NSImage *)image {
-    return [NSImage imageNamed:@"NSUserAccounts"];
+    return [NSImage imageNamed:NSImageNameUserAccounts];
 }
 
 - (NSString *)identifier {

@@ -28,7 +28,7 @@ NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut"
 - (id)init {
     if (self = [super initWithNibName:@"PreferencesSettings" bundle:nil]) {
     }
-    
+
     return self;
 }
 
@@ -41,7 +41,7 @@ NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut"
 }
 
 - (NSImage *)image {
-    return [NSImage imageNamed:@"NSPreferencesGeneral"];
+    return [NSImage imageNamed:NSImageNamePreferencesGeneral];
 }
 
 - (void)loadView {
