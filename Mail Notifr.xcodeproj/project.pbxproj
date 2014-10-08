@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A05D19319E55C85002698B7 /* PrefsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A05D19219E55C85002698B7 /* PrefsInfoViewController.m */; };
+		1A05D19819E55DAB002698B7 /* PreferencesInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A05D19719E55DAB002698B7 /* PreferencesInfo.xib */; };
 		1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */; };
 		1A8F667016B5817000396E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F666F16B5817000396E44 /* main.m */; };
 		1A8F66A516B5FBB400396E44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8F66A316B5FBB400396E44 /* MainMenu.xib */; };
@@ -59,6 +61,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A05D19119E55C85002698B7 /* PrefsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefsInfoViewController.h; path = Classes/PrefsInfoViewController.h; sourceTree = "<group>"; };
+		1A05D19219E55C85002698B7 /* PrefsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrefsInfoViewController.m; path = Classes/PrefsInfoViewController.m; sourceTree = "<group>"; };
+		1A05D19719E55DAB002698B7 /* PreferencesInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesInfo.xib; path = Resources/PreferencesInfo.xib; sourceTree = "<group>"; };
 		1A3A772718FCB020002F61E6 /* Finnish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Finnish; path = Resources/Finnish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNAccountMenuController.h; path = Classes/GNAccountMenuController.h; sourceTree = "<group>"; };
 		1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNAccountMenuController.m; path = Classes/GNAccountMenuController.m; sourceTree = "<group>"; };
@@ -202,6 +207,8 @@
 				1AB7FE4616B57B9C0040BBCE /* PrefsAccountsViewController.m */,
 				1AB7FE4716B57B9C0040BBCE /* PrefsSettingsViewController.h */,
 				1AB7FE4816B57B9C0040BBCE /* PrefsSettingsViewController.m */,
+				1A05D19119E55C85002698B7 /* PrefsInfoViewController.h */,
+				1A05D19219E55C85002698B7 /* PrefsInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -213,6 +220,7 @@
 				1AB7FE3816B57B630040BBCE /* AccountDetail.xib */,
 				1AB7FE3916B57B630040BBCE /* PreferencesAccounts.xib */,
 				1AB7FE3A16B57B630040BBCE /* PreferencesSettings.xib */,
+				1A05D19719E55DAB002698B7 /* PreferencesInfo.xib */,
 				1AAB5C9418FFF04C0020A73E /* GNSecureTextField.h */,
 				1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */,
 			);
@@ -356,6 +364,7 @@
 				1AB7FE3B16B57B630040BBCE /* AccountDetail.xib in Resources */,
 				1ACD6FF01897FE3C00103E15 /* Images.xcassets in Resources */,
 				1AB7FE3C16B57B630040BBCE /* PreferencesAccounts.xib in Resources */,
+				1A05D19819E55DAB002698B7 /* PreferencesInfo.xib in Resources */,
 				1AB7FE3D16B57B630040BBCE /* PreferencesSettings.xib in Resources */,
 				1AB7FF0116B57D280040BBCE /* Credits.html in Resources */,
 				1AB7FF0616B57D510040BBCE /* InfoPlist.strings in Resources */,
@@ -428,6 +437,7 @@
 				1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */,
 				1AB7FE5A16B57BAD0040BBCE /* GNChecker.m in Sources */,
 				1AB7FE5B16B57BAD0040BBCE /* GNPreferences.m in Sources */,
+				1A05D19319E55C85002698B7 /* PrefsInfoViewController.m in Sources */,
 				1AB7FE5C16B57BAD0040BBCE /* GNSound.m in Sources */,
 				1A8F667016B5817000396E44 /* main.m in Sources */,
 			);
@@ -546,7 +556,7 @@
 				INFOPLIST_FILE = Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "Mail Notifr";
-				PROVISIONING_PROFILE = "894D18E5-48D0-482D-AB82-F7C20068F474";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -568,7 +578,7 @@
 				INFOPLIST_FILE = Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "Mail Notifr";
-				PROVISIONING_PROFILE = "058C6811-ADA3-4534-8A4C-13CE925C78CF";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

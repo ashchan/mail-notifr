@@ -10,6 +10,7 @@
 #import "GNPreferencesController.h"
 #import "PrefsAccountsViewController.h"
 #import "PrefsSettingsViewController.h"
+#import "PrefsInfoViewController.h"
 #import "GNPreferences.h"
 
 @interface GNPreferencesController () <NSToolbarDelegate, NSWindowDelegate>
@@ -29,7 +30,8 @@
         controller = [[GNPreferencesController alloc] init];
         controller.modules = @[
             [[PrefsAccountsViewController alloc] init],
-            [[PrefsSettingsViewController alloc] init]
+            [[PrefsSettingsViewController alloc] init],
+            [[PrefsInfoViewController alloc] init]
         ];
     });
 

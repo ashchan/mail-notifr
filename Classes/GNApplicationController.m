@@ -84,6 +84,14 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/app/gmail-notifr/id808154494?ls=1&mt=12"]];
 }
 
+- (void)showFAQs:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://assets.ashchan.com/gmailnotifr/faq.html"]];
+}
+
+- (void)showFeedback:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://blog.ashchan.com/archive/2008/10/29/gmail-notifr-changelog/"]];
+}
+
 - (void)checkAccount:(id)sender {
     GNAccount *account = [self accountForGuid:[sender representedObject]];
     [[self checkerForAccount:account] reset];

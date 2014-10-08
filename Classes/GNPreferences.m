@@ -13,6 +13,7 @@
 
 NSString *const PrefsToolbarItemAccounts                = @"prefsToolbarItemAccounts";
 NSString *const PrefsToolbarItemSettings                = @"prefsToolbarItemSettings";
+NSString *const PrefsToolbarItemInfo                    = @"prefsToolbarItemInfo";
 NSString *const GNPreferencesSelection                  = @"PreferencesSelection";
 NSString *const GNShowUnreadCountChangedNotification    = @"GNShowUnreadCountChangedNotification";
 NSString *const GNAccountAddedNotification              = @"GNAccountAddedNotification";

@@ -12,6 +12,7 @@
 
     extern NSString *const PrefsToolbarItemAccounts;
     extern NSString *const PrefsToolbarItemSettings;
+    extern NSString *const PrefsToolbarItemInfo;
     extern NSString *const GNPreferencesSelection;
     extern NSString *const GNShowUnreadCountChangedNotification;
     extern NSString *const GNAccountAddedNotification;
