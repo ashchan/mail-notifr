@@ -21,6 +21,7 @@
 @property (strong) IBOutlet NSMenu *menu;
 
 @property (weak) IBOutlet NSMenuItem *menuItemCheckAll;
+@property (weak) IBOutlet NSMenuItem *menuItemComposeMail;
 @property (weak) IBOutlet NSMenuItem *menuItemPreferences;
 @property (weak) IBOutlet NSMenuItem *menuItemAbout;
 @property (weak) IBOutlet NSMenuItem *menuItemQuit;
@@ -73,6 +74,13 @@
 
 - (IBAction)checkAll:(id)sender {
     [self checkAllAccounts];
+}
+
+- (IBAction)composeMail:(id)sender {
+    GNAccount *account = [GNPreferences sharedInstance].accounts.firstObject;
+    NSString *baseURL = account ? [account baseUrl] : @"https://mail.google.com/";
+    NSString *url = [baseURL stringByAppendingString:@"?view=cm&tf=0&fs=1"];
+    [self openURL:[NSURL URLWithString:url] withBrowserIdentifier:account.browser];
 }
 
 - (IBAction)showPreferencesWindow:(id)sender {
@@ -337,6 +345,7 @@
 
 - (void)localizeMenuItems {
     [self updateCheckAllMenu];
+    [self.menuItemComposeMail setTitleWithMnemonic:NSLocalizedString(@"Compose Mail", nil)];
     [self.menuItemPreferences setTitleWithMnemonic:NSLocalizedString(@"Preferences...", nil)];
     [self.menuItemAbout setTitleWithMnemonic:NSLocalizedString(@"About Gmail Notifr", nil)];
     [self.menuItemQuit setTitleWithMnemonic:NSLocalizedString(@"Quit Gmail Notifr", nil)];
