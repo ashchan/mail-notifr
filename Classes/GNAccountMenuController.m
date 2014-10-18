@@ -116,16 +116,15 @@ static const NSInteger kAboveMessagesMenuItemTag     = 10003;
 
     if (self.account.enabled) {
         if ([checker hasConnectionError] || [checker hasUserError]) {
-            [menu insertItem:[NSMenuItem separatorItem] atIndex:++indexForInsert];
             NSString *title = [checker hasConnectionError] ? NSLocalizedString(@"Connection Error", nil) : NSLocalizedString(@"Username/password Wrong", nil);
             NSMenuItem *errorItem = [[NSMenuItem alloc] initWithTitle:title action:nil keyEquivalent:@""];
             [errorItem setEnabled:NO];
             [menu insertItem:errorItem atIndex:++indexForInsert];
+            [menu insertItem:[NSMenuItem separatorItem] atIndex:++indexForInsert];
             if (!self.singleMode) {
                 [[self menuItem] setImage:[NSImage imageNamed:@"error"]];
             }
         } else {
-            [menu insertItem:[NSMenuItem separatorItem] atIndex:++indexForInsert];
             // messages list
             for (NSDictionary *message in [checker messages]) {
                 NSMenuItem *messageItem = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@: %@", message[@"author"], message[@"subject"]]
@@ -137,15 +136,14 @@ static const NSInteger kAboveMessagesMenuItemTag     = 10003;
                 [messageItem setTarget:self.enableAccountMenuItem.target];
                 [menu insertItem:messageItem atIndex:++indexForInsert];
             }
+            if ([checker messageCount] > 0) {
+                [menu insertItem:[NSMenuItem separatorItem] atIndex:++indexForInsert];
+            }
 
             if (!self.singleMode) {
                 [[self menuItem] setImage:nil];
                 [[self menuItem] setTitle:[NSString stringWithFormat:@"%@ (%lu)", self.account.username, [checker messageCount]]];
             }
-        }
-
-        if ([checker messageCount] > 0) {
-            [menu insertItem:[NSMenuItem separatorItem] atIndex:++indexForInsert];
         }
 
         // recent check timestamp
