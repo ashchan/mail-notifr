@@ -74,6 +74,15 @@ static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAft
     }
 }
 
+- (BOOL)allAccountsDisabled {
+    for (GNAccount *account in self.accounts) {
+        if (account.enabled) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 - (BOOL)showUnreadCount {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kDefaultsKeyShowUnreadCount];
 }

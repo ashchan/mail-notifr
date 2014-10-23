@@ -14,6 +14,7 @@
 @property (assign) BOOL autoLaunch;
 @property (assign) BOOL showUnreadCount;
 @property (assign) NSTimeInterval autoCheckAfterInboxInterval;
+@property (assign, readonly) BOOL allAccountsDisabled;
 
 + (GNPreferences *)sharedInstance;
 + (void)setupDefaults;

@@ -123,7 +123,7 @@
     [account save];
 
     [self updateMenuItemAccountEnabled:account];
-    [self updateCheckAllMenu];
+    [self updateMainMenu];
 }
 
 - (void)openMessage:(id)sender {
@@ -146,7 +146,7 @@
     [_checkers addObject:checker];
     [checker reset];
 
-    [self updateCheckAllMenu];
+    [self updateMainMenu];
 }
 
 - (void)accountChanged:(NSNotification *)notification {
@@ -174,7 +174,7 @@
         [self updateMenuBarCount:notification];
     }
 
-    [self updateCheckAllMenu];
+    [self updateMainMenu];
 }
 
 - (void)accountsReordered:(NSNotification *)notification {
@@ -333,17 +333,23 @@
 
 #pragma mark - Menu Manipulation
 
-- (void)updateCheckAllMenu {
+- (void)updateMainMenu {
+    // Update Check All
     NSString *stringToLocalize = [[GNPreferences sharedInstance].accounts count] <= 1 ? @"Check" : @"Check All";
     [self.menuItemCheckAll setTitleWithMnemonic:NSLocalizedString(stringToLocalize, nil)];
     NSArray *enabledAccounts = [[GNPreferences sharedInstance].accounts filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject enabled];
     }]];
     [self.menuItemCheckAll setEnabled:[enabledAccounts count] > 0];
+
+    // Show disable icon if no accounts enabled
+    if (floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_9) {
+        self.statusItem.button.appearsDisabled = [GNPreferences sharedInstance].allAccountsDisabled;
+    }
 }
 
 - (void)localizeMenuItems {
-    [self updateCheckAllMenu];
+    [self updateMainMenu];
     [self.menuItemComposeMail setTitleWithMnemonic:NSLocalizedString(@"Compose Mail", nil)];
     [self.menuItemPreferences setTitleWithMnemonic:NSLocalizedString(@"Preferences...", nil)];
     [self.menuItemAbout setTitleWithMnemonic:NSLocalizedString(@"About Gmail Notifr", nil)];
@@ -375,7 +381,7 @@
 
     if (messageCount > 0 && [GNPreferences sharedInstance].showUnreadCount) {
         [_statusItem setTitle:[NSString stringWithFormat:@"%lu", messageCount]];
-    } else {
+    } else {                                  
         [_statusItem setTitle:@""];
     }
 
