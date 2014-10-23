@@ -44,7 +44,6 @@
     [self localizeMenuItems];
 
     [self.statusItem setImage:[NSImage imageNamed:@"app"]];
-    [self.statusItem setAlternateImage:[NSImage imageNamed:@"alt"]];
 
     [GNPreferences setupDefaults];
 
