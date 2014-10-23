@@ -43,7 +43,7 @@
 
     [self localizeMenuItems];
 
-    [self.statusItem setImage:[NSImage imageNamed:@"app"]];
+    self.statusItem.image = [NSImage imageNamed:@"NoMailsTemplate"];
 
     [GNPreferences setupDefaults];
 
@@ -393,12 +393,11 @@
             }
         }
 
-        [_statusItem setToolTip:[NSString stringWithFormat:toolTipFormat, messageCount]];
-        [_statusItem setImage:[NSImage imageNamed:@"mail"]];
+        [self.statusItem setToolTip:[NSString stringWithFormat:toolTipFormat, messageCount]];
+        self.statusItem.image = [NSImage imageNamed:@"HaveMailsTemplate"];
     } else {
-        [_statusItem setToolTip:@""];
-        [_statusItem setImage:[NSImage imageNamed:@"app"]];
-        [self.statusItem.image setTemplate:YES];
+        [self.statusItem setToolTip:@""];
+        self.statusItem.image = [NSImage imageNamed:@"NoMailsTemplate"];
     }
 }
 
