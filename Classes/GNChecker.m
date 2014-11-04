@@ -16,6 +16,7 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
 @interface GNChecker () <NSURLConnectionDataDelegate>
 
 @property (strong) GNAccount *account;
+@property (assign) BOOL isChecking;
 
 @end
 
@@ -128,7 +129,7 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self processXMLWithData:_downloadedData statusCode:_statusCode];
     });
 }
@@ -136,12 +137,16 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
 #pragma mark - Private Methods
 
 - (void)check {
+    if (self.isChecking) {
+        return;
+    }
+
+    self.isChecking = YES;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://mail.google.com/mail/feed/atom"]
                                                            cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                                        timeoutInterval:30];
     [request setHTTPShouldHandleCookies:NO];
     _downloadedData = [[NSMutableData alloc] init];
-    _messageCount   = 0;
     _hasUserError   = NO;
     _hasConnectionError = NO;
     [NSURLConnection connectionWithRequest:request delegate:self];
@@ -246,8 +251,10 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
         }
     } else if (statusCode == 401) {
         _hasUserError = YES;
+        _messageCount = 0;
     } else {
         _hasConnectionError = YES;
+        _messageCount = 0;
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -310,6 +317,8 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
     if (shouldNotify && ![self.account.sound isEqualToString:GNSoundNone]) {
         [[NSSound soundNamed:self.account.sound] play];
     }
+
+    self.isChecking = NO;
 }
 
 @end
