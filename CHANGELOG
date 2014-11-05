@@ -1,3 +1,6 @@
+h3 1.3.2 (Nov 6, 2014)
+* Fix 'blinking' icon issue
+
 h3 1.3.1 (Oct 24, 2014)
 * Add Compose Mail feature
 * Fix duplicated separator menu item bug
