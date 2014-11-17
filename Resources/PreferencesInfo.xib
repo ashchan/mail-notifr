@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6249" systemVersion="14A388a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6249"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PrefsInfoViewController">
@@ -17,36 +17,40 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j2o-4S-Bto">
-                    <rect key="frame" x="14" y="54" width="180" height="32"/>
-                    <buttonCell key="cell" type="push" title="Help &amp; FAQs" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Iil-Lq-cti">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="14" y="60" width="101" height="19"/>
+                    <buttonCell key="cell" type="recessed" title="Help &amp; FAQ" bezelStyle="recessed" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Iil-Lq-cti">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
                     </buttonCell>
                     <connections>
                         <action selector="showFAQs:" target="-1" id="xGB-CB-M7V"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jmb-qT-h67">
-                    <rect key="frame" x="14" y="95" width="180" height="32"/>
-                    <buttonCell key="cell" type="push" title="Feedback" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hzA-y9-Me0">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="14" y="101" width="91" height="19"/>
+                    <buttonCell key="cell" type="recessed" title="Feedback" bezelStyle="recessed" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hzA-y9-Me0">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
                     </buttonCell>
                     <connections>
                         <action selector="showFeedback:" target="-1" id="Bfo-dA-LXc"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtg-nQ-Xk6">
-                    <rect key="frame" x="14" y="13" width="180" height="32"/>
-                    <buttonCell key="cell" type="push" title="Rate on App Store" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FaP-9a-HPl">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="14" y="19" width="140" height="19"/>
+                    <buttonCell key="cell" type="recessed" title="Rate on App Store" bezelStyle="recessed" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FaP-9a-HPl">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
                     </buttonCell>
                     <connections>
                         <action selector="rateOnAppStore:" target="-1" id="EsH-b0-emg"/>
                     </connections>
                 </button>
             </subviews>
+            <point key="canvasLocation" x="-442" y="129.5"/>
         </customView>
     </objects>
+    <resources>
+        <image name="NSFollowLinkFreestandingTemplate" width="14" height="14"/>
+    </resources>
 </document>
