@@ -13,6 +13,20 @@
 #import "PrefsInfoViewController.h"
 #import "GNPreferences.h"
 
+@interface GNToolbarFlexibleModule : NSObject
+
+@property (copy, readonly) NSString *identifier;
+
+@end
+
+@implementation GNToolbarFlexibleModule
+
+- (NSString *)identifier {
+    return NSToolbarFlexibleSpaceItemIdentifier;
+}
+
+@end
+
 @interface GNPreferencesController () <NSToolbarDelegate, NSWindowDelegate>
 
 @property (strong) id eventMonitor;
@@ -31,6 +45,7 @@
         controller.modules = @[
             [[PrefsAccountsViewController alloc] init],
             [[PrefsSettingsViewController alloc] init],
+            [[GNToolbarFlexibleModule alloc] init],
             [[PrefsInfoViewController alloc] init]
         ];
     });
