@@ -92,7 +92,7 @@
 }
 
 - (void)showFAQs:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://assets.ashchan.com/gmailnotifr/faq.html"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://ashchan.com/projects/gmail-notifr#faqs"]];
 }
 
 - (void)showFeedback:(id)sender {
