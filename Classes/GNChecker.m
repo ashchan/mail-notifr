@@ -235,6 +235,10 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
 
         // return first 10 messages
         NSArray *messageNodes = [feed nodesForXPath:@"/feed/entry" error:nil];
+        if (_messageCount != messageNodes.count) {
+            _messageCount = messageNodes.count;
+        }
+
         for (NSUInteger i = 0; i < MIN(_messageCount, 10); i++) {
             NSXMLElement *messageElement = messageNodes[i];
             NSString *link = [[[messageElement elementsForName:@"link"][0] attributeForName:@"href"] stringValue];
