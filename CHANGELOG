@@ -1,3 +1,6 @@
+h3 1.3.4 (Mar 15, 2015)
+* Fix a bug that shows the wrong unread count
+
 h3 1.3.3 (Mar 9, 2015)
 * Fix a crash when messages from feed have different count from the value declared by feed
 
