@@ -8,8 +8,7 @@
 
 #import "PrefsSettingsViewController.h"
 #import "GNPreferences.h"
-#import <MASShortcutView.h>
-#import <MASShortcutView+UserDefaults.h>
+#import <MASShortcut/Shortcut.h>
 
 NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut";
 

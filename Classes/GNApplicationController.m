@@ -6,8 +6,7 @@
 //  Copyright (c) 2013 ashchan.com. All rights reserved.
 //
 
-#import <MASShortcut.h>
-#import <MASShortcut+UserDefaults.h>
+#import <MASShortcut/Shortcut.h>
 #import "GNApplicationController.h"
 #import "GNPreferences.h"
 #import "GNAccount.h"
@@ -57,7 +56,7 @@
 
     [self setupCheckers];
 
-    [MASShortcut registerGlobalShortcutWithUserDefaultsKey:GNDefaultsKeyCheckAllShortcut handler:^{
+    [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:GNDefaultsKeyCheckAllShortcut toAction:^{
         [self checkAll:nil];
     }];
 }
