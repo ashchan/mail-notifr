@@ -71,7 +71,7 @@ NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut"
 }
 
 - (IBAction)onUseSeparateUnreadCountsClick:(id)sender {
-    [GNPreferences sharedInstance].useSeparateUnreadCounts = self.useColorIconCheckBox.state == NSOnState;
+    [GNPreferences sharedInstance].useSeparateUnreadCounts = self.useSeparateUnreadCountsCheckBox.state == NSOnState;
 }
 
 @end
