@@ -399,7 +399,12 @@
         }
 
         [self.statusItem setToolTip:[NSString stringWithFormat:toolTipFormat, messageCount]];
-        self.statusItem.image = [NSImage imageNamed:@"HaveMailsTemplate"];
+
+        if ([[GNPreferences sharedInstance] useColorIcon]) {
+            self.statusItem.image = [NSImage imageNamed:@"HaveMails-red"];
+        } else {
+            self.statusItem.image = [NSImage imageNamed:@"HaveMailsTemplate"];
+        }
     } else {
         [self.statusItem setToolTip:@""];
         self.statusItem.image = [NSImage imageNamed:@"NoMailsTemplate"];

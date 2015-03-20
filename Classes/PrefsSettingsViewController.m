@@ -16,6 +16,7 @@ NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut"
 
 @property (weak) IBOutlet NSButton *autoLaunchCheckBox;
 @property (weak) IBOutlet NSButton *showUnreadCountCheckBox;
+@property (weak) IBOutlet NSButton *useColorIconCheckBox;
 @property (weak) IBOutlet MASShortcutView *checkAllShortcutView;
 @property (weak) IBOutlet NSTextField *shortcutsLabel;
 @property (weak) IBOutlet NSTextField *shortcutCheckAllLabel;
@@ -60,6 +61,10 @@ NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut"
 
 - (IBAction)saveShowUnreadCount:(id)sender {
     [GNPreferences sharedInstance].showUnreadCount = self.showUnreadCountCheckBox.state == NSOnState;
+}
+
+- (IBAction)onUseColorIconClick:(id)sender {
+    [GNPreferences sharedInstance].useColorIcon = self.useColorIconCheckBox.state == NSOnState;
 }
 
 @end
