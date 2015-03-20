@@ -24,6 +24,7 @@ NSString *const GNAccountsReorderedNotification         = @"GNAccountsReorderedN
 static NSString *const kDefaultsKeyAccounts                     = @"Accounts";
 static NSString *const kDefaultsKeyShowUnreadCount              = @"ShowUnreadCount";
 static NSString *const kDefaultsKeyUseColorIcon                 = @"UseColorIcon";
+static NSString *const kDefaultsKeyUseSeparateCounts            = @"UseSeparateCounts";
 static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAfterInboxInterval";
 
 // a simple wrapper for preferences values
@@ -55,8 +56,8 @@ static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAft
         _startAtLoginController = [[StartAtLoginController alloc] initWithIdentifier:@"com.ashchan.GmailNotifrHelper"];
 
         self.showUnreadCount = [[NSUserDefaults standardUserDefaults] boolForKey:kDefaultsKeyShowUnreadCount];
-        // NOTE: I think this is unnecessary as getter will always load from user defaults
-        //self.useColorIcon = [[NSUserDefaults standardUserDefaults] boolForKey:kDefaultsKeyUseColorIcon];
+        self.useColorIcon = [[NSUserDefaults standardUserDefaults] boolForKey:kDefaultsKeyUseColorIcon];
+        self.useSeparateUnreadCounts = [[NSUserDefaults standardUserDefaults] boolForKey:kDefaultsKeyUseSeparateCounts];
 
         // This is a hidden setting which can only be set from the Terminal or similar:
         //     defaults write com.ashchan.GmailNotifr AutoCheckAfterInboxInterval -float 30.0
@@ -102,6 +103,17 @@ static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAft
 
 - (void)setUseColorIcon:(BOOL)useColorIcon {
     [[NSUserDefaults standardUserDefaults] setBool:useColorIcon forKey:kDefaultsKeyUseColorIcon];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    // this notification should work here as well
+    [[NSNotificationCenter defaultCenter] postNotificationName:GNShowUnreadCountChangedNotification object:self];
+}
+
+- (BOOL)useSeparateUnreadCounts {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kDefaultsKeyUseSeparateCounts];
+}
+
+- (void)setUseSeparateUnreadCounts:(BOOL)useSeparateUnreadCounts {
+    [[NSUserDefaults standardUserDefaults] setBool:useSeparateUnreadCounts forKey:kDefaultsKeyUseSeparateCounts];
     [[NSUserDefaults standardUserDefaults] synchronize];
     // this notification should work here as well
     [[NSNotificationCenter defaultCenter] postNotificationName:GNShowUnreadCountChangedNotification object:self];
