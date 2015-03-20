@@ -300,15 +300,6 @@
     return nil;
 }
 
-- (NSUInteger)messageCount {
-    NSUInteger count = 0;
-    for (GNChecker *checker in _checkers) {
-        count += [checker messageCount];
-    }
-
-    return count;
-}
-
 - (void)openInboxForAccountName:(NSString *)name browser:(NSString *)browser {
     NSString *browserIdentier = browser ? browser : GNBrowserDefaultIdentifier;
     [self openURL:[NSURL URLWithString:[GNAccount baseUrlForUsername:name]] withBrowserIdentifier:browserIdentier];
@@ -376,30 +367,45 @@
 }
 
 - (void)updateMenuBarCount:(NSNotification *)notification {
-    NSUInteger messageCount = [self messageCount];
+    NSMutableString *menuText = [NSMutableString new];
+    NSMutableString *tooltipText = [NSMutableString new];
+    NSUInteger messageCount = 0;
+    BOOL useSeparateUnreadCounts = [GNPreferences sharedInstance].useSeparateUnreadCounts;
+    for (GNChecker *checker in _checkers) {
+        // show separate unread mail counts for each account (ie: "0:2")
+        if (useSeparateUnreadCounts) {
+            if ([menuText length] > 0) {
+                [menuText appendString:@":"];
+            }
+            [menuText appendFormat:@"%d", (int)[checker messageCount]];
+        }
+        // show separate unread mail count in tooltips
+        if ([tooltipText length] > 0) {
+            [tooltipText appendString:@"\n"];
+        }
+        [tooltipText appendFormat:@"%@ (%d)", [checker.account username], (int)[checker messageCount]];
+
+        messageCount += [checker messageCount];
+    }
+
+    if (!useSeparateUnreadCounts) {
+        [menuText appendFormat:@"%d", (int)messageCount];
+    }
 
     if (messageCount > 0 && [GNPreferences sharedInstance].showUnreadCount) {
-        [_statusItem setTitle:[NSString stringWithFormat:@"%lu", messageCount]];
+        [_statusItem setTitle:menuText];
     } else {                                  
         [_statusItem setTitle:@""];
     }
 
     if (messageCount > 0) {
-        NSString *toolTipFormat = messageCount == 1 ? NSLocalizedString(@"Unread Message", nil) : NSLocalizedString(@"Unread Messages", nil);
-#warning This is duplication. See GNChecker#processResult
-        if ([[[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode] isEqualToString:@"ru"]) {
-            NSUInteger count = messageCount % 100;
-            if ((count % 10 > 4) || (count % 10 == 0) || ((count > 10) && (count < 15))) {
-                toolTipFormat = NSLocalizedString(@"Unread Messages", nil);
-            } else if (count % 10 == 1) {
-                toolTipFormat = NSLocalizedString(@"Unread Message", nil);
-            } else {
-                toolTipFormat = NSLocalizedString(@"Unread Messages 2", nil);
-            }
-        }
+        [self.statusItem setToolTip:tooltipText];
 
-        [self.statusItem setToolTip:[NSString stringWithFormat:toolTipFormat, messageCount]];
-        self.statusItem.image = [NSImage imageNamed:@"HaveMailsTemplate"];
+        if ([GNPreferences sharedInstance].useColorIcon) {
+            self.statusItem.image = [NSImage imageNamed:@"HaveMails-red"];
+        } else {
+            self.statusItem.image = [NSImage imageNamed:@"HaveMailsTemplate"];
+        }
     } else {
         [self.statusItem setToolTip:@""];
         self.statusItem.image = [NSImage imageNamed:@"NoMailsTemplate"];

@@ -13,6 +13,8 @@
 @property (retain, readonly) NSMutableArray *accounts;
 @property (assign) BOOL autoLaunch;
 @property (assign) BOOL showUnreadCount;
+@property (assign) BOOL useColorIcon;
+@property (assign) BOOL useSeparateUnreadCounts;
 @property (assign) NSTimeInterval autoCheckAfterInboxInterval;
 @property (assign, readonly) BOOL allAccountsDisabled;
 

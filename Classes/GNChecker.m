@@ -15,7 +15,6 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
 
 @interface GNChecker () <NSURLConnectionDataDelegate>
 
-@property (strong) GNAccount *account;
 @property (assign) BOOL isChecking;
 
 @end

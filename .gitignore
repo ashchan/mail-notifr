@@ -16,3 +16,5 @@ profile
 *.moved-aside
 Pods
 *.xccheckout
+*.lock
+.DS_Store

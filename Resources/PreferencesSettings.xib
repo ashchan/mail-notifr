@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D43" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1050" defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <deployment version="1050" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PrefsSettingsViewController">
@@ -12,17 +12,19 @@
                 <outlet property="shortcutCheckAllLabel" destination="qt0-V8-TmG" id="qLf-UY-1B6"/>
                 <outlet property="shortcutsLabel" destination="Tvj-op-bwS" id="FBJ-2C-HrL"/>
                 <outlet property="showUnreadCountCheckBox" destination="19" id="37"/>
+                <outlet property="useColorIconCheckBox" destination="hzt-R9-wS9" id="LDK-5P-zpR"/>
+                <outlet property="useSeparateUnreadCountsCheckBox" destination="emr-8J-mqT" id="cqZ-1H-fLJ"/>
                 <outlet property="view" destination="1" id="11"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="1" userLabel="Settings" propertyAccessControl="none">
-            <rect key="frame" x="0.0" y="0.0" width="450" height="143"/>
+            <rect key="frame" x="0.0" y="1" width="450" height="182"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button id="19">
-                    <rect key="frame" x="18" y="87" width="414" height="18"/>
+                    <rect key="frame" x="18" y="126" width="414" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show unread count in menu bar" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="20">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -32,8 +34,30 @@
                         <action selector="saveShowUnreadCount:" target="-2" id="29"/>
                     </connections>
                 </button>
+                <button id="hzt-R9-wS9">
+                    <rect key="frame" x="18" y="106" width="414" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Use red icon for new mail" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="YpP-bh-XZ1">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onUseColorIconClick:" target="-2" id="M99-X8-QVQ"/>
+                    </connections>
+                </button>
+                <button id="emr-8J-mqT">
+                    <rect key="frame" x="18" y="86" width="414" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show separate unread counts" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ccT-k3-b6P">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onUseSeparateUnreadCountsClick:" target="-2" id="fPC-yk-jXp"/>
+                    </connections>
+                </button>
                 <button id="18">
-                    <rect key="frame" x="18" y="107" width="414" height="18"/>
+                    <rect key="frame" x="18" y="146" width="414" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Launch at login" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="21">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -44,15 +68,15 @@
                     </connections>
                 </button>
                 <customView id="Hg6-aq-Wnm" customClass="KASeparatorLine">
-                    <rect key="frame" x="20" y="76" width="410" height="2"/>
+                    <rect key="frame" x="20" y="80" width="410" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <customView id="ZhU-R6-DDG" customClass="MASShortcutView">
-                    <rect key="frame" x="232" y="25" width="110" height="19"/>
+                    <rect key="frame" x="232" y="29" width="110" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Tvj-op-bwS">
-                    <rect key="frame" x="18" y="52" width="230" height="17"/>
+                    <rect key="frame" x="18" y="56" width="230" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hot Keys" id="kns-Nu-9Tv">
                         <font key="font" metaFont="systemBold"/>
@@ -61,7 +85,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qt0-V8-TmG">
-                    <rect key="frame" x="18" y="27" width="203" height="17"/>
+                    <rect key="frame" x="18" y="31" width="203" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Check All:" id="a1N-Ue-VLI">
                         <font key="font" metaFont="system"/>
@@ -70,6 +94,7 @@
                     </textFieldCell>
                 </textField>
             </subviews>
+            <point key="canvasLocation" x="274" y="414"/>
         </customView>
     </objects>
 </document>

@@ -17,6 +17,8 @@ extern NSString *const GNAccountMenuUpdateNotification;
 
 @property (nonatomic, copy) NSString *lastCheckedAt;
 
+@property (strong) GNAccount *account;
+
 - (id)initWithAccount:(GNAccount *)account;
 - (BOOL)isForAccount:(GNAccount *)account;
 - (BOOL)isForGuid:(NSString *)guid;
