@@ -102,7 +102,8 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
     if ([authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
         [[challenge sender] useCredential:[NSURLCredential credentialForTrust:[protectionSpace serverTrust]]
                forAuthenticationChallenge:challenge];
-    } else if ([authenticationMethod isEqualToString:NSURLAuthenticationMethodDefault]) {
+    } else if ([authenticationMethod isEqualToString:NSURLAuthenticationMethodHTTPBasic]) {
+        // FIX 2015-07-11: on 10.11 Beta 3, NSURLAuthenticationMethodDefault not quivalent to NSURLAuthenticationMethodHTTPBasic?
         if ([challenge previousFailureCount] > 0) {
             [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
         } else {
