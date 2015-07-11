@@ -266,7 +266,7 @@
 				INFOPLIST_FILE = "GmailNotifrHelper/GmailNotifrHelper-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9fb65920-a1cf-494e-bc66-1ea476b5c2f2";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
