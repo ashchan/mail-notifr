@@ -1,24 +1,20 @@
 PODS:
-  - MASShortcut (2.4.0)
   - SSKeychain (1.2.0)
   - StartAtLoginController (0.0.1)
 
 DEPENDENCIES:
-  - MASShortcut (~> 2.4.0)
   - SSKeychain (~> 1.2.0)
   - StartAtLoginController
 
 SPEC REPOS:
   trunk:
-    - MASShortcut
     - SSKeychain
     - StartAtLoginController
 
 SPEC CHECKSUMS:
-  MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
   SSKeychain: f8f2bd6ff794090d0c403f70eb7289d23985d353
   StartAtLoginController: 9ff14295bab38f7cba164a838349f6c0a2d83020
 
-PODFILE CHECKSUM: 5770a3754ac054e2ac94ee002e224a7a4beab6fd
+PODFILE CHECKSUM: eb1fdbb074e67f947f0c308bcf4699b29b21b1b9
 
 COCOAPODS: 1.10.1

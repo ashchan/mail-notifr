@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,7 @@
 		1AB7FF0116B57D280040BBCE /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0016B57D280040BBCE /* Credits.html */; };
 		1AB7FF0616B57D510040BBCE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0216B57D510040BBCE /* InfoPlist.strings */; };
 		1AB7FF0716B57D510040BBCE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0416B57D510040BBCE /* Localizable.strings */; };
+		1AC74A39267399E3003F98E7 /* MASShortcut in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC74A38267399E3003F98E7 /* MASShortcut */; };
 		1ACD6FF01897FE3C00103E15 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACD6FEF1897FE3C00103E15 /* Images.xcassets */; };
 		1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */; };
 		1AFB7F4E189FC4B100B82441 /* GmailNotifrHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AFB7F41189FBDA100B82441 /* GmailNotifrHelper.app */; };
@@ -127,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AC74A39267399E3003F98E7 /* MASShortcut in Frameworks */,
 				1AFCE88218D404E500487B98 /* Carbon.framework in Frameworks */,
 				1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */,
 				1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */,
@@ -283,13 +285,15 @@
 				1AB7FD7A16B578740040BBCE /* Resources */,
 				1A8F667416B5836700396E44 /* CopyFiles */,
 				1AE35A75189FF6A00000D6E3 /* ShellScript */,
-				AF837EFD9FEEE30530568C6C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Mail Notifr";
+			packageProductDependencies = (
+				1AC74A38267399E3003F98E7 /* MASShortcut */,
+			);
 			productName = "Gmail Notifr";
 			productReference = 1AB7FD7C16B578740040BBCE /* Mail Notifr.app */;
 			productType = "com.apple.product-type.application";
@@ -338,6 +342,9 @@
 				zh_CN,
 			);
 			mainGroup = 1AB7FD7116B578740040BBCE;
+			packageReferences = (
+				1AC74A37267399E3003F98E7 /* XCRemoteSwiftPackageReference "MASShortcut" */,
+			);
 			productRefGroup = 1AB7FD7D16B578740040BBCE /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -395,24 +402,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "rm -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/Contents/Library/LoginItems/GmailNotifrHelper.app/Contents/embedded.provisionprofile\"";
-		};
-		AF837EFD9FEEE30530568C6C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Mail Notifr/Pods-Mail Notifr-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/MASShortcut/MASShortcut.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MASShortcut.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mail Notifr/Pods-Mail Notifr-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		DA91DFAA506743A3F82B9C7E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -672,6 +661,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1AC74A37267399E3003F98E7 /* XCRemoteSwiftPackageReference "MASShortcut" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sweetppro/MASShortcut";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1AC74A38267399E3003F98E7 /* MASShortcut */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AC74A37267399E3003F98E7 /* XCRemoteSwiftPackageReference "MASShortcut" */;
+			productName = MASShortcut;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1AB7FD7316B578740040BBCE /* Project object */;
 }

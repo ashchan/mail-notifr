@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MASShortcut
 
 @main
 class GNApplicationController: NSObject, NSApplicationDelegate {

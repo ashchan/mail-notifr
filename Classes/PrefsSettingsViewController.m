@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 ashchan.com. All rights reserved.
 //
 
+#import <Shortcut.h>
 #import "PrefsSettingsViewController.h"
 #import "GNPreferences.h"
-#import <MASShortcut/Shortcut.h>
 
 NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut";
 
