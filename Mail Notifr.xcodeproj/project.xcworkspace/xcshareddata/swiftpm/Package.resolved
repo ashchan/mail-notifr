@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess",
+        "state": {
+          "branch": null,
+          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
+          "version": "4.2.2"
+        }
+      },
+      {
+        "package": "LaunchAtLogin",
+        "repositoryURL": "https://github.com/sindresorhus/LaunchAtLogin",
+        "state": {
+          "branch": null,
+          "revision": "6b16bcdf7d45a9d76a768a5c4912dde925cf0e95",
+          "version": "4.1.0"
+        }
+      },
+      {
+        "package": "MASShortcut",
+        "repositoryURL": "https://github.com/sweetppro/MASShortcut",
+        "state": {
+          "branch": "master",
+          "revision": "7d4c78f3282197c328c1c0dba6cea4baa7688302",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

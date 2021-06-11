@@ -38,7 +38,7 @@ static const NSInteger kAboveMessagesMenuItemTag     = 10003;
     return self.account.guid;
 }
 
-- (void)attachAtIndex:(NSInteger *)index actionTarget:(id)target {
+- (void)attachAtIndex:(NSInteger)index actionTarget:(id)target {
     NSMenuItem *openInboxItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Open Inbox", nil) action:@selector(openInbox:) keyEquivalent:@""];
     [openInboxItem setRepresentedObject:self.guid];
     [openInboxItem setTarget:target];

@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 ashchan.com. All rights reserved.
 //
 
+#import <Shortcut.h>
 #import "PrefsSettingsViewController.h"
 #import "GNPreferences.h"
-#import <MASShortcut/Shortcut.h>
+#import "Mail_Notifr-Swift.h"
 
 NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut";
 
@@ -46,7 +47,7 @@ NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut"
 - (void)loadView {
     [super loadView];
     [self.autoLaunchCheckBox setTitle:NSLocalizedString(@"Launch at login", nil)];
-    [self.autoLaunchCheckBox setState:[GNPreferences sharedInstance].autoLaunch ? NSOnState : NSOffState];
+    [self.autoLaunchCheckBox setState:[GNPreferences sharedInstance].launchAtLogin ? NSOnState : NSOffState];
     [self.showUnreadCountCheckBox setTitle:NSLocalizedString(@"Show unread count in menu bar", nil)];
     [self.showUnreadCountCheckBox setState:[GNPreferences sharedInstance].showUnreadCount ? NSOnState : NSOffState];
     self.shortcutsLabel.stringValue = NSLocalizedString(@"shortcuts.label", nil);
@@ -55,7 +56,7 @@ NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut"
 }
 
 - (IBAction)saveAutoLaunch:(id)sender {
-    [GNPreferences sharedInstance].autoLaunch = self.autoLaunchCheckBox.state == NSOnState;
+    [GNPreferences sharedInstance].launchAtLogin = self.autoLaunchCheckBox.state == NSOnState;
 }
 
 - (IBAction)saveShowUnreadCount:(id)sender {
