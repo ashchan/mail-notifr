@@ -45,7 +45,6 @@
 		1AFB7F49189FC04700B82441 /* StartAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFB7F48189FC04700B82441 /* StartAtLoginController.m */; };
 		1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */; };
 		1AFB7F4E189FC4B100B82441 /* GmailNotifrHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AFB7F41189FBDA100B82441 /* GmailNotifrHelper.app */; };
-		57FAFF128FD0443D9B7C2B68 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4323DEE8514AE59A4FA9C9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,9 +138,7 @@
 		1AFB7F47189FC04700B82441 /* StartAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginController.h; path = Libs/StartAtLoginController/StartAtLoginController.h; sourceTree = "<group>"; };
 		1AFB7F48189FC04700B82441 /* StartAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginController.m; path = Libs/StartAtLoginController/StartAtLoginController.m; sourceTree = "<group>"; };
 		1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		305081CBF585414684382940 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		61DA8B2817129CA800B37FE0 /* ko */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ko; path = Resources/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CB4323DEE8514AE59A4FA9C9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +149,6 @@
 				1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */,
 				1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */,
 				1AB7FD8116B578740040BBCE /* Cocoa.framework in Frameworks */,
-				57FAFF128FD0443D9B7C2B68 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +193,6 @@
 				1AB7FE3616B57B4E0040BBCE /* Security.framework */,
 				1AB7FD8016B578740040BBCE /* Cocoa.framework */,
 				1AB7FD8216B578740040BBCE /* Other Frameworks */,
-				CB4323DEE8514AE59A4FA9C9 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -219,7 +214,6 @@
 				1AB7FDA116B57A270040BBCE /* GmailNotifr_Prefix.pch */,
 				1AB7FDA316B57A270040BBCE /* Info.plist */,
 				1ACD6FEE1897F56300103E15 /* Gmail Notifr.entitlements */,
-				305081CBF585414684382940 /* Pods.xcconfig */,
 			);
 			name = "Supporting Files";
 			path = "Gmail Notifr";
@@ -335,12 +329,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AB7FD9A16B578740040BBCE /* Build configuration list for PBXNativeTarget "Gmail Notifr" */;
 			buildPhases = (
-				3FD9F5F8CDFE4E0B85D996B1 /* Check Pods Manifest.lock */,
 				1AB7FD7816B578740040BBCE /* Sources */,
 				1AB7FD7916B578740040BBCE /* Frameworks */,
 				1AB7FD7A16B578740040BBCE /* Resources */,
 				1A8F667416B5836700396E44 /* CopyFiles */,
-				02DC7EDF0107491FB89FF76A /* Copy Pods Resources */,
 				1AE35A75189FF6A00000D6E3 /* ShellScript */,
 			);
 			buildRules = (
@@ -451,21 +443,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02DC7EDF0107491FB89FF76A /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1AE35A75189FF6A00000D6E3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -478,21 +455,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "rm -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/Contents/Library/LoginItems/GmailNotifrHelper.app/Contents/embedded.provisionprofile\"";
-		};
-		3FD9F5F8CDFE4E0B85D996B1 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
