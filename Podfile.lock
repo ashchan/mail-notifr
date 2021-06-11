@@ -1,20 +1,16 @@
 PODS:
-  - SSKeychain (1.2.0)
   - StartAtLoginController (0.0.1)
 
 DEPENDENCIES:
-  - SSKeychain (~> 1.2.0)
   - StartAtLoginController
 
 SPEC REPOS:
   trunk:
-    - SSKeychain
     - StartAtLoginController
 
 SPEC CHECKSUMS:
-  SSKeychain: f8f2bd6ff794090d0c403f70eb7289d23985d353
   StartAtLoginController: 9ff14295bab38f7cba164a838349f6c0a2d83020
 
-PODFILE CHECKSUM: eb1fdbb074e67f947f0c308bcf4699b29b21b1b9
+PODFILE CHECKSUM: 35792af1b96386c5cd6d4fec87bea514e701f9a3
 
 COCOAPODS: 1.10.1

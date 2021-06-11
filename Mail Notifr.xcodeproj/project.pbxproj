@@ -31,6 +31,8 @@
 		1AB7FF0616B57D510040BBCE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0216B57D510040BBCE /* InfoPlist.strings */; };
 		1AB7FF0716B57D510040BBCE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0416B57D510040BBCE /* Localizable.strings */; };
 		1AC74A39267399E3003F98E7 /* MASShortcut in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC74A38267399E3003F98E7 /* MASShortcut */; };
+		1AC74A3C26739BD6003F98E7 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC74A3B26739BD6003F98E7 /* KeychainAccess */; };
+		1AC74A3E26739C39003F98E7 /* GNAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC74A3D26739C39003F98E7 /* GNAccount.swift */; };
 		1ACD6FF01897FE3C00103E15 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACD6FEF1897FE3C00103E15 /* Images.xcassets */; };
 		1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */; };
 		1AFB7F4E189FC4B100B82441 /* GmailNotifrHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AFB7F41189FBDA100B82441 /* GmailNotifrHelper.app */; };
@@ -112,6 +114,7 @@
 		1AB7FF5816B57DC40040BBCE /* nl */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nl; path = Resources/nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AB7FF5A16B57DE30040BBCE /* ru */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ru; path = Resources/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1ABE684F18E02A22008CB343 /* Polish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Polish; path = Resources/Polish.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AC74A3D26739C39003F98E7 /* GNAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNAccount.swift; sourceTree = "<group>"; };
 		1ACD6FEE1897F56300103E15 /* Gmail Notifr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Gmail Notifr.entitlements"; sourceTree = SOURCE_ROOT; };
 		1ACD6FEF1897FE3C00103E15 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Gmail Notifr/Images.xcassets"; sourceTree = "<group>"; };
 		1AFB7F3B189FBDA100B82441 /* GmailNotifrHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GmailNotifrHelper.xcodeproj; path = GmailNotifrHelper/GmailNotifrHelper.xcodeproj; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 			files = (
 				1AC74A39267399E3003F98E7 /* MASShortcut in Frameworks */,
 				1AFCE88218D404E500487B98 /* Carbon.framework in Frameworks */,
+				1AC74A3C26739BD6003F98E7 /* KeychainAccess in Frameworks */,
 				1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */,
 				1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */,
 				1757B396ED4B31E23C726ED1 /* libPods-Mail Notifr.a in Frameworks */,
@@ -232,6 +236,7 @@
 			children = (
 				1AB7FE4E16B57BAD0040BBCE /* GNAccount.h */,
 				1AB7FE4F16B57BAD0040BBCE /* GNAccount.m */,
+				1AC74A3D26739C39003F98E7 /* GNAccount.swift */,
 				1AB7FE5016B57BAD0040BBCE /* GNBrowser.h */,
 				1AB7FE5116B57BAD0040BBCE /* GNBrowser.m */,
 				1AB7FE5216B57BAD0040BBCE /* GNChecker.h */,
@@ -293,6 +298,7 @@
 			name = "Mail Notifr";
 			packageProductDependencies = (
 				1AC74A38267399E3003F98E7 /* MASShortcut */,
+				1AC74A3B26739BD6003F98E7 /* KeychainAccess */,
 			);
 			productName = "Gmail Notifr";
 			productReference = 1AB7FD7C16B578740040BBCE /* Mail Notifr.app */;
@@ -344,6 +350,7 @@
 			mainGroup = 1AB7FD7116B578740040BBCE;
 			packageReferences = (
 				1AC74A37267399E3003F98E7 /* XCRemoteSwiftPackageReference "MASShortcut" */,
+				1AC74A3A26739BD6003F98E7 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 1AB7FD7D16B578740040BBCE /* Products */;
 			projectDirPath = "";
@@ -434,6 +441,7 @@
 			files = (
 				1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */,
 				1AB7FE4916B57B9C0040BBCE /* GNAccountDetailController.m in Sources */,
+				1AC74A3E26739C39003F98E7 /* GNAccount.swift in Sources */,
 				1AB7FE4B16B57B9C0040BBCE /* GNPreferencesController.m in Sources */,
 				1AB7FE4C16B57B9C0040BBCE /* PrefsAccountsViewController.m in Sources */,
 				1AB7FE4D16B57B9C0040BBCE /* PrefsSettingsViewController.m in Sources */,
@@ -671,6 +679,14 @@
 				kind = branch;
 			};
 		};
+		1AC74A3A26739BD6003F98E7 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -678,6 +694,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1AC74A37267399E3003F98E7 /* XCRemoteSwiftPackageReference "MASShortcut" */;
 			productName = MASShortcut;
+		};
+		1AC74A3B26739BD6003F98E7 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AC74A3A26739BD6003F98E7 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -9,10 +9,10 @@
 // a normal gmail account, or a google hosted email account
 
 #import "GNAccount.h"
-#import <SSKeychain.h>
 #import "GNSound.h"
 #import "GNBrowser.h"
 #import "GNPreferences.h"
+#import "Mail_Notifr-Swift.h"
 
 @implementation GNAccount
 
@@ -123,13 +123,6 @@ NSString *const GNAccountKeychainServiceName = @"GmailNotifr";
 }
 
 #pragma mark - Private Methods
-
-- (void)fetchPassword {
-    self.password = [SSKeychain passwordForService:GNAccountKeychainServiceName account:self.username];
-    if (!self.password) {
-        self.password = @"";
-    }
-}
 
 - (BOOL)isPersisted {
     return self.guid != nil;

@@ -6,10 +6,10 @@
 // Copyright (c) 2008 ashchan.com. All rights reserved.
 //
 
-#import "GNPreferences.h"
-#import <SSKeychain.h>
 #import <StartAtLoginController.h>
+#import "GNPreferences.h"
 #import "GNAccount.h"
+#import "Mail_Notifr-Swift.h"
 
 NSString *const PrefsToolbarItemAccounts                = @"prefsToolbarItemAccounts";
 NSString *const PrefsToolbarItemSettings                = @"prefsToolbarItemSettings";
@@ -101,7 +101,7 @@ static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAft
 
 - (void)removeAccount:(id)account {
     NSString *guid = [[account guid] copy];
-    [SSKeychain deletePasswordForService:GNAccountKeychainServiceName account:[account username]];
+    [GNAccount setPasswordWithAccount:account password:NULL];
     [_accounts removeObject:account];
     [self writeBack];
     [[NSNotificationCenter defaultCenter] postNotificationName:GNAccountRemovedNotification object:self userInfo:@{@"guid": guid}];
@@ -134,7 +134,7 @@ static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAft
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     for (id account in _accounts) {
-        [SSKeychain setPassword:[account password] forService:GNAccountKeychainServiceName account:[account username]];
+        [GNAccount setPasswordWithAccount:account password:[account password]];
     }
 }
 
