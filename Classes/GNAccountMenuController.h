@@ -17,7 +17,7 @@
 @property (assign) BOOL singleMode;
 
 - (instancetype)initWithStatusItem:(NSStatusItem *)statusItem GNAccount:(GNAccount *)account;
-- (void)attachAtIndex:(NSInteger *)index actionTarget:(id)target;
+- (void)attachAtIndex:(NSInteger)index actionTarget:(id)target;
 - (void)detach;
 - (void)updateWithChecker:(GNChecker *)checker;
 - (void)updateStatus;

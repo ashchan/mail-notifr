@@ -84,7 +84,6 @@
 		1AB7FE3F16B57B9C0040BBCE /* GNAccountDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNAccountDetailController.h; path = Classes/GNAccountDetailController.h; sourceTree = "<group>"; };
 		1AB7FE4016B57B9C0040BBCE /* GNAccountDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNAccountDetailController.m; path = Classes/GNAccountDetailController.m; sourceTree = "<group>"; };
 		1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GNApplicationController.swift; path = Classes/GNApplicationController.swift; sourceTree = "<group>"; };
-		1AB7FE4216B57B9C0040BBCE /* GNApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNApplicationController.m; path = Classes/GNApplicationController.m; sourceTree = "<group>"; };
 		1AB7FE4316B57B9C0040BBCE /* GNPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNPreferencesController.h; path = Classes/GNPreferencesController.h; sourceTree = "<group>"; };
 		1AB7FE4416B57B9C0040BBCE /* GNPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNPreferencesController.m; path = Classes/GNPreferencesController.m; sourceTree = "<group>"; };
 		1AB7FE4516B57B9C0040BBCE /* PrefsAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefsAccountsViewController.h; path = Classes/PrefsAccountsViewController.h; sourceTree = "<group>"; };
@@ -196,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */,
-				1AB7FE4216B57B9C0040BBCE /* GNApplicationController.m */,
 				1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */,
 				1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */,
 				1AB7FE4316B57B9C0040BBCE /* GNPreferencesController.h */,
