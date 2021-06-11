@@ -117,24 +117,22 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
     }
 
     @objc func accountAdded(_ notification: NSNotification) {
-        /* TODO
-        if ([_accountMenuControllers count] == 1) {
-            GNAccountMenuController *firstAccountMenuController = [_accountMenuControllers firstObject];
-            [firstAccountMenuController detach];
-            firstAccountMenuController.singleMode = NO;
-            [firstAccountMenuController attachAtIndex:0 actionTarget:self];
-            [[_checkers firstObject] reset];
+        if accountMenuControllers.count == 1 {
+            let firstAccountMenuController = accountMenuControllers[0]
+            firstAccountMenuController.detach()
+            firstAccountMenuController.singleMode = false
+            firstAccountMenuController.attach(at: 0, actionTarget: self)
+            checkers[0].reset()
         }
 
-        GNAccount *account = [self accountForGuid:[notification userInfo][@"guid"]];
-        [self createMenuForAccount:account atIndex:[[GNPreferences sharedInstance].accounts count] - 1];
+        let account = accountForGuid(guid: notification.userInfo!["guid"] as! String)!
+        createMenuForAccount(account: account, index: GNPreferences.sharedInstance().accounts.count - 1)
 
-        GNChecker *checker = [[GNChecker alloc] initWithAccount:account];
-        [_checkers addObject:checker];
-        [checker reset];
+        let checker = GNChecker(account: account)!
+        checkers.append(checker)
+        checker.reset()
 
-        [self updateMainMenu];
-         */
+        updateMainMenu()
     }
 
     @objc func accountChanged(_ notification: NSNotification) {
@@ -145,43 +143,45 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
     }
 
     @objc func accountRemoved(_ notification: NSNotification) {
-         /* TODO
-        GNAccountMenuController *menuController = [self menuControllerForGuid:[notification userInfo][@"guid"]];
-        [menuController detach];
-        [_accountMenuControllers removeObject:menuController];
-
-        GNChecker *checker = [self checkerForGuid:[notification userInfo][@"guid"]];
-        [checker cleanupAndQuit];
-        [_checkers removeObject:checker];
-
-        if ([_accountMenuControllers count] == 1) {
-            GNAccountMenuController *singleAccountMenuController = [_accountMenuControllers firstObject];
-            [singleAccountMenuController detach];
-            singleAccountMenuController.singleMode = YES;
-            [singleAccountMenuController attachAtIndex:0 actionTarget:self];
-            [self checkAll:nil];
-        } else {
-            [self updateMenuBarCount:notification];
+        let guid = notification.userInfo!["guid"] as! String
+        let menuController = menuController(for: guid)!
+        menuController.detach()
+        accountMenuControllers.removeAll { c in
+            c.guid == menuController.guid
+        }
+        let checker = checkerForGuid(guid: guid)
+        checker?.cleanupAndQuit()
+        checkers.removeAll { c in
+            c.is(forGuid: guid)
         }
 
-        [self updateMainMenu];*/
+        if accountMenuControllers.count == 1 {
+            let singleAccountMenuController = accountMenuControllers[0]
+            singleAccountMenuController.detach()
+            singleAccountMenuController.singleMode = true
+            singleAccountMenuController.attach(at: 0, actionTarget: self)
+            checkAll(nil)
+        } else {
+            updateMenuBarCount(notification)
+        }
+
+        updateMainMenu()
     }
 
     @objc func accountsReordered(_ notification: NSNotification) {
-          /* TODO
-        NSMutableDictionary *menuControllers = [[NSMutableDictionary alloc] init];
-        for (GNAccount *account in [GNPreferences sharedInstance].accounts) {
-            GNAccountMenuController *controller = [self menuControllerForGuid:account.guid];
-            [controller detach];
-            menuControllers[account.guid] = controller;
+        var menuControllers = [String: GNAccountMenuController]()
+        let accounts = GNPreferences.sharedInstance().accounts as! [GNAccount]
+        for account in accounts {
+            let controller = menuController(for: account.guid)!
+            controller.detach()
+            menuControllers[account.guid] = controller
         }
 
-        for (NSUInteger i = 0; i < [[GNPreferences sharedInstance].accounts count]; i++) {
-            GNAccount *account = [GNPreferences sharedInstance].accounts[i];
-            [menuControllers[account.guid] attachAtIndex:i actionTarget:self];
+        for (index, account) in accounts.enumerated() {
+            menuControllers[account.guid]?.attach(at: index, actionTarget: self)
         }
 
-        [self checkAll:nil];*/
+        checkAll(nil)
     }
 
     @objc func accountChecking(_ notification: NSNotification) {
@@ -209,24 +209,19 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
     }
 
     @objc func handleURL(event: NSAppleEventDescriptor, reply: NSAppleEventDescriptor) {
-        /*
-        if ([[GNPreferences sharedInstance].accounts count] > 0) {
-            GNAccount *account = [GNPreferences sharedInstance].accounts[0];
-            NSString *link = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
-            NSArray *urlComponents = [link componentsSeparatedByString:@"?"];
-            NSString *recipients = [urlComponents[0] stringByReplacingOccurrencesOfString:@"mailto:" withString:@""];
-            NSString *additionalParameters = @"";
-            if ([urlComponents count] > 1) {
+        if GNPreferences.sharedInstance().accounts.count > 0 {
+            let account = GNPreferences.sharedInstance().accounts[0] as! GNAccount
+            let link = event.paramDescriptor(forKeyword: keyDirectObject)!.stringValue!
+            let urlComponents = link.split(separator: "?")
+            let recipients = urlComponents[0].replacingOccurrences(of: "mailto:", with: "")
+            var additionalParameters = ""
+            if urlComponents.count > 1 {
                 // For some reason, Gmail does not interpret the query parameter "subject" correctly, and needs "su" instead.
-                additionalParameters = [[NSString stringWithFormat:@"&%@",
-                                         urlComponents[1]] stringByReplacingOccurrencesOfString:@"subject=" withString:@"su="];
+                additionalParameters = String(format: "&%@", String(urlComponents[1])).replacingOccurrences(of: "subject=", with: "su=")
             }
-            NSString *url = [NSString stringWithFormat:@"%@?view=cm&tf=0&fs=1&to=%@%@",
-                             [account baseUrl],
-                             recipients,
-                             additionalParameters];
-            [self openURL:[NSURL URLWithString:url] withBrowserIdentifier:account.browser];
-        }*/
+            let url = "\(account.baseUrl()!)?view=cm&tf=0&fs=1&to=\(recipients)\(additionalParameters)"
+            openURL(url: URL(string: url)!, browserIdentifier: account.browser)
+        }
     }
 
     func setupMenu() {
@@ -334,36 +329,34 @@ extension GNApplicationController {
     }
 
     @objc func updateMenuBarCount(_ notification: NSNotification) {
-        /* TODO
-        NSUInteger messageCount = [self messageCount];
+        let messageCount = messageCount()
 
-        if (messageCount > 0 && [GNPreferences sharedInstance].showUnreadCount) {
-            [_statusItem setTitle:[NSString stringWithFormat:@"%lu", messageCount]];
+        if messageCount > 0 && GNPreferences.sharedInstance().showUnreadCount {
+            statusItem.title = "\(messageCount)"
         } else {
-            [_statusItem setTitle:@""];
+            statusItem.title = ""
         }
 
-        if (messageCount > 0) {
-            NSString *toolTipFormat = messageCount == 1 ? NSLocalizedString(@"Unread Message", nil) : NSLocalizedString(@"Unread Messages", nil);
-#warning This is duplication. See GNChecker#processResult
-            if ([[[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode] isEqualToString:@"ru"]) {
-                NSUInteger count = messageCount % 100;
-                if ((count % 10 > 4) || (count % 10 == 0) || ((count > 10) && (count < 15))) {
-                    toolTipFormat = NSLocalizedString(@"Unread Messages", nil);
-                } else if (count % 10 == 1) {
-                    toolTipFormat = NSLocalizedString(@"Unread Message", nil);
+        if messageCount > 0 {
+            var toolTipFormat = messageCount == 1 ? NSLocalizedString("Unread Message", comment: "") : NSLocalizedString("Unread Messages", comment: "")
+#warning ("This is duplication. See GNChecker#processResult")
+            if NSLocale.current.languageCode == "ru" {
+                let count = messageCount % 100
+                if (count % 10 > 4) || (count % 10 == 0) || (count > 10 && count < 15) {
+                    toolTipFormat = NSLocalizedString("Unread Messages", comment: "")
+                } else if count % 10 == 1 {
+                    toolTipFormat = NSLocalizedString("Unread Message", comment: "")
                 } else {
-                    toolTipFormat = NSLocalizedString(@"Unread Messages 2", nil);
+                    toolTipFormat = NSLocalizedString("Unread Messages 2", comment: "")
                 }
             }
 
-            [self.statusItem setToolTip:[NSString stringWithFormat:toolTipFormat, messageCount]];
-            self.statusItem.image = [NSImage imageNamed:@"HaveMailsTemplate"];
+            statusItem.toolTip = String(format: toolTipFormat, messageCount)
+            statusItem.image = NSImage(named: "HaveMailsTemplate")
         } else {
-            [self.statusItem setToolTip:@""];
-            self.statusItem.image = [NSImage imageNamed:@"NoMailsTemplate"];
+            statusItem.toolTip = ""
+            statusItem.image = NSImage(named: "NoMailsTemplate")
         }
-         */
     }
 
     func menuController(for guid: String) -> GNAccountMenuController? {
