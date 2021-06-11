@@ -55,7 +55,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        NSWindow *prefsWindow = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 550, 260) styleMask:NSTitledWindowMask | NSClosableWindowMask backing:NSBackingStoreBuffered defer:YES];
+        NSWindow *prefsWindow = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 550, 260) styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable backing:NSBackingStoreBuffered defer:YES];
         [prefsWindow setShowsToolbarButton:NO];
         prefsWindow.delegate = self;
         self.window = prefsWindow;
@@ -67,10 +67,10 @@
 
 - (void)showWindow:(id)sender {
     if (!self.eventMonitor) {
-        self.eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:^NSEvent *(NSEvent *event) {
-            NSUInteger flags = [event modifierFlags] & NSDeviceIndependentModifierFlagsMask;
+        self.eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskKeyDown handler:^NSEvent *(NSEvent *event) {
+            NSUInteger flags = [event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask;
             NSString *key = [event charactersIgnoringModifiers];
-            if (flags == NSCommandKeyMask && [key isEqualToString:@"w"] && [event.window isEqualTo:self.window]) {
+            if (flags == NSEventModifierFlagCommand && [key isEqualToString:@"w"] && [event.window isEqualTo:self.window]) {
                 [self.window performClose:nil];
                 return nil;
             }

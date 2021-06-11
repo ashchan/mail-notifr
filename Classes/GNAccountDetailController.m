@@ -65,8 +65,8 @@
     [self.soundList selectItemWithTitle:self.account.sound];
 
     [self.interval setStringValue:[NSString stringWithFormat:@"%ld", self.account.interval]];
-    [self.accountEnabled setState:self.account.enabled ? NSOnState : NSOffState];
-    [self.growl setState:self.account.growl ? NSOnState : NSOffState];
+    [self.accountEnabled setState:self.account.enabled ? NSControlStateValueOn : NSControlStateValueOff];
+    [self.growl setState:self.account.growl ? NSControlStateValueOn : NSControlStateValueOff];
     [self.username setStringValue:self.account.username];
     [self.password setStringValue:self.account.password];
 
@@ -96,8 +96,8 @@
 - (IBAction)save:(id)sender {
     self.account.sound      = [self.soundList titleOfSelectedItem];
     self.account.interval   = [self.interval integerValue];
-    self.account.enabled    = [self.accountEnabled state] == NSOnState;
-    self.account.growl      = [self.growl state] == NSOnState;
+    self.account.enabled    = [self.accountEnabled state] == NSControlStateValueOn;
+    self.account.growl      = [self.growl state] == NSControlStateValueOn;
     self.account.username   = [self.username stringValue];
     self.account.password   = [self.password stringValue];
     self.account.browser    = [GNBrowser getIdentifierByName:[self.browserList titleOfSelectedItem]];

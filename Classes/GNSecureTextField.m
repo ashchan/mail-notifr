@@ -11,9 +11,9 @@
 @implementation GNSecureTextField
 
 - (BOOL)performKeyEquivalent:(NSEvent *)event {
-    NSUInteger flags = [event modifierFlags] & NSDeviceIndependentModifierFlagsMask;
+    NSUInteger flags = [event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask;
     NSString *key = [event charactersIgnoringModifiers];
-    if (flags == NSCommandKeyMask && [key isEqualToString:@"v"]) {
+    if (flags == NSEventModifierFlagCommand && [key isEqualToString:@"v"]) {
         return [NSApp sendAction:@selector(paste:) to:[self.window firstResponder] from:self];
     }
 

@@ -47,20 +47,20 @@ NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut"
 - (void)loadView {
     [super loadView];
     [self.autoLaunchCheckBox setTitle:NSLocalizedString(@"Launch at login", nil)];
-    [self.autoLaunchCheckBox setState:[GNPreferences sharedInstance].launchAtLogin ? NSOnState : NSOffState];
+    [self.autoLaunchCheckBox setState:[GNPreferences sharedInstance].launchAtLogin ? NSControlStateValueOn : NSControlStateValueOff];
     [self.showUnreadCountCheckBox setTitle:NSLocalizedString(@"Show unread count in menu bar", nil)];
-    [self.showUnreadCountCheckBox setState:[GNPreferences sharedInstance].showUnreadCount ? NSOnState : NSOffState];
+    [self.showUnreadCountCheckBox setState:[GNPreferences sharedInstance].showUnreadCount ? NSControlStateValueOn : NSControlStateValueOff];
     self.shortcutsLabel.stringValue = NSLocalizedString(@"shortcuts.label", nil);
     self.shortcutCheckAllLabel.stringValue = NSLocalizedString(@"shortcuts.checkall.label", nil);
     self.checkAllShortcutView.associatedUserDefaultsKey = GNDefaultsKeyCheckAllShortcut;
 }
 
 - (IBAction)saveAutoLaunch:(id)sender {
-    [GNPreferences sharedInstance].launchAtLogin = self.autoLaunchCheckBox.state == NSOnState;
+    [GNPreferences sharedInstance].launchAtLogin = self.autoLaunchCheckBox.state == NSControlStateValueOn;
 }
 
 - (IBAction)saveShowUnreadCount:(id)sender {
-    [GNPreferences sharedInstance].showUnreadCount = self.showUnreadCountCheckBox.state == NSOnState;
+    [GNPreferences sharedInstance].showUnreadCount = self.showUnreadCountCheckBox.state == NSControlStateValueOn;
 }
 
 @end
