@@ -85,13 +85,13 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
         NSWorkspace.shared.open(URL(string: "https://itunes.apple.com/app/gmail-notifr/id808154494?ls=1&mt=12")!)
     }
 
-    func checkAccount(_ sender: AnyObject) {
+    @objc func checkAccount(_ sender: AnyObject) {
         if let account = accountForGuid(guid: sender.representedObject as! String) {
             checkerForAccount(account: account)?.reset()
         }
     }
 
-    func openInbox(_ sender: AnyObject) {
+    @objc func openInbox(_ sender: AnyObject) {
         let guid = sender.representedObject as! String
         openInboxForAccount(account: accountForGuid(guid: guid)!)
 
@@ -104,7 +104,7 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
         }
     }
 
-    func toggleAccount(_ sender: AnyObject) {
+    @objc func toggleAccount(_ sender: AnyObject) {
         let account = accountForGuid(guid: sender.representedObject as! String)!
         account.enabled.toggle()
         account.save()
@@ -113,7 +113,7 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
         updateMainMenu()
     }
 
-    func openMessage(_ sender: AnyObject) {
+    @objc func openMessage(_ sender: AnyObject) {
         openURL(url: URL(string: sender.representedObject as! String)!, browserIdentifier: GNAccount(byMessageLink: sender.representedObject as? String).browser)
     }
 
