@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1757B396ED4B31E23C726ED1 /* libPods-Mail Notifr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59705B370F3701E49A64430E /* libPods-Mail Notifr.a */; };
 		1A05D19319E55C85002698B7 /* PrefsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A05D19219E55C85002698B7 /* PrefsInfoViewController.m */; };
 		1A05D19819E55DAB002698B7 /* PreferencesInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A05D19719E55DAB002698B7 /* PreferencesInfo.xib */; };
 		1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */; };
@@ -110,10 +109,7 @@
 		1ACD6FEF1897FE3C00103E15 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Gmail Notifr/Images.xcassets"; sourceTree = "<group>"; };
 		1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		1AFCE88118D404E500487B98 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		59705B370F3701E49A64430E /* libPods-Mail Notifr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Mail Notifr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DA8B2817129CA800B37FE0 /* ko */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ko; path = Resources/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E9926F624084C043CA36A979 /* Pods-Mail Notifr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mail Notifr.debug.xcconfig"; path = "Target Support Files/Pods-Mail Notifr/Pods-Mail Notifr.debug.xcconfig"; sourceTree = "<group>"; };
-		FB4AB8E8C6D7F26483C707CB /* Pods-Mail Notifr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mail Notifr.release.xcconfig"; path = "Target Support Files/Pods-Mail Notifr/Pods-Mail Notifr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +123,6 @@
 				1AC74A3C26739BD6003F98E7 /* KeychainAccess in Frameworks */,
 				1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */,
 				1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */,
-				1757B396ED4B31E23C726ED1 /* libPods-Mail Notifr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +147,6 @@
 				1AB7FD8716B578740040BBCE /* Supporting Files */,
 				1AB7FD7F16B578740040BBCE /* Frameworks */,
 				1AB7FD7D16B578740040BBCE /* Products */,
-				B23B6AA52EB5D522B6178B05 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,7 +164,6 @@
 				1AFCE88118D404E500487B98 /* Carbon.framework */,
 				1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */,
 				1AB7FE3616B57B4E0040BBCE /* Security.framework */,
-				59705B370F3701E49A64430E /* libPods-Mail Notifr.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -251,15 +244,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		B23B6AA52EB5D522B6178B05 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E9926F624084C043CA36A979 /* Pods-Mail Notifr.debug.xcconfig */,
-				FB4AB8E8C6D7F26483C707CB /* Pods-Mail Notifr.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -267,7 +251,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AB7FD9A16B578740040BBCE /* Build configuration list for PBXNativeTarget "Mail Notifr" */;
 			buildPhases = (
-				DA91DFAA506743A3F82B9C7E /* [CP] Check Pods Manifest.lock */,
 				1AB7FD7816B578740040BBCE /* Sources */,
 				1AB7FD7916B578740040BBCE /* Frameworks */,
 				1AB7FD7A16B578740040BBCE /* Resources */,
@@ -397,28 +380,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "rm -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/Contents/Library/LoginItems/GmailNotifrHelper.app/Contents/embedded.provisionprofile\"";
-		};
-		DA91DFAA506743A3F82B9C7E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Mail Notifr-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -585,7 +546,6 @@
 		};
 		1AB7FD9B16B578740040BBCE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9926F624084C043CA36A979 /* Pods-Mail Notifr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -611,7 +571,6 @@
 		};
 		1AB7FD9C16B578740040BBCE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB4AB8E8C6D7F26483C707CB /* Pods-Mail Notifr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
