@@ -6,7 +6,6 @@
 // Copyright (c) 2008 ashchan.com. All rights reserved.
 //
 
-#import <StartAtLoginController.h>
 #import "GNPreferences.h"
 #import "GNAccount.h"
 #import "Mail_Notifr-Swift.h"
@@ -27,7 +26,6 @@ static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAft
 
 // a simple wrapper for preferences values
 @implementation GNPreferences {
-    StartAtLoginController *_startAtLoginController;
 }
 
 + (GNPreferences *)sharedInstance {
@@ -51,8 +49,6 @@ static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAft
             [_accounts addObject:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
         }
 
-        _startAtLoginController = [[StartAtLoginController alloc] initWithIdentifier:@"com.ashchan.GmailNotifrHelper"];
-
         self.showUnreadCount = [[NSUserDefaults standardUserDefaults] boolForKey:kDefaultsKeyShowUnreadCount];
 
         // This is a hidden setting which can only be set from the Terminal or similar:
@@ -62,16 +58,6 @@ static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAft
     }
 
     return self;
-}
-
-- (BOOL)autoLaunch {
-    return [_startAtLoginController startAtLogin];
-}
-
-- (void)setAutoLaunch:(BOOL)val {
-    if (val != self.autoLaunch) {
-        _startAtLoginController.startAtLogin = val;
-    }
 }
 
 - (BOOL)allAccountsDisabled {

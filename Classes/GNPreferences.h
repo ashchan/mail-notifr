@@ -11,7 +11,6 @@
 @interface GNPreferences : NSObject
 
 @property (retain, readonly) NSMutableArray *accounts;
-@property (assign) BOOL autoLaunch;
 @property (assign) BOOL showUnreadCount;
 @property (assign) NSTimeInterval autoCheckAfterInboxInterval;
 @property (assign, readonly) BOOL allAccountsDisabled;
