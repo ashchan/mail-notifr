@@ -256,7 +256,6 @@
 				1AB7FD7A16B578740040BBCE /* Resources */,
 				1AC74A452673A1FA003F98E7 /* Copy “Launch at Login Helper” */,
 				1A8F667416B5836700396E44 /* CopyFiles */,
-				1AE35A75189FF6A00000D6E3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -367,19 +366,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
-		};
-		1AE35A75189FF6A00000D6E3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "rm -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/Contents/Library/LoginItems/GmailNotifrHelper.app/Contents/embedded.provisionprofile\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
