@@ -11,15 +11,14 @@
 		1A05D19319E55C85002698B7 /* PrefsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A05D19219E55C85002698B7 /* PrefsInfoViewController.m */; };
 		1A05D19819E55DAB002698B7 /* PreferencesInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A05D19719E55DAB002698B7 /* PreferencesInfo.xib */; };
 		1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */; };
-		1A8F667016B5817000396E44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F666F16B5817000396E44 /* main.m */; };
 		1A8F66A516B5FBB400396E44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8F66A316B5FBB400396E44 /* MainMenu.xib */; };
+		1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */; };
 		1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */; };
 		1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3616B57B4E0040BBCE /* Security.framework */; };
 		1AB7FE3B16B57B630040BBCE /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FE3816B57B630040BBCE /* AccountDetail.xib */; };
 		1AB7FE3C16B57B630040BBCE /* PreferencesAccounts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FE3916B57B630040BBCE /* PreferencesAccounts.xib */; };
 		1AB7FE3D16B57B630040BBCE /* PreferencesSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FE3A16B57B630040BBCE /* PreferencesSettings.xib */; };
 		1AB7FE4916B57B9C0040BBCE /* GNAccountDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4016B57B9C0040BBCE /* GNAccountDetailController.m */; };
-		1AB7FE4A16B57B9C0040BBCE /* GNApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4216B57B9C0040BBCE /* GNApplicationController.m */; };
 		1AB7FE4B16B57B9C0040BBCE /* GNPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4416B57B9C0040BBCE /* GNPreferencesController.m */; };
 		1AB7FE4C16B57B9C0040BBCE /* PrefsAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4616B57B9C0040BBCE /* PrefsAccountsViewController.m */; };
 		1AB7FE4D16B57B9C0040BBCE /* PrefsSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4816B57B9C0040BBCE /* PrefsSettingsViewController.m */; };
@@ -67,12 +66,12 @@
 		1A3A772718FCB020002F61E6 /* Finnish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Finnish; path = Resources/Finnish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNAccountMenuController.h; path = Classes/GNAccountMenuController.h; sourceTree = "<group>"; };
 		1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNAccountMenuController.m; path = Classes/GNAccountMenuController.m; sourceTree = "<group>"; };
-		1A8F666F16B5817000396E44 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		1A8F66A416B5FBB400396E44 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1A8F66A616B5FC9400396E44 /* Spanish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Spanish; path = Resources/Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A8F66A916B5FDDC00396E44 /* fr-CA */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Resources/fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A8F66AC16B5FE7600396E44 /* nb */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nb; path = Resources/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A96BC9F18FFBAB7000BD5D3 /* zh_CN */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = zh_CN; path = Resources/zh_CN.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AA93E6D26731BCB00C77053 /* MailNotifr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MailNotifr-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		1AAB5C9418FFF04C0020A73E /* GNSecureTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNSecureTextField.h; path = Classes/GNSecureTextField.h; sourceTree = "<group>"; };
 		1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSecureTextField.m; path = Classes/GNSecureTextField.m; sourceTree = "<group>"; };
 		1AB7FD7C16B578740040BBCE /* Mail Notifr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mail Notifr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +83,7 @@
 		1AB7FE3A16B57B630040BBCE /* PreferencesSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesSettings.xib; path = Resources/PreferencesSettings.xib; sourceTree = "<group>"; };
 		1AB7FE3F16B57B9C0040BBCE /* GNAccountDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNAccountDetailController.h; path = Classes/GNAccountDetailController.h; sourceTree = "<group>"; };
 		1AB7FE4016B57B9C0040BBCE /* GNAccountDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNAccountDetailController.m; path = Classes/GNAccountDetailController.m; sourceTree = "<group>"; };
-		1AB7FE4116B57B9C0040BBCE /* GNApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNApplicationController.h; path = Classes/GNApplicationController.h; sourceTree = "<group>"; };
+		1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GNApplicationController.swift; path = Classes/GNApplicationController.swift; sourceTree = "<group>"; };
 		1AB7FE4216B57B9C0040BBCE /* GNApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNApplicationController.m; path = Classes/GNApplicationController.m; sourceTree = "<group>"; };
 		1AB7FE4316B57B9C0040BBCE /* GNPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNPreferencesController.h; path = Classes/GNPreferencesController.h; sourceTree = "<group>"; };
 		1AB7FE4416B57B9C0040BBCE /* GNPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNPreferencesController.m; path = Classes/GNPreferencesController.m; sourceTree = "<group>"; };
@@ -184,7 +183,7 @@
 		1AB7FD8716B578740040BBCE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1A8F666F16B5817000396E44 /* main.m */,
+				1AA93E6D26731BCB00C77053 /* MailNotifr-Bridging-Header.h */,
 				1AB7FDA116B57A270040BBCE /* GmailNotifr_Prefix.pch */,
 				1AB7FDA316B57A270040BBCE /* Info.plist */,
 				1ACD6FEE1897F56300103E15 /* Gmail Notifr.entitlements */,
@@ -196,7 +195,7 @@
 		1AB7FDA716B57A780040BBCE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1AB7FE4116B57B9C0040BBCE /* GNApplicationController.h */,
+				1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */,
 				1AB7FE4216B57B9C0040BBCE /* GNApplicationController.m */,
 				1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */,
 				1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */,
@@ -448,7 +447,6 @@
 			files = (
 				1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */,
 				1AB7FE4916B57B9C0040BBCE /* GNAccountDetailController.m in Sources */,
-				1AB7FE4A16B57B9C0040BBCE /* GNApplicationController.m in Sources */,
 				1AB7FE4B16B57B9C0040BBCE /* GNPreferencesController.m in Sources */,
 				1AB7FE4C16B57B9C0040BBCE /* PrefsAccountsViewController.m in Sources */,
 				1AB7FE4D16B57B9C0040BBCE /* PrefsSettingsViewController.m in Sources */,
@@ -458,8 +456,8 @@
 				1AB7FE5A16B57BAD0040BBCE /* GNChecker.m in Sources */,
 				1AB7FE5B16B57BAD0040BBCE /* GNPreferences.m in Sources */,
 				1A05D19319E55C85002698B7 /* PrefsInfoViewController.m in Sources */,
+				1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */,
 				1AB7FE5C16B57BAD0040BBCE /* GNSound.m in Sources */,
-				1A8F667016B5817000396E44 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +619,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashchan.GmailNotifr;
 				PRODUCT_NAME = "Mail Notifr";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MailNotifr-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -646,6 +646,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashchan.GmailNotifr;
 				PRODUCT_NAME = "Mail Notifr";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MailNotifr-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
