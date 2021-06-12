@@ -26,6 +26,7 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.menu = menu
         statusItem.button!.image = NSImage(named: "NoMailsTemplate")
+        statusItem.button!.imagePosition = .imageLeft
 
         localizeMenuItems()
 
