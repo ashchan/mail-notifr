@@ -24,9 +24,8 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.highlightMode = true
         statusItem.menu = menu
-        statusItem.image = NSImage(named: "NoMailsTemplate")
+        statusItem.button!.image = NSImage(named: "NoMailsTemplate")
 
         localizeMenuItems()
 
@@ -186,7 +185,7 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
     }
 
     @objc func accountChecking(_ notification: NSNotification) {
-        statusItem.toolTip = NSLocalizedString("Checking Mail", comment: "")
+        statusItem.button!.toolTip = NSLocalizedString("Checking Mail", comment: "")
     }
 
     func registerObservers() {
@@ -290,7 +289,7 @@ extension GNApplicationController {
     func updateMainMenu() {
         // Update Check All
         let stringToLocalize = GNPreferences.sharedInstance()!.accounts.count <= 1 ? "Check" : "Check All"
-        menuItemCheckAll.setTitleWithMnemonic(NSLocalizedString(stringToLocalize, comment: ""))
+        menuItemCheckAll.title = NSLocalizedString(stringToLocalize, comment: "")
         let enabledAccounts = GNPreferences.sharedInstance()!.accounts.filter { a in
             (a as! GNAccount).enabled
         }
@@ -304,10 +303,10 @@ extension GNApplicationController {
 
     func localizeMenuItems() {
         updateMainMenu()
-        menuItemComposeMail.setTitleWithMnemonic(NSLocalizedString("Compose Mail", comment: ""))
-        menuItemPreferences.setTitleWithMnemonic(NSLocalizedString("Preferences...", comment: ""))
-        menuItemAbout.setTitleWithMnemonic(NSLocalizedString("About Gmail Notifr", comment: ""))
-        menuItemQuit.setTitleWithMnemonic(NSLocalizedString("Quit Gmail Notifr", comment: ""))
+        menuItemComposeMail.title = NSLocalizedString("Compose Mail", comment: "")
+        menuItemPreferences.title = NSLocalizedString("Preferences...", comment: "")
+        menuItemAbout.title = NSLocalizedString("About Gmail Notifr", comment: "")
+        menuItemQuit.title = NSLocalizedString("Quit Gmail Notifr", comment: "")
     }
 
     func createMenuForAccount(account: GNAccount, index: Int) {
@@ -333,9 +332,9 @@ extension GNApplicationController {
         let messageCount = messageCount()
 
         if messageCount > 0 && GNPreferences.sharedInstance().showUnreadCount {
-            statusItem.title = "\(messageCount)"
+            statusItem.button!.title = "\(messageCount)"
         } else {
-            statusItem.title = ""
+            statusItem.button!.title = ""
         }
 
         if messageCount > 0 {
@@ -352,11 +351,11 @@ extension GNApplicationController {
                 }
             }
 
-            statusItem.toolTip = String(format: toolTipFormat, messageCount)
-            statusItem.image = NSImage(named: "HaveMailsTemplate")
+            statusItem.button!.toolTip = String(format: toolTipFormat, messageCount)
+            statusItem.button!.image = NSImage(named: "HaveMailsTemplate")
         } else {
-            statusItem.toolTip = ""
-            statusItem.image = NSImage(named: "NoMailsTemplate")
+            statusItem.button!.toolTip = ""
+            statusItem.button!.image = NSImage(named: "NoMailsTemplate")
         }
     }
 
