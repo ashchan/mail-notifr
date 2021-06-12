@@ -26,6 +26,9 @@ static const NSInteger kAboveMessagesMenuItemTag     = 10003;
 @implementation GNAccountMenuController {
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+
 - (instancetype)initWithStatusItem:(NSStatusItem *)statusItem GNAccount:(GNAccount *)account {
     if (self = [super init]) {
         _statusItem     = statusItem;
@@ -214,5 +217,7 @@ static const NSInteger kAboveMessagesMenuItemTag     = 10003;
     NSAssert(FALSE, @"Should find sub menu item for tag");
     return NSNotFound;
 }
+
+#pragma clang diagnostic pop
 
 @end

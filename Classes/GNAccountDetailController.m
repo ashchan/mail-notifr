@@ -48,11 +48,9 @@
 + (void)editAccount:(GNAccount *)account onWindow:(NSWindow *)window {
     static GNAccountDetailController *_accountDetailController;
     _accountDetailController = [[GNAccountDetailController alloc] initWithAccount:account];
-    [NSApp beginSheet:[_accountDetailController window]
-       modalForWindow:window
-        modalDelegate:_accountDetailController
-       didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
-          contextInfo:nil];
+    [window beginSheet:[_accountDetailController window] completionHandler:^(NSModalResponse returnCode) {
+        [[_accountDetailController window] orderOut:nil];
+    }];
 }
 
 - (void)awakeFromNib {
@@ -87,10 +85,6 @@
     [self.hint setStringValue:NSLocalizedString(@"To add a Google Hosted Account, specify the full email address as username, eg: admin@ashchan.com.", nil)];
     [self.cancelButton setTitle:NSLocalizedString(@"Cancel", nil)];
     [self.okButton setTitle:NSLocalizedString(@"OK", nil)];
-}
-
-- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-    [sheet orderOut:nil];
 }
 
 - (IBAction)save:(id)sender {

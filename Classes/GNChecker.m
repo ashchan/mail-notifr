@@ -131,7 +131,7 @@ NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotificat
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self processXMLWithData:_downloadedData statusCode:_statusCode];
+        [self processXMLWithData:self->_downloadedData statusCode:self->_statusCode];
     });
 }
 
