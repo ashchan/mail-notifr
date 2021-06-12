@@ -46,7 +46,7 @@ static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAft
         _accounts = [[NSMutableArray alloc] init];
         NSArray *archivedAccounts = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultsKeyAccounts];
         for (id data in archivedAccounts) {
-            [_accounts addObject:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+            [_accounts addObject:[NSKeyedUnarchiver unarchivedObjectOfClass:[GNAccount class] fromData:data error:NULL]];
         }
 
         self.showUnreadCount = [[NSUserDefaults standardUserDefaults] boolForKey:kDefaultsKeyShowUnreadCount];
@@ -114,7 +114,7 @@ static NSString *const kDefaultsKeyAutoCheckAfterInboxInterval  = @"AutoCheckAft
 - (void)writeBack {
     NSMutableArray *archivedAccounts = [[NSMutableArray alloc] initWithCapacity:[_accounts count]];
     for (id account in _accounts) {
-        [archivedAccounts addObject:[NSKeyedArchiver archivedDataWithRootObject:account]];
+        [archivedAccounts addObject:[NSKeyedArchiver archivedDataWithRootObject:account requiringSecureCoding:NO error:NULL]];
     }
     [[NSUserDefaults standardUserDefaults] setObject:archivedAccounts forKey:kDefaultsKeyAccounts];
     [[NSUserDefaults standardUserDefaults] synchronize];

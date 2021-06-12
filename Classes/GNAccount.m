@@ -122,6 +122,10 @@ NSString *const GNAccountKeychainServiceName = @"GmailNotifr";
     return [@"https://mail.google.com/mail/b/" stringByAppendingString:accountName];
 }
 
++ (BOOL)supportsSecureCoding {
+   return YES;
+}
+
 #pragma mark - Private Methods
 
 - (BOOL)isPersisted {

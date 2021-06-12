@@ -87,7 +87,7 @@ static NSString *const kPasteboardDragType = @"GNDragType";
 
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
     [pboard declareTypes:@[kPasteboardDragType] owner:self];
-    [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:rowIndexes] forType:kPasteboardDragType];
+    [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:rowIndexes requiringSecureCoding:NO error:NULL] forType:kPasteboardDragType];
     return YES;
 }
 
@@ -101,7 +101,7 @@ static NSString *const kPasteboardDragType = @"GNDragType";
 
 - (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id <NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
     NSData *rowData = [[info draggingPasteboard] dataForType:kPasteboardDragType];
-    NSUInteger oldRow = [[NSKeyedUnarchiver unarchiveObjectWithData:rowData] firstIndex];
+    NSUInteger oldRow = [[NSKeyedUnarchiver unarchivedObjectOfClass:[NSIndexSet class] fromData:rowData error:NULL] firstIndex];
     [[GNPreferences sharedInstance] moveAccountFromRow:oldRow toRow:row];
     [tableView reloadData];
 

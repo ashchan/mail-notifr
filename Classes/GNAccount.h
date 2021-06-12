@@ -10,7 +10,7 @@
 
 extern NSString *const GNAccountKeychainServiceName;
 
-@interface GNAccount : NSObject <NSCoding>
+@interface GNAccount : NSObject <NSCoding, NSSecureCoding>
 
 @property (copy) NSString *guid;
 @property (copy) NSString *username;
