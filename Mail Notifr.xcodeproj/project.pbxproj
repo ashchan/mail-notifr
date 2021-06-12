@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1A05D19319E55C85002698B7 /* PrefsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A05D19219E55C85002698B7 /* PrefsInfoViewController.m */; };
 		1A05D19819E55DAB002698B7 /* PreferencesInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A05D19719E55DAB002698B7 /* PreferencesInfo.xib */; };
+		1A4962252674C0C100331CF7 /* GoogleAPIClientForREST_Gmail in Frameworks */ = {isa = PBXBuildFile; productRef = 1A4962242674C0C100331CF7 /* GoogleAPIClientForREST_Gmail */; };
+		1A4962282674CEBD00331CF7 /* GTMAppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1A4962272674CEBD00331CF7 /* GTMAppAuth */; };
+		1A49622B2674D54100331CF7 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1A49622A2674D54100331CF7 /* AppAuth */; };
 		1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */; };
 		1A8F66A516B5FBB400396E44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8F66A316B5FBB400396E44 /* MainMenu.xib */; };
 		1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */; };
@@ -117,10 +120,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A49622B2674D54100331CF7 /* AppAuth in Frameworks */,
+				1A4962252674C0C100331CF7 /* GoogleAPIClientForREST_Gmail in Frameworks */,
 				1AC74A39267399E3003F98E7 /* MASShortcut in Frameworks */,
 				1AFCE88218D404E500487B98 /* Carbon.framework in Frameworks */,
 				1AC74A422673A1B4003F98E7 /* LaunchAtLogin in Frameworks */,
 				1AC74A3C26739BD6003F98E7 /* KeychainAccess in Frameworks */,
+				1A4962282674CEBD00331CF7 /* GTMAppAuth in Frameworks */,
 				1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */,
 				1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */,
 			);
@@ -266,6 +272,9 @@
 				1AC74A38267399E3003F98E7 /* MASShortcut */,
 				1AC74A3B26739BD6003F98E7 /* KeychainAccess */,
 				1AC74A412673A1B4003F98E7 /* LaunchAtLogin */,
+				1A4962242674C0C100331CF7 /* GoogleAPIClientForREST_Gmail */,
+				1A4962272674CEBD00331CF7 /* GTMAppAuth */,
+				1A49622A2674D54100331CF7 /* AppAuth */,
 			);
 			productName = "Gmail Notifr";
 			productReference = 1AB7FD7C16B578740040BBCE /* Mail Notifr.app */;
@@ -319,6 +328,9 @@
 				1AC74A37267399E3003F98E7 /* XCRemoteSwiftPackageReference "MASShortcut" */,
 				1AC74A3A26739BD6003F98E7 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				1AC74A402673A1B4003F98E7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				1A4962232674C0C100331CF7 /* XCRemoteSwiftPackageReference "google-api-objectivec-client-for-rest" */,
+				1A4962262674CEBD00331CF7 /* XCRemoteSwiftPackageReference "GTMAppAuth" */,
+				1A4962292674D54100331CF7 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
 			);
 			productRefGroup = 1AB7FD7D16B578740040BBCE /* Products */;
 			projectDirPath = "";
@@ -546,12 +558,18 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GmailNotifr_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
 				INFOPLIST_FILE = Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashchan.GmailNotifr;
 				PRODUCT_NAME = "Mail Notifr";
 				PROVISIONING_PROFILE = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OBJC_BRIDGING_HEADER = "MailNotifr-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
@@ -572,12 +590,14 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GmailNotifr_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "SWIFT_PACKAGE=1";
 				INFOPLIST_FILE = Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashchan.GmailNotifr;
 				PRODUCT_NAME = "Mail Notifr";
 				PROVISIONING_PROFILE = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OBJC_BRIDGING_HEADER = "MailNotifr-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
@@ -608,6 +628,31 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1A4962232674C0C100331CF7 /* XCRemoteSwiftPackageReference "google-api-objectivec-client-for-rest" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/google-api-objectivec-client-for-rest";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		1A4962262674CEBD00331CF7 /* XCRemoteSwiftPackageReference "GTMAppAuth" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GTMAppAuth";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		1A4962292674D54100331CF7 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openid/AppAuth-iOS";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 1.5.0;
+				minimumVersion = 1.4.0;
+			};
+		};
 		1AC74A37267399E3003F98E7 /* XCRemoteSwiftPackageReference "MASShortcut" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sweetppro/MASShortcut";
@@ -635,6 +680,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1A4962242674C0C100331CF7 /* GoogleAPIClientForREST_Gmail */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A4962232674C0C100331CF7 /* XCRemoteSwiftPackageReference "google-api-objectivec-client-for-rest" */;
+			productName = GoogleAPIClientForREST_Gmail;
+		};
+		1A4962272674CEBD00331CF7 /* GTMAppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A4962262674CEBD00331CF7 /* XCRemoteSwiftPackageReference "GTMAppAuth" */;
+			productName = GTMAppAuth;
+		};
+		1A49622A2674D54100331CF7 /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A4962292674D54100331CF7 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
 		1AC74A38267399E3003F98E7 /* MASShortcut */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1AC74A37267399E3003F98E7 /* XCRemoteSwiftPackageReference "MASShortcut" */;
