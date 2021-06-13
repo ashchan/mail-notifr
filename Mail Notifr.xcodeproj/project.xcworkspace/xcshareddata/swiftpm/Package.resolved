@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "AppAuth-iOS",
+        "repositoryURL": "https://github.com/openid/AppAuth-iOS",
+        "state": {
+          "branch": null,
+          "revision": "01131d68346c8ae552961c768d583c715fbe1410",
+          "version": "1.4.0"
+        }
+      },
+      {
         "package": "google-api-objectivec-client-for-rest",
         "repositoryURL": "https://github.com/google/google-api-objectivec-client-for-rest",
         "state": {
