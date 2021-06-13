@@ -110,7 +110,7 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
         account.save()
 
         updateMenuItemAccountEnabled(account: account)
-        updateMainMenu()
+        updateMenu()
     }
 
     @objc func openMessage(_ sender: AnyObject) {
@@ -133,7 +133,7 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
         checkers.append(checker)
         checker.reset()
 
-        updateMainMenu()
+        updateMenu()
     }
 
     @objc func accountChanged(_ notification: NSNotification) {
@@ -166,7 +166,7 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
             updateMenuBarCount(notification)
         }
 
-        updateMainMenu()
+        updateMenu()
     }
 
     @objc func accountsReordered(_ notification: NSNotification) {
@@ -287,7 +287,7 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
 
 // MARK: - Menu Manipulation
 extension GNApplicationController {
-    func updateMainMenu() {
+    func updateMenu() {
         // Update Check All
         let stringToLocalize = GNPreferences.sharedInstance()!.accounts.count <= 1 ? "Check" : "Check All"
         menuItemCheckAll.title = NSLocalizedString(stringToLocalize, comment: "")
@@ -303,7 +303,7 @@ extension GNApplicationController {
     }
 
     func localizeMenuItems() {
-        updateMainMenu()
+        updateMenu()
         menuItemComposeMail.title = NSLocalizedString("Compose Mail", comment: "")
         menuItemPreferences.title = NSLocalizedString("Preferences...", comment: "")
         menuItemAbout.title = NSLocalizedString("About Gmail Notifr", comment: "")

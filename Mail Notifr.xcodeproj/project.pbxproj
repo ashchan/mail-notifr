@@ -13,7 +13,7 @@
 		1A4962282674CEBD00331CF7 /* GTMAppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1A4962272674CEBD00331CF7 /* GTMAppAuth */; };
 		1A49622B2674D54100331CF7 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1A49622A2674D54100331CF7 /* AppAuth */; };
 		1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */; };
-		1A8F66A516B5FBB400396E44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8F66A316B5FBB400396E44 /* MainMenu.xib */; };
+		1A8F66A516B5FBB400396E44 /* BarMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8F66A316B5FBB400396E44 /* BarMenu.xib */; };
 		1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */; };
 		1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */; };
 		1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3616B57B4E0040BBCE /* Security.framework */; };
@@ -61,7 +61,7 @@
 		1A3A772718FCB020002F61E6 /* Finnish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Finnish; path = Resources/Finnish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNAccountMenuController.h; path = Source/GNAccountMenuController.h; sourceTree = "<group>"; };
 		1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNAccountMenuController.m; path = Source/GNAccountMenuController.m; sourceTree = "<group>"; };
-		1A8F66A416B5FBB400396E44 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1A8F66A416B5FBB400396E44 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/BarMenu.xib; sourceTree = "<group>"; };
 		1A8F66A616B5FC9400396E44 /* Spanish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Spanish; path = Resources/Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A8F66A916B5FDDC00396E44 /* fr-CA */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Resources/fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A8F66AC16B5FE7600396E44 /* nb */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nb; path = Resources/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -183,7 +183,6 @@
 				1ACD6FEE1897F56300103E15 /* Gmail Notifr.entitlements */,
 			);
 			name = "Supporting Files";
-			path = "Gmail Notifr";
 			sourceTree = "<group>";
 		};
 		1AB7FDA716B57A780040BBCE /* Controllers */ = {
@@ -209,7 +208,7 @@
 		1AB7FDA816B57A830040BBCE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1A8F66A316B5FBB400396E44 /* MainMenu.xib */,
+				1A8F66A316B5FBB400396E44 /* BarMenu.xib */,
 				1AB7FE3816B57B630040BBCE /* AccountDetail.xib */,
 				1AB7FE3916B57B630040BBCE /* PreferencesAccounts.xib */,
 				1AB7FE3A16B57B630040BBCE /* PreferencesSettings.xib */,
@@ -354,7 +353,7 @@
 				1AB7FF0116B57D280040BBCE /* Credits.html in Resources */,
 				1AB7FF0616B57D510040BBCE /* InfoPlist.strings in Resources */,
 				1AB7FF0716B57D510040BBCE /* Localizable.strings in Resources */,
-				1A8F66A516B5FBB400396E44 /* MainMenu.xib in Resources */,
+				1A8F66A516B5FBB400396E44 /* BarMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,12 +406,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1A8F66A316B5FBB400396E44 /* MainMenu.xib */ = {
+		1A8F66A316B5FBB400396E44 /* BarMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1A8F66A416B5FBB400396E44 /* English */,
 			);
-			name = MainMenu.xib;
+			name = BarMenu.xib;
 			sourceTree = "<group>";
 		};
 		1AB7FF0216B57D510040BBCE /* InfoPlist.strings */ = {
