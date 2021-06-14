@@ -7,10 +7,15 @@
 //
 
 import Cocoa
+import SwiftUI
 import MASShortcut
+import AppAuth
+import GTMAppAuth
+import GoogleAPIClientForREST_Gmail // SWIFT_PACKAGE=1 required, see https://github.com/google/google-api-objectivec-client-for-rest/issues/400
 
 @main
 class GNApplicationController: NSObject, NSApplicationDelegate {
+    var window: NSWindow!
     @IBOutlet var menu: NSMenu!
     @IBOutlet weak var menuItemCheckAll: NSMenuItem!
     @IBOutlet weak var menuItemComposeMail: NSMenuItem!
@@ -21,6 +26,11 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem!
     var checkers = [GNChecker]()
     var accountMenuControllers = [GNAccountMenuController]()
+
+    var currentAuthorizationFlow: OIDExternalUserAgentSession?
+    var authorization: GTMAppAuthFetcherAuthorization?
+    static let clientID = "270244963224-8viqhtgpdks3vk56ffhvnfn112u4h26k.apps.googleusercontent.com"
+    static let redirectURL = "com.googleusercontent.apps.270244963224-8viqhtgpdks3vk56ffhvnfn112u4h26k:/oauthredirect"
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -33,11 +43,26 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
         GNPreferences.setupDefaults()
 
         registerObservers()
-        registerMailtoHandler()
+        registerURLHandler()
         registerNotification()
 
         setupMenu()
         setupCheckers()
+
+        let contentView = WelcomeView()
+
+        window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
+            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            backing: .buffered,
+            defer: false
+        )
+        window.center()
+        window.setFrameAutosaveName("Main Window")
+        window.contentView = NSHostingView(rootView: contentView)
+
+        NSApp.setActivationPolicy(.regular)
+        window.makeKeyAndOrderFront(nil)
 
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: GNDefaultsKeyCheckAllShortcut) {
             self.checkAll(nil)
@@ -200,7 +225,7 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
         center.addObserver(self, selector: #selector(accountsReordered(_:)), name: NSNotification.Name.GNAccountsReordered, object: nil)
     }
 
-    func registerMailtoHandler() {
+    func registerURLHandler() {
          NSAppleEventManager.shared().setEventHandler(
             self,
             andSelector: #selector(handleURL(event:reply:)),
@@ -210,18 +235,24 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
     }
 
     @objc func handleURL(event: NSAppleEventDescriptor, reply: NSAppleEventDescriptor) {
-        if GNPreferences.sharedInstance().accounts.count > 0 {
-            let account = GNPreferences.sharedInstance().accounts[0] as! GNAccount
-            let link = event.paramDescriptor(forKeyword: keyDirectObject)!.stringValue!
-            let urlComponents = link.split(separator: "?")
-            let recipients = urlComponents[0].replacingOccurrences(of: "mailto:", with: "")
-            var additionalParameters = ""
-            if urlComponents.count > 1 {
-                // For some reason, Gmail does not interpret the query parameter "subject" correctly, and needs "su" instead.
-                additionalParameters = String(format: "&%@", String(urlComponents[1])).replacingOccurrences(of: "subject=", with: "su=")
+        let url = event.paramDescriptor(forKeyword: keyDirectObject)!.stringValue!
+
+        if url.starts(with: "mailto:") {
+            if GNPreferences.sharedInstance().accounts.count > 0 {
+                let account = GNPreferences.sharedInstance().accounts[0] as! GNAccount
+                let urlComponents = url.split(separator: "?")
+                let recipients = urlComponents[0].replacingOccurrences(of: "mailto:", with: "")
+                var additionalParameters = ""
+                if urlComponents.count > 1 {
+                    // For some reason, Gmail does not interpret the query parameter "subject" correctly, and needs "su" instead.
+                    additionalParameters = String(format: "&%@", String(urlComponents[1])).replacingOccurrences(of: "subject=", with: "su=")
+                }
+                let url = "\(account.baseUrl()!)?view=cm&tf=0&fs=1&to=\(recipients)\(additionalParameters)"
+                openURL(url: URL(string: url)!, browserIdentifier: account.browser)
             }
-            let url = "\(account.baseUrl()!)?view=cm&tf=0&fs=1&to=\(recipients)\(additionalParameters)"
-            openURL(url: URL(string: url)!, browserIdentifier: account.browser)
+        } else {
+            // OAuth
+            currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: URL(string: url)!)
         }
     }
 
@@ -376,6 +407,26 @@ extension GNApplicationController: NSUserNotificationCenterDelegate {
             if noti.title == notification.title {
                 center.removeDeliveredNotification(noti)
             }
+        }
+    }
+}
+
+// MARK: - Google OAuth
+extension GNApplicationController {
+    func authorize() {
+        let request = OIDAuthorizationRequest(
+            configuration: GTMAppAuthFetcherAuthorization.configurationForGoogle(),
+            clientId: Self.clientID,
+            scopes: [OIDScopeEmail, "https://www.googleapis.com/auth/gmail.readonly"],
+            redirectURL: URL(string: Self.redirectURL)!,
+            responseType: OIDResponseTypeCode,
+            additionalParameters: nil
+        )
+        currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request) { state, error in
+            if let state = state {
+                self.authorization = GTMAppAuthFetcherAuthorization(authState: state)
+                // TODO: this is for experiment only
+           }
         }
     }
 }

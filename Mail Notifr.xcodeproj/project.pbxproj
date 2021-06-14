@@ -17,6 +17,7 @@
 		1A76AAF0267722E20023B130 /* PreferencesSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAEC267722E20023B130 /* PreferencesSettings.xib */; };
 		1A76AAF1267722E20023B130 /* PreferencesInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAED267722E20023B130 /* PreferencesInfo.xib */; };
 		1A76AAF2267722E20023B130 /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAEE267722E20023B130 /* AccountDetail.xib */; };
+		1A76AAE62675C38A0023B130 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A76AAE52675C38A0023B130 /* WelcomeView.swift */; };
 		1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */; };
 		1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */; };
 		1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3616B57B4E0040BBCE /* Security.framework */; };
@@ -65,6 +66,7 @@
 		1A76AAEC267722E20023B130 /* PreferencesSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesSettings.xib; sourceTree = SOURCE_ROOT; };
 		1A76AAED267722E20023B130 /* PreferencesInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesInfo.xib; sourceTree = SOURCE_ROOT; };
 		1A76AAEE267722E20023B130 /* AccountDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountDetail.xib; sourceTree = SOURCE_ROOT; };
+		1A76AAE52675C38A0023B130 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		1A8F66A616B5FC9400396E44 /* Spanish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Spanish; path = Resources/Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A8F66A916B5FDDC00396E44 /* fr-CA */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Resources/fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A8F66AC16B5FE7600396E44 /* nb */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nb; path = Resources/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				1AAB5C9418FFF04C0020A73E /* GNSecureTextField.h */,
 				1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */,
+				1A76AAE52675C38A0023B130 /* WelcomeView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				1AB7FE4C16B57B9C0040BBCE /* PrefsAccountsViewController.m in Sources */,
 				1AB7FE4D16B57B9C0040BBCE /* PrefsSettingsViewController.m in Sources */,
 				1AB7FE5816B57BAD0040BBCE /* GNAccount.m in Sources */,
+				1A76AAE62675C38A0023B130 /* WelcomeView.swift in Sources */,
 				1AB7FE5916B57BAD0040BBCE /* GNBrowser.m in Sources */,
 				1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */,
 				1AB7FE5A16B57BAD0040BBCE /* GNChecker.m in Sources */,
@@ -501,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -546,7 +550,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
@@ -571,7 +575,7 @@
 					"SWIFT_PACKAGE=1",
 				);
 				INFOPLIST_FILE = Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashchan.GmailNotifr;
 				PRODUCT_NAME = "Mail Notifr";
@@ -599,7 +603,7 @@
 				GCC_PREFIX_HEADER = GmailNotifr_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "SWIFT_PACKAGE=1";
 				INFOPLIST_FILE = Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashchan.GmailNotifr;
 				PRODUCT_NAME = "Mail Notifr";
