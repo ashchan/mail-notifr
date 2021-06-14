@@ -2,6 +2,42 @@
   "object": {
     "pins": [
       {
+        "package": "AppAuth-iOS",
+        "repositoryURL": "https://github.com/openid/AppAuth-iOS",
+        "state": {
+          "branch": null,
+          "revision": "01131d68346c8ae552961c768d583c715fbe1410",
+          "version": "1.4.0"
+        }
+      },
+      {
+        "package": "google-api-objectivec-client-for-rest",
+        "repositoryURL": "https://github.com/google/google-api-objectivec-client-for-rest",
+        "state": {
+          "branch": null,
+          "revision": "a0a0826501a4075a5dcb7ad59ecd97a1f2422c32",
+          "version": "1.5.2"
+        }
+      },
+      {
+        "package": "gtm-session-fetcher",
+        "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
+        "state": {
+          "branch": null,
+          "revision": "91ed3d188eb95705fef3c249453b81f32dc557d1",
+          "version": "1.5.0"
+        }
+      },
+      {
+        "package": "GTMAppAuth",
+        "repositoryURL": "https://github.com/google/GTMAppAuth",
+        "state": {
+          "branch": null,
+          "revision": "40f4103fb52109032c05599a0c39ad43edbdf80a",
+          "version": "1.2.2"
+        }
+      },
+      {
         "package": "KeychainAccess",
         "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess",
         "state": {
