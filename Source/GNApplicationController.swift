@@ -13,7 +13,7 @@ import AppAuth
 import GTMAppAuth
 import GoogleAPIClientForREST_Gmail // SWIFT_PACKAGE=1 required, see https://github.com/google/google-api-objectivec-client-for-rest/issues/400
 
-@main
+//@main
 class GNApplicationController: NSObject, NSApplicationDelegate {
     var window: NSWindow!
     @IBOutlet var menu: NSMenu!
@@ -49,7 +49,7 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
         setupMenu()
         setupCheckers()
 
-        let contentView = WelcomeView()
+        let contentView = MainView(selection: .constant(nil))
 
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),

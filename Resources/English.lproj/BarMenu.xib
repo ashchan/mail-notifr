@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19115.2"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
+        <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject">
             <connections>
@@ -50,7 +50,7 @@
             </items>
             <point key="canvasLocation" x="140" y="149"/>
         </menu>
-        <customObject id="381" customClass="GNApplicationController" customModule="Mail_Notifr" customModuleProvider="target">
+        <customObject id="381" customClass="AppDelegate" customModule="Mail_Notifr" customModuleProvider="target">
             <connections>
                 <outlet property="menu" destination="373" id="382"/>
                 <outlet property="menuItemAbout" destination="378" id="536"/>
