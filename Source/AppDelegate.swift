@@ -18,7 +18,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.menu = createMenu()
 
         if Accounts.hasAccounts {
-            NSApp.hide(nil)
+            NSApp.windows.first?.orderOut(nil)
         } else {
             showInDock()
         }
@@ -44,12 +44,17 @@ private extension AppDelegate {
         let menu = NSMenu()
 
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "About Mail Notifr", action: #selector(NSApp.orderFrontStandardAboutPanel(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "About Mail Notifr", action: #selector(showAbout), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Preferences...", action: #selector(showPreferences), keyEquivalent: ""))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit Mail Notifr", action: #selector(NSApp.terminate(_:)), keyEquivalent: ""))
 
         return menu
+    }
+
+    @objc func showAbout() {
+        NSApp.activate(ignoringOtherApps: true)
+        NSApp.orderFrontStandardAboutPanel(nil)
     }
 
     @objc func showPreferences() {
