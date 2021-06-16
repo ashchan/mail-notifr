@@ -18,6 +18,9 @@
 		1A76AAF0267722E20023B130 /* PreferencesSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAEC267722E20023B130 /* PreferencesSettings.xib */; };
 		1A76AAF1267722E20023B130 /* PreferencesInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAED267722E20023B130 /* PreferencesInfo.xib */; };
 		1A76AAF2267722E20023B130 /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAEE267722E20023B130 /* AccountDetail.xib */; };
+		1A8AAA3726798047006F52D7 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3626798047006F52D7 /* Account.swift */; };
+		1A8AAA392679912E006F52D7 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA382679912E006F52D7 /* AccountView.swift */; };
+		1A8AAA3B26799391006F52D7 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3A26799391006F52D7 /* WelcomeView.swift */; };
 		1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */; };
 		1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */; };
 		1AAFACAB267836A8002C560E /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFACAA267836A8002C560E /* Sidebar.swift */; };
@@ -70,6 +73,9 @@
 		1A76AAEC267722E20023B130 /* PreferencesSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesSettings.xib; sourceTree = SOURCE_ROOT; };
 		1A76AAED267722E20023B130 /* PreferencesInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesInfo.xib; sourceTree = SOURCE_ROOT; };
 		1A76AAEE267722E20023B130 /* AccountDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountDetail.xib; sourceTree = SOURCE_ROOT; };
+		1A8AAA3626798047006F52D7 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		1A8AAA382679912E006F52D7 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		1A8AAA3A26799391006F52D7 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		1A8F66A616B5FC9400396E44 /* Spanish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Spanish; path = Resources/Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A8F66A916B5FDDC00396E44 /* fr-CA */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Resources/fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A8F66AC16B5FE7600396E44 /* nb */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nb; path = Resources/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -233,8 +239,10 @@
 			children = (
 				1AAB5C9418FFF04C0020A73E /* GNSecureTextField.h */,
 				1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */,
-				1AAFACAA267836A8002C560E /* Sidebar.swift */,
 				1A76AAE52675C38A0023B130 /* MainView.swift */,
+				1AAFACAA267836A8002C560E /* Sidebar.swift */,
+				1A8AAA3A26799391006F52D7 /* WelcomeView.swift */,
+				1A8AAA382679912E006F52D7 /* AccountView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -242,6 +250,7 @@
 		1AB7FDA916B57A940040BBCE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1A8AAA3626798047006F52D7 /* Account.swift */,
 				1AB7FE4E16B57BAD0040BBCE /* GNAccount.h */,
 				1AB7FE4F16B57BAD0040BBCE /* GNAccount.m */,
 				1AC74A3D26739C39003F98E7 /* GNAccount.swift */,
@@ -410,6 +419,7 @@
 				1AAFACAF26785025002C560E /* AppDelegate.swift in Sources */,
 				1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */,
 				1AB7FE4916B57B9C0040BBCE /* GNAccountDetailController.m in Sources */,
+				1A8AAA3726798047006F52D7 /* Account.swift in Sources */,
 				1AC74A3E26739C39003F98E7 /* GNAccount.swift in Sources */,
 				1AB7FE4B16B57B9C0040BBCE /* GNPreferencesController.m in Sources */,
 				1AB7FE4C16B57B9C0040BBCE /* PrefsAccountsViewController.m in Sources */,
@@ -421,7 +431,9 @@
 				1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */,
 				1AB7FE5A16B57BAD0040BBCE /* GNChecker.m in Sources */,
 				1AB7FE5B16B57BAD0040BBCE /* GNPreferences.m in Sources */,
+				1A8AAA3B26799391006F52D7 /* WelcomeView.swift in Sources */,
 				1A05D19319E55C85002698B7 /* PrefsInfoViewController.m in Sources */,
+				1A8AAA392679912E006F52D7 /* AccountView.swift in Sources */,
 				1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */,
 				1AB7FE5C16B57BAD0040BBCE /* GNSound.m in Sources */,
 			);

@@ -9,26 +9,42 @@
 import SwiftUI
 
 struct Sidebar: View {
+    @Binding var accounts: Accounts
     @Binding var selection: String?
 
     var body: some View {
         List {
-            Text("Accounts")
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .foregroundColor(.secondary)
+            HStack {
+                Text("Accounts")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.secondary)
 
-            NavigationLink(
-                destination: Text("ashchan@gmail.com"),
-                tag: "account1",
-                selection: $selection
-            ) {
-                Image(systemName: "person.circle.fill")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.green)
+                Spacer()
 
-                Text(verbatim: "ashchan@gmail.com")
+                if selection != nil && selection != "welcome" {
+                    Button(action: {
+                        selection = "welcome"
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                    .buttonStyle(.plain)
+                }
+           }
+
+            ForEach(accounts, id: \.self) { account in
+                NavigationLink(
+                    destination: AccountView(account: account),
+                    tag: account.email,
+                    selection: $selection
+                ) {
+                    Image(systemName: "person.circle.fill")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.green)
+
+                    Text(verbatim: account.email)
+                }
             }
 
             Text("Preferences")
@@ -57,6 +73,9 @@ struct Sidebar: View {
 
 struct Sidebar_Previews: PreviewProvider {
     static var previews: some View {
-        Sidebar(selection: .constant("general"))
+        Sidebar(
+            accounts: .constant([Account(email: "ashchan@gmail.com", enabled: true, notificationEnabled: true)]),
+            selection: .constant("general")
+        )
     }
 }

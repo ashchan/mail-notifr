@@ -9,11 +9,12 @@
 import SwiftUI
 
 struct MainView: View {
+    @AppStorage("accounts") var accounts = Accounts()
     @Binding var selection: String?
 
     var body: some View {
         NavigationView {
-            Sidebar(selection: $selection)
+            Sidebar(accounts: $accounts, selection: $selection)
                 .toolbar {
                     Button(action: toggleSidebar) {
                         Image(systemName: "sidebar.left")
@@ -22,7 +23,7 @@ struct MainView: View {
                 }
                 .frame(minWidth: 220, alignment: .leading)
 
-            Text("Welcome")
+            WelcomeView()
         }
        .frame(minWidth: 480, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
     }
