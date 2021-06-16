@@ -13,61 +13,85 @@ struct Sidebar: View {
     @Binding var selection: String?
 
     var body: some View {
-        List {
-            HStack {
+        VStack {
+            List {
                 Text("Accounts")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.secondary)
 
-                Spacer()
-
-                if selection != nil && selection != "welcome" {
-                    Button(action: {
-                        selection = "welcome"
-                    }) {
-                        Image(systemName: "plus")
+                ForEach(accounts, id: \.self) { account in
+                    NavigationLink(
+                        destination: AccountView(account: account),
+                        tag: account.email,
+                        selection: $selection
+                    ) {
+                        AvatarView(image: "person", backgroundColor: .green)
+                        Text(verbatim: account.email)
                     }
-                    .buttonStyle(.plain)
+                    .padding(2)
                 }
-           }
 
-            ForEach(accounts, id: \.self) { account in
+                Text("Preferences")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.secondary)
+
                 NavigationLink(
-                    destination: AccountView(account: account),
-                    tag: account.email,
+                    destination: Text("General"),
+                    tag: "preferences",
                     selection: $selection
                 ) {
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.green)
-
-                    Text(verbatim: account.email)
+                    AvatarView(image: "gearshape", backgroundColor: .blue)
+                    Text("General")
                 }
-            }
+                .padding(2)
 
-            Text("Preferences")
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .foregroundColor(.secondary)
-
-            NavigationLink(
-                destination: Text("General"),
-                tag: "preferences",
-                selection: $selection
-            ) {
-                Label("General", systemImage: "gearshape")
+                NavigationLink(
+                    destination: Text("Shortcuts"),
+                    tag: "shortcuts",
+                    selection: $selection
+                ) {
+                    AvatarView(image: "keyboard", backgroundColor: .orange)
+                    Text("Shortcuts")
+                }
+                .padding(2)
             }
-            NavigationLink(
-                destination: Text("Shortcuts"),
-                tag: "shortcuts",
-                selection: $selection
-            ) {
-                Label("Shortcuts", systemImage: "command.square")
-           }
+            .listStyle(.sidebar)
+
+            Spacer()
+
+            HStack {
+                Button(action: {
+                    selection = "welcome"
+                }) {
+                    Label("Add Account", systemImage: "plus.circle")
+                }
+                .buttonStyle(.plain)
+                .foregroundColor(.primary)
+                .padding(8)
+
+                Spacer()
+            }
         }
-        .listStyle(.sidebar)
+    }
+}
+
+struct AvatarView: View {
+    var image: String
+    var backgroundColor: Color
+
+    var body: some View {
+        Circle()
+            .frame(width: 24, height: 24)
+            .foregroundColor(backgroundColor)
+            .overlay(
+                Image(systemName: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 14, height: 14)
+                    .foregroundColor(.white)
+            )
     }
 }
 
