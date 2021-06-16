@@ -12,8 +12,7 @@ import SwiftUI
 @main
 struct MailNotifrApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
-    @AppStorage("accounts") var accounts = Accounts()
+    @AppStorage(Accounts.storageKey) var accounts = Accounts()
     @State var screen: String?
 
     var body: some Scene {

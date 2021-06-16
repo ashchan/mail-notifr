@@ -16,6 +16,24 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.button!.image = NSImage(named: "NoMailsTemplate")
         statusItem.button!.imagePosition = .imageLeft
         statusItem.menu = createMenu()
+
+        if Accounts.hasAccounts {
+            NSApp.hide(nil)
+        } else {
+            showInDock()
+        }
+    }
+}
+
+// MARK: - Show/hide in Dock
+private extension AppDelegate {
+    func showInDock() {
+        NSApp.setActivationPolicy(.regular)
+
+        NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.dock").first?.activate(options: [])
+        DispatchQueue.main.asyncAfter(deadline: .now() + .microseconds(200)) {
+            NSApp.activate(ignoringOtherApps: true)
+        }
     }
 }
 

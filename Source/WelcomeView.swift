@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    @AppStorage("accounts") var accounts = Accounts()
+    @AppStorage(Accounts.storageKey) var accounts = Accounts()
 
     var body: some View {
         VStack {

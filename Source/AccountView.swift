@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct AccountView: View {
-    @AppStorage("accounts") var accounts = Accounts()
+    @AppStorage(Accounts.storageKey) var accounts = Accounts()
     @State var account: Account
 
     var body: some View {
@@ -28,7 +28,7 @@ private extension AccountView {
         // TODO
         //   * confirmation alert
         //   * stop checker
-        //   * remove keychain (auth info)
+        account.authorization = nil
         accounts.removeAll { $0.id == account.id }
     }
 }

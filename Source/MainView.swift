@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @AppStorage("accounts") var accounts = Accounts()
+    @AppStorage(Accounts.storageKey) var accounts = Accounts()
     @Binding var selection: String?
 
     var body: some View {
