@@ -21,6 +21,7 @@
 		1A8AAA3726798047006F52D7 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3626798047006F52D7 /* Account.swift */; };
 		1A8AAA392679912E006F52D7 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA382679912E006F52D7 /* AccountView.swift */; };
 		1A8AAA3B26799391006F52D7 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3A26799391006F52D7 /* WelcomeView.swift */; };
+		1A8AAA3D267B1201006F52D7 /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3C267B1201006F52D7 /* OAuthClient.swift */; };
 		1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */; };
 		1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */; };
 		1AAFACAB267836A8002C560E /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFACAA267836A8002C560E /* Sidebar.swift */; };
@@ -76,6 +77,7 @@
 		1A8AAA3626798047006F52D7 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		1A8AAA382679912E006F52D7 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		1A8AAA3A26799391006F52D7 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		1A8AAA3C267B1201006F52D7 /* OAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
 		1A8F66A616B5FC9400396E44 /* Spanish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Spanish; path = Resources/Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A8F66A916B5FDDC00396E44 /* fr-CA */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Resources/fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A8F66AC16B5FE7600396E44 /* nb */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nb; path = Resources/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				1A8AAA3626798047006F52D7 /* Account.swift */,
+				1A8AAA3C267B1201006F52D7 /* OAuthClient.swift */,
 				1AB7FE4E16B57BAD0040BBCE /* GNAccount.h */,
 				1AB7FE4F16B57BAD0040BBCE /* GNAccount.m */,
 				1AC74A3D26739C39003F98E7 /* GNAccount.swift */,
@@ -435,6 +438,7 @@
 				1A05D19319E55C85002698B7 /* PrefsInfoViewController.m in Sources */,
 				1A8AAA392679912E006F52D7 /* AccountView.swift in Sources */,
 				1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */,
+				1A8AAA3D267B1201006F52D7 /* OAuthClient.swift in Sources */,
 				1AB7FE5C16B57BAD0040BBCE /* GNSound.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

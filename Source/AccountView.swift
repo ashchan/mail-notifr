@@ -28,9 +28,8 @@ private extension AccountView {
         // TODO
         //   * confirmation alert
         //   * stop checker
-        account.authorization = nil
-        accounts.removeAll { $0.id == account.id }
-    }
+        accounts.delete(account: account)
+   }
 }
 
 struct AccountView_Previews: PreviewProvider {

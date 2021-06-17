@@ -75,3 +75,17 @@ extension Accounts: RawRepresentable {
         return result
     }
 }
+
+extension Accounts {
+    mutating func add(account: Account) {
+        append(account)
+    }
+
+    mutating func delete(account: Account) {
+        guard let index = firstIndex(where: { $0.id == account.id }) else {
+            return
+        }
+        self[index].authorization = nil
+        remove(at: index)
+    }
+}

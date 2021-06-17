@@ -18,12 +18,13 @@ struct MailNotifrApp: App {
     var body: some Scene {
         WindowGroup {
             MainView(selection: $screen)
-                .handlesExternalEvents(preferring: Set(arrayLiteral: "welcome", "preferences"), allowing: Set(arrayLiteral: "*"))
+                .handlesExternalEvents(preferring: ["*"], allowing: ["*"])
                 .onOpenURL { url in
                     if url.absoluteString.starts(with: "mailnotifr") {
                         screen = url.host
+                    } else if url.absoluteString.starts(with: OAuthClient.redirectURL) {
+                        OAuthClient.resumeAuthFlow(url: url)
                     }
-                    // TODO
                 }
         }
         .windowToolbarStyle(.unified(showsTitle: false))
@@ -39,4 +40,3 @@ struct MailNotifrApp: App {
         }
     }
 }
-
