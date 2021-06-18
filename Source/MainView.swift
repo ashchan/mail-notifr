@@ -14,7 +14,7 @@ struct MainView: View {
 
     var body: some View {
         NavigationView {
-            Sidebar(accounts: $accounts, selection: $selection)
+            Sidebar(accounts: accounts, selection: $selection)
                 .toolbar {
                     Button(action: toggleSidebar) {
                         Image(systemName: "sidebar.left")

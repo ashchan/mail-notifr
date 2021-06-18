@@ -23,7 +23,7 @@ struct MailNotifrApp: App {
                     if url.absoluteString.starts(with: "mailnotifr") {
                         screen = url.host
                     } else if url.absoluteString.starts(with: OAuthClient.redirectURL) {
-                        OAuthClient.resumeAuthFlow(url: url)
+                        OAuthClient.shared.resumeAuthFlow(url: url)
                     }
                 }
         }

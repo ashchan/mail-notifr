@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct Sidebar: View {
-    @Binding var accounts: Accounts
+    var accounts: Accounts
     @Binding var selection: String?
 
     var body: some View {
@@ -98,7 +98,7 @@ struct AvatarView: View {
 struct Sidebar_Previews: PreviewProvider {
     static var previews: some View {
         Sidebar(
-            accounts: .constant([Account(email: "ashchan@gmail.com", enabled: true, notificationEnabled: true)]),
+            accounts: [Account(email: "ashchan@gmail.com", enabled: true, notificationEnabled: true)],
             selection: .constant("general")
         )
     }

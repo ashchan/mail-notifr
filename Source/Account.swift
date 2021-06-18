@@ -45,18 +45,6 @@ typealias Accounts = [Account]
 extension Accounts: RawRepresentable {
     static let storageKey = "accounts"
 
-    static var hasAccounts: Bool {
-        if let value = UserDefaults.standard.string(forKey: storageKey) {
-            guard let data = value.data(using: .utf8),
-                  let accounts = try? JSONDecoder().decode(Accounts.self, from: data)
-            else {
-                return false
-            }
-            return !accounts.isEmpty
-        }
-        return false
-    }
-
     public init?(rawValue: String) {
         guard let data = rawValue.data(using: .utf8),
               let result = try? JSONDecoder().decode(Accounts.self, from: data)
@@ -74,6 +62,19 @@ extension Accounts: RawRepresentable {
         }
         return result
     }
+
+    static var `default`: Accounts {
+        get {
+            Accounts(rawValue: UserDefaults.standard.string(forKey: storageKey) ?? "[]") ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: storageKey)
+        }
+    }
+
+    static var hasAccounts: Bool {
+        !Self.default.isEmpty
+    }
 }
 
 extension Accounts {
@@ -87,5 +88,22 @@ extension Accounts {
         }
         self[index].authorization = nil
         remove(at: index)
+    }
+
+    static func authorize() {
+        OAuthClient.shared.authorize() { state in
+            switch state {
+            case .success(let state):
+                let authorization = GTMAppAuthFetcherAuthorization(authState: state)
+                var account = Account(email: authorization.userEmail!, enabled: true, notificationEnabled: true)
+                account.authorization = authorization
+                // TODO: check existing account
+                var accounts = Self.default
+                accounts.add(account: account)
+                Self.default = accounts
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
