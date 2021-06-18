@@ -15,12 +15,13 @@ struct AccountView: View {
     var body: some View {
         VStack {
             Text(account.email)
+                .font(.largeTitle)
+ 
             Button(action: delete) {
                 Image(systemName: "trash")
                     .foregroundColor(.red)
             }
         }
-        .navigationTitle(account.email)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(20)
         .background(Color.white)

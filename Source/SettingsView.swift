@@ -15,6 +15,9 @@ struct SettingsView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
+            Text("Settings")
+                .font(.largeTitle)
+ 
             HStack {
                 Toggle(isOn: $launchAtLogin.isEnabled) {
                     Text("Launch at login")
@@ -30,7 +33,6 @@ struct SettingsView: View {
 
             Spacer()
         }
-        .navigationTitle("General")
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(20)
         .background(Color.white)

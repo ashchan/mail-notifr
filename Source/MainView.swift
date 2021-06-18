@@ -24,7 +24,6 @@ struct MainView: View {
                 .frame(minWidth: 220, alignment: .leading)
 
             WelcomeView()
-                .navigationTitle("Welcome to Mail Notifr")
         }
        .frame(minWidth: 600, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
     }
