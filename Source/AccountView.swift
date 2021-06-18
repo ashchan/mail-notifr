@@ -22,6 +22,7 @@ struct AccountView: View {
         }
         .navigationTitle(account.email)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(20)
         .background(Color.white)
         .toolbar {
             Button(action: delete) {

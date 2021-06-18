@@ -30,9 +30,9 @@ struct SettingsView: View {
 
             Spacer()
         }
-        .padding()
         .navigationTitle("General")
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(20)
         .background(Color.white)
     }
 }

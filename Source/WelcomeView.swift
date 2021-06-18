@@ -14,10 +14,25 @@ struct WelcomeView: View {
 
     var body: some View {
         VStack {
-            Text("Add your Gmail account")
-            Button(action: authorize) {
+            HStack {
+                Image(nsImage: NSImage(named: "AppIcon")!)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+
+                VStack {
+                    Divider()
+                }
+                .frame(width: 100, height: 20)
+
                 Image(systemName: "person.icloud")
-                Text("Authorize and add account")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.blue)
+            }
+
+            Button(action: authorize) {
+                Text("Authorize and add your Google Account")
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

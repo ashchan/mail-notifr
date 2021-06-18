@@ -20,7 +20,7 @@ struct Sidebar: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.secondary)
 
-                ForEach(accounts, id: \.self) { account in
+                ForEach(accounts) { account in
                     NavigationLink(
                         destination: AccountView(account: account),
                         tag: account.email,

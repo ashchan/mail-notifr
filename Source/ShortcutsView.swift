@@ -12,7 +12,7 @@ import KeyboardShortcuts
 struct ShortcutsView: View {
     var body: some View {
         VStack(alignment: .trailing) {
-           HStack(alignment: .firstTextBaseline, spacing: 15) {
+            HStack(alignment: .firstTextBaseline, spacing: 15) {
                 Text("Check All Mails")
                     .frame(alignment: .trailing)
                 KeyboardShortcuts.Recorder(for: .checkAllMails)
@@ -23,9 +23,12 @@ struct ShortcutsView: View {
                     .frame(alignment: .trailing)
                 KeyboardShortcuts.Recorder(for: .composeMail)
             }
+
+            Spacer()
         }
         .navigationTitle("Shortcuts")
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(20)
         .background(Color.white)
     }
 }
