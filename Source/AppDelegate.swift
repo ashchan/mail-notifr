@@ -7,15 +7,14 @@
 //
 
 import Cocoa
+import KeyboardShortcuts
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.button!.image = NSImage(named: "NoMailsTemplate")
-        statusItem.button!.imagePosition = .imageLeft
-        statusItem.menu = createMenu()
+        setupStatusItem()
+        registerShortCuts()
 
         if Accounts.hasAccounts {
             NSApp.windows.first?.orderOut(nil)
@@ -40,6 +39,13 @@ private extension AppDelegate {
 
 // MARK: - Status Item Menu
 private extension AppDelegate {
+    func setupStatusItem() {
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem.button!.image = NSImage(named: "NoMailsTemplate")
+        statusItem.button!.imagePosition = .imageLeft
+        statusItem.menu = createMenu()
+    }
+
     func createMenu() -> NSMenu {
         let menu = NSMenu()
 
@@ -62,3 +68,19 @@ private extension AppDelegate {
     }
 }
 
+// MARK: - Shortcuts
+extension KeyboardShortcuts.Name {
+    static let checkAllMails = Self("checkAllMails")
+    static let composeMail = Self("composeMail")
+}
+
+private extension AppDelegate {
+    func registerShortCuts() {
+        KeyboardShortcuts.onKeyUp(for: .checkAllMails) { [self] in
+            // TODO
+        }
+        KeyboardShortcuts.onKeyUp(for: .composeMail) { [self] in
+            // TODO
+        }
+    }
+}

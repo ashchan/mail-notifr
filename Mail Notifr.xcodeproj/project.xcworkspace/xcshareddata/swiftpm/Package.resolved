@@ -38,6 +38,15 @@
         }
       },
       {
+        "package": "KeyboardShortcuts",
+        "repositoryURL": "https://github.com/sindresorhus/KeyboardShortcuts",
+        "state": {
+          "branch": null,
+          "revision": "a7a3ff6248b7564ef4ef2e9003672bf1b9f77ad1",
+          "version": "1.2.0"
+        }
+      },
+      {
         "package": "KeychainAccess",
         "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess",
         "state": {
@@ -53,15 +62,6 @@
           "branch": null,
           "revision": "6b16bcdf7d45a9d76a768a5c4912dde925cf0e95",
           "version": "4.1.0"
-        }
-      },
-      {
-        "package": "MASShortcut",
-        "repositoryURL": "https://github.com/sweetppro/MASShortcut",
-        "state": {
-          "branch": "master",
-          "revision": "7d4c78f3282197c328c1c0dba6cea4baa7688302",
-          "version": null
         }
       }
     ]

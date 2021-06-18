@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 ashchan.com. All rights reserved.
 //
 
-#import <Shortcut.h>
 #import "PrefsSettingsViewController.h"
 #import "GNPreferences.h"
 #import "Mail_Notifr-Swift.h"
@@ -17,7 +16,6 @@ NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut"
 
 @property (weak) IBOutlet NSButton *autoLaunchCheckBox;
 @property (weak) IBOutlet NSButton *showUnreadCountCheckBox;
-@property (weak) IBOutlet MASShortcutView *checkAllShortcutView;
 @property (weak) IBOutlet NSTextField *shortcutsLabel;
 @property (weak) IBOutlet NSTextField *shortcutCheckAllLabel;
 
@@ -52,7 +50,6 @@ NSString *const GNDefaultsKeyCheckAllShortcut = @"GNDefaultsKeyCheckAllShortcut"
     [self.showUnreadCountCheckBox setState:[GNPreferences sharedInstance].showUnreadCount ? NSControlStateValueOn : NSControlStateValueOff];
     self.shortcutsLabel.stringValue = NSLocalizedString(@"shortcuts.label", nil);
     self.shortcutCheckAllLabel.stringValue = NSLocalizedString(@"shortcuts.checkall.label", nil);
-    self.checkAllShortcutView.associatedUserDefaultsKey = GNDefaultsKeyCheckAllShortcut;
 }
 
 - (IBAction)saveAutoLaunch:(id)sender {

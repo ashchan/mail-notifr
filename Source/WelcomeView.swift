@@ -20,6 +20,8 @@ struct WelcomeView: View {
                 Text("Authorize and add account")
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white)
     }
 }
 

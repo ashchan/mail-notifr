@@ -22,6 +22,9 @@
 		1A8AAA392679912E006F52D7 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA382679912E006F52D7 /* AccountView.swift */; };
 		1A8AAA3B26799391006F52D7 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3A26799391006F52D7 /* WelcomeView.swift */; };
 		1A8AAA3D267B1201006F52D7 /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3C267B1201006F52D7 /* OAuthClient.swift */; };
+		1A8AAA3F267C1CE5006F52D7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3E267C1CE5006F52D7 /* SettingsView.swift */; };
+		1A8AAA41267C1D15006F52D7 /* ShortcutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA40267C1D15006F52D7 /* ShortcutsView.swift */; };
+		1A8AAA44267C23D4006F52D7 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 1A8AAA43267C23D4006F52D7 /* KeyboardShortcuts */; };
 		1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */; };
 		1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */; };
 		1AAFACAB267836A8002C560E /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFACAA267836A8002C560E /* Sidebar.swift */; };
@@ -40,7 +43,6 @@
 		1AB7FF0116B57D280040BBCE /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0016B57D280040BBCE /* Credits.html */; };
 		1AB7FF0616B57D510040BBCE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0216B57D510040BBCE /* InfoPlist.strings */; };
 		1AB7FF0716B57D510040BBCE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0416B57D510040BBCE /* Localizable.strings */; };
-		1AC74A39267399E3003F98E7 /* MASShortcut in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC74A38267399E3003F98E7 /* MASShortcut */; };
 		1AC74A3C26739BD6003F98E7 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC74A3B26739BD6003F98E7 /* KeychainAccess */; };
 		1AC74A3E26739C39003F98E7 /* GNAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC74A3D26739C39003F98E7 /* GNAccount.swift */; };
 		1AC74A422673A1B4003F98E7 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC74A412673A1B4003F98E7 /* LaunchAtLogin */; };
@@ -78,6 +80,8 @@
 		1A8AAA382679912E006F52D7 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		1A8AAA3A26799391006F52D7 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		1A8AAA3C267B1201006F52D7 /* OAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
+		1A8AAA3E267C1CE5006F52D7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1A8AAA40267C1D15006F52D7 /* ShortcutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsView.swift; sourceTree = "<group>"; };
 		1A8F66A616B5FC9400396E44 /* Spanish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Spanish; path = Resources/Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A8F66A916B5FDDC00396E44 /* fr-CA */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Resources/fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A8F66AC16B5FE7600396E44 /* nb */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nb; path = Resources/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -138,11 +142,11 @@
 			files = (
 				1A49622B2674D54100331CF7 /* AppAuth in Frameworks */,
 				1A4962252674C0C100331CF7 /* GoogleAPIClientForREST_Gmail in Frameworks */,
-				1AC74A39267399E3003F98E7 /* MASShortcut in Frameworks */,
 				1AFCE88218D404E500487B98 /* Carbon.framework in Frameworks */,
 				1AC74A422673A1B4003F98E7 /* LaunchAtLogin in Frameworks */,
 				1AC74A3C26739BD6003F98E7 /* KeychainAccess in Frameworks */,
 				1A4962282674CEBD00331CF7 /* GTMAppAuth in Frameworks */,
+				1A8AAA44267C23D4006F52D7 /* KeyboardShortcuts in Frameworks */,
 				1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */,
 				1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */,
 			);
@@ -245,6 +249,8 @@
 				1AAFACAA267836A8002C560E /* Sidebar.swift */,
 				1A8AAA3A26799391006F52D7 /* WelcomeView.swift */,
 				1A8AAA382679912E006F52D7 /* AccountView.swift */,
+				1A8AAA3E267C1CE5006F52D7 /* SettingsView.swift */,
+				1A8AAA40267C1D15006F52D7 /* ShortcutsView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -300,12 +306,12 @@
 			);
 			name = "Mail Notifr";
 			packageProductDependencies = (
-				1AC74A38267399E3003F98E7 /* MASShortcut */,
 				1AC74A3B26739BD6003F98E7 /* KeychainAccess */,
 				1AC74A412673A1B4003F98E7 /* LaunchAtLogin */,
 				1A4962242674C0C100331CF7 /* GoogleAPIClientForREST_Gmail */,
 				1A4962272674CEBD00331CF7 /* GTMAppAuth */,
 				1A49622A2674D54100331CF7 /* AppAuth */,
+				1A8AAA43267C23D4006F52D7 /* KeyboardShortcuts */,
 			);
 			productName = "Gmail Notifr";
 			productReference = 1AB7FD7C16B578740040BBCE /* Mail Notifr.app */;
@@ -356,12 +362,12 @@
 			);
 			mainGroup = 1AB7FD7116B578740040BBCE;
 			packageReferences = (
-				1AC74A37267399E3003F98E7 /* XCRemoteSwiftPackageReference "MASShortcut" */,
 				1AC74A3A26739BD6003F98E7 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				1AC74A402673A1B4003F98E7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				1A4962232674C0C100331CF7 /* XCRemoteSwiftPackageReference "google-api-objectivec-client-for-rest" */,
 				1A4962262674CEBD00331CF7 /* XCRemoteSwiftPackageReference "GTMAppAuth" */,
 				1A4962292674D54100331CF7 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+				1A8AAA42267C23D4006F52D7 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = 1AB7FD7D16B578740040BBCE /* Products */;
 			projectDirPath = "";
@@ -420,12 +426,14 @@
 				1AAFACAD267848D1002C560E /* MailNotifrApp.swift in Sources */,
 				1AC74A482673A31B003F98E7 /* GNPreferences.swift in Sources */,
 				1AAFACAF26785025002C560E /* AppDelegate.swift in Sources */,
+				1A8AAA41267C1D15006F52D7 /* ShortcutsView.swift in Sources */,
 				1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */,
 				1AB7FE4916B57B9C0040BBCE /* GNAccountDetailController.m in Sources */,
 				1A8AAA3726798047006F52D7 /* Account.swift in Sources */,
 				1AC74A3E26739C39003F98E7 /* GNAccount.swift in Sources */,
 				1AB7FE4B16B57B9C0040BBCE /* GNPreferencesController.m in Sources */,
 				1AB7FE4C16B57B9C0040BBCE /* PrefsAccountsViewController.m in Sources */,
+				1A8AAA3F267C1CE5006F52D7 /* SettingsView.swift in Sources */,
 				1AB7FE4D16B57B9C0040BBCE /* PrefsSettingsViewController.m in Sources */,
 				1AAFACAB267836A8002C560E /* Sidebar.swift in Sources */,
 				1AB7FE5816B57BAD0040BBCE /* GNAccount.m in Sources */,
@@ -693,12 +701,12 @@
 				minimumVersion = 1.4.0;
 			};
 		};
-		1AC74A37267399E3003F98E7 /* XCRemoteSwiftPackageReference "MASShortcut" */ = {
+		1A8AAA42267C23D4006F52D7 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sweetppro/MASShortcut";
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		1AC74A3A26739BD6003F98E7 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -735,10 +743,10 @@
 			package = 1A4962292674D54100331CF7 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
 			productName = AppAuth;
 		};
-		1AC74A38267399E3003F98E7 /* MASShortcut */ = {
+		1A8AAA43267C23D4006F52D7 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1AC74A37267399E3003F98E7 /* XCRemoteSwiftPackageReference "MASShortcut" */;
-			productName = MASShortcut;
+			package = 1A8AAA42267C23D4006F52D7 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
 		};
 		1AC74A3B26739BD6003F98E7 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;

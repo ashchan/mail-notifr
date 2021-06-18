@@ -8,7 +8,6 @@
 
 import Cocoa
 import SwiftUI
-import MASShortcut
 import AppAuth
 import GTMAppAuth
 import GoogleAPIClientForREST_Gmail // SWIFT_PACKAGE=1 required, see https://github.com/google/google-api-objectivec-client-for-rest/issues/400
@@ -63,10 +62,6 @@ class GNApplicationController: NSObject, NSApplicationDelegate {
 
         NSApp.setActivationPolicy(.regular)
         window.makeKeyAndOrderFront(nil)
-
-        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: GNDefaultsKeyCheckAllShortcut) {
-            self.checkAll(nil)
-        }
    }
 
     func applicationWillTerminate(_ aNotification: Notification) {

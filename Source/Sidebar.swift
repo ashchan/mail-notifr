@@ -38,7 +38,7 @@ struct Sidebar: View {
                     .foregroundColor(.secondary)
 
                 NavigationLink(
-                    destination: Text("General"),
+                    destination: SettingsView(),
                     tag: "preferences",
                     selection: $selection
                 ) {
@@ -48,7 +48,7 @@ struct Sidebar: View {
                 .padding(2)
 
                 NavigationLink(
-                    destination: Text("Shortcuts"),
+                    destination: ShortcutsView(),
                     tag: "shortcuts",
                     selection: $selection
                 ) {

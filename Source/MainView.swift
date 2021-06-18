@@ -25,7 +25,7 @@ struct MainView: View {
 
             WelcomeView()
         }
-       .frame(minWidth: 480, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
+       .frame(minWidth: 600, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
     }
 
     private func toggleSidebar() {

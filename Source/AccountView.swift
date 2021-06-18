@@ -20,6 +20,14 @@ struct AccountView: View {
                     .foregroundColor(.red)
             }
         }
+        .navigationTitle(account.email)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white)
+        .toolbar {
+            Button(action: delete) {
+                Image(systemName: "trash")
+            }
+        }
     }
 }
 

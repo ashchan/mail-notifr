@@ -16,7 +16,7 @@ struct MailNotifrApp: App {
     @State var screen: String?
 
     var body: some Scene {
-        WindowGroup {
+        WindowGroup("") {
             MainView(selection: $screen)
                 .handlesExternalEvents(preferring: ["*"], allowing: ["*"])
                 .onOpenURL { url in
@@ -27,7 +27,7 @@ struct MailNotifrApp: App {
                     }
                 }
         }
-        .windowToolbarStyle(.unified(showsTitle: false))
+        .windowToolbarStyle(.unifiedCompact)
         .commands {
             SidebarCommands()
             CommandGroup(after: .appInfo) {
