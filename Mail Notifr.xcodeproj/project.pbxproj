@@ -25,6 +25,7 @@
 		1A8AAA3F267C1CE5006F52D7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3E267C1CE5006F52D7 /* SettingsView.swift */; };
 		1A8AAA41267C1D15006F52D7 /* ShortcutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA40267C1D15006F52D7 /* ShortcutsView.swift */; };
 		1A8AAA44267C23D4006F52D7 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 1A8AAA43267C23D4006F52D7 /* KeyboardShortcuts */; };
+		1A8AAA46267C35EC006F52D7 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA45267C35EC006F52D7 /* AppSettings.swift */; };
 		1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */; };
 		1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */; };
 		1AAFACAB267836A8002C560E /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFACAA267836A8002C560E /* Sidebar.swift */; };
@@ -82,6 +83,7 @@
 		1A8AAA3C267B1201006F52D7 /* OAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
 		1A8AAA3E267C1CE5006F52D7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1A8AAA40267C1D15006F52D7 /* ShortcutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsView.swift; sourceTree = "<group>"; };
+		1A8AAA45267C35EC006F52D7 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		1A8F66A616B5FC9400396E44 /* Spanish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Spanish; path = Resources/Spanish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A8F66A916B5FDDC00396E44 /* fr-CA */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Resources/fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A8F66AC16B5FE7600396E44 /* nb */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nb; path = Resources/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			children = (
 				1A8AAA3626798047006F52D7 /* Account.swift */,
 				1A8AAA3C267B1201006F52D7 /* OAuthClient.swift */,
+				1A8AAA45267C35EC006F52D7 /* AppSettings.swift */,
 				1AB7FE4E16B57BAD0040BBCE /* GNAccount.h */,
 				1AB7FE4F16B57BAD0040BBCE /* GNAccount.m */,
 				1AC74A3D26739C39003F98E7 /* GNAccount.swift */,
@@ -423,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A8AAA46267C35EC006F52D7 /* AppSettings.swift in Sources */,
 				1AAFACAD267848D1002C560E /* MailNotifrApp.swift in Sources */,
 				1AC74A482673A31B003F98E7 /* GNPreferences.swift in Sources */,
 				1AAFACAF26785025002C560E /* AppDelegate.swift in Sources */,

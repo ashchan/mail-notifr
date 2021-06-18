@@ -7,12 +7,30 @@
 //
 
 import SwiftUI
+import LaunchAtLogin
 
 struct SettingsView: View {
+    @ObservedObject private var launchAtLogin = LaunchAtLogin.observable
+    @AppStorage(AppSettings.showUnreadCount) var showUnreadCount = true
+
     var body: some View {
-        VStack {
-            Text("todo")
+        VStack(alignment: .leading) {
+            HStack {
+                Toggle(isOn: $launchAtLogin.isEnabled) {
+                    Text("Launch at login")
+                }
+                Spacer()
+            }
+            HStack {
+                Toggle(isOn: $showUnreadCount) {
+                    Text("Show unread count in menu bar")
+                }
+                Spacer()
+            }
+
+            Spacer()
         }
+        .padding()
         .navigationTitle("General")
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
