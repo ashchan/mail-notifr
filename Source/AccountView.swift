@@ -29,6 +29,7 @@ struct AccountView: View {
                 Toggle(isOn: $account.notificationEnabled) {
                     Text("Use Notification")
                 }
+                .toggleStyle(.switch)
 
                 Picker("Play sound:", selection: $account.notificationSound) {
                    Text(verbatim: "None")
@@ -53,6 +54,7 @@ struct AccountView: View {
                 Toggle(isOn: $account.enabled) {
                     Text("Enable this account")
                 }
+                .toggleStyle(.switch)
             }
             .onChange(of: account) { newValue in
                 accounts.update(account: newValue)
@@ -71,12 +73,12 @@ struct AccountView: View {
             }
             .alert(isPresented: $showingDeleteAlert) {
                 Alert(
-                    title: Text("Delete account"),
-                    message: Text("Are you sure to delete this account?"),
-                    primaryButton: .destructive(Text("Yes, delete.")) {
+                    title: Text("Are you sure you want to delete this account from Mail Notifr?"),
+                    message: Text("You can add your account again at any time."),
+                    primaryButton: .destructive(Text("Yes, delete this account.")) {
                         self.delete()
                     },
-                    secondaryButton: .default(Text("No, don't delete."))
+                    secondaryButton: .cancel()
                 )
             }
         }
