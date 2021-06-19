@@ -11,6 +11,7 @@ import SwiftUI
 struct AccountView: View {
     @AppStorage(Accounts.storageKey) var accounts = Accounts()
     @State var account: Account
+    @State private var showingDeleteAlert = false
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -63,8 +64,20 @@ struct AccountView: View {
         .padding(20)
         .background(Color.white)
         .toolbar {
-            Button(action: delete) {
+            Button {
+                showingDeleteAlert = true
+            } label: {
                 Image(systemName: "trash")
+            }
+            .alert(isPresented: $showingDeleteAlert) {
+                Alert(
+                    title: Text("Delete account"),
+                    message: Text("Are you sure to delete this account?"),
+                    primaryButton: .destructive(Text("Yes, delete.")) {
+                        self.delete()
+                    },
+                    secondaryButton: .default(Text("No, don't delete."))
+                )
             }
         }
     }
@@ -73,10 +86,9 @@ struct AccountView: View {
 private extension AccountView {
     func delete() {
         // TODO
-        //   * confirmation alert
         //   * stop checker
         accounts.delete(account: account)
-   }
+    }
 }
 
 struct AccountView_Previews: PreviewProvider {
