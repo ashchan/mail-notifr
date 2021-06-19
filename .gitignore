@@ -18,3 +18,4 @@ Pods
 *.xccheckout
 Source/OAuthSecret.swift
 .env
+tools/gyb.pyc
