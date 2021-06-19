@@ -1,8 +1,8 @@
 # Mail Notifr (Formerly Gmail Notifr) #
 
-A Gmail Notifier for Mac OS X
+A Gmail Notifier for macOS
 
-![screenshot](https://raw.github.com/ashchan/gmail-notifr-objc/master/screenshot.png)
+![screenshot](https://raw.github.com/ashchan/mail-notifr/master/screenshot.png)
 
 [Gmail Notifr](http://bit.ly/gmail-notifr-store) features:
 
@@ -22,33 +22,21 @@ A Gmail Notifier for Mac OS X
 
 ## Requirements ##
 
-* Mac OS X 10.7 (Lion) or higher
-* An Intel 64-bit machine
+* macOS 11 Big Sur or above
 
 ## Note ##
 
-Gmail Notifr was originally written in RubyCocoa, then MacRuby, and recently Objective-C.
+Gmail Notifr was originally written in RubyCocoa, then MacRuby, then Objective-C, and recently Swift.
 
-* The [MacRuby implementation](https://github.com/ashchan/gmail-notifr) repository remains. I also created a [macruby](https://github.com/ashchan/gmail-notifr-objc/tree/macruby) branch.
+* The [MacRuby implementation](https://github.com/ashchan/gmail-notifr) repository remains. I also created a [macruby](https://github.com/ashchan/mail-notifr/tree/macruby) branch.
 
-* The RubyCocoa implementation's on the [rubycocoa](https://github.com/ashchan/gmail-notifr-objc/tree/rubycocoa) branch.
-
-
-## How to Build ##
-
-[CocoaPods](http://cocoapods.org) is required.
-
-    git clone https://github.com/ashchan/gmail-notifr-objc.git
-    cd gmail-notifr-objc
-    pod install
-
-Then open `Mail Notifr.xcworkspace`, build and run with Xcode.
+* The RubyCocoa implementation's on the [rubycocoa](https://github.com/ashchan/mail-notifr/tree/rubycocoa) branch.
 
 ## Updates, Changelog &amp; Feedback ##
 
-Feedback is welcome! Leave a message on the [feedback](http://blog.ashchan.com/archive/2008/10/29/gmail-notifr-changelog/) page, or create a github [issue](https://github.com/ashchan/gmail-notifr-objc/issues), or tweet the author [@ashchan](https://twitter.com/ashchan).
+Feedback is welcome! Leave a message on the [feedback](http://blog.ashchan.com/archive/2008/10/29/gmail-notifr-changelog/) page, or create a github [issue](https://github.com/ashchan/mail-notifr/issues), or tweet the author [@ashchan](https://twitter.com/ashchan).
 
-View the full [release notes](http://assets.ashchan.com/gmailnotifr/release_notes.html).
+View the full [changelog](CHANGELOG).
 
 Visit [project home page](http://ashchan.com/projects/gmail-notifr) for more information.
 
@@ -59,4 +47,4 @@ Visit [project home page](http://ashchan.com/projects/gmail-notifr) for more inf
 
 **Binary or modification is NOT allowed to submit to Apple App Store without written permission!**
 
-Copyright (c) 2008 - 2014 [James Chen](http://ashchan.com/) ([@ashchan](https://twitter.com/ashchan))
+Copyright (c) 2008 - 2021 [James Chen](http://ashchan.com/) ([@ashchan](https://twitter.com/ashchan))
