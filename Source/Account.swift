@@ -80,6 +80,9 @@ extension Accounts: RawRepresentable {
 
 extension Accounts {
     mutating func add(account: Account) {
+        if firstIndex(where: { $0.id == account.id }) != nil {
+            return
+        }
         append(account)
     }
 
@@ -89,6 +92,13 @@ extension Accounts {
         }
         self[index].authorization = nil
         remove(at: index)
+    }
+
+    mutating func update(account: Account) {
+        guard let index = firstIndex(where: { $0.id == account.id }) else {
+            return
+        }
+        self[index] = account
     }
 
     static func authorize() {
