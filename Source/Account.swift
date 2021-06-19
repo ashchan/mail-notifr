@@ -11,10 +11,11 @@ import GTMAppAuth
 
 struct Account: Codable {
     var email: String
-    var enabled: Bool
-    var notificationEnabled: Bool
-    var notificationSound: String?
-    var openInBrowser: String?
+    var enabled = true
+    var checkInterval = 30
+    var notificationEnabled = true
+    var notificationSound = ""
+    var openInBrowser = Browser.default.rawValue
 }
 
 extension Account: Identifiable, Hashable {
@@ -95,7 +96,7 @@ extension Accounts {
             switch state {
             case .success(let state):
                 let authorization = GTMAppAuthFetcherAuthorization(authState: state)
-                var account = Account(email: authorization.userEmail!, enabled: true, notificationEnabled: true)
+                var account = Account(email: authorization.userEmail!)
                 account.authorization = authorization
                 // TODO: check existing account
                 var accounts = Self.default

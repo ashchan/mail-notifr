@@ -14,7 +14,7 @@ struct SettingsView: View {
     @AppStorage(AppSettings.showUnreadCount) var showUnreadCount = true
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
             Text("Settings")
                 .font(.largeTitle)
  

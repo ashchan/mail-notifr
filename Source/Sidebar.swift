@@ -98,7 +98,7 @@ struct AvatarView: View {
 struct Sidebar_Previews: PreviewProvider {
     static var previews: some View {
         Sidebar(
-            accounts: [Account(email: "ashchan@gmail.com", enabled: true, notificationEnabled: true)],
+            accounts: [Account(email: "ashchan@gmail.com")],
             selection: .constant("general")
         )
     }

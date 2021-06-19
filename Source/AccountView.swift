@@ -13,13 +13,65 @@ struct AccountView: View {
     @State var account: Account
 
     var body: some View {
-        VStack {
-            Text(account.email)
-                .font(.largeTitle)
- 
-            Button(action: delete) {
-                Image(systemName: "trash")
-                    .foregroundColor(.red)
+        GeometryReader { geometry in
+            VStack(alignment: .leading, spacing: 10) {
+                Text(account.email)
+                    .font(.largeTitle)
+
+                Toggle(isOn: $account.enabled) {
+                    Text("Enable this account")
+                }
+
+                Toggle(isOn: $account.notificationEnabled) {
+                    Text("Use Notification")
+                }
+
+                HStack {
+                    Text("Check for new mail every")
+                    TextField("Check interval", value: $account.checkInterval, formatter: NumberFormatter())
+                        .frame(width: 50)
+                        .multilineTextAlignment(.center)
+                    Text("minutes")
+                }
+
+                HStack {
+                    Text("Play sound:")
+                        .frame(minWidth: 0.4 * geometry.size.width, alignment: .trailing)
+                    Picker("Play sound:", selection: $account.notificationSound) {
+                       Text(verbatim: "None")
+                            .tag("")
+                        Divider()
+                        ForEach(Sound.allCases) { sound in
+                            Text(sound.name)
+                        }
+                    }
+                    .labelsHidden()
+                    .onChange(of: account.notificationSound) { newValue in
+                        if let sound = Sound(rawValue: newValue) {
+                            sound.nsSound?.play()
+                        }
+                    }
+                }
+
+                HStack {
+                    Text("Open in browser:")
+                        .frame(minWidth: 0.4 * geometry.size.width, alignment: .trailing)
+                    Picker("Open in browser:", selection: $account.openInBrowser) {
+                        ForEach(Browser.allCases) { browser in
+                            Text(browser.name)
+                        }
+                    }
+                    .labelsHidden()
+                }
+
+                Spacer()
+
+                HStack {
+                    Spacer()
+                    Button("Save") {
+                        // TODO
+                    }
+                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -44,6 +96,6 @@ private extension AccountView {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView(account: Account(email: "ashchan@gmail.com", enabled: true, notificationEnabled: true))
+        AccountView(account: Account(email: "ashchan@gmail.com"))
     }
 }
