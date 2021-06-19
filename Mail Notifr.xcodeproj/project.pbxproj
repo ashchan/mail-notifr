@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A1AB9C5267D648E00277DEA /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1AB9C4267D648E00277DEA /* Browser.swift */; };
 		1A1AB9C7267D6B6500277DEA /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1AB9C6267D6B6500277DEA /* Sound.swift */; };
+		1A1AE4AE267E14FF0014F314 /* OAuthSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1AE4AD267E14FF0014F314 /* OAuthSecret.swift */; };
 		1A4962252674C0C100331CF7 /* GoogleAPIClientForREST_Gmail in Frameworks */ = {isa = PBXBuildFile; productRef = 1A4962242674C0C100331CF7 /* GoogleAPIClientForREST_Gmail */; };
 		1A4962282674CEBD00331CF7 /* GTMAppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1A4962272674CEBD00331CF7 /* GTMAppAuth */; };
 		1A49622B2674D54100331CF7 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1A49622A2674D54100331CF7 /* AppAuth */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		1A1AB9C4267D648E00277DEA /* Browser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
 		1A1AB9C6267D6B6500277DEA /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		1A1AE4AD267E14FF0014F314 /* OAuthSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthSecret.swift; sourceTree = "<group>"; };
 		1A3A772718FCB020002F61E6 /* Finnish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Finnish; path = Resources/Finnish.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNAccountMenuController.h; sourceTree = "<group>"; };
 		1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNAccountMenuController.m; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				1A8AAA3626798047006F52D7 /* Account.swift */,
 				1A8AAA3C267B1201006F52D7 /* OAuthClient.swift */,
+				1A1AE4AD267E14FF0014F314 /* OAuthSecret.swift */,
 				1A8AAA45267C35EC006F52D7 /* AppSettings.swift */,
 				1A1AB9C4267D648E00277DEA /* Browser.swift */,
 				1A1AB9C6267D6B6500277DEA /* Sound.swift */,
@@ -234,6 +237,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AB7FD9A16B578740040BBCE /* Build configuration list for PBXNativeTarget "Mail Notifr" */;
 			buildPhases = (
+				1A1AE4AC267E0AA00014F314 /* Run GYB Template */,
 				1AB7FD7816B578740040BBCE /* Sources */,
 				1AB7FD7916B578740040BBCE /* Frameworks */,
 				1AB7FD7A16B578740040BBCE /* Resources */,
@@ -332,6 +336,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1A1AE4AC267E0AA00014F314 /* Run GYB Template */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(PROJECT_DIR)/Source/OAuthSecret.swift.gyb",
+			);
+			name = "Run GYB Template";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(PROJECT_DIR)/Source/OAuthSecret.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "for INFILE in ${!SCRIPT_INPUT_FILE_*};\ndo\n    file=${!INFILE}\n    echo \"$file\"\n    if [ ${file: -4} == \".gyb\" ]; then\n        echo \"Processing template $file\"\n        \"${PROJECT_DIR}/tools/gyb\" --line-directive '' -o \"${file%.gyb}\" \"$file\"\n    fi\ndone\n";
+		};
 		1AC74A452673A1FA003F98E7 /* Copy “Launch at Login Helper” */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -364,6 +388,7 @@
 				1A1AB9C7267D6B6500277DEA /* Sound.swift in Sources */,
 				1A8AAA3726798047006F52D7 /* Account.swift in Sources */,
 				1A8AAA3F267C1CE5006F52D7 /* SettingsView.swift in Sources */,
+				1A1AE4AE267E14FF0014F314 /* OAuthSecret.swift in Sources */,
 				1AAFACAB267836A8002C560E /* Sidebar.swift in Sources */,
 				1A76AAE62675C38A0023B130 /* MainView.swift in Sources */,
 				1A1AB9C5267D648E00277DEA /* Browser.swift in Sources */,
