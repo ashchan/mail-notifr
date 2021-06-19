@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 ashchan.com. All rights reserved.
 //
 
-@import Foundation;
+@import Cocoa;
 
-@class GNAccount;
+@class Account;
 @class GNChecker;
 
 @interface GNAccountMenuController : NSObject
@@ -16,7 +16,7 @@
 @property (copy, readonly) NSString *guid;
 @property (assign) BOOL singleMode;
 
-- (instancetype)initWithStatusItem:(NSStatusItem *)statusItem GNAccount:(GNAccount *)account;
+- (instancetype)initWithStatusItem:(NSStatusItem *)statusItem GNAccount:(Account *)account;
 - (void)attachAtIndex:(NSInteger)index actionTarget:(id)target;
 - (void)detach;
 - (void)updateWithChecker:(GNChecker *)checker;

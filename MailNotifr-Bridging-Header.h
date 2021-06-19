@@ -9,11 +9,7 @@
 #ifndef MailNotifr_Bridging_Header_h_h
 #define MailNotifr_Bridging_Header_h_h
 
-#import "GNPreferences.h"
-#import "GNAccount.h"
-#import "GNBrowser.h"
 #import "GNChecker.h"
-#import "GNPreferencesController.h"
 #import "GNAccountMenuController.h"
 
 extern NSString *const PrefsToolbarItemAccounts;

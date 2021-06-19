@@ -7,19 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A05D19319E55C85002698B7 /* PrefsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A05D19219E55C85002698B7 /* PrefsInfoViewController.m */; };
 		1A1AB9C5267D648E00277DEA /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1AB9C4267D648E00277DEA /* Browser.swift */; };
 		1A1AB9C7267D6B6500277DEA /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1AB9C6267D6B6500277DEA /* Sound.swift */; };
 		1A4962252674C0C100331CF7 /* GoogleAPIClientForREST_Gmail in Frameworks */ = {isa = PBXBuildFile; productRef = 1A4962242674C0C100331CF7 /* GoogleAPIClientForREST_Gmail */; };
 		1A4962282674CEBD00331CF7 /* GTMAppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1A4962272674CEBD00331CF7 /* GTMAppAuth */; };
 		1A49622B2674D54100331CF7 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1A49622A2674D54100331CF7 /* AppAuth */; };
-		1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */; };
 		1A76AAE62675C38A0023B130 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A76AAE52675C38A0023B130 /* MainView.swift */; };
 		1A76AAEA267722CA0023B130 /* BarMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAE8267722CA0023B130 /* BarMenu.xib */; };
-		1A76AAEF267722E20023B130 /* PreferencesAccounts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAEB267722E20023B130 /* PreferencesAccounts.xib */; };
-		1A76AAF0267722E20023B130 /* PreferencesSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAEC267722E20023B130 /* PreferencesSettings.xib */; };
-		1A76AAF1267722E20023B130 /* PreferencesInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAED267722E20023B130 /* PreferencesInfo.xib */; };
-		1A76AAF2267722E20023B130 /* AccountDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAEE267722E20023B130 /* AccountDetail.xib */; };
 		1A8AAA3726798047006F52D7 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3626798047006F52D7 /* Account.swift */; };
 		1A8AAA392679912E006F52D7 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA382679912E006F52D7 /* AccountView.swift */; };
 		1A8AAA3B26799391006F52D7 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3A26799391006F52D7 /* WelcomeView.swift */; };
@@ -28,28 +22,14 @@
 		1A8AAA41267C1D15006F52D7 /* ShortcutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA40267C1D15006F52D7 /* ShortcutsView.swift */; };
 		1A8AAA44267C23D4006F52D7 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 1A8AAA43267C23D4006F52D7 /* KeyboardShortcuts */; };
 		1A8AAA46267C35EC006F52D7 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA45267C35EC006F52D7 /* AppSettings.swift */; };
-		1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */; };
-		1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */; };
 		1AAFACAB267836A8002C560E /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFACAA267836A8002C560E /* Sidebar.swift */; };
 		1AAFACAD267848D1002C560E /* MailNotifrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFACAC267848D1002C560E /* MailNotifrApp.swift */; };
 		1AAFACAF26785025002C560E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFACAE26785025002C560E /* AppDelegate.swift */; };
 		1AB7FE3716B57B4E0040BBCE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB7FE3616B57B4E0040BBCE /* Security.framework */; };
-		1AB7FE4916B57B9C0040BBCE /* GNAccountDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4016B57B9C0040BBCE /* GNAccountDetailController.m */; };
-		1AB7FE4B16B57B9C0040BBCE /* GNPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4416B57B9C0040BBCE /* GNPreferencesController.m */; };
-		1AB7FE4C16B57B9C0040BBCE /* PrefsAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4616B57B9C0040BBCE /* PrefsAccountsViewController.m */; };
-		1AB7FE4D16B57B9C0040BBCE /* PrefsSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4816B57B9C0040BBCE /* PrefsSettingsViewController.m */; };
-		1AB7FE5816B57BAD0040BBCE /* GNAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE4F16B57BAD0040BBCE /* GNAccount.m */; };
-		1AB7FE5916B57BAD0040BBCE /* GNBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE5116B57BAD0040BBCE /* GNBrowser.m */; };
-		1AB7FE5A16B57BAD0040BBCE /* GNChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE5316B57BAD0040BBCE /* GNChecker.m */; };
-		1AB7FE5B16B57BAD0040BBCE /* GNPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE5516B57BAD0040BBCE /* GNPreferences.m */; };
-		1AB7FE5C16B57BAD0040BBCE /* GNSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7FE5716B57BAD0040BBCE /* GNSound.m */; };
 		1AB7FF0116B57D280040BBCE /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0016B57D280040BBCE /* Credits.html */; };
 		1AB7FF0616B57D510040BBCE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0216B57D510040BBCE /* InfoPlist.strings */; };
 		1AB7FF0716B57D510040BBCE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0416B57D510040BBCE /* Localizable.strings */; };
-		1AC74A3C26739BD6003F98E7 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC74A3B26739BD6003F98E7 /* KeychainAccess */; };
-		1AC74A3E26739C39003F98E7 /* GNAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC74A3D26739C39003F98E7 /* GNAccount.swift */; };
 		1AC74A422673A1B4003F98E7 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC74A412673A1B4003F98E7 /* LaunchAtLogin */; };
-		1AC74A482673A31B003F98E7 /* GNPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC74A472673A31B003F98E7 /* GNPreferences.swift */; };
 		1ACD6FF01897FE3C00103E15 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACD6FEF1897FE3C00103E15 /* Images.xcassets */; };
 		1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */; };
 		1AFCE88218D404E500487B98 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFCE88118D404E500487B98 /* Carbon.framework */; };
@@ -68,8 +48,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1A05D19119E55C85002698B7 /* PrefsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsInfoViewController.h; sourceTree = "<group>"; };
-		1A05D19219E55C85002698B7 /* PrefsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsInfoViewController.m; sourceTree = "<group>"; };
 		1A1AB9C4267D648E00277DEA /* Browser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
 		1A1AB9C6267D6B6500277DEA /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		1A3A772718FCB020002F61E6 /* Finnish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Finnish; path = Resources/Finnish.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -77,10 +55,6 @@
 		1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNAccountMenuController.m; sourceTree = "<group>"; };
 		1A76AAE52675C38A0023B130 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1A76AAE9267722CA0023B130 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/BarMenu.xib; sourceTree = SOURCE_ROOT; };
-		1A76AAEB267722E20023B130 /* PreferencesAccounts.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesAccounts.xib; sourceTree = SOURCE_ROOT; };
-		1A76AAEC267722E20023B130 /* PreferencesSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesSettings.xib; sourceTree = SOURCE_ROOT; };
-		1A76AAED267722E20023B130 /* PreferencesInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesInfo.xib; sourceTree = SOURCE_ROOT; };
-		1A76AAEE267722E20023B130 /* AccountDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountDetail.xib; sourceTree = SOURCE_ROOT; };
 		1A8AAA3626798047006F52D7 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		1A8AAA382679912E006F52D7 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		1A8AAA3A26799391006F52D7 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -93,8 +67,6 @@
 		1A8F66AC16B5FE7600396E44 /* nb */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nb; path = Resources/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A96BC9F18FFBAB7000BD5D3 /* zh_CN */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = zh_CN; path = Resources/zh_CN.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AA93E6D26731BCB00C77053 /* MailNotifr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MailNotifr-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		1AAB5C9418FFF04C0020A73E /* GNSecureTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNSecureTextField.h; sourceTree = "<group>"; };
-		1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNSecureTextField.m; sourceTree = "<group>"; };
 		1AAFACAA267836A8002C560E /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		1AAFACAC267848D1002C560E /* MailNotifrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailNotifrApp.swift; sourceTree = "<group>"; };
 		1AAFACAE26785025002C560E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,25 +74,11 @@
 		1AB7FDA116B57A270040BBCE /* GmailNotifr_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmailNotifr_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		1AB7FDA316B57A270040BBCE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		1AB7FE3616B57B4E0040BBCE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		1AB7FE3F16B57B9C0040BBCE /* GNAccountDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNAccountDetailController.h; sourceTree = "<group>"; };
-		1AB7FE4016B57B9C0040BBCE /* GNAccountDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNAccountDetailController.m; sourceTree = "<group>"; };
 		1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GNApplicationController.swift; sourceTree = "<group>"; };
-		1AB7FE4316B57B9C0040BBCE /* GNPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNPreferencesController.h; sourceTree = "<group>"; };
-		1AB7FE4416B57B9C0040BBCE /* GNPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNPreferencesController.m; sourceTree = "<group>"; };
-		1AB7FE4516B57B9C0040BBCE /* PrefsAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsAccountsViewController.h; sourceTree = "<group>"; };
-		1AB7FE4616B57B9C0040BBCE /* PrefsAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsAccountsViewController.m; sourceTree = "<group>"; };
-		1AB7FE4716B57B9C0040BBCE /* PrefsSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsSettingsViewController.h; sourceTree = "<group>"; };
-		1AB7FE4816B57B9C0040BBCE /* PrefsSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsSettingsViewController.m; sourceTree = "<group>"; };
 		1AB7FE4E16B57BAD0040BBCE /* GNAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNAccount.h; sourceTree = "<group>"; };
 		1AB7FE4F16B57BAD0040BBCE /* GNAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNAccount.m; sourceTree = "<group>"; };
-		1AB7FE5016B57BAD0040BBCE /* GNBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNBrowser.h; sourceTree = "<group>"; };
-		1AB7FE5116B57BAD0040BBCE /* GNBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNBrowser.m; sourceTree = "<group>"; };
 		1AB7FE5216B57BAD0040BBCE /* GNChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNChecker.h; sourceTree = "<group>"; };
 		1AB7FE5316B57BAD0040BBCE /* GNChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNChecker.m; sourceTree = "<group>"; };
-		1AB7FE5416B57BAD0040BBCE /* GNPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNPreferences.h; sourceTree = "<group>"; };
-		1AB7FE5516B57BAD0040BBCE /* GNPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNPreferences.m; sourceTree = "<group>"; };
-		1AB7FE5616B57BAD0040BBCE /* GNSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNSound.h; sourceTree = "<group>"; };
-		1AB7FE5716B57BAD0040BBCE /* GNSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNSound.m; sourceTree = "<group>"; };
 		1AB7FF0016B57D280040BBCE /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Credits.html; path = Resources/Credits.html; sourceTree = SOURCE_ROOT; };
 		1AB7FF0316B57D510040BBCE /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AB7FF0516B57D510040BBCE /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -132,8 +90,6 @@
 		1AB7FF5816B57DC40040BBCE /* nl */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nl; path = Resources/nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AB7FF5A16B57DE30040BBCE /* ru */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ru; path = Resources/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1ABE684F18E02A22008CB343 /* Polish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Polish; path = Resources/Polish.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1AC74A3D26739C39003F98E7 /* GNAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNAccount.swift; sourceTree = "<group>"; };
-		1AC74A472673A31B003F98E7 /* GNPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNPreferences.swift; sourceTree = "<group>"; };
 		1ACD6FEE1897F56300103E15 /* Gmail Notifr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Gmail Notifr.entitlements"; sourceTree = SOURCE_ROOT; };
 		1ACD6FEF1897FE3C00103E15 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
@@ -150,7 +106,6 @@
 				1A4962252674C0C100331CF7 /* GoogleAPIClientForREST_Gmail in Frameworks */,
 				1AFCE88218D404E500487B98 /* Carbon.framework in Frameworks */,
 				1AC74A422673A1B4003F98E7 /* LaunchAtLogin in Frameworks */,
-				1AC74A3C26739BD6003F98E7 /* KeychainAccess in Frameworks */,
 				1A4962282674CEBD00331CF7 /* GTMAppAuth in Frameworks */,
 				1A8AAA44267C23D4006F52D7 /* KeyboardShortcuts in Frameworks */,
 				1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */,
@@ -165,10 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				1A76AAE8267722CA0023B130 /* BarMenu.xib */,
-				1A76AAEE267722E20023B130 /* AccountDetail.xib */,
-				1A76AAEB267722E20023B130 /* PreferencesAccounts.xib */,
-				1A76AAEC267722E20023B130 /* PreferencesSettings.xib */,
-				1A76AAED267722E20023B130 /* PreferencesInfo.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -232,16 +183,6 @@
 				1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */,
 				1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */,
 				1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */,
-				1AB7FE4316B57B9C0040BBCE /* GNPreferencesController.h */,
-				1AB7FE4416B57B9C0040BBCE /* GNPreferencesController.m */,
-				1AB7FE3F16B57B9C0040BBCE /* GNAccountDetailController.h */,
-				1AB7FE4016B57B9C0040BBCE /* GNAccountDetailController.m */,
-				1AB7FE4516B57B9C0040BBCE /* PrefsAccountsViewController.h */,
-				1AB7FE4616B57B9C0040BBCE /* PrefsAccountsViewController.m */,
-				1AB7FE4716B57B9C0040BBCE /* PrefsSettingsViewController.h */,
-				1AB7FE4816B57B9C0040BBCE /* PrefsSettingsViewController.m */,
-				1A05D19119E55C85002698B7 /* PrefsInfoViewController.h */,
-				1A05D19219E55C85002698B7 /* PrefsInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -249,8 +190,6 @@
 		1AB7FDA816B57A830040BBCE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1AAB5C9418FFF04C0020A73E /* GNSecureTextField.h */,
-				1AAB5C9518FFF04C0020A73E /* GNSecureTextField.m */,
 				1A76AAE52675C38A0023B130 /* MainView.swift */,
 				1AAFACAA267836A8002C560E /* Sidebar.swift */,
 				1A8AAA3A26799391006F52D7 /* WelcomeView.swift */,
@@ -271,16 +210,8 @@
 				1A1AB9C6267D6B6500277DEA /* Sound.swift */,
 				1AB7FE4E16B57BAD0040BBCE /* GNAccount.h */,
 				1AB7FE4F16B57BAD0040BBCE /* GNAccount.m */,
-				1AC74A3D26739C39003F98E7 /* GNAccount.swift */,
-				1AB7FE5016B57BAD0040BBCE /* GNBrowser.h */,
-				1AB7FE5116B57BAD0040BBCE /* GNBrowser.m */,
 				1AB7FE5216B57BAD0040BBCE /* GNChecker.h */,
 				1AB7FE5316B57BAD0040BBCE /* GNChecker.m */,
-				1AB7FE5416B57BAD0040BBCE /* GNPreferences.h */,
-				1AB7FE5516B57BAD0040BBCE /* GNPreferences.m */,
-				1AC74A472673A31B003F98E7 /* GNPreferences.swift */,
-				1AB7FE5616B57BAD0040BBCE /* GNSound.h */,
-				1AB7FE5716B57BAD0040BBCE /* GNSound.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -315,7 +246,6 @@
 			);
 			name = "Mail Notifr";
 			packageProductDependencies = (
-				1AC74A3B26739BD6003F98E7 /* KeychainAccess */,
 				1AC74A412673A1B4003F98E7 /* LaunchAtLogin */,
 				1A4962242674C0C100331CF7 /* GoogleAPIClientForREST_Gmail */,
 				1A4962272674CEBD00331CF7 /* GTMAppAuth */,
@@ -371,7 +301,6 @@
 			);
 			mainGroup = 1AB7FD7116B578740040BBCE;
 			packageReferences = (
-				1AC74A3A26739BD6003F98E7 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				1AC74A402673A1B4003F98E7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				1A4962232674C0C100331CF7 /* XCRemoteSwiftPackageReference "google-api-objectivec-client-for-rest" */,
 				1A4962262674CEBD00331CF7 /* XCRemoteSwiftPackageReference "GTMAppAuth" */,
@@ -394,13 +323,9 @@
 			files = (
 				1ACD6FF01897FE3C00103E15 /* Images.xcassets in Resources */,
 				1A76AAEA267722CA0023B130 /* BarMenu.xib in Resources */,
-				1A76AAF1267722E20023B130 /* PreferencesInfo.xib in Resources */,
 				1AB7FF0116B57D280040BBCE /* Credits.html in Resources */,
-				1A76AAF0267722E20023B130 /* PreferencesSettings.xib in Resources */,
 				1AB7FF0616B57D510040BBCE /* InfoPlist.strings in Resources */,
 				1AB7FF0716B57D510040BBCE /* Localizable.strings in Resources */,
-				1A76AAEF267722E20023B130 /* PreferencesAccounts.xib in Resources */,
-				1A76AAF2267722E20023B130 /* AccountDetail.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,32 +359,17 @@
 			files = (
 				1A8AAA46267C35EC006F52D7 /* AppSettings.swift in Sources */,
 				1AAFACAD267848D1002C560E /* MailNotifrApp.swift in Sources */,
-				1AC74A482673A31B003F98E7 /* GNPreferences.swift in Sources */,
 				1AAFACAF26785025002C560E /* AppDelegate.swift in Sources */,
 				1A8AAA41267C1D15006F52D7 /* ShortcutsView.swift in Sources */,
-				1AAB5C9618FFF04C0020A73E /* GNSecureTextField.m in Sources */,
-				1AB7FE4916B57B9C0040BBCE /* GNAccountDetailController.m in Sources */,
 				1A1AB9C7267D6B6500277DEA /* Sound.swift in Sources */,
 				1A8AAA3726798047006F52D7 /* Account.swift in Sources */,
-				1AC74A3E26739C39003F98E7 /* GNAccount.swift in Sources */,
-				1AB7FE4B16B57B9C0040BBCE /* GNPreferencesController.m in Sources */,
-				1AB7FE4C16B57B9C0040BBCE /* PrefsAccountsViewController.m in Sources */,
 				1A8AAA3F267C1CE5006F52D7 /* SettingsView.swift in Sources */,
-				1AB7FE4D16B57B9C0040BBCE /* PrefsSettingsViewController.m in Sources */,
 				1AAFACAB267836A8002C560E /* Sidebar.swift in Sources */,
-				1AB7FE5816B57BAD0040BBCE /* GNAccount.m in Sources */,
 				1A76AAE62675C38A0023B130 /* MainView.swift in Sources */,
-				1AB7FE5916B57BAD0040BBCE /* GNBrowser.m in Sources */,
-				1A69C08A18DEED8700047BD0 /* GNAccountMenuController.m in Sources */,
-				1AB7FE5A16B57BAD0040BBCE /* GNChecker.m in Sources */,
-				1AB7FE5B16B57BAD0040BBCE /* GNPreferences.m in Sources */,
 				1A1AB9C5267D648E00277DEA /* Browser.swift in Sources */,
 				1A8AAA3B26799391006F52D7 /* WelcomeView.swift in Sources */,
-				1A05D19319E55C85002698B7 /* PrefsInfoViewController.m in Sources */,
 				1A8AAA392679912E006F52D7 /* AccountView.swift in Sources */,
-				1AA93E6A267319DD00C77053 /* GNApplicationController.swift in Sources */,
 				1A8AAA3D267B1201006F52D7 /* OAuthClient.swift in Sources */,
-				1AB7FE5C16B57BAD0040BBCE /* GNSound.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,14 +631,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		1AC74A3A26739BD6003F98E7 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 		1AC74A402673A1B4003F98E7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
@@ -759,11 +661,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A8AAA42267C23D4006F52D7 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
 			productName = KeyboardShortcuts;
-		};
-		1AC74A3B26739BD6003F98E7 /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1AC74A3A26739BD6003F98E7 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
 		};
 		1AC74A412673A1B4003F98E7 /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;

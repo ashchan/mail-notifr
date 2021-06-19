@@ -7,8 +7,6 @@
 //
 
 #import "GNChecker.h"
-#import "GNAccount.h"
-#import "GNSound.h"
 
 NSString *const GNCheckingAccountNotification   = @"GNCheckingAccountNotification";
 NSString *const GNAccountMenuUpdateNotification = @"GNAccountMenuUpdateNotification";

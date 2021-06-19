@@ -7,7 +7,6 @@
 //
 
 #import "GNAccountMenuController.h"
-#import "GNAccount.h"
 #import "GNChecker.h"
 
 static const NSInteger kTopSeparatorMenuItemTag      = 10001;
@@ -17,7 +16,7 @@ static const NSInteger kAboveMessagesMenuItemTag     = 10003;
 @interface GNAccountMenuController ()
 
 @property (weak) NSStatusItem *statusItem;
-@property (strong) GNAccount *account;
+@property (strong) Account *account;
 @property (strong) NSMenuItem *checkMenuItem;
 @property (strong) NSMenuItem *enableAccountMenuItem;
 
@@ -29,7 +28,7 @@ static const NSInteger kAboveMessagesMenuItemTag     = 10003;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 
-- (instancetype)initWithStatusItem:(NSStatusItem *)statusItem GNAccount:(GNAccount *)account {
+- (instancetype)initWithStatusItem:(NSStatusItem *)statusItem GNAccount:(Account *)account {
     if (self = [super init]) {
         _statusItem     = statusItem;
         _account        = account;
@@ -38,7 +37,7 @@ static const NSInteger kAboveMessagesMenuItemTag     = 10003;
 }
 
 - (NSString *)guid {
-    return self.account.guid;
+    return self.account.id;
 }
 
 - (void)attachAtIndex:(NSInteger)index actionTarget:(id)target {
@@ -80,7 +79,7 @@ static const NSInteger kAboveMessagesMenuItemTag     = 10003;
         [accountMenu addItem:self.enableAccountMenuItem];
 
         NSMenuItem *accountItem = [[NSMenuItem alloc] init];
-        [accountItem setTitle:self.account.username];
+        [accountItem setTitle:self.account.email];
         [accountItem setRepresentedObject:self.guid];
         [accountItem setSubmenu:accountMenu];
         [accountItem setTarget:target];
