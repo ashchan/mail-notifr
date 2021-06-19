@@ -1,10 +1,10 @@
-# Mail Notifr (Formerly Gmail Notifr) #
+# Mail Notifr (formerly Gmail Notifr) #
 
 A Gmail Notifier for macOS
 
 ![screenshot](https://raw.github.com/ashchan/mail-notifr/master/screenshot.png)
 
-[Gmail Notifr](http://bit.ly/gmail-notifr-store) features:
+[Mail Notifr](http://bit.ly/gmail-notifr-store) features:
 
 * Support multiple accounts.
 * Separate check and notification setting for each account.
@@ -26,7 +26,7 @@ A Gmail Notifier for macOS
 
 ## Note ##
 
-Gmail Notifr was originally written in RubyCocoa, then MacRuby, then Objective-C, and recently Swift.
+Mail Notifr was originally written in RubyCocoa, then MacRuby, then Objective-C, and recently Swift.
 
 * The [MacRuby implementation](https://github.com/ashchan/gmail-notifr) repository remains. I also created a [macruby](https://github.com/ashchan/mail-notifr/tree/macruby) branch.
 
