@@ -354,7 +354,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "for INFILE in ${!SCRIPT_INPUT_FILE_*};\ndo\n    file=${!INFILE}\n    echo \"$file\"\n    if [ ${file: -4} == \".gyb\" ]; then\n        echo \"Processing template $file\"\n        \"${PROJECT_DIR}/tools/gyb\" --line-directive '' -o \"${file%.gyb}\" \"$file\"\n    fi\ndone\n";
+			shellScript = "if [[ -e \"${PROJECT_DIR}/.env\" ]]; then\n    source \"${PROJECT_DIR}/.env\"\nfi\nfor INFILE in ${!SCRIPT_INPUT_FILE_*};\ndo\n    file=${!INFILE}\n    echo \"$file\"\n    if [ ${file: -4} == \".gyb\" ]; then\n        echo \"Processing template $file\"\n        \"${PROJECT_DIR}/tools/gyb\" --line-directive '' -o \"${file%.gyb}\" \"$file\"\n    fi\ndone\n";
 		};
 		1AC74A452673A1FA003F98E7 /* Copy “Launch at Login Helper” */ = {
 			isa = PBXShellScriptBuildPhase;
