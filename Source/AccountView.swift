@@ -53,6 +53,9 @@ struct AccountView: View {
                     Text("Enable this account")
                 }
             }
+            .onChange(of: account) { newValue in
+                accounts.update(account: newValue)
+            }
 
             Spacer()
         }
