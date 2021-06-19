@@ -14,8 +14,7 @@ struct OAuthClient {
     static let shared = OAuthClient()
 
     static let clientID = "270244963224-8viqhtgpdks3vk56ffhvnfn112u4h26k.apps.googleusercontent.com"
-    #warning("Protect client secret!")
-    static let clientSecret = ""
+    static let clientSecret = OAuthSecret.secret
     static let redirectURL = "com.googleusercontent.apps.270244963224-8viqhtgpdks3vk56ffhvnfn112u4h26k:/oauthredirect"
 
     static var currentAuthorizationFlow: OIDExternalUserAgentSession?

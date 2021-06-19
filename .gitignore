@@ -16,3 +16,4 @@ profile
 *.moved-aside
 Pods
 *.xccheckout
+Source/OAuthSecret.swift
