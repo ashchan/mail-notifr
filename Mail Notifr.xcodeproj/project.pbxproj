@@ -66,12 +66,10 @@
 		1A8F66A916B5FDDC00396E44 /* fr-CA */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "Resources/fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1A8F66AC16B5FE7600396E44 /* nb */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = nb; path = Resources/nb.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A96BC9F18FFBAB7000BD5D3 /* zh_CN */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = zh_CN; path = Resources/zh_CN.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1AA93E6D26731BCB00C77053 /* MailNotifr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MailNotifr-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		1AAFACAA267836A8002C560E /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		1AAFACAC267848D1002C560E /* MailNotifrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailNotifrApp.swift; sourceTree = "<group>"; };
 		1AAFACAE26785025002C560E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AB7FD7C16B578740040BBCE /* Mail Notifr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mail Notifr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1AB7FDA116B57A270040BBCE /* GmailNotifr_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmailNotifr_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		1AB7FDA316B57A270040BBCE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		1AB7FE3616B57B4E0040BBCE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GNApplicationController.swift; sourceTree = "<group>"; };
@@ -160,8 +158,6 @@
 		1AB7FD8716B578740040BBCE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1AA93E6D26731BCB00C77053 /* MailNotifr-Bridging-Header.h */,
-				1AB7FDA116B57A270040BBCE /* GmailNotifr_Prefix.pch */,
 				1AB7FDA316B57A270040BBCE /* Info.plist */,
 				1ACD6FEE1897F56300103E15 /* Gmail Notifr.entitlements */,
 			);
@@ -531,7 +527,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = GmailNotifr_Prefix.pch;
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -544,7 +540,7 @@
 				PRODUCT_NAME = "Mail Notifr";
 				PROVISIONING_PROFILE = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
-				SWIFT_OBJC_BRIDGING_HEADER = "MailNotifr-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
@@ -564,7 +560,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = GmailNotifr_Prefix.pch;
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = "SWIFT_PACKAGE=1";
 				INFOPLIST_FILE = Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
@@ -573,7 +569,7 @@
 				PRODUCT_NAME = "Mail Notifr";
 				PROVISIONING_PROFILE = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
-				SWIFT_OBJC_BRIDGING_HEADER = "MailNotifr-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
