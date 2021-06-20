@@ -46,16 +46,6 @@ struct Sidebar: View {
                     Text("General")
                 }
                 .padding(2)
-
-                NavigationLink(
-                    destination: ShortcutsView(),
-                    tag: "shortcuts",
-                    selection: $selection
-                ) {
-                    AvatarView(image: "keyboard", backgroundColor: .orange)
-                    Text("Shortcuts")
-                }
-                .padding(2)
             }
             .listStyle(.sidebar)
 

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import LaunchAtLogin
+import KeyboardShortcuts
 
 struct SettingsView: View {
     @ObservedObject private var launchAtLogin = LaunchAtLogin.observable
@@ -29,6 +30,25 @@ struct SettingsView: View {
                     Text("Show unread count in menu bar")
                 }
                 Spacer()
+            }
+
+            Divider()
+
+            Text("Shortcuts")
+                .font(.title)
+
+            VStack(alignment: .trailing) {
+                HStack(alignment: .firstTextBaseline, spacing: 15) {
+                    Text("Check All Mails")
+                        .frame(alignment: .trailing)
+                    KeyboardShortcuts.Recorder(for: .checkAllMails)
+                }
+
+                HStack(alignment: .firstTextBaseline, spacing: 15) {
+                    Text("Compose Mail")
+                        .frame(alignment: .trailing)
+                    KeyboardShortcuts.Recorder(for: .composeMail)
+                }
             }
 
             Spacer()
