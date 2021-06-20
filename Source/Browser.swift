@@ -49,3 +49,9 @@ enum Browser: String, Identifiable, CaseIterable {
         }
     }
 }
+
+extension Browser {
+    var isDefault: Bool {
+        self == .default
+    }
+}

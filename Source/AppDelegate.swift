@@ -22,6 +22,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             showInDock()
         }
     }
+
+    func openURL(url: URL, in browser: Browser?) {
+        if let browser = browser, !browser.isDefault {
+            NSWorkspace.shared.open(
+                [url],
+                withAppBundleIdentifier: browser.identifier,
+                options: [],
+                additionalEventParamDescriptor: nil,
+                launchIdentifiers: nil
+            )
+        } else {
+            NSWorkspace.shared.open(url)
+        }
+    }
 }
 
 // MARK: - Show/hide in Dock
@@ -48,14 +62,29 @@ private extension AppDelegate {
 
     func createMenu() -> NSMenu {
         let menu = NSMenu()
-
+        menu.addItem(NSMenuItem(title: NSLocalizedString("Check All", comment: ""), action: #selector(checkAllMails), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: NSLocalizedString("Compose Mail", comment: ""), action: #selector(composeMail), keyEquivalent: ""))
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "About Mail Notifr", action: #selector(showAbout), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "Preferences...", action: #selector(showPreferences), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: NSLocalizedString("About Mail Notifr", comment: ""), action: #selector(showAbout), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: NSLocalizedString("Preferences...", comment: ""), action: #selector(showPreferences), keyEquivalent: ""))
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Quit Mail Notifr", action: #selector(NSApp.terminate(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: NSLocalizedString("Quit Mail Notifr", comment: ""), action: #selector(NSApp.terminate(_:)), keyEquivalent: ""))
 
         return menu
+    }
+}
+
+// MARK: - Commands
+extension AppDelegate {
+    @objc func checkAllMails() {
+        // TODO
+    }
+
+    @objc func composeMail() {
+        let account = Accounts.default.first
+        let baseURL = account?.baseUrl ?? "https://mail.google.com/"
+        let url = baseURL + "?view=cm&tf=0&fs=1"
+        openURL(url: URL(string: url)!, in: account?.browser)
     }
 
     @objc func showAbout() {
@@ -77,10 +106,10 @@ extension KeyboardShortcuts.Name {
 private extension AppDelegate {
     func registerShortCuts() {
         KeyboardShortcuts.onKeyUp(for: .checkAllMails) { [self] in
-            // TODO
+            checkAllMails()
         }
         KeyboardShortcuts.onKeyUp(for: .composeMail) { [self] in
-            // TODO
+            composeMail()
         }
     }
 }

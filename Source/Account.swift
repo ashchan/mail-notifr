@@ -22,6 +22,14 @@ extension Account: Identifiable, Hashable {
     var id: String {
         email
     }
+
+    var baseUrl: String {
+        "https://mail.google.com/mail/b/\(email)"
+    }
+
+    var browser: Browser {
+        Browser(rawValue: openInBrowser) ?? .default
+    }
 }
 
 extension Account {
