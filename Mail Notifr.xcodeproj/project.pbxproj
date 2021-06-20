@@ -14,7 +14,6 @@
 		1A4962282674CEBD00331CF7 /* GTMAppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1A4962272674CEBD00331CF7 /* GTMAppAuth */; };
 		1A49622B2674D54100331CF7 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1A49622A2674D54100331CF7 /* AppAuth */; };
 		1A76AAE62675C38A0023B130 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A76AAE52675C38A0023B130 /* MainView.swift */; };
-		1A76AAEA267722CA0023B130 /* BarMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A76AAE8267722CA0023B130 /* BarMenu.xib */; };
 		1A8AAA3726798047006F52D7 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3626798047006F52D7 /* Account.swift */; };
 		1A8AAA392679912E006F52D7 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA382679912E006F52D7 /* AccountView.swift */; };
 		1A8AAA3B26799391006F52D7 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3A26799391006F52D7 /* WelcomeView.swift */; };
@@ -56,7 +55,6 @@
 		1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNAccountMenuController.h; sourceTree = "<group>"; };
 		1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNAccountMenuController.m; sourceTree = "<group>"; };
 		1A76AAE52675C38A0023B130 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		1A76AAE9267722CA0023B130 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/BarMenu.xib; sourceTree = SOURCE_ROOT; };
 		1A8AAA3626798047006F52D7 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		1A8AAA382679912E006F52D7 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		1A8AAA3A26799391006F52D7 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -118,14 +116,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A76AAF3267723230023B130 /* Xibs */ = {
-			isa = PBXGroup;
-			children = (
-				1A76AAE8267722CA0023B130 /* BarMenu.xib */,
-			);
-			name = Xibs;
-			sourceTree = "<group>";
-		};
 		1A8F666C16B5809100396E44 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				1A8F666C16B5809100396E44 /* Source */,
-				1A76AAF3267723230023B130 /* Xibs */,
 				1AB7FE3E16B57B740040BBCE /* Resources */,
 				1AB7FD8716B578740040BBCE /* Supporting Files */,
 				1AB7FD7F16B578740040BBCE /* Frameworks */,
@@ -326,7 +315,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ACD6FF01897FE3C00103E15 /* Images.xcassets in Resources */,
-				1A76AAEA267722CA0023B130 /* BarMenu.xib in Resources */,
 				1AB7FF0116B57D280040BBCE /* Credits.html in Resources */,
 				1AB7FF0616B57D510040BBCE /* InfoPlist.strings in Resources */,
 				1AB7FF0716B57D510040BBCE /* Localizable.strings in Resources */,
@@ -401,14 +389,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1A76AAE8267722CA0023B130 /* BarMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1A76AAE9267722CA0023B130 /* English */,
-			);
-			name = BarMenu.xib;
-			sourceTree = "<group>";
-		};
 		1AB7FF0216B57D510040BBCE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

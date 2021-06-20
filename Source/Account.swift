@@ -108,10 +108,10 @@ extension Accounts {
                 let authorization = GTMAppAuthFetcherAuthorization(authState: state)
                 var account = Account(email: authorization.userEmail!)
                 account.authorization = authorization
-                // TODO: check existing account
                 var accounts = Self.default
                 accounts.add(account: account)
                 Self.default = accounts
+                // TODO: switch to new account
             case .failure(let error):
                 print(error)
             }
