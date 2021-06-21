@@ -14,6 +14,7 @@ enum Browser: String, Identifiable, CaseIterable {
     case chrome
     case firefox
     case edge
+    case brave
 
     var id: String {
         rawValue
@@ -29,6 +30,8 @@ enum Browser: String, Identifiable, CaseIterable {
             return "org.mozilla.firefox"
         case .edge:
             return "com.microsoft.edgemac"
+        case .brave:
+            return "com.brave.Browser"
         default:
             return ""
         }
@@ -44,6 +47,8 @@ enum Browser: String, Identifiable, CaseIterable {
             return "Firefox"
         case .edge:
             return "Microsoft Edge"
+        case .brave:
+            return "Brave"
         default:
             return "Default"
         }
