@@ -21,6 +21,7 @@
 		1A8AAA3F267C1CE5006F52D7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA3E267C1CE5006F52D7 /* SettingsView.swift */; };
 		1A8AAA44267C23D4006F52D7 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 1A8AAA43267C23D4006F52D7 /* KeyboardShortcuts */; };
 		1A8AAA46267C35EC006F52D7 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8AAA45267C35EC006F52D7 /* AppSettings.swift */; };
+		1A92CB572680111900C5A8E0 /* AppDelegate+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB562680111800C5A8E0 /* AppDelegate+Menu.swift */; };
 		1AAFACAB267836A8002C560E /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFACAA267836A8002C560E /* Sidebar.swift */; };
 		1AAFACAD267848D1002C560E /* MailNotifrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFACAC267848D1002C560E /* MailNotifrApp.swift */; };
 		1AAFACAF26785025002C560E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFACAE26785025002C560E /* AppDelegate.swift */; };
@@ -63,6 +64,7 @@
 		1A8AAA3C267B1201006F52D7 /* OAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
 		1A8AAA3E267C1CE5006F52D7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1A8AAA45267C35EC006F52D7 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		1A92CB562680111800C5A8E0 /* AppDelegate+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Menu.swift"; sourceTree = "<group>"; };
 		1AAFACAA267836A8002C560E /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		1AAFACAC267848D1002C560E /* MailNotifrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailNotifrApp.swift; sourceTree = "<group>"; };
 		1AAFACAE26785025002C560E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				1AB7FDA816B57A830040BBCE /* Views */,
 				1AAFACAC267848D1002C560E /* MailNotifrApp.swift */,
 				1AAFACAE26785025002C560E /* AppDelegate.swift */,
+				1A92CB562680111800C5A8E0 /* AppDelegate+Menu.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				1A8AAA3B26799391006F52D7 /* WelcomeView.swift in Sources */,
 				1A8AAA392679912E006F52D7 /* AccountView.swift in Sources */,
 				1A8AAA3D267B1201006F52D7 /* OAuthClient.swift in Sources */,
+				1A92CB572680111900C5A8E0 /* AppDelegate+Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

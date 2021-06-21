@@ -6,11 +6,12 @@
 //  Copyright © 2021 ashchan.com. All rights reserved.
 //
 
-import Cocoa
+import AppKit
 import KeyboardShortcuts
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
+    private var menu: NSMenu!
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupStatusItem()
@@ -38,6 +39,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 }
 
+private extension AppDelegate {
+    func setupStatusItem() {
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem.button!.image = NSImage(named: "NoMailsTemplate")
+        statusItem.button!.imagePosition = .imageLeft
+
+        menu = createMenu()
+        updateMenu(menu)
+        statusItem.menu = menu
+    }
+}
+
 // MARK: - Show/hide in Dock
 private extension AppDelegate {
     func showInDock() {
@@ -47,30 +60,6 @@ private extension AppDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + .microseconds(200)) {
             NSApp.activate(ignoringOtherApps: true)
         }
-    }
-}
-
-
-// MARK: - Status Item Menu
-private extension AppDelegate {
-    func setupStatusItem() {
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.button!.image = NSImage(named: "NoMailsTemplate")
-        statusItem.button!.imagePosition = .imageLeft
-        statusItem.menu = createMenu()
-    }
-
-    func createMenu() -> NSMenu {
-        let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: NSLocalizedString("Check All", comment: ""), action: #selector(checkAllMails), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: NSLocalizedString("Compose Mail", comment: ""), action: #selector(composeMail), keyEquivalent: ""))
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: NSLocalizedString("About Mail Notifr", comment: ""), action: #selector(showAbout), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: NSLocalizedString("Preferences...", comment: ""), action: #selector(showPreferences), keyEquivalent: ""))
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: NSLocalizedString("Quit Mail Notifr", comment: ""), action: #selector(NSApp.terminate(_:)), keyEquivalent: ""))
-
-        return menu
     }
 }
 
