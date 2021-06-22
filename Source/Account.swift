@@ -87,6 +87,10 @@ extension Accounts: RawRepresentable {
 }
 
 extension Accounts {
+    func find(email: String) -> Account? {
+        first { $0.email == email }
+    }
+
     mutating func add(account: Account) {
         if firstIndex(where: { $0.id == account.id }) != nil {
             return
@@ -118,7 +122,6 @@ extension Accounts {
                 account.authorization = authorization
                 var accounts = Self.default
                 accounts.add(account: account)
-                Self.default = accounts
                 // TODO: switch to new account
             case .failure(let error):
                 print(error)

@@ -65,6 +65,20 @@ private extension AppDelegate {
 
 // MARK: - Commands
 extension AppDelegate {
+    private func email(from sender: Any) -> String? {
+        if let menuItem = sender as? NSMenuItem {
+            return menuItem.representedObject as? String
+        }
+        return nil
+    }
+
+    private func account(from email: String?) -> Account? {
+        if let email = email {
+            return Accounts.default.find(email: email)
+        }
+        return nil
+    }
+
     @objc func checkAllMails() {
         // TODO
     }
@@ -74,6 +88,32 @@ extension AppDelegate {
         let baseURL = account?.baseUrl ?? "https://mail.google.com/"
         let url = baseURL + "?view=cm&tf=0&fs=1"
         openURL(url: URL(string: url)!, in: account?.browser)
+    }
+
+    @objc func openInbox(_ sender: Any) {
+        guard let account = account(from: email(from: sender)) else {
+            return
+        }
+        //
+    }
+
+    @objc func checkMails(_ sender: Any) {
+        guard let account = account(from: email(from: sender)) else {
+            return
+        }
+        //
+    }
+
+    @objc func openMessage(_ sender: Any) {
+        //
+    }
+
+    @objc func toggleAccount(_ sender: Any) {
+        guard var account = account(from: email(from: sender)) else {
+            return
+        }
+        account.enabled.toggle()
+        Accounts.default.update(account: account)
     }
 
     @objc func showAbout() {

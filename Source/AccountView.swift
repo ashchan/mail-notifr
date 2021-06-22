@@ -13,6 +13,8 @@ struct AccountView: View {
     @State var account: Account
     @State private var showingDeleteAlert = false
 
+    // TODO: menu action like 'Disable Account' should invalid this view
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(account.email)
@@ -57,7 +59,7 @@ struct AccountView: View {
                 .toggleStyle(.switch)
             }
             .onChange(of: account) { newValue in
-                accounts.update(account: newValue)
+                update(account: account)
             }
 
             Spacer()
@@ -86,6 +88,10 @@ struct AccountView: View {
 }
 
 private extension AccountView {
+    func update(account: Account) {
+        accounts.update(account: account)
+    }
+
     func delete() {
         // TODO
         //   * stop checker
