@@ -55,7 +55,7 @@ struct SettingsView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(20)
-        .background(Color.white)
+        .background(Color("Background"))
     }
 }
 

@@ -64,7 +64,7 @@ struct AccountView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(20)
-        .background(Color.white)
+        .background(Color("Background"))
         .toolbar {
             Button {
                 showingDeleteAlert = true
