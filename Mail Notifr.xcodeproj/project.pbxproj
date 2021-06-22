@@ -297,17 +297,15 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(PROJECT_DIR)/Source/OAuthSecret.swift.gyb",
 			);
 			name = "Run GYB Template";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(PROJECT_DIR)/Source/OAuthSecret.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ -e \"${PROJECT_DIR}/.env\" ]]; then\n    source \"${PROJECT_DIR}/.env\"\nfi\nfor INFILE in ${!SCRIPT_INPUT_FILE_*};\ndo\n    file=${!INFILE}\n    echo \"$file\"\n    if [ ${file: -4} == \".gyb\" ]; then\n        echo \"Processing template $file\"\n        \"${PROJECT_DIR}/tools/gyb\" --line-directive '' -o \"${file%.gyb}\" \"$file\"\n    fi\ndone\n";
+			shellScript = "if [[ -e \"${PROJECT_DIR}/.env\" ]]; then\n    source \"${PROJECT_DIR}/.env\"\nfi\nfind \"${PROJECT_DIR}\" -name '*.gyb' |\n  while read file; do\n    echo \"Generating ${file%.gyb}\";\n    \"${PROJECT_DIR}/tools/gyb\" --line-directive '' -o \"${file%.gyb}\" \"$file\";\n  done\n";
 		};
 		1AC74A452673A1FA003F98E7 /* Copy “Launch at Login Helper” */ = {
 			isa = PBXShellScriptBuildPhase;
