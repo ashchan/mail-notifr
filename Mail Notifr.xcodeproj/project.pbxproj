@@ -206,7 +206,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AB7FD9A16B578740040BBCE /* Build configuration list for PBXNativeTarget "Mail Notifr" */;
 			buildPhases = (
-				1A1AE4AC267E0AA00014F314 /* Run GYB Template */,
 				1AB7FD7816B578740040BBCE /* Sources */,
 				1AB7FD7916B578740040BBCE /* Frameworks */,
 				1AB7FD7A16B578740040BBCE /* Resources */,
@@ -289,24 +288,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A1AE4AC267E0AA00014F314 /* Run GYB Template */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run GYB Template";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ -e \"${PROJECT_DIR}/.env\" ]]; then\n    source \"${PROJECT_DIR}/.env\"\nfi\nfind \"${PROJECT_DIR}\" -name '*.gyb' |\n  while read file; do\n    echo \"Generating ${file%.gyb}\";\n    \"${PROJECT_DIR}/tools/gyb\" --line-directive '' -o \"${file%.gyb}\" \"$file\";\n  done\n";
-		};
 		1AC74A452673A1FA003F98E7 /* Copy “Launch at Login Helper” */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
