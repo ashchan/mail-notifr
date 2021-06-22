@@ -51,8 +51,6 @@
 		1A1AB9C4267D648E00277DEA /* Browser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
 		1A1AB9C6267D6B6500277DEA /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		1A1AE4AD267E14FF0014F314 /* OAuthSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthSecret.swift; sourceTree = "<group>"; };
-		1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNAccountMenuController.h; sourceTree = "<group>"; };
-		1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNAccountMenuController.m; sourceTree = "<group>"; };
 		1A76AAE52675C38A0023B130 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1A856E68267F4C8A00376737 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1A856E69267F4C8A00376737 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -157,8 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */,
-				1A69C08818DEED8700047BD0 /* GNAccountMenuController.h */,
-				1A69C08918DEED8700047BD0 /* GNAccountMenuController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
