@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct Sidebar: View {
-    var accounts: Accounts
+    @AppStorage(Accounts.storageKey) var accounts = Accounts()
     @Binding var selection: String?
 
     var body: some View {
@@ -20,9 +20,9 @@ struct Sidebar: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.secondary)
 
-                ForEach(accounts) { account in
+                ForEach($accounts) { $account in
                     NavigationLink(
-                        destination: AccountView(account: account),
+                        destination: AccountView(account: $account),
                         tag: account.email,
                         selection: $selection
                     ) {

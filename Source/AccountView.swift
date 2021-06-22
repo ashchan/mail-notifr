@@ -10,10 +10,8 @@ import SwiftUI
 
 struct AccountView: View {
     @AppStorage(Accounts.storageKey) var accounts = Accounts()
-    @State var account: Account
+    @Binding var account: Account
     @State private var showingDeleteAlert = false
-
-    // TODO: menu action like 'Disable Account' should invalid this view
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -101,6 +99,6 @@ private extension AccountView {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView(account: Account(email: "ashchan@gmail.com"))
+        AccountView(account: .constant(Account(email: "ashchan@gmail.com")))
     }
 }
