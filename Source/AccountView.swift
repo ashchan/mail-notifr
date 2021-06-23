@@ -57,6 +57,9 @@ struct AccountView: View {
                 .toggleStyle(.switch)
             }
             .onChange(of: account) { newValue in
+                if account.checkInterval > 900 || account.checkInterval < 1 {
+                    account.checkInterval = 30
+                }
                 update(account: account)
             }
 
