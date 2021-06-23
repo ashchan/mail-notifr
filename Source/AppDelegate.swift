@@ -7,15 +7,18 @@
 //
 
 import AppKit
+import Combine
 import KeyboardShortcuts
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
     private var menu: NSMenu!
+    private var subscriptions = Set<AnyCancellable>()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupStatusItem()
         registerShortCuts()
+        subscribe()
 
         if Accounts.hasAccounts {
             NSApp.windows.first?.orderOut(nil)
@@ -48,6 +51,15 @@ private extension AppDelegate {
         menu = createMenu()
         updateMenu(menu)
         statusItem.menu = menu
+    }
+
+    func subscribe() {
+        NotificationCenter.default
+            .publisher(for: .accountsChanged)
+            .sink { _ in
+                self.updateMenu(self.menu)
+            }
+            .store(in: &subscriptions)
     }
 }
 

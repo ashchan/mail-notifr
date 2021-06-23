@@ -51,6 +51,10 @@ extension Account {
 
 typealias Accounts = [Account]
 
+extension Notification.Name {
+    static let accountsChanged = Notification.Name("accountsChanged")
+}
+
 extension Accounts: RawRepresentable {
     static let storageKey = "accounts"
 
@@ -78,6 +82,7 @@ extension Accounts: RawRepresentable {
         }
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: storageKey)
+            NotificationCenter.default.post(name: .accountsChanged, object: nil)
         }
     }
 
@@ -91,11 +96,16 @@ extension Accounts {
         first { $0.email == email }
     }
 
+    mutating func save() {
+        Self.default = self
+    }
+
     mutating func add(account: Account) {
         if firstIndex(where: { $0.id == account.id }) != nil {
             return
         }
         append(account)
+        save()
     }
 
     mutating func delete(account: Account) {
@@ -104,6 +114,7 @@ extension Accounts {
         }
         self[index].authorization = nil
         remove(at: index)
+        save()
     }
 
     mutating func update(account: Account) {
@@ -111,6 +122,7 @@ extension Accounts {
             return
         }
         self[index] = account
+        save()
     }
 
     static func authorize() {

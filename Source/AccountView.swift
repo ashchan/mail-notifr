@@ -91,8 +91,6 @@ private extension AccountView {
     }
 
     func delete() {
-        // TODO
-        //   * stop checker
         accounts.delete(account: account)
     }
 }
