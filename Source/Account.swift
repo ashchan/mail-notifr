@@ -53,6 +53,7 @@ typealias Accounts = [Account]
 
 extension Notification.Name {
     static let accountsChanged = Notification.Name("accountsChanged")
+    static let accountAdded = Notification.Name("accountAdded")
 }
 
 extension Accounts: RawRepresentable {
@@ -106,6 +107,7 @@ extension Accounts {
         }
         append(account)
         save()
+        NotificationCenter.default.post(name: .accountAdded, object: account)
     }
 
     mutating func delete(account: Account) {
@@ -134,7 +136,6 @@ extension Accounts {
                 account.authorization = authorization
                 var accounts = Self.default
                 accounts.add(account: account)
-                // TODO: switch to new account
             case .failure(let error):
                 print(error)
             }

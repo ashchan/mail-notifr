@@ -26,6 +26,12 @@ struct MainView: View {
             WelcomeView()
         }
        .frame(minWidth: 600, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
+       .onReceive(NotificationCenter.default.publisher(for: .accountAdded)) {
+           notification in
+           if let newAccount = notification.object as? Account {
+               selection = newAccount.email
+           }
+       }
     }
 
     private func toggleSidebar() {
