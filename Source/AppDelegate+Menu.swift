@@ -70,6 +70,12 @@ extension AppDelegate {
 }
 
 private extension AppDelegate {
+    static var lastCheckedDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY/MM/dd HH:mm"
+        return formatter
+    }()
+
     // When there're multiple accounts each sits in its own submenu.
     func createSubmenu(for account: Account) -> NSMenuItem {
         let menu = NSMenu()
@@ -77,15 +83,29 @@ private extension AppDelegate {
         menu.addItem(withTitle: NSLocalizedString("Check", comment: ""), action: #selector(checkMails(_:)), keyEquivalent: "")
         menu.addItem(NSMenuItem.separator())
 
-        // TODO: add message items
-        let messageItem = NSMenuItem(title: "Example Message", action: #selector(openMessage(_:)), keyEquivalent: "")
-        messageItem.representedObject = "messageLink" // TODO: link
-        menu.addItem(messageItem)
-        menu.addItem(messageItem.copy() as! NSMenuItem)
-        menu.addItem(messageItem.copy() as! NSMenuItem)
+        for message in (fetcher(for: account.email)?.messages ?? []) {
+            let messageItem = NSMenuItem(title: message.subject, action: #selector(openMessage(_:)), keyEquivalent: "")
+            messageItem.representedObject = message
+            messageItem.toolTip = message.summary
+            menu.addItem(messageItem)
+        }
 
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(withTitle: NSLocalizedString("Last Checked:", comment: ""), action: nil, keyEquivalent: "") // TODO: date
+        let lastChecked: String
+        if #available(macOS 12.0, *) {
+            lastChecked = (fetcher(for: account.email)?.lastCheckedAt ?? Date())
+                .formatted()
+        } else {
+            let lastCheckedDate = fetcher(for: account.email)?.lastCheckedAt ?? Date()
+            lastChecked = Self.lastCheckedDateFormatter.string(from: lastCheckedDate)
+        }
+        menu.addItem(
+            NSMenuItem(
+                title: NSLocalizedString("Last Checked:", comment: "") + " " + lastChecked,
+                action: nil,
+                keyEquivalent: ""
+            )
+        )
         menu.addItem(
             withTitle: NSLocalizedString(account.enabled ? "Disable Account" : "Enable Account", comment: ""),
             action: #selector(toggleAccount(_:)),
@@ -112,15 +132,29 @@ private extension AppDelegate {
         items.append(NSMenuItem(title: NSLocalizedString("Open Inbox", comment: ""), action: #selector(openInbox(_:)), keyEquivalent: ""))
         items.append(NSMenuItem.separator())
 
-        // TODO: add message items
-        let messageItem = NSMenuItem(title: "Example Message", action: #selector(openMessage(_:)), keyEquivalent: "")
-        messageItem.representedObject = "messageLink" // TODO: link
-        items.append(messageItem)
-        items.append(messageItem.copy() as! NSMenuItem)
-        items.append(messageItem.copy() as! NSMenuItem)
+        for message in (fetcher(for: account.email)?.messages ?? []) {
+            let messageItem = NSMenuItem(title: message.subject, action: #selector(openMessage(_:)), keyEquivalent: "")
+            messageItem.representedObject = message
+            messageItem.toolTip = message.summary
+            items.append(messageItem)
+        }
 
         items.append(NSMenuItem.separator())
-        items.append(NSMenuItem(title: NSLocalizedString("Last Checked:", comment: ""), action: nil, keyEquivalent: "")) // TODO: date
+        let lastChecked: String
+        if #available(macOS 12.0, *) {
+            lastChecked = (fetcher(for: account.email)?.lastCheckedAt ?? Date())
+                .formatted()
+        } else {
+            let lastCheckedDate = fetcher(for: account.email)?.lastCheckedAt ?? Date()
+            lastChecked = Self.lastCheckedDateFormatter.string(from: lastCheckedDate)
+        }
+        items.append(
+            NSMenuItem(
+                title: NSLocalizedString("Last Checked:", comment: "") + " " + lastChecked,
+                action: nil,
+                keyEquivalent: ""
+            )
+        )
         items.append(
             NSMenuItem(
                 title: NSLocalizedString(account.enabled ? "Disable Account" : "Enable Account", comment: ""),

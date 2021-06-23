@@ -14,11 +14,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
     private var menu: NSMenu!
     private var subscriptions = Set<AnyCancellable>()
+    private var fetchers = [MessageFetcher]()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        setupStatusItem()
         registerShortCuts()
         subscribe()
+
+        setupStatusItem()
+        updateFetchers()
 
         if Accounts.hasAccounts {
             NSApp.windows.first?.orderOut(nil)
@@ -49,7 +52,6 @@ private extension AppDelegate {
         statusItem.button!.imagePosition = .imageLeft
 
         menu = createMenu()
-        updateMenu(menu)
         statusItem.menu = menu
     }
 
@@ -57,9 +59,17 @@ private extension AppDelegate {
         NotificationCenter.default
             .publisher(for: .accountsChanged)
             .sink { _ in
-                self.updateMenu(self.menu)
+                self.updateFetchers()
             }
             .store(in: &subscriptions)
+    }
+
+    func updateFetchers() {
+        // TODO: rebuild fetchers
+        fetchers = Accounts.default.map({ account in
+            MessageFetcher(account: account)
+        })
+        updateMenu(menu)
     }
 }
 
@@ -91,8 +101,12 @@ extension AppDelegate {
         return nil
     }
 
+    func fetcher(for email: String?) -> MessageFetcher? {
+        fetchers.first { $0.account.email == email }
+    }
+
     @objc func checkAllMails() {
-        // TODO
+        fetchers.forEach { $0.fetch() }
     }
 
     @objc func composeMail() {
@@ -106,18 +120,25 @@ extension AppDelegate {
         guard let account = account(from: email(from: sender)) else {
             return
         }
-        //
+        openURL(url: URL(string: account.baseUrl)!, in: account.browser)
     }
 
     @objc func checkMails(_ sender: Any) {
         guard let account = account(from: email(from: sender)) else {
             return
         }
-        //
+        fetcher(for: account.email)?.fetch()
     }
 
     @objc func openMessage(_ sender: Any) {
-        //
+        guard let menuItem = sender as? NSMenuItem,
+           let message = menuItem.representedObject as? Message else {
+            return
+        }
+        guard let account = account(from: message.email) else {
+            return
+        }
+        openURL(url: URL(string: account.baseUrl)!, in: account.browser)
     }
 
     @objc func toggleAccount(_ sender: Any) {
