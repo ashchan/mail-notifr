@@ -29,6 +29,9 @@ struct SettingsView: View {
                 Toggle(isOn: $showUnreadCount) {
                     Text("Show unread count in menu bar")
                 }
+                .onChange(of: showUnreadCount) { newValue in
+                    AppSettings.shared.showUnreadCountSettingChanged()
+                }
                 Spacer()
             }
 

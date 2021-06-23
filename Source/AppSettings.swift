@@ -15,6 +15,10 @@ struct AppSettings {
     static let showUnreadCount = "settings.showUnreadCount"
 }
 
+extension Notification.Name {
+    static let showUnreadCountSettingChanged = Notification.Name("showUnreadCountSettingChanged")
+}
+
 extension AppSettings {
     var showUnreadCount: Bool {
         get {
@@ -22,6 +26,11 @@ extension AppSettings {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Self.showUnreadCount)
+            showUnreadCountSettingChanged()
         }
+    }
+
+    func showUnreadCountSettingChanged() {
+        NotificationCenter.default.post(name: .showUnreadCountSettingChanged, object: nil)
     }
 }

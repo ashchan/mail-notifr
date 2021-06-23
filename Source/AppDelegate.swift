@@ -62,6 +62,12 @@ private extension AppDelegate {
                 self.updateFetchers()
             }
             .store(in: &subscriptions)
+        NotificationCenter.default
+            .publisher(for: .showUnreadCountSettingChanged)
+            .sink { _ in
+                self.updateMenuBarCount()
+            }
+            .store(in: &subscriptions)
     }
 
     func updateFetchers() {
@@ -70,6 +76,30 @@ private extension AppDelegate {
             MessageFetcher(account: account)
         })
         updateMenu(menu)
+        updateMenuBarCount()
+    }
+
+    func updateMenuBarCount() {
+        let messageCount = Accounts.default
+            .filter({ $0.enabled })
+            .compactMap({ fetcher(for: $0.email) })
+            .map({ $0.messagesCount })
+            .reduce(0, +)
+
+        if messageCount > 0 && AppSettings.shared.showUnreadCount {
+            statusItem.button!.title = "\(messageCount)"
+        } else {
+            statusItem.button!.title = ""
+        }
+
+        if messageCount > 0 {
+            let toolTipFormat = messageCount == 1 ? NSLocalizedString("Unread Message", comment: "") : NSLocalizedString("Unread Messages", comment: "")
+            statusItem.button!.toolTip = String(format: toolTipFormat, messageCount)
+            statusItem.button!.image = NSImage(named: "HaveMailsTemplate")
+        } else {
+            statusItem.button!.toolTip = ""
+            statusItem.button!.image = NSImage(named: "NoMailsTemplate")
+        }
     }
 }
 
