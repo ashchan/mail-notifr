@@ -70,8 +70,6 @@
 		1AB7FDA316B57A270040BBCE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		1AB7FE3616B57B4E0040BBCE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1AB7FE4116B57B9C0040BBCE /* GNApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GNApplicationController.swift; sourceTree = "<group>"; };
-		1AB7FE4E16B57BAD0040BBCE /* GNAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNAccount.h; sourceTree = "<group>"; };
-		1AB7FE4F16B57BAD0040BBCE /* GNAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNAccount.m; sourceTree = "<group>"; };
 		1AB7FE5216B57BAD0040BBCE /* GNChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNChecker.h; sourceTree = "<group>"; };
 		1AB7FE5316B57BAD0040BBCE /* GNChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNChecker.m; sourceTree = "<group>"; };
 		1AB7FF0016B57D280040BBCE /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Credits.html; path = Resources/Credits.html; sourceTree = SOURCE_ROOT; };
@@ -180,8 +178,6 @@
 				1A8AAA45267C35EC006F52D7 /* AppSettings.swift */,
 				1A1AB9C4267D648E00277DEA /* Browser.swift */,
 				1A1AB9C6267D6B6500277DEA /* Sound.swift */,
-				1AB7FE4E16B57BAD0040BBCE /* GNAccount.h */,
-				1AB7FE4F16B57BAD0040BBCE /* GNAccount.m */,
 				1AB7FE5216B57BAD0040BBCE /* GNChecker.h */,
 				1AB7FE5316B57BAD0040BBCE /* GNChecker.m */,
 			);
