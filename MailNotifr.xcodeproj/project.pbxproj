@@ -72,7 +72,7 @@
 		1AB7FDA316B57A270040BBCE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		1AB7FE3616B57B4E0040BBCE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1AB7FF0016B57D280040BBCE /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Credits.html; path = Resources/Credits.html; sourceTree = SOURCE_ROOT; };
-		1ACD6FEE1897F56300103E15 /* Gmail Notifr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Gmail Notifr.entitlements"; sourceTree = SOURCE_ROOT; };
+		1ACD6FEE1897F56300103E15 /* MailNotifr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MailNotifr.entitlements; sourceTree = SOURCE_ROOT; };
 		1ACD6FEF1897FE3C00103E15 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1AF46DE826832110008A5FF2 /* MessageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFetcher.swift; sourceTree = "<group>"; };
 		1AF46DEA26832368008A5FF2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				1AB7FDA316B57A270040BBCE /* Info.plist */,
-				1ACD6FEE1897F56300103E15 /* Gmail Notifr.entitlements */,
+				1ACD6FEE1897F56300103E15 /* MailNotifr.entitlements */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -190,9 +190,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1AB7FD7B16B578740040BBCE /* Mail Notifr */ = {
+		1AB7FD7B16B578740040BBCE /* MailNotifr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1AB7FD9A16B578740040BBCE /* Build configuration list for PBXNativeTarget "Mail Notifr" */;
+			buildConfigurationList = 1AB7FD9A16B578740040BBCE /* Build configuration list for PBXNativeTarget "MailNotifr" */;
 			buildPhases = (
 				1AB7FD7816B578740040BBCE /* Sources */,
 				1AB7FD7916B578740040BBCE /* Frameworks */,
@@ -204,7 +204,7 @@
 			);
 			dependencies = (
 			);
-			name = "Mail Notifr";
+			name = MailNotifr;
 			packageProductDependencies = (
 				1AC74A412673A1B4003F98E7 /* LaunchAtLogin */,
 				1A4962242674C0C100331CF7 /* GoogleAPIClientForREST_Gmail */,
@@ -235,7 +235,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1AB7FD7616B578740040BBCE /* Build configuration list for PBXProject "Mail Notifr" */;
+			buildConfigurationList = 1AB7FD7616B578740040BBCE /* Build configuration list for PBXProject "MailNotifr" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -256,7 +256,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1AB7FD7B16B578740040BBCE /* Mail Notifr */,
+				1AB7FD7B16B578740040BBCE /* MailNotifr */,
 			);
 		};
 /* End PBXProject section */
@@ -456,7 +456,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "Gmail Notifr.entitlements";
+				CODE_SIGN_ENTITLEMENTS = MailNotifr.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -502,7 +502,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "Gmail Notifr.entitlements";
+				CODE_SIGN_ENTITLEMENTS = MailNotifr.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -534,7 +534,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1AB7FD7616B578740040BBCE /* Build configuration list for PBXProject "Mail Notifr" */ = {
+		1AB7FD7616B578740040BBCE /* Build configuration list for PBXProject "MailNotifr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1AB7FD9816B578740040BBCE /* Debug */,
@@ -543,7 +543,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1AB7FD9A16B578740040BBCE /* Build configuration list for PBXNativeTarget "Mail Notifr" */ = {
+		1AB7FD9A16B578740040BBCE /* Build configuration list for PBXNativeTarget "MailNotifr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1AB7FD9B16B578740040BBCE /* Debug */,
