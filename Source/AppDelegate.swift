@@ -65,7 +65,7 @@ private extension AppDelegate {
         NotificationCenter.default
             .publisher(for: .showUnreadCountSettingChanged)
             .sink { _ in
-                self.updateMenuBarCount()
+                self.updateStatusItem()
             }
             .store(in: &subscriptions)
     }
@@ -76,14 +76,14 @@ private extension AppDelegate {
             MessageFetcher(account: account)
         })
         updateMenu(menu)
-        updateMenuBarCount()
+        updateStatusItem()
     }
 
-    func updateMenuBarCount() {
+    func updateStatusItem() {
         let messageCount = Accounts.default
             .filter({ $0.enabled })
             .compactMap({ fetcher(for: $0.email) })
-            .map({ $0.messagesCount })
+            .map({ $0.unreadMessagesCount })
             .reduce(0, +)
 
         if messageCount > 0 && AppSettings.shared.showUnreadCount {
@@ -100,6 +100,8 @@ private extension AppDelegate {
             statusItem.button!.toolTip = ""
             statusItem.button!.image = NSImage(named: "NoMailsTemplate")
         }
+
+        statusItem.button!.appearsDisabled = Accounts.default.filter({ $0.enabled }).isEmpty
     }
 }
 

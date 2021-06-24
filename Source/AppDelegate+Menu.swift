@@ -15,10 +15,6 @@ private enum MenuItemTag: Int {
 }
 
 extension AppDelegate {
-    var hasAccounts: Bool {
-        !Accounts.default.isEmpty
-    }
-
     func createMenu() -> NSMenu {
         let menu = NSMenu()
 
@@ -46,7 +42,7 @@ extension AppDelegate {
     func updateMenu(_ menu: NSMenu) {
         let checkAllMenuItem = menu.item(withTag: MenuItemTag.checkAllMenuItem.rawValue)!
         checkAllMenuItem.title = NSLocalizedString(Accounts.default.count > 1 ? "Check All" : "Check", comment: "")
-        checkAllMenuItem.isEnabled = hasAccounts
+        checkAllMenuItem.action = Accounts.default.filter({ $0.enabled }).isEmpty ? nil : #selector(checkAllMails)
 
         let indexBelowComposeItem = menu.indexOfItem(withTag: MenuItemTag.separatorBelowComposeItem.rawValue)
         let indexAboveAboutItem = menu.indexOfItem(withTag: MenuItemTag.separatorAboveAboutItem.rawValue)
@@ -80,7 +76,12 @@ private extension AppDelegate {
     func createSubmenu(for account: Account) -> NSMenuItem {
         let menu = NSMenu()
         menu.addItem(withTitle: NSLocalizedString("Open Inbox", comment: ""), action: #selector(openInbox(_:)), keyEquivalent: "")
-        menu.addItem(withTitle: NSLocalizedString("Check", comment: ""), action: #selector(checkMails(_:)), keyEquivalent: "")
+        let checkMailsItem = NSMenuItem(
+            title: NSLocalizedString("Check", comment: ""),
+            action: account.enabled ? #selector(checkMails(_:)) : nil,
+            keyEquivalent: ""
+        )
+        menu.addItem(checkMailsItem)
         menu.addItem(NSMenuItem.separator())
 
         for message in (fetcher(for: account.email)?.messages ?? []) {
@@ -91,21 +92,25 @@ private extension AppDelegate {
         }
 
         menu.addItem(NSMenuItem.separator())
-        let lastChecked: String
-        if #available(macOS 12.0, *) {
-            lastChecked = (fetcher(for: account.email)?.lastCheckedAt ?? Date())
-                .formatted()
-        } else {
-            let lastCheckedDate = fetcher(for: account.email)?.lastCheckedAt ?? Date()
-            lastChecked = Self.lastCheckedDateFormatter.string(from: lastCheckedDate)
-        }
-        menu.addItem(
-            NSMenuItem(
-                title: NSLocalizedString("Last Checked:", comment: "") + " " + lastChecked,
-                action: nil,
-                keyEquivalent: ""
+
+        if account.enabled {
+            let lastChecked: String
+            if #available(macOS 12.0, *) {
+                lastChecked = (fetcher(for: account.email)?.lastCheckedAt ?? Date())
+                    .formatted()
+            } else {
+                let lastCheckedDate = fetcher(for: account.email)?.lastCheckedAt ?? Date()
+                lastChecked = Self.lastCheckedDateFormatter.string(from: lastCheckedDate)
+            }
+            menu.addItem(
+                NSMenuItem(
+                    title: NSLocalizedString("Last Checked:", comment: "") + " " + lastChecked,
+                    action: nil,
+                    keyEquivalent: ""
+                )
             )
-        )
+        }
+
         menu.addItem(
             withTitle: NSLocalizedString(account.enabled ? "Disable Account" : "Enable Account", comment: ""),
             action: #selector(toggleAccount(_:)),
@@ -140,21 +145,25 @@ private extension AppDelegate {
         }
 
         items.append(NSMenuItem.separator())
-        let lastChecked: String
-        if #available(macOS 12.0, *) {
-            lastChecked = (fetcher(for: account.email)?.lastCheckedAt ?? Date())
-                .formatted()
-        } else {
-            let lastCheckedDate = fetcher(for: account.email)?.lastCheckedAt ?? Date()
-            lastChecked = Self.lastCheckedDateFormatter.string(from: lastCheckedDate)
-        }
-        items.append(
-            NSMenuItem(
-                title: NSLocalizedString("Last Checked:", comment: "") + " " + lastChecked,
-                action: nil,
-                keyEquivalent: ""
+
+        if account.enabled {
+            let lastChecked: String
+            if #available(macOS 12.0, *) {
+                lastChecked = (fetcher(for: account.email)?.lastCheckedAt ?? Date())
+                    .formatted()
+            } else {
+                let lastCheckedDate = fetcher(for: account.email)?.lastCheckedAt ?? Date()
+                lastChecked = Self.lastCheckedDateFormatter.string(from: lastCheckedDate)
+            }
+            items.append(
+                NSMenuItem(
+                    title: NSLocalizedString("Last Checked:", comment: "") + " " + lastChecked,
+                    action: nil,
+                    keyEquivalent: ""
+                )
             )
-        )
+        }
+
         items.append(
             NSMenuItem(
                 title: NSLocalizedString(account.enabled ? "Disable Account" : "Enable Account", comment: ""),

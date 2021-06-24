@@ -19,6 +19,9 @@ struct MessageFetcher {
         return Date() // TODO
     }
 
+    private(set) var unreadMessagesCount = 0
+    private let maximumMessagesStored = 10
+
     var messages: [Message] {
         // TODO
         [
@@ -26,9 +29,5 @@ struct MessageFetcher {
             Message(id: "223", email: account.email, subject: "Test message dummy #2", body: "Test message body"),
             Message(id: "223", email: account.email, subject: "Test message dummy #3", body: "Test message body"),
         ]
-    }
-
-    var messagesCount: Int {
-        messages.count
     }
 }
