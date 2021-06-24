@@ -1,0 +1,29 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  
+jobs:
+  build:
+    strategy:
+      matrix:
+        platform:
+          - macOS
+        os:
+          - macos-11
+          - macos-12
+        xcode:
+          - ^13
+        swift:
+          - ~5.3
+          - ~5.4
+          - ^6
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: mxcl/xcodebuild@v1
+        with:
+          xcode: ${{ matrix.xcode }}
+          platform: ${{ matrix.platform }}
