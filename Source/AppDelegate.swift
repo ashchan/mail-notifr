@@ -8,6 +8,7 @@
 
 import AppKit
 import Combine
+import UserNotifications
 import KeyboardShortcuts
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
@@ -190,6 +191,24 @@ extension AppDelegate {
         NSWorkspace.shared.open(URL(string: "mailnotifr://preferences")!)
     }
 }
+
+extension AppDelegate:  UNUserNotificationCenterDelegate {
+    /* TODO: UserNotification (without sound permission)
+    func setupUserNotification() {
+        UNUserNotificationCenter.current().delegate = self
+    }
+
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        // TODO: open email
+        for noti in center.deliveredNotifications {
+            if noti.title == notification.title {
+                center.removeDeliveredNotification(noti)
+            }
+        }
+    }
+     */
+}
+
 
 // MARK: - Shortcuts
 extension KeyboardShortcuts.Name {

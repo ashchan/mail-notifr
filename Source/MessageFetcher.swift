@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GoogleAPIClientForREST_Gmail // SWIFT_PACKAGE=1 required, see https://github.com/google/google-api-objectivec-client-for-rest/issues/400
 
 struct MessageFetcher {
     var account: Account
