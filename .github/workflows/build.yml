@@ -13,9 +13,11 @@ jobs:
         platform:
           - macOS
         os:
-          - macos-11
-          - macos-12
+          - macos-10.15
+          # - macos-11
+          # - macos-12
         xcode:
+          - ^12
           - ^13
         swift:
           - ~5.3
