@@ -7,7 +7,7 @@ find "${PROJECT_DIR}" -name '*.gyb' |
   while read file; do
     if [[ ! -f "${file%.gyb}" ]]; then
         echo "Generating ${file%.gyb}";
-        "${PROJECT_DIR}/tools/gyb" --line-directive '' -o "${file%.gyb}" "$file";
+        "${PROJECT_DIR}/vendors/gyb" --line-directive '' -o "${file%.gyb}" "$file";
     fi
   done
 
