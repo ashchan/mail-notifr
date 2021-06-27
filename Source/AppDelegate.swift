@@ -15,7 +15,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
     private var menu: NSMenu!
     private var subscriptions = Set<AnyCancellable>()
-    private var fetchers = [MessageFetcher]()
+    private var fetchers: [String: MessageFetcher] = [:]
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         registerShortCuts()
@@ -72,10 +72,22 @@ private extension AppDelegate {
     }
 
     func updateFetchers() {
-        // TODO: rebuild fetchers
-        fetchers = Accounts.default.map({ account in
-            MessageFetcher(account: account)
-        })
+        let accounts = Accounts.default.filter({ $0.enabled })
+        // Remove unused fetchers
+        for email in fetchers.keys {
+            if !accounts.contains(where: { $0.email == email }) {
+                fetchers[email]?.cleanUp()
+                fetchers[email] = nil
+            }
+        }
+
+        // Add new fetchers
+        for account in accounts {
+            if fetchers[account.email] == nil {
+                fetchers[account.email] = MessageFetcher(account: account)
+            }
+        }
+ 
         updateMenu(menu)
         updateStatusItem()
     }
@@ -135,11 +147,11 @@ extension AppDelegate {
     }
 
     func fetcher(for email: String?) -> MessageFetcher? {
-        fetchers.first { $0.account.email == email }
+        fetchers[email ?? ""]
     }
 
     @objc func checkAllMails() {
-        fetchers.forEach { $0.fetch() }
+        fetchers.values.forEach { $0.fetch() }
     }
 
     @objc func composeMail() {

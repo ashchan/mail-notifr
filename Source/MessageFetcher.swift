@@ -16,11 +16,15 @@ struct MessageFetcher {
         // TODO
     }
 
+    func cleanUp() {
+        // TODO
+    }
+
     var lastCheckedAt: Date {
         return Date() // TODO
     }
 
-    private(set) var unreadMessagesCount = 0
+    private(set) var unreadMessagesCount = 5
     private let maximumMessagesStored = 10
 
     var messages: [Message] {
