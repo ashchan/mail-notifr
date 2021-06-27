@@ -62,6 +62,8 @@ private extension AppDelegate {
         NotificationCenter.default
             .publisher(for: .accountsChanged)
             .sink { _ in
+                // TODO: should not re-fetch for any account changes
+                // For example, chaning account notification sound setting should not trigger fetching
                 self.updateFetchers()
             }
             .store(in: &subscriptions)
