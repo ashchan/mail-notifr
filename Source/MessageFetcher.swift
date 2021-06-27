@@ -104,6 +104,7 @@ private extension MessageFetcher {
     }
 
     func storeMessages(_ gmailMessages: [GTLRGmail_Message]) {
+        // TODO: sort messages
         messages = gmailMessages.map { msg in
             let headers = msg.payload?.headers ?? [GTLRGmail_MessagePartHeader]()
             func findValue(by name: String) -> String {

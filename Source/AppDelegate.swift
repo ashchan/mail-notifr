@@ -29,6 +29,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             showInDock()
         }
+
+        setupUserNotification()
     }
 
     func openURL(url: URL, in browser: Browser?) {
@@ -81,8 +83,8 @@ private extension AppDelegate {
 
         NotificationCenter.default
             .publisher(for: .messagesFetched)
-            .sink { _ in
-                self.updateMenu(self.menu)
+            .sink { notification in
+                self.messagesFetched(notification)
             }
             .store(in: &subscriptions)
     }
@@ -167,6 +169,15 @@ extension AppDelegate {
         fetchers[email ?? ""]
     }
 
+    private func openMessage(messageId: String, email: String) {
+        guard let account = account(from: email) else {
+            return
+        }
+
+        // TODO: construct message URL
+        openURL(url: URL(string: account.baseUrl)!, in: account.browser)
+    }
+
     @objc func checkAllMails() {
         fetchers.values.forEach { $0.fetch() }
     }
@@ -197,10 +208,7 @@ extension AppDelegate {
            let message = menuItem.representedObject as? Message else {
             return
         }
-        guard let account = account(from: message.email) else {
-            return
-        }
-        openURL(url: URL(string: account.baseUrl)!, in: account.browser)
+        openMessage(messageId: message.id, email: message.email)
     }
 
     @objc func toggleAccount(_ sender: Any) {
@@ -222,20 +230,77 @@ extension AppDelegate {
 }
 
 extension AppDelegate:  UNUserNotificationCenterDelegate {
-    /* TODO: UserNotification (without sound permission)
     func setupUserNotification() {
-        UNUserNotificationCenter.current().delegate = self
-    }
-
-    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
-        // TODO: open email
-        for noti in center.deliveredNotifications {
-            if noti.title == notification.title {
-                center.removeDeliveredNotification(noti)
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { [weak self] granted, error in
+            if error == nil && granted {
+                UNUserNotificationCenter.current().delegate = self
             }
         }
     }
-     */
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        center.removeDeliveredNotifications(withIdentifiers: [response.notification.request.identifier])
+        let userInfo = response.notification.request.content.userInfo
+        if let messageId = userInfo["messageId"] as? String,
+           let email = userInfo["email"] as? String {
+            openMessage(messageId: messageId, email: email)
+        }
+        completionHandler()
+    }
+
+    func delilverNotifications(for messages: [Message]) {
+        // TODO: better filter: should NOT send notification for any messages that been sent already
+        UNUserNotificationCenter.current().getDeliveredNotifications { requests in
+            let deliveredIds = requests.map { $0.request.identifier }
+            for msg in messages.filter({ !deliveredIds.contains($0.id) }) {
+               let content = UNMutableNotificationContent()
+                content.title = msg.sender
+                content.subtitle = msg.subject
+                content.body = msg.snippet
+                content.userInfo = [
+                    "messageId": msg.id,
+                    "email": msg.email
+                ]
+                content.threadIdentifier = msg.email
+
+                let request = UNNotificationRequest(identifier: msg.id, content: content, trigger: nil)
+                UNUserNotificationCenter.current().add(request) { _ in
+                }
+            }
+        }
+    }
+
+    func messagesFetched(_ notification: Notification) {
+        updateMenu(menu)
+
+        let email = notification.object as? String ?? ""
+        guard let account = account(from: email), account.enabled else {
+            return
+        }
+
+        if let sound = account.sound {
+            sound.nsSound?.play()
+        }
+
+        if !account.notificationEnabled {
+            return
+        }
+
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            guard (settings.authorizationStatus == .authorized) ||
+                    (settings.authorizationStatus == .provisional) else {
+                        return
+                    }
+
+            if settings.alertSetting != .enabled {
+                return
+            }
+
+            if let fetcher = self.fetcher(for: email) {
+                self.delilverNotifications(for: fetcher.messages)
+            }
+        }
+    }
 }
 
 
