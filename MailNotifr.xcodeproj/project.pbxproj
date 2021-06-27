@@ -31,6 +31,7 @@
 		1AB7FF0716B57D510040BBCE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AB7FF0416B57D510040BBCE /* Localizable.strings */; };
 		1AC74A422673A1B4003F98E7 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC74A412673A1B4003F98E7 /* LaunchAtLogin */; };
 		1ACD6FF01897FE3C00103E15 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACD6FEF1897FE3C00103E15 /* Images.xcassets */; };
+		1AE48C082688856500906371 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE48C072688856500906371 /* KeychainAccess */; };
 		1AF46DE926832110008A5FF2 /* MessageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF46DE826832110008A5FF2 /* MessageFetcher.swift */; };
 		1AF46DEB26832368008A5FF2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF46DEA26832368008A5FF2 /* Message.swift */; };
 		1AFB7F4C189FC0EB00B82441 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFB7F4B189FC0EB00B82441 /* ServiceManagement.framework */; };
@@ -87,6 +88,7 @@
 			files = (
 				1A49622B2674D54100331CF7 /* AppAuth in Frameworks */,
 				1A4962252674C0C100331CF7 /* GoogleAPIClientForREST_Gmail in Frameworks */,
+				1AE48C082688856500906371 /* KeychainAccess in Frameworks */,
 				1AFCE88218D404E500487B98 /* Carbon.framework in Frameworks */,
 				1AC74A422673A1B4003F98E7 /* LaunchAtLogin in Frameworks */,
 				1A4962282674CEBD00331CF7 /* GTMAppAuth in Frameworks */,
@@ -211,6 +213,7 @@
 				1A4962272674CEBD00331CF7 /* GTMAppAuth */,
 				1A49622A2674D54100331CF7 /* AppAuth */,
 				1A8AAA43267C23D4006F52D7 /* KeyboardShortcuts */,
+				1AE48C072688856500906371 /* KeychainAccess */,
 			);
 			productName = "Gmail Notifr";
 			productReference = 1AB7FD7C16B578740040BBCE /* Mail Notifr.app */;
@@ -251,6 +254,7 @@
 				1A4962262674CEBD00331CF7 /* XCRemoteSwiftPackageReference "GTMAppAuth" */,
 				1A4962292674D54100331CF7 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
 				1A8AAA42267C23D4006F52D7 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				1AE48C062688856400906371 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 1AB7FD7D16B578740040BBCE /* Products */;
 			projectDirPath = "";
@@ -596,6 +600,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		1AE48C062688856400906371 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -623,6 +635,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1AC74A402673A1B4003F98E7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
 			productName = LaunchAtLogin;
+		};
+		1AE48C072688856500906371 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AE48C062688856400906371 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

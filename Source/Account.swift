@@ -8,6 +8,7 @@
 
 import Foundation
 import GTMAppAuth
+import KeychainAccess
 
 struct Account: Codable {
     var email: String
@@ -37,16 +38,24 @@ extension Account: Identifiable, Hashable {
 }
 
 extension Account {
+    var keychain: Keychain {
+        Keychain(service: "com.ashchan.GmailNotifr")
+    }
+
     var authorization: GTMAppAuthFetcherAuthorization? {
         get {
-            GTMAppAuthFetcherAuthorization(fromKeychainForName: id)
+            if let data = keychain[data: id] {
+                return try? NSKeyedUnarchiver.unarchivedObject(ofClass: GTMAppAuthFetcherAuthorization.self, from: data)
+            }
+            return nil
         }
         set {
             guard let newValue = newValue, newValue.canAuthorize() else {
-                GTMAppAuthFetcherAuthorization.removeFromKeychain(forName: id)
+                keychain[id] = nil
                 return
             }
-            GTMAppAuthFetcherAuthorization.save(newValue, toKeychainForName: id)
+            let data = try? NSKeyedArchiver.archivedData(withRootObject: newValue, requiringSecureCoding: false)
+            keychain[data: id] = data
         }
     }
 }
@@ -140,10 +149,16 @@ extension Accounts {
             switch state {
             case .success(let state):
                 let authorization = GTMAppAuthFetcherAuthorization(authState: state)
-                var account = Account(email: authorization.userEmail!)
-                account.authorization = authorization
-                var accounts = Self.default
-                accounts.add(account: account)
+                if var account = Self.default.find(email: authorization.userEmail!) {
+                    account.authorization = authorization
+                    var accounts = Self.default
+                    accounts.update(account: account)
+                } else {
+                    var account = Account(email: authorization.userEmail!)
+                    account.authorization = authorization
+                    var accounts = Self.default
+                    accounts.add(account: account)
+                }
             case .failure(let error):
                 print(error)
             }

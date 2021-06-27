@@ -64,25 +64,43 @@ struct AccountView: View {
             }
 
             Spacer()
+
+            HStack {
+                Spacer()
+
+                Button {
+                    reAuthenticate()
+                } label: {
+                    Text("Re-authenticate")
+                }
+
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(20)
         .background(Color("Background"))
         .toolbar {
-            Button {
-                showingDeleteAlert = true
-            } label: {
-                Image(systemName: "trash")
-            }
-            .alert(isPresented: $showingDeleteAlert) {
-                Alert(
-                    title: Text("Are you sure you want to delete this account from Mail Notifr?"),
-                    message: Text("You can add your account again at any time."),
-                    primaryButton: .destructive(Text("Yes, delete this account.")) {
-                        self.delete()
-                    },
-                    secondaryButton: .cancel()
-                )
+            ToolbarItemGroup {
+                Button {
+                    showingDeleteAlert = true
+                } label: {
+                    Image(systemName: "trash")
+                }
+                .alert(isPresented: $showingDeleteAlert) {
+                    Alert(
+                        title: Text("Are you sure you want to delete this account from Mail Notifr?"),
+                        message: Text("You can add your account again at any time."),
+                        primaryButton: .destructive(Text("Yes, delete this account.")) {
+                            self.delete()
+                        },
+                        secondaryButton: .cancel()
+                    )
+                }
+                Button {
+                    reAuthenticate()
+                } label: {
+                    Image(systemName: "key.icloud")
+                }
             }
         }
     }
@@ -95,6 +113,10 @@ private extension AccountView {
 
     func delete() {
         accounts.delete(account: account)
+    }
+
+    func reAuthenticate() {
+        Accounts.authorize()
     }
 }
 
