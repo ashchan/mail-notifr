@@ -30,6 +30,10 @@ extension Account: Identifiable, Hashable {
     var browser: Browser {
         Browser(rawValue: openInBrowser) ?? .default
     }
+
+    var sound: Sound? {
+        Sound(rawValue: notificationSound)
+    }
 }
 
 extension Account {
