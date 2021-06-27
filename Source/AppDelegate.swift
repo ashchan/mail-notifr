@@ -63,16 +63,26 @@ private extension AppDelegate {
                 self.updateFetchers()
             }
             .store(in: &subscriptions)
+
         NotificationCenter.default
             .publisher(for: .showUnreadCountSettingChanged)
             .sink { _ in
                 self.updateStatusItem()
             }
             .store(in: &subscriptions)
+
+        NotificationCenter.default
+            .publisher(for: .unreadCountUpdated)
+            .sink { _ in
+                self.updateMenu(self.menu)
+                self.updateStatusItem()
+            }
+            .store(in: &subscriptions)
     }
 
     func updateFetchers() {
-        let accounts = Accounts.default.filter({ $0.enabled })
+        let accounts = Accounts.default.enabled
+ 
         // Remove unused fetchers
         for email in fetchers.keys {
             if !accounts.contains(where: { $0.email == email }) {
@@ -87,34 +97,34 @@ private extension AppDelegate {
                 fetchers[account.email] = MessageFetcher(account: account)
             }
         }
- 
+
+        fetchers.values.forEach { $0.fetch() }
+
         updateMenu(menu)
         updateStatusItem()
     }
 
     func updateStatusItem() {
-        let messageCount = Accounts.default
-            .filter({ $0.enabled })
-            .compactMap({ fetcher(for: $0.email) })
+        let messagesCount = fetchers.values
             .map({ $0.unreadMessagesCount })
             .reduce(0, +)
 
-        if messageCount > 0 && AppSettings.shared.showUnreadCount {
-            statusItem.button!.title = "\(messageCount)"
+        if messagesCount > 0 && AppSettings.shared.showUnreadCount {
+            statusItem.button!.title = "\(messagesCount)"
         } else {
             statusItem.button!.title = ""
         }
 
-        if messageCount > 0 {
-            let toolTipFormat = messageCount == 1 ? NSLocalizedString("Unread Message", comment: "") : NSLocalizedString("Unread Messages", comment: "")
-            statusItem.button!.toolTip = String(format: toolTipFormat, messageCount)
+        if messagesCount > 0 {
+            let toolTipFormat = messagesCount == 1 ? NSLocalizedString("Unread Message", comment: "") : NSLocalizedString("Unread Messages", comment: "")
+            statusItem.button!.toolTip = String(format: toolTipFormat, messagesCount)
             statusItem.button!.image = NSImage(named: "HaveMailsTemplate")
         } else {
             statusItem.button!.toolTip = ""
             statusItem.button!.image = NSImage(named: "NoMailsTemplate")
         }
 
-        statusItem.button!.appearsDisabled = Accounts.default.filter({ $0.enabled }).isEmpty
+        statusItem.button!.appearsDisabled = Accounts.default.enabled.isEmpty
     }
 }
 

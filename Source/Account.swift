@@ -93,6 +93,10 @@ extension Accounts: RawRepresentable {
 }
 
 extension Accounts {
+    var enabled: Accounts {
+        filter { $0.enabled }
+    }
+
     func find(email: String) -> Account? {
         first { $0.email == email }
     }
