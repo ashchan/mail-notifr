@@ -78,6 +78,13 @@ private extension AppDelegate {
                 self.updateStatusItem()
             }
             .store(in: &subscriptions)
+
+        NotificationCenter.default
+            .publisher(for: .messagesFetched)
+            .sink { _ in
+                self.updateMenu(self.menu)
+            }
+            .store(in: &subscriptions)
     }
 
     func updateFetchers() {

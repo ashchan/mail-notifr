@@ -11,10 +11,13 @@ import Foundation
 struct Message {
     let id: String
     let email: String
+    let from: String
+    let date: String
     let subject: String
-    let body: String
+    let snippet: String
 
-    var summary: String {
-        body // TODO: do not return whole body
+    var sender: String {
+        let result = from.split(separator: "<").first ?? Substring(from)
+        return result.trimmingCharacters(in: ["\"", " "])
     }
 }

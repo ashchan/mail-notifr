@@ -11,6 +11,7 @@ import GoogleAPIClientForREST_Gmail // SWIFT_PACKAGE=1 required, see https://git
 
 extension Notification.Name {
     static let unreadCountUpdated = Notification.Name("unreadCountUpdated")
+    static let messagesFetched = Notification.Name("messagesFetched")
 }
 
 final class MessageFetcher {
@@ -23,31 +24,28 @@ final class MessageFetcher {
     // Fetch and store at most `maximumMessagesStored` messages.
     func fetch() {
         fetchUnreadCount()
-        // TODO
+        fetchMessages()
+        lastCheckedAt = Date()
     }
 
     func cleanUp() {
-        // TODO
+        // TODO: anything to clean up?
     }
 
-    var lastCheckedAt: Date {
-        return Date() // TODO
-    }
+    private(set) var lastCheckedAt = Date()
 
-    private(set) var unreadMessagesCount = 5 {
+    private(set) var unreadMessagesCount = 0 {
         didSet {
             NotificationCenter.default.post(name: .unreadCountUpdated, object: account.email)
         }
     }
     private let maximumMessagesStored = 10
+    private let defaultLabel = "INBOX"
 
-    var messages: [Message] {
-        // TODO
-        [
-            Message(id: "123", email: account.email, subject: "Test message dummy #1", body: "Test message body"),
-            Message(id: "223", email: account.email, subject: "Test message dummy #2", body: "Test message body"),
-            Message(id: "223", email: account.email, subject: "Test message dummy #3", body: "Test message body"),
-        ]
+    private(set) var messages = [Message]() {
+        didSet {
+            NotificationCenter.default.post(name: .messagesFetched, object: account.email)
+        }
     }
 }
 
@@ -56,13 +54,70 @@ private extension MessageFetcher {
         guard let authorization = account.authorization else {
             return
         }
-        let query = GTLRGmailQuery_UsersLabelsGet.query(withUserId: authorization.userEmail ?? "me", identifier: "INBOX")
+        let query = GTLRGmailQuery_UsersLabelsGet.query(withUserId: authorization.userEmail ?? "me", identifier: defaultLabel)
         let service = GTLRGmailService()
         service.authorizer = authorization
         service.executeQuery(query) { [weak self] ticket, result, error in
             if let label = result as? GTLRGmail_Label, error == nil {
                 self?.unreadMessagesCount = label.messagesUnread?.intValue ?? 0
             }
+        }
+    }
+
+    func fetchMessages() {
+        guard let authorization = account.authorization else {
+            return
+        }
+        let query = GTLRGmailQuery_UsersMessagesList.query(withUserId: authorization.userEmail ?? "me")
+        query.q = "is:unread"
+        query.labelIds = [defaultLabel]
+        query.maxResults = UInt(maximumMessagesStored)
+        let service = GTLRGmailService()
+        service.authorizer = authorization
+        service.executeQuery(query) { [weak self] ticket, result, error in
+            if let list = result as? GTLRGmail_ListMessagesResponse,
+               let messages = list.messages {
+                self?.fetchMessages(for: messages.compactMap { $0.identifier })
+            }
+        }
+    }
+
+    func fetchMessages(for ids: [String]) {
+        guard let authorization = account.authorization else {
+            return
+        }
+        let batchQuery = GTLRBatchQuery()
+        for id in ids {
+            let query = GTLRGmailQuery_UsersMessagesGet.query(withUserId: authorization.userEmail ?? "me", identifier: id)
+            query.fields = "id, snippet, payload(headers)"
+            batchQuery.addQuery(query)
+
+        }
+        let service = GTLRGmailService()
+        service.authorizer = authorization
+        service.executeQuery(batchQuery) { [weak self] ticket, result, error in
+            if let batchResult = result as? GTLRBatchResult,
+               let messages = batchResult.successes as? [String: GTLRGmail_Message] {
+                self?.storeMessages(messages.values.map({ $0 }))
+            }
+        }
+    }
+
+    func storeMessages(_ gmailMessages: [GTLRGmail_Message]) {
+        messages = gmailMessages.map { msg in
+            let headers = msg.payload?.headers ?? [GTLRGmail_MessagePartHeader]()
+            func findValue(by name: String) -> String {
+                headers.first(where: { $0.name == name })?.value ?? ""
+            }
+
+            return Message(
+                id: msg.identifier ?? "",
+                email: account.email,
+                from: findValue(by: "From"),
+                date: findValue(by: "Date"),
+                subject: findValue(by: "Subject"),
+                snippet: msg.snippet ?? ""
+            )
         }
     }
 }

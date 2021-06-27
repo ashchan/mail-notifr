@@ -87,9 +87,9 @@ private extension AppDelegate {
         menu.addItem(NSMenuItem.separator())
 
         for message in (fetcher?.messages ?? []) {
-            let messageItem = NSMenuItem(title: message.subject, action: #selector(openMessage(_:)), keyEquivalent: "")
+            let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
             messageItem.representedObject = message
-            messageItem.toolTip = message.summary
+            messageItem.toolTip = message.snippet
             menu.addItem(messageItem)
         }
 
@@ -144,9 +144,9 @@ private extension AppDelegate {
         items.append(NSMenuItem.separator())
 
         for message in (fetcher(for: account.email)?.messages ?? []) {
-            let messageItem = NSMenuItem(title: message.subject, action: #selector(openMessage(_:)), keyEquivalent: "")
+            let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
             messageItem.representedObject = message
-            messageItem.toolTip = message.summary
+            messageItem.toolTip = message.snippet
             items.append(messageItem)
         }
 
