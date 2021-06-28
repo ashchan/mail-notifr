@@ -176,8 +176,7 @@ extension AppDelegate {
             return
         }
 
-        // TODO: construct message URL
-        openURL(url: URL(string: account.baseUrl)!, in: account.browser)
+        openURL(url: Message.url(email: email, id: messageId), in: account.browser)
     }
 
     @objc func checkAllMails() {
