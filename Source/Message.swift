@@ -15,10 +15,15 @@ struct Message {
     let date: String
     let subject: String
     let snippet: String
+    let internalDate: TimeInterval
 
     var sender: String {
         let result = from.split(separator: "<").first ?? Substring(from)
         return result.trimmingCharacters(in: ["\"", " "])
+    }
+
+    var serverDate: Date {
+        Date(timeIntervalSince1970: internalDate / 1000)
     }
 
     var url: URL {

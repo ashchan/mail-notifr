@@ -110,7 +110,7 @@ private extension MessageFetcher {
         let batchQuery = GTLRBatchQuery()
         for id in ids {
             let query = GTLRGmailQuery_UsersMessagesGet.query(withUserId: authorization.userEmail ?? "me", identifier: id)
-            query.fields = "id, snippet, payload(headers)"
+            query.fields = "id, snippet, payload(headers), internalDate"
             batchQuery.addQuery(query)
 
         }
@@ -127,7 +127,6 @@ private extension MessageFetcher {
     }
 
     func storeMessages(_ gmailMessages: [GTLRGmail_Message]) {
-        // TODO: sort messages
         messages = gmailMessages.map { msg in
             let headers = msg.payload?.headers ?? [GTLRGmail_MessagePartHeader]()
             func findValue(by name: String) -> String {
@@ -140,8 +139,10 @@ private extension MessageFetcher {
                 from: findValue(by: "From"),
                 date: findValue(by: "Date"),
                 subject: findValue(by: "Subject"),
-                snippet: msg.snippet ?? ""
+                snippet: msg.snippet ?? "",
+                internalDate: msg.internalDate?.doubleValue ?? 0
             )
         }
+        .sorted(by: { $0.internalDate > $1.internalDate })
     }
 }
