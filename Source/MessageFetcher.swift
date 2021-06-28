@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import AppAuth
+import GTMAppAuth
 import GoogleAPIClientForREST_Gmail // SWIFT_PACKAGE=1 required, see https://github.com/google/google-api-objectivec-client-for-rest/issues/400
 
 extension Notification.Name {
@@ -14,8 +16,13 @@ extension Notification.Name {
     static let messagesFetched = Notification.Name("messagesFetched")
 }
 
-final class MessageFetcher {
+final class MessageFetcher: NSObject {
     private var account: Account
+    private var authorization: GTMAppAuthFetcherAuthorization? {
+        didSet {
+            authorization?.authState.stateChangeDelegate = self
+        }
+    }
 
     init(account: Account) {
         self.account = account
@@ -23,13 +30,16 @@ final class MessageFetcher {
 
     // Fetch and store at most `maximumMessagesStored` messages.
     func fetch() {
+        authorization = account.authorization
+
         fetchUnreadCount()
         fetchMessages()
         lastCheckedAt = Date()
     }
 
     func cleanUp() {
-        // TODO: anything to clean up?
+        authorization?.authState.stateChangeDelegate = nil
+        // TODO: anything else to clean up?
     }
 
     private(set) var lastCheckedAt = Date()
@@ -49,9 +59,16 @@ final class MessageFetcher {
     }
 }
 
+extension MessageFetcher: OIDAuthStateChangeDelegate {
+    func didChange(_ state: OIDAuthState) {
+        account.authorization = GTMAppAuthFetcherAuthorization(authState: state)
+        authorization = account.authorization
+    }
+}
+
 private extension MessageFetcher {
     func fetchUnreadCount() {
-        guard let authorization = account.authorization else {
+        guard let authorization = authorization else {
             return
         }
         let query = GTLRGmailQuery_UsersLabelsGet.query(withUserId: authorization.userEmail ?? "me", identifier: defaultLabel)
@@ -60,12 +77,14 @@ private extension MessageFetcher {
         service.executeQuery(query) { [weak self] ticket, result, error in
             if let label = result as? GTLRGmail_Label, error == nil {
                 self?.unreadMessagesCount = label.messagesUnread?.intValue ?? 0
+            } else {
+                // TODO: handle error. Auth token expires?
             }
         }
     }
 
     func fetchMessages() {
-        guard let authorization = account.authorization else {
+        guard let authorization = authorization else {
             return
         }
         let query = GTLRGmailQuery_UsersMessagesList.query(withUserId: authorization.userEmail ?? "me")
@@ -78,12 +97,14 @@ private extension MessageFetcher {
             if let list = result as? GTLRGmail_ListMessagesResponse,
                let messages = list.messages {
                 self?.fetchMessages(for: messages.compactMap { $0.identifier })
+            } else {
+                // TODO: handle error. Auth token expires?
             }
         }
     }
 
     func fetchMessages(for ids: [String]) {
-        guard let authorization = account.authorization else {
+        guard let authorization = authorization else {
             return
         }
         let batchQuery = GTLRBatchQuery()
@@ -99,6 +120,8 @@ private extension MessageFetcher {
             if let batchResult = result as? GTLRBatchResult,
                let messages = batchResult.successes as? [String: GTLRGmail_Message] {
                 self?.storeMessages(messages.values.map({ $0 }))
+            } else {
+                // TODO: handle error. Auth token expires?
             }
         }
     }
