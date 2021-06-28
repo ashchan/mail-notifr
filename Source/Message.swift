@@ -20,4 +20,12 @@ struct Message {
         let result = from.split(separator: "<").first ?? Substring(from)
         return result.trimmingCharacters(in: ["\"", " "])
     }
+
+    var url: URL {
+        Self.url(email: email, id: id)
+    }
+
+    static func url(email: String, id: String) -> URL {
+        URL(string: "https://mail.google.com/mail/u/\(email)?account_id=\(email)&message_id=\(id)&view=conv&extsrc=atom")!
+    }
 }
