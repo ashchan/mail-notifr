@@ -19,7 +19,9 @@ struct Message {
 
     var sender: String {
         let result = from.split(separator: "<").first ?? Substring(from)
-        return result.trimmingCharacters(in: ["\"", " "])
+        return result
+            .trimmingCharacters(in: .whitespaces)
+            .trimmingCharacters(in: ["\"", "\\"])
     }
 
     var serverDate: Date {
