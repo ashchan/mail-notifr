@@ -127,9 +127,12 @@ private extension AppDelegate {
             }
         }
 
-        // Add new fetchers
         for account in accounts {
-            if fetchers[account.email] == nil {
+            if let fetcher = fetchers[account.email] {
+                // Update existing fetchers to hold refreshed account
+                fetcher.account = account
+            } else {
+               // Add new fetchers
                 fetchers[account.email] = MessageFetcher(account: account)
             }
         }

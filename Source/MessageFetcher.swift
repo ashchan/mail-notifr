@@ -17,19 +17,20 @@ extension Notification.Name {
 }
 
 final class MessageFetcher: NSObject {
-    private var account: Account
+    var account: Account
     private var authorization: GTMAppAuthFetcherAuthorization? {
         didSet {
             authorization?.authState.stateChangeDelegate = self
         }
     }
+    private var timer: Timer?
 
     init(account: Account) {
         self.account = account
     }
 
     // Fetch and store at most `maximumMessagesStored` messages.
-    func fetch() {
+    @objc func fetch() {
         reschedule()
 
         authorization = account.authorization
@@ -40,10 +41,18 @@ final class MessageFetcher: NSObject {
     }
 
     func reschedule() {
-        // TODO: set up timer for next fetching
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(
+            timeInterval: TimeInterval(account.checkInterval * 60),
+            target: self,
+            selector: #selector(fetch),
+            userInfo: nil,
+            repeats: false
+        )
     }
 
     func cleanUp() {
+        timer?.invalidate()
         authorization?.authState.stateChangeDelegate = nil
     }
 
