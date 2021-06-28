@@ -22,7 +22,7 @@ struct Sidebar: View {
 
                 ForEach($accounts) { $account in
                     NavigationLink(
-                        destination: AccountView(account: $account),
+                        destination: AccountView(account: account),
                         tag: account.email,
                         selection: $selection
                     ) {

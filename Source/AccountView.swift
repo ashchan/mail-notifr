@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AccountView: View {
     @AppStorage(Accounts.storageKey) var accounts = Accounts()
-    @Binding var account: Account
+    @State var account: Account
     @State private var showingDeleteAlert = false
 
     var body: some View {
@@ -76,6 +76,14 @@ struct AccountView: View {
 
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: .accountUpdated)) {
+            notification in
+            if let updatedAccount = notification.object as? Account {
+                if account.id == updatedAccount.id {
+                    self.account = updatedAccount
+                }
+            }
+        }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(20)
         .background(Color("Background"))
@@ -122,6 +130,6 @@ private extension AccountView {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView(account: .constant(Account(email: "ashchan@gmail.com")))
+        AccountView(account: Account(email: "ashchan@gmail.com"))
     }
 }

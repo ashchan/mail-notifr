@@ -23,6 +23,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         setupStatusItem()
         updateFetchers()
+        updateMenuBar()
 
         if Accounts.hasAccounts {
             NSApp.windows.first?.orderOut(nil)
@@ -60,11 +61,36 @@ private extension AppDelegate {
 
     func subscribe() {
         NotificationCenter.default
-            .publisher(for: .accountsChanged)
+            .publisher(for: .accountAdded)
+            .sink { notification in
+                self.updateFetchers(notification.object as? Account)
+                self.updateMenuBar()
+            }
+            .store(in: &subscriptions)
+
+        NotificationCenter.default
+            .publisher(for: .accountDeleted)
             .sink { _ in
-                // TODO: should not re-fetch for any account changes
-                // For example, chaning account notification sound setting should not trigger fetching
-                self.updateFetchers()
+                self.rebuildFetchers()
+                self.updateMenuBar()
+            }
+            .store(in: &subscriptions)
+
+        NotificationCenter.default
+            .publisher(for: .accountUpdated)
+            .sink { notification in
+                let needsRescheduling = notification.userInfo?["needsRescheduling"] as? Bool ?? false
+                let needsImmediateFetching = notification.userInfo?["needsImmediateFetching"] as? Bool ?? false
+                let account = notification.object as! Account
+                if needsRescheduling {
+                    self.rebuildFetchers()
+                    self.fetcher(for: account.email)?.reschedule()
+                } else if needsImmediateFetching {
+                    self.updateFetchers(account)
+                } else {
+                    self.rebuildFetchers()
+                }
+                self.updateMenuBar()
             }
             .store(in: &subscriptions)
 
@@ -78,22 +104,21 @@ private extension AppDelegate {
         NotificationCenter.default
             .publisher(for: .unreadCountUpdated)
             .sink { _ in
-                self.updateMenu(self.menu)
-                self.updateStatusItem()
+                self.updateMenuBar()
             }
             .store(in: &subscriptions)
 
         NotificationCenter.default
             .publisher(for: .messagesFetched)
             .sink { notification in
-                self.messagesFetched(notification)
+                self.messagesFetched(notification.object as? String ?? "")
             }
             .store(in: &subscriptions)
     }
 
-    func updateFetchers() {
+    func rebuildFetchers() {
         let accounts = Accounts.default.enabled
- 
+
         // Remove unused fetchers
         for email in fetchers.keys {
             if !accounts.contains(where: { $0.email == email }) {
@@ -108,9 +133,19 @@ private extension AppDelegate {
                 fetchers[account.email] = MessageFetcher(account: account)
             }
         }
+    }
 
-        fetchers.values.forEach { $0.fetch() }
+    func updateFetchers(_ accountToFetch: Account? = nil) {
+        rebuildFetchers()
 
+        if let accountToFetch = accountToFetch {
+            fetcher(for: accountToFetch.email)?.fetch()
+        } else {
+            fetchers.values.forEach { $0.fetch() }
+        }
+    }
+
+    func updateMenuBar() {
         updateMenu(menu)
         updateStatusItem()
     }
@@ -271,10 +306,9 @@ extension AppDelegate:  UNUserNotificationCenterDelegate {
         }
     }
 
-    func messagesFetched(_ notification: Notification) {
+    func messagesFetched(_ email: String) {
         updateMenu(menu)
 
-        let email = notification.object as? String ?? ""
         guard let account = account(from: email), account.enabled else {
             return
         }

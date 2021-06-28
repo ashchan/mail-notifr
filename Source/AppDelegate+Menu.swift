@@ -86,16 +86,16 @@ private extension AppDelegate {
         menu.addItem(checkMailsItem)
         menu.addItem(NSMenuItem.separator())
 
-        for message in (fetcher?.messages ?? []) {
-            let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
-            messageItem.representedObject = message
-            messageItem.toolTip = message.snippet
-            menu.addItem(messageItem)
-        }
-
-        menu.addItem(NSMenuItem.separator())
-
         if account.enabled {
+            for message in (fetcher?.messages ?? []) {
+                let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
+                messageItem.representedObject = message
+                messageItem.toolTip = message.snippet
+                menu.addItem(messageItem)
+            }
+
+            menu.addItem(NSMenuItem.separator())
+
             let lastChecked: String
             if #available(macOS 12.0, *) {
                 lastChecked = (fetcher?.lastCheckedAt ?? Date())
@@ -124,7 +124,7 @@ private extension AppDelegate {
         }
 
         var accountTitle = account.email
-        if let fetcher = fetcher, fetcher.unreadMessagesCount > 0 {
+        if let fetcher = fetcher, fetcher.unreadMessagesCount > 0, account.enabled {
             accountTitle += " (\(fetcher.unreadMessagesCount))"
         }
         let item = NSMenuItem(title: accountTitle, action: #selector(openInbox(_:)), keyEquivalent: "")
@@ -143,16 +143,14 @@ private extension AppDelegate {
         items.append(NSMenuItem(title: NSLocalizedString("Open Inbox", comment: ""), action: #selector(openInbox(_:)), keyEquivalent: ""))
         items.append(NSMenuItem.separator())
 
-        for message in (fetcher(for: account.email)?.messages ?? []) {
-            let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
-            messageItem.representedObject = message
-            messageItem.toolTip = message.snippet
-            items.append(messageItem)
-        }
-
-        items.append(NSMenuItem.separator())
-
         if account.enabled {
+            for message in (fetcher(for: account.email)?.messages ?? []) {
+                let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
+                messageItem.representedObject = message
+                messageItem.toolTip = message.snippet
+                items.append(messageItem)
+            }
+
             let lastChecked: String
             if #available(macOS 12.0, *) {
                 lastChecked = (fetcher(for: account.email)?.lastCheckedAt ?? Date())
@@ -168,6 +166,8 @@ private extension AppDelegate {
                     keyEquivalent: ""
                 )
             )
+
+            items.append(NSMenuItem.separator())
         }
 
         items.append(

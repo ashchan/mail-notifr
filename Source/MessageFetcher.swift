@@ -30,6 +30,8 @@ final class MessageFetcher: NSObject {
 
     // Fetch and store at most `maximumMessagesStored` messages.
     func fetch() {
+        reschedule()
+
         authorization = account.authorization
 
         fetchUnreadCount()
@@ -37,9 +39,12 @@ final class MessageFetcher: NSObject {
         lastCheckedAt = Date()
     }
 
+    func reschedule() {
+        // TODO: set up timer for next fetching
+    }
+
     func cleanUp() {
         authorization?.authState.stateChangeDelegate = nil
-        // TODO: anything else to clean up?
     }
 
     private(set) var lastCheckedAt = Date()

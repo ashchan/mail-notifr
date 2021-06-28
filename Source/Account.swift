@@ -65,8 +65,9 @@ extension Account {
 typealias Accounts = [Account]
 
 extension Notification.Name {
-    static let accountsChanged = Notification.Name("accountsChanged")
     static let accountAdded = Notification.Name("accountAdded")
+    static let accountDeleted = Notification.Name("accountDeleted")
+    static let accountUpdated = Notification.Name("accountUpdated")
 }
 
 extension Accounts: RawRepresentable {
@@ -96,7 +97,6 @@ extension Accounts: RawRepresentable {
         }
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: storageKey)
-            NotificationCenter.default.post(name: .accountsChanged, object: nil)
         }
     }
 
@@ -112,6 +112,14 @@ extension Accounts {
 
     func find(email: String) -> Account? {
         first { $0.email == email }
+    }
+
+    static func needsImmediateFetching(oldValue: Account, newValue: Account) -> Bool {
+        newValue.enabled && !oldValue.enabled
+    }
+
+    static func needsReschduling(oldValue: Account, newValue: Account) -> Bool {
+        newValue.checkInterval != oldValue.checkInterval
     }
 
     mutating func save() {
@@ -134,14 +142,22 @@ extension Accounts {
         self[index].authorization = nil
         remove(at: index)
         save()
+        NotificationCenter.default.post(name: .accountDeleted, object: account)
     }
 
     mutating func update(account: Account) {
         guard let index = firstIndex(where: { $0.id == account.id }) else {
             return
         }
+        let needsRescheduling = Self.needsReschduling(oldValue: self[index], newValue: account)
+        let needsImmediateFetching = Self.needsImmediateFetching(oldValue: self[index], newValue: account)
         self[index] = account
         save()
+        NotificationCenter.default.post(
+            name: .accountUpdated,
+            object: account,
+            userInfo: ["needsRescheduling": needsRescheduling, "needsImmediateFetching": needsImmediateFetching]
+        )
     }
 
     static func authorize() {
