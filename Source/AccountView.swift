@@ -88,9 +88,9 @@ struct AccountView: View {
                 }
                 .alert(isPresented: $showingDeleteAlert) {
                     Alert(
-                        title: Text("Are you sure you want to delete this account from Mail Notifr?"),
+                        title: Text("Delete this account from Mail Notifr?"),
                         message: Text("You can add your account again at any time."),
-                        primaryButton: .destructive(Text("Yes, delete this account.")) {
+                        primaryButton: .default(Text("Delete")) {
                             self.delete()
                         },
                         secondaryButton: .cancel()
