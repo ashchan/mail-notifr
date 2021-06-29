@@ -7,56 +7,51 @@
 //
 
 import Foundation
+import AppKit
 
-enum Browser: String, Identifiable, CaseIterable {
-    case `default` = ""
-    case safari
-    case chrome
-    case firefox
-    case edge
-    case brave
+struct Browser: Identifiable {
+    static let safariIdentifier = "com.apple.Safari"
+
+    let identifier: String
+    let name: String
 
     var id: String {
-        rawValue
+        identifier
     }
 
-    var identifier: String {
-        switch self {
-        case .safari:
-            return "com.apple.Safari"
-        case .chrome:
-            return "com.google.Chrome"
-        case .firefox:
-            return "org.mozilla.firefox"
-        case .edge:
-            return "com.microsoft.edgemac"
-        case .brave:
-            return "com.brave.Browser"
-        default:
-            return ""
-        }
-    }
-
-    var name: String {
-        switch self {
-        case .safari:
-            return "Safari"
-        case .chrome:
-            return "Google Chrome"
-        case .firefox:
-            return "Firefox"
-        case .edge:
-            return "Microsoft Edge"
-        case .brave:
-            return "Brave"
-        default:
-            return "Default"
-        }
+    init(identifier: String) {
+        self.identifier = identifier
+        name = Self.installed[identifier] ?? ""
     }
 }
 
 extension Browser {
     var isDefault: Bool {
-        self == .default
+        return identifier == Self.safariIdentifier
+    }
+
+    static var all: [Browser] {
+        identifiers.map { Browser(identifier: $0) }
+    }
+
+    static var urlsForInstalled: [URL] = {
+        LSCopyApplicationURLsForURL(URL(string: "https:")! as CFURL, .viewer)?.takeRetainedValue() as? [URL] ?? []
+    }()
+
+    // [identifier: name]
+    static var installed: [String: String] = {
+        urlsForInstalled.reduce(into: [String: String]()) { result, url in
+            if let bundle = Bundle(url: url), let identifier = bundle.bundleIdentifier {
+                let name = bundle.object(forInfoDictionaryKey: "CFBundleDisplayName") ?? bundle.object(forInfoDictionaryKey: "CFBundleName")
+                result[identifier] = name as? String ?? ""
+            }
+        }
+    }()
+
+    // Safari appears first
+    static var identifiers: [String] {
+        var results = installed.keys.map { $0 }
+        results.removeAll { $0 == safariIdentifier }
+        return [safariIdentifier] + results
     }
 }

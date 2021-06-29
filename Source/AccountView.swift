@@ -46,7 +46,7 @@ struct AccountView: View {
                 }
 
                 Picker("Open in browser:", selection: $account.openInBrowser) {
-                    ForEach(Browser.allCases) { browser in
+                    ForEach(Browser.all) { browser in
                         Text(browser.name)
                     }
                 }
