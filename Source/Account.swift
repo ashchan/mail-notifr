@@ -16,7 +16,7 @@ struct Account: Codable {
     var checkInterval = 30
     var notificationEnabled = true
     var notificationSound = ""
-    var openInBrowser = Browser.default.rawValue
+    var openInBrowser = Browser.safariIdentifier
 }
 
 extension Account: Identifiable, Hashable {
@@ -29,7 +29,7 @@ extension Account: Identifiable, Hashable {
     }
 
     var browser: Browser {
-        Browser(rawValue: openInBrowser) ?? .default
+        Browser(identifier: openInBrowser)
     }
 
     var sound: Sound? {
