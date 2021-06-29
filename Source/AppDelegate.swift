@@ -35,13 +35,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func openURL(url: URL, in browser: Browser?) {
-        if let browser = browser, !browser.isDefault {
+        if let browser = browser, !browser.isDefault,
+           let browserUrl = NSWorkspace.shared.urlForApplication(withBundleIdentifier: browser.identifier) {
             NSWorkspace.shared.open(
                 [url],
-                withAppBundleIdentifier: browser.identifier,
-                options: [],
-                additionalEventParamDescriptor: nil,
-                launchIdentifiers: nil
+                withApplicationAt: browserUrl,
+                configuration: NSWorkspace.OpenConfiguration(),
+                completionHandler: nil
             )
         } else {
             NSWorkspace.shared.open(url)
