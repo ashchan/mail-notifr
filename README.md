@@ -2,7 +2,7 @@
 
 A Gmail Notifier for Mac OS X
 
-![screenshot](https://raw.github.com/ashchan/gmail-notifr-objc/master/screenshot.png)
+![screenshot](screenshot.png)
 
 [Gmail Notifr](http://bit.ly/gmail-notifr-store) features:
 
