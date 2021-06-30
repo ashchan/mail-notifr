@@ -11,13 +11,11 @@ A Gmail Notifier for macOS
 * Preferred browser setting for each account.
 * Support Google hosted account.
 * Check mail at a specified interval.
-* ~~Growl~~ Notification Center &amp; sound notifications.
+* Notification Center &amp; sound notifications.
 * Small &amp; fast.
-* ~~Sparkle automatic updates.~~ (removed in 0.9.0)
 * No background daemon processes installed as Google's official notifier.
 * Open Source!
-* 0.9.0 and below are free, avaiable on [ashchan.com/projects/gmail-notifr](http://ashchan.com/projects/gmail-notifr)!
-* 1.0 and above are available on [Mac App Store](http://bit.ly/gmail-notifr-store).
+* Free! Install from [Mac App Store](http://bit.ly/gmail-notifr-store).
 
 
 ## Requirements ##
