@@ -6,7 +6,7 @@ A Gmail Notifier for macOS
 
 [Mail Notifr](https://bit.ly/gmail-notifr-store) features:
 
-* Support multiple accounts.
+* Support multiple Google Accounts (OAuth2).
 * Separate check and notification setting for each account.
 * Preferred browser setting for each account.
 * Support Google hosted account.
