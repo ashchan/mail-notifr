@@ -43,7 +43,7 @@ final class MessageFetcher: NSObject {
     func reschedule() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(
-            timeInterval: TimeInterval(account.checkInterval * 60),
+            timeInterval: account.checkInterval * 60,
             target: self,
             selector: #selector(fetch),
             userInfo: nil,

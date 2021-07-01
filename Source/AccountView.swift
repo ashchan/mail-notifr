@@ -20,7 +20,7 @@ struct AccountView: View {
 
             Form {
                 HStack {
-                    TextField("Check for new mail every", value: $account.checkInterval, formatter: NumberFormatter())
+                    TextField(LocalizedStringKey("Check for new mail every"), value: $account.checkInterval, formatter: NumberFormatter())
                         .multilineTextAlignment(.center)
                         .fixedSize()
                     Text("minutes")
@@ -57,10 +57,7 @@ struct AccountView: View {
                 .toggleStyle(.switch)
             }
             .onChange(of: account) { newValue in
-                if account.checkInterval > 900 || account.checkInterval < 1 {
-                    account.checkInterval = 30
-                }
-                update(account: account)
+               update(account: account)
             }
 
             Spacer()

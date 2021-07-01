@@ -13,7 +13,15 @@ import KeychainAccess
 struct Account: Codable {
     var email: String
     var enabled = true
-    var checkInterval = 30
+    // interval as minutes
+    var checkInterval: Double = 30 {
+        didSet {
+            checkInterval = max(
+                min(Double(Int(checkInterval)), 900),
+                1
+            )
+        }
+    }
     var notificationEnabled = true
     var notificationSound = ""
     var openInBrowser = Browser.safariIdentifier
