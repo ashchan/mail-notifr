@@ -68,7 +68,7 @@ struct AccountView: View {
                 Button {
                     reAuthenticate()
                 } label: {
-                    Text("Re-authenticate")
+                    Text("Re-authorize")
                 }
 
             }
