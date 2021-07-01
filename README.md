@@ -34,7 +34,7 @@ Mail Notifr was originally written in RubyCocoa, then MacRuby, then Objective-C,
 
 Feedback is welcome! Leave a message on the [feedback](https://blog.ashchan.com/archive/2008/10/29/gmail-notifr-changelog/) page, or create a github [issue](https://github.com/ashchan/mail-notifr/issues), or tweet the author [@ashchan](https://twitter.com/ashchan).
 
-View the full [changelog](CHANGELOG).
+View the full [changelog](CHANGELOG.md).
 
 Visit [project home page](https://ashchan.com/projects/gmail-notifr) for more information.
 
