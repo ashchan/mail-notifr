@@ -258,6 +258,11 @@ extension AppDelegate {
         Accounts.default.update(account: account)
     }
 
+    @objc func reauthorize() {
+        showPreferences()
+        Accounts.authorize()
+    }
+
     @objc func showAbout() {
         NSApp.activate(ignoringOtherApps: true)
         NSApp.orderFrontStandardAboutPanel(nil)

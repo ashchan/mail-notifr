@@ -66,9 +66,9 @@ struct AccountView: View {
                 Spacer()
 
                 Button {
-                    reAuthenticate()
+                    reauthorize()
                 } label: {
-                    Text("Re-authorize")
+                    Text("Reauthorize")
                 }
 
             }
@@ -102,7 +102,7 @@ struct AccountView: View {
                     )
                 }
                 Button {
-                    reAuthenticate()
+                    reauthorize()
                 } label: {
                     Image(systemName: "key.icloud")
                 }
@@ -120,7 +120,7 @@ private extension AccountView {
         accounts.delete(account: account)
     }
 
-    func reAuthenticate() {
+    func reauthorize() {
         Accounts.authorize()
     }
 }

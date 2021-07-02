@@ -74,9 +74,19 @@ private extension AppDelegate {
 
     // When there're multiple accounts each sits in its own submenu.
     func createSubmenu(for account: Account) -> NSMenuItem {
-        let fetcher = fetcher(for: account.email)
-
         let menu = NSMenu()
+        let item = NSMenuItem(title: account.email, action: #selector(openInbox(_:)), keyEquivalent: "")
+        item.representedObject = account.email
+        item.submenu = menu
+
+        guard let fetcher = fetcher(for: account.email) else {
+            return item
+        }
+
+        if fetcher.unreadMessagesCount > 0 && account.enabled {
+            item.title = "\(account.email) (\(fetcher.unreadMessagesCount))"
+        }
+
         menu.addItem(withTitle: NSLocalizedString("Open Inbox", comment: ""), action: #selector(openInbox(_:)), keyEquivalent: "")
         let checkMailsItem = NSMenuItem(
             title: NSLocalizedString("Check", comment: ""),
@@ -86,8 +96,18 @@ private extension AppDelegate {
         menu.addItem(checkMailsItem)
         menu.addItem(NSMenuItem.separator())
 
+        if fetcher.hasAuthError {
+            menu.addItem(
+                NSMenuItem(
+                    title: NSLocalizedString("🚫 Auth error, please reauthroize.", comment: ""),
+                    action: #selector(reauthorize),
+                    keyEquivalent: ""
+                )
+            )
+        }
+
         if account.enabled {
-            for message in (fetcher?.messages ?? []) {
+            for message in (fetcher.messages) {
                 let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
                 messageItem.representedObject = message
                 messageItem.toolTip = message.snippet
@@ -98,10 +118,9 @@ private extension AppDelegate {
 
             let lastChecked: String
             if #available(macOS 12.0, *) {
-                lastChecked = (fetcher?.lastCheckedAt ?? Date())
-                    .formatted()
+                lastChecked = fetcher.lastCheckedAt.formatted()
             } else {
-                let lastCheckedDate = fetcher?.lastCheckedAt ?? Date()
+                let lastCheckedDate = fetcher.lastCheckedAt
                 lastChecked = Self.lastCheckedDateFormatter.string(from: lastCheckedDate)
             }
             menu.addItem(
@@ -123,19 +142,12 @@ private extension AppDelegate {
             item.representedObject = account.email
         }
 
-        var accountTitle = account.email
-        if let fetcher = fetcher, fetcher.unreadMessagesCount > 0, account.enabled {
-            accountTitle += " (\(fetcher.unreadMessagesCount))"
-        }
-        let item = NSMenuItem(title: accountTitle, action: #selector(openInbox(_:)), keyEquivalent: "")
-        item.representedObject = account.email
-        item.submenu = menu
         return item
     }
 
     // When there's only one account its menu items are in the middle of the top level item menu.
     func createMenuItems(for account: Account?) -> [NSMenuItem] {
-        guard let account = account else {
+        guard let account = account, let fetcher = fetcher(for: account.email) else {
             return []
         }
 
@@ -143,8 +155,18 @@ private extension AppDelegate {
         items.append(NSMenuItem(title: NSLocalizedString("Open Inbox", comment: ""), action: #selector(openInbox(_:)), keyEquivalent: ""))
         items.append(NSMenuItem.separator())
 
+        if fetcher.hasAuthError {
+            items.append(
+                NSMenuItem(
+                    title: NSLocalizedString("🚫 Auth error, please reauthroize.", comment: ""),
+                    action: #selector(reauthorize),
+                    keyEquivalent: ""
+                )
+            )
+        }
+
         if account.enabled {
-            for message in (fetcher(for: account.email)?.messages ?? []) {
+            for message in (fetcher.messages) {
                 let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
                 messageItem.representedObject = message
                 messageItem.toolTip = message.snippet
@@ -153,10 +175,9 @@ private extension AppDelegate {
 
             let lastChecked: String
             if #available(macOS 12.0, *) {
-                lastChecked = (fetcher(for: account.email)?.lastCheckedAt ?? Date())
-                    .formatted()
+                lastChecked = fetcher.lastCheckedAt.formatted()
             } else {
-                let lastCheckedDate = fetcher(for: account.email)?.lastCheckedAt ?? Date()
+                let lastCheckedDate = fetcher.lastCheckedAt
                 lastChecked = Self.lastCheckedDateFormatter.string(from: lastCheckedDate)
             }
             items.append(

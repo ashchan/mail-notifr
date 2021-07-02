@@ -24,6 +24,23 @@ final class MessageFetcher: NSObject {
         }
     }
     private var timer: Timer?
+    private(set) var hasAuthError = false
+
+    private(set) var lastCheckedAt = Date()
+
+    private(set) var unreadMessagesCount = 0 {
+        didSet {
+            NotificationCenter.default.post(name: .unreadCountUpdated, object: account.email)
+        }
+    }
+    private let maximumMessagesStored = 10
+    private let defaultLabel = "INBOX"
+
+    private(set) var messages = [Message]() {
+        didSet {
+            NotificationCenter.default.post(name: .messagesFetched, object: account.email)
+        }
+    }
 
     init(account: Account) {
         self.account = account
@@ -34,10 +51,16 @@ final class MessageFetcher: NSObject {
         reschedule()
 
         authorization = account.authorization
-
-        fetchUnreadCount()
-        fetchMessages()
-        lastCheckedAt = Date()
+        if authorization != nil {
+            hasAuthError = false
+            fetchUnreadCount()
+            fetchMessages()
+            lastCheckedAt = Date()
+        } else {
+            hasAuthError = true
+            unreadMessagesCount = 0
+            messages = []
+        }
     }
 
     func reschedule() {
@@ -55,22 +78,6 @@ final class MessageFetcher: NSObject {
         timer?.invalidate()
         authorization?.authState.stateChangeDelegate = nil
     }
-
-    private(set) var lastCheckedAt = Date()
-
-    private(set) var unreadMessagesCount = 0 {
-        didSet {
-            NotificationCenter.default.post(name: .unreadCountUpdated, object: account.email)
-        }
-    }
-    private let maximumMessagesStored = 10
-    private let defaultLabel = "INBOX"
-
-    private(set) var messages = [Message]() {
-        didSet {
-            NotificationCenter.default.post(name: .messagesFetched, object: account.email)
-        }
-    }
 }
 
 extension MessageFetcher: OIDAuthStateChangeDelegate {
@@ -82,7 +89,7 @@ extension MessageFetcher: OIDAuthStateChangeDelegate {
 
 private extension MessageFetcher {
     func fetchUnreadCount() {
-        guard let authorization = authorization else {
+        guard let authorization = authorization, !hasAuthError else {
             return
         }
         let query = GTLRGmailQuery_UsersLabelsGet.query(withUserId: authorization.userEmail ?? "me", identifier: defaultLabel)
@@ -92,13 +99,13 @@ private extension MessageFetcher {
             if let label = result as? GTLRGmail_Label, error == nil {
                 self?.unreadMessagesCount = label.messagesUnread?.intValue ?? 0
             } else {
-                // TODO: handle error. Auth token expires?
+                self?.hasAuthError = true
             }
         }
     }
 
     func fetchMessages() {
-        guard let authorization = authorization else {
+        guard let authorization = authorization, !hasAuthError else {
             return
         }
         let query = GTLRGmailQuery_UsersMessagesList.query(withUserId: authorization.userEmail ?? "me")
@@ -112,13 +119,13 @@ private extension MessageFetcher {
                let messages = list.messages {
                 self?.fetchMessages(for: messages.compactMap { $0.identifier })
             } else {
-                // TODO: handle error. Auth token expires?
+                self?.hasAuthError = true
             }
         }
     }
 
     func fetchMessages(for ids: [String]) {
-        guard let authorization = authorization else {
+        guard let authorization = authorization, !hasAuthError else {
             return
         }
         let batchQuery = GTLRBatchQuery()
@@ -135,7 +142,7 @@ private extension MessageFetcher {
                let messages = batchResult.successes as? [String: GTLRGmail_Message] {
                 self?.storeMessages(messages.values.map({ $0 }))
             } else {
-                // TODO: handle error. Auth token expires?
+                self?.hasAuthError = true
             }
         }
     }
