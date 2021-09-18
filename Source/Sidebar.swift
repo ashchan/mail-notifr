@@ -47,7 +47,8 @@ struct Sidebar: View {
                 }
                 .padding(2)
             }
-            .listStyle(.sidebar)
+            //.listStyle(.sidebar)
+            .listStyle(SidebarListStyle())
 
             Spacer()
 
@@ -57,7 +58,8 @@ struct Sidebar: View {
                 }) {
                     Label("Add Account", systemImage: "plus.circle")
                 }
-                .buttonStyle(.plain)
+                //.buttonStyle(.plain)
+                .buttonStyle(PlainButtonStyle())
                 .foregroundColor(.primary)
                 .padding(8)
 

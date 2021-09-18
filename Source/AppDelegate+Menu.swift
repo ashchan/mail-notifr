@@ -117,12 +117,12 @@ private extension AppDelegate {
             menu.addItem(NSMenuItem.separator())
 
             let lastChecked: String
-            if #available(macOS 12.0, *) {
-                lastChecked = fetcher.lastCheckedAt.formatted()
-            } else {
+            //if #available(macOS 12.0, *) {
+            //    lastChecked = fetcher.lastCheckedAt.formatted()
+            //} else {
                 let lastCheckedDate = fetcher.lastCheckedAt
                 lastChecked = Self.lastCheckedDateFormatter.string(from: lastCheckedDate)
-            }
+            //}
             menu.addItem(
                 NSMenuItem(
                     title: NSLocalizedString("Last Checked:", comment: "") + " " + lastChecked,
@@ -174,12 +174,12 @@ private extension AppDelegate {
             }
 
             let lastChecked: String
-            if #available(macOS 12.0, *) {
-                lastChecked = fetcher.lastCheckedAt.formatted()
-            } else {
+            //if #available(macOS 12.0, *) {
+            //    lastChecked = fetcher.lastCheckedAt.formatted()
+            //} else {
                 let lastCheckedDate = fetcher.lastCheckedAt
                 lastChecked = Self.lastCheckedDateFormatter.string(from: lastCheckedDate)
-            }
+            //}
             items.append(
                 NSMenuItem(
                     title: NSLocalizedString("Last Checked:", comment: "") + " " + lastChecked,
