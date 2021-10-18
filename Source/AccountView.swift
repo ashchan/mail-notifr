@@ -29,8 +29,7 @@ struct AccountView: View {
                 Toggle(isOn: $account.notificationEnabled) {
                     Text("Use Notification")
                 }
-                .toggleStyle(SwitchToggleStyle())
-                //.toggleStyle(.switch)
+                .toggleStyle(.switch)
 
                 Picker("Play sound:", selection: $account.notificationSound) {
                    Text(verbatim: "None")
@@ -55,8 +54,7 @@ struct AccountView: View {
                 Toggle(isOn: $account.enabled) {
                     Text("Enable this account")
                 }
-                .toggleStyle(SwitchToggleStyle())
-                //.toggleStyle(.switch)
+                .toggleStyle(.switch)
             }
             .onChange(of: account) { newValue in
                update(account: account)

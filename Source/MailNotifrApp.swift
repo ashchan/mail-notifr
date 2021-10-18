@@ -27,8 +27,7 @@ struct MailNotifrApp: App {
                     }
                 }
         }
-        //.windowToolbarStyle(.unifiedCompact)
-        .windowToolbarStyle(UnifiedCompactWindowToolbarStyle())
+        .windowToolbarStyle(.unifiedCompact)
         .commands {
             SidebarCommands()
             CommandGroup(after: .appInfo) {
