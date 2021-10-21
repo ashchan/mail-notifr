@@ -19,13 +19,6 @@ struct AccountView: View {
                 .font(.largeTitle)
 
             Form {
-                HStack {
-                    TextField(LocalizedStringKey("Check for new mail every"), value: $account.checkInterval, formatter: NumberFormatter())
-                        .multilineTextAlignment(.center)
-                        .fixedSize()
-                    Text("minutes")
-                }
-
                 Toggle(isOn: $account.notificationEnabled) {
                     Text("Use Notification")
                 }
@@ -55,6 +48,23 @@ struct AccountView: View {
                     Text("Enable this account")
                 }
                 .toggleStyle(.switch)
+
+                if #available(macOS 12.0, *) {
+                    HStack {
+                        TextField(LocalizedStringKey("Check for new mail every"), value: $account.checkInterval, formatter: NumberFormatter())
+                            .multilineTextAlignment(.center)
+                            .fixedSize()
+                        Text("minutes")
+                    }
+                } else {
+                    HStack {
+                        Text("Check for new mail every")
+                        TextField("", value: $account.checkInterval, formatter: NumberFormatter())
+                            .multilineTextAlignment(.center)
+                            .fixedSize()
+                        Text("minutes")
+                    }
+                }
             }
             .onChange(of: account) { newValue in
                update(account: account)
