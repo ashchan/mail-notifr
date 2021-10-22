@@ -1,3 +1,10 @@
+## 2.0.0 (Oct 23, 2021)
+
+* Add support for Google OAuth 2.0
+* Access unread messages using Google Gmail API
+* No longer require password
+* Optimized for latest OS and hardware
+
 ## 1.3.5 (July 18, 2015)
 
 * Fix a bug that fails to authenticate on OS X 10.11 Beta 4
