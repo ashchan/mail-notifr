@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    @State private var showingOAuthPrompt = false
+
     var body: some View {
         VStack {
             HStack {
@@ -28,12 +30,19 @@ struct WelcomeView: View {
                     .foregroundColor(.blue)
             }
 
-            Button(action: Accounts.authorize) {
+            Button(action: addAccount) {
                 Text("Authorize and add your Google Account")
+            }
+            .sheet(isPresented: $showingOAuthPrompt) {
+                OAuthPrompt()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("Background"))
+    }
+
+    private func addAccount() {
+        showingOAuthPrompt = true
     }
 }
 

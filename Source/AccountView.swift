@@ -12,6 +12,7 @@ struct AccountView: View {
     @AppStorage(Accounts.storageKey) var accounts = Accounts()
     @State var account: Account
     @State private var showingDeleteAlert = false
+    @State private var showingOAuthPrompt = false
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -80,7 +81,6 @@ struct AccountView: View {
                 } label: {
                     Text("Reauthorize")
                 }
-
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: .accountUpdated)) {
@@ -118,6 +118,9 @@ struct AccountView: View {
                 }
             }
         }
+        .sheet(isPresented: $showingOAuthPrompt) {
+            OAuthPrompt()
+        }
     }
 }
 
@@ -131,7 +134,7 @@ private extension AccountView {
     }
 
     func reauthorize() {
-        Accounts.authorize()
+        showingOAuthPrompt = true
     }
 }
 
