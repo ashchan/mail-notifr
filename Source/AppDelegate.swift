@@ -293,7 +293,6 @@ extension AppDelegate:  UNUserNotificationCenterDelegate {
     }
 
     func delilverNotifications(for messages: [Message]) {
-        // TODO: better filter: should NOT send notification for any messages that been sent already
         UNUserNotificationCenter.current().getDeliveredNotifications { requests in
             let deliveredIds = requests.map { $0.request.identifier }
             for msg in messages.filter({ !deliveredIds.contains($0.id) }) {
@@ -320,6 +319,13 @@ extension AppDelegate:  UNUserNotificationCenterDelegate {
         guard let account = account(from: email), account.enabled else {
             return
         }
+        guard let fetcher = self.fetcher(for: email) else {
+            return
+        }
+
+        if !fetcher.hasNewMessages {
+            return
+        }
 
         if let sound = account.sound {
             sound.nsSound?.play()
@@ -339,13 +345,10 @@ extension AppDelegate:  UNUserNotificationCenterDelegate {
                 return
             }
 
-            if let fetcher = self.fetcher(for: email) {
-                self.delilverNotifications(for: fetcher.messages)
-            }
+            self.delilverNotifications(for: fetcher.messages)
         }
     }
 }
-
 
 // MARK: - Shortcuts
 extension KeyboardShortcuts.Name {
