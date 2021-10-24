@@ -75,17 +75,9 @@ private extension AppDelegate {
     // When there're multiple accounts each sits in its own submenu.
     func createSubmenu(for account: Account) -> NSMenuItem {
         let menu = NSMenu()
-        let item = NSMenuItem(title: account.email, action: #selector(openInbox(_:)), keyEquivalent: "")
-        item.representedObject = account.email
-        item.submenu = menu
-
-        guard let fetcher = fetcher(for: account.email) else {
-            return item
-        }
-
-        if fetcher.unreadMessagesCount > 0 && account.enabled {
-            item.title = "\(account.email) (\(fetcher.unreadMessagesCount))"
-        }
+        let result = NSMenuItem(title: account.email, action: #selector(openInbox(_:)), keyEquivalent: "")
+        result.representedObject = account.email
+        result.submenu = menu
 
         menu.addItem(withTitle: NSLocalizedString("Open Inbox", comment: ""), action: #selector(openInbox(_:)), keyEquivalent: "")
         let checkMailsItem = NSMenuItem(
@@ -96,17 +88,21 @@ private extension AppDelegate {
         menu.addItem(checkMailsItem)
         menu.addItem(NSMenuItem.separator())
 
-        if fetcher.hasAuthError {
-            menu.addItem(
-                NSMenuItem(
-                    title: NSLocalizedString("🚫 Auth error, please reauthroize.", comment: ""),
-                    action: #selector(reauthorize),
-                    keyEquivalent: ""
-                )
-            )
-        }
+        if let fetcher = fetcher(for: account.email), account.enabled {
+            if fetcher.unreadMessagesCount > 0 {
+                result.title = "\(account.email) (\(fetcher.unreadMessagesCount))"
+            }
 
-        if account.enabled {
+            if fetcher.hasAuthError {
+                menu.addItem(
+                    NSMenuItem(
+                        title: NSLocalizedString("🚫 Auth error, please reauthroize.", comment: ""),
+                        action: #selector(reauthorize),
+                        keyEquivalent: ""
+                    )
+                )
+            }
+
             for message in (fetcher.messages) {
                 let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
                 messageItem.representedObject = message
@@ -142,12 +138,12 @@ private extension AppDelegate {
             item.representedObject = account.email
         }
 
-        return item
+        return result
     }
 
     // When there's only one account its menu items are in the middle of the top level item menu.
     func createMenuItems(for account: Account?) -> [NSMenuItem] {
-        guard let account = account, let fetcher = fetcher(for: account.email) else {
+        guard let account = account else {
             return []
         }
 
@@ -155,17 +151,17 @@ private extension AppDelegate {
         items.append(NSMenuItem(title: NSLocalizedString("Open Inbox", comment: ""), action: #selector(openInbox(_:)), keyEquivalent: ""))
         items.append(NSMenuItem.separator())
 
-        if fetcher.hasAuthError {
-            items.append(
-                NSMenuItem(
-                    title: NSLocalizedString("🚫 Auth error, please reauthroize.", comment: ""),
-                    action: #selector(reauthorize),
-                    keyEquivalent: ""
+        if let fetcher = fetcher(for: account.email), account.enabled {
+            if fetcher.hasAuthError {
+                items.append(
+                    NSMenuItem(
+                        title: NSLocalizedString("🚫 Auth error, please reauthroize.", comment: ""),
+                        action: #selector(reauthorize),
+                        keyEquivalent: ""
+                    )
                 )
-            )
-        }
+            }
 
-        if account.enabled {
             for message in (fetcher.messages) {
                 let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
                 messageItem.representedObject = message
