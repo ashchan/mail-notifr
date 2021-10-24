@@ -1,3 +1,7 @@
+## 2.0.1 (Oct 24, 2021)
+
+* Fix notification sound issue
+
 ## 2.0.0 (Oct 23, 2021)
 
 * Add support for Google OAuth 2.0
