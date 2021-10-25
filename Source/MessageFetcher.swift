@@ -121,9 +121,13 @@ private extension MessageFetcher {
         let service = GTLRGmailService()
         service.authorizer = authorization
         service.executeQuery(query) { [weak self] ticket, result, error in
-            if let list = result as? GTLRGmail_ListMessagesResponse,
-               let messages = list.messages {
-                self?.fetchMessages(for: messages.compactMap { $0.identifier })
+            if let list = result as? GTLRGmail_ListMessagesResponse, error == nil {
+                if let messages = list.messages {
+                    self?.fetchMessages(for: messages.compactMap { $0.identifier })
+                } else {
+                    // list.resultSizeEstimate == 0
+                    self?.storeMessages([])
+                }
             } else {
                 self?.hasAuthError = true
             }
