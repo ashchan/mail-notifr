@@ -1,3 +1,7 @@
+## 2.0.2 (Oct 26, 2021)
+
+* Fix an issue that caused missing menu items for disabled account
+
 ## 2.0.1 (Oct 24, 2021)
 
 * Fix notification sound issue
