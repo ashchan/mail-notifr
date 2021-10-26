@@ -27,7 +27,6 @@ final class MessageFetcher: NSObject {
     private(set) var hasAuthError = false
 
     private(set) var lastCheckedAt = Date()
-    private var newestMessageDate = Date().addingTimeInterval(-24 * 60 * 60)
     private(set) var hasNewMessages = false
 
     private(set) var unreadMessagesCount = 0 {
@@ -41,8 +40,13 @@ final class MessageFetcher: NSObject {
     private(set) var messages = [Message]() {
         didSet {
             if let newestMessage = messages.first {
-                hasNewMessages = newestMessage.serverDate > newestMessageDate
-                newestMessageDate = newestMessage.serverDate
+                if let newestMessageDate = account.newestMessageDate {
+                    hasNewMessages = newestMessage.serverDate > newestMessageDate
+                } else {
+                    hasNewMessages = true
+                }
+                account.newestMessageDate = newestMessage.serverDate
+                Accounts.default.update(account: account)
             } else {
                 hasNewMessages = false
             }

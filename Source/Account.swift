@@ -25,6 +25,7 @@ struct Account: Codable {
     var notificationEnabled = true
     var notificationSound = ""
     var openInBrowser = Browser.safariIdentifier
+    var newestMessageDate: Date?
 }
 
 extension Account: Identifiable, Hashable {
