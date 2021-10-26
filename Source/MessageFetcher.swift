@@ -43,6 +43,8 @@ final class MessageFetcher: NSObject {
             if let newestMessage = messages.first {
                 hasNewMessages = newestMessage.serverDate > newestMessageDate
                 newestMessageDate = newestMessage.serverDate
+            } else {
+                hasNewMessages = false
             }
             NotificationCenter.default.post(name: .messagesFetched, object: account.email)
         }
