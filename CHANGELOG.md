@@ -1,3 +1,7 @@
+## 2.0.3 (Oct 29, 2021)
+
+* Fix zero messages notification sound issue
+
 ## 2.0.2 (Oct 26, 2021)
 
 * Fix an issue that caused missing menu items for disabled account
