@@ -77,6 +77,7 @@ extension Notification.Name {
     static let accountAdded = Notification.Name("accountAdded")
     static let accountDeleted = Notification.Name("accountDeleted")
     static let accountUpdated = Notification.Name("accountUpdated")
+    static let accountsReordered = Notification.Name("accountsReordered")
 }
 
 extension Accounts: RawRepresentable {
@@ -167,6 +168,12 @@ extension Accounts {
             object: account,
             userInfo: ["needsRescheduling": needsRescheduling, "needsImmediateFetching": needsImmediateFetching]
         )
+    }
+
+    mutating func reorder(fromOffsets source: IndexSet, toOffset destination: Int) {
+        move(fromOffsets: source, toOffset: destination)
+        save()
+        NotificationCenter.default.post(name: .accountsReordered, object: nil)
     }
 
     static func authorize() {

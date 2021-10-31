@@ -31,6 +31,13 @@ struct Sidebar: View {
                     }
                     .padding(2)
                 }
+                .onMove { source, destination in
+                    let previousSelection = selection
+                    accounts.reorder(fromOffsets: source, toOffset: destination)
+                    DispatchQueue.main.async {
+                        selection = previousSelection
+                    }
+                }
 
                 Text("Preferences")
                     .font(.subheadline)

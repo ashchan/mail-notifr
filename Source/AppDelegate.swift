@@ -95,6 +95,13 @@ private extension AppDelegate {
             .store(in: &subscriptions)
 
         NotificationCenter.default
+            .publisher(for: .accountsReordered)
+            .sink { notification in
+                self.updateMenuBar()
+            }
+            .store(in: &subscriptions)
+
+        NotificationCenter.default
             .publisher(for: .showUnreadCountSettingChanged)
             .sink { _ in
                 self.updateStatusItem()
