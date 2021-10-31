@@ -12,7 +12,7 @@ import KeyboardShortcuts
 
 struct SettingsView: View {
     @ObservedObject private var launchAtLogin = LaunchAtLogin.observable
-    @AppStorage(AppSettings.showUnreadCount) var showUnreadCount = true
+    @AppStorage(AppSettings.showUnreadCount) var showUnreadCount = AppSettings.shared.showUnreadCount
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {

@@ -22,7 +22,10 @@ extension Notification.Name {
 extension AppSettings {
     var showUnreadCount: Bool {
         get {
-            UserDefaults.standard.bool(forKey: Self.showUnreadCount)
+            if let stored = UserDefaults.standard.object(forKey: Self.showUnreadCount) as? Bool {
+                return stored
+            }
+            return true // Default to true
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Self.showUnreadCount)
