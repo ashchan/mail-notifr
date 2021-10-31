@@ -32,10 +32,10 @@ struct Sidebar: View {
                     .padding(2)
                 }
                 .onMove { source, destination in
-                    let email = accounts[source.first!].email
+                    let previousSelection = selection
                     accounts.reorder(fromOffsets: source, toOffset: destination)
                     DispatchQueue.main.async {
-                        selection = email
+                        selection = previousSelection
                     }
                 }
 
