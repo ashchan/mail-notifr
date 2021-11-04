@@ -1,3 +1,8 @@
+## 2.1.0 (Nov 4, 2021)
+
+* Add support for Drag & Drop to re-order accounts
+* Fix unread count setting issue
+
 ## 2.0.3 (Oct 29, 2021)
 
 * Fix zero messages notification sound issue
