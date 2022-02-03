@@ -40,6 +40,9 @@ struct AccountView: View {
                 }
 
                 Picker("Open in browser:", selection: $account.openInBrowser) {
+                   Text(verbatim: "Default Browser")
+                        .tag("")
+                    Divider()
                     ForEach(Browser.all) { browser in
                         Text(browser.name)
                     }

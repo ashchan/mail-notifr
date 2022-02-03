@@ -11,6 +11,7 @@ import AppKit
 
 struct Browser: Identifiable {
     static let safariIdentifier = "com.apple.Safari"
+    static let defaultIdentifier = ""
 
     let identifier: String
     let name: String
@@ -27,7 +28,7 @@ struct Browser: Identifiable {
 
 extension Browser {
     var isDefault: Bool {
-        return identifier == Self.safariIdentifier
+        identifier == Self.defaultIdentifier
     }
 
     static var all: [Browser] {
