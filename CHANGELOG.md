@@ -1,3 +1,6 @@
+## 2.1.1 (Feb 3, 2022)
+* Fix default browser setting
+
 ## 2.1.0 (Nov 4, 2021)
 
 * Add support for Drag & Drop to re-order accounts
