@@ -9,7 +9,7 @@
 import Foundation
 import AppAuth
 import GTMAppAuth
-import GoogleAPIClientForREST_Gmail // SWIFT_PACKAGE=1 required, see https://github.com/google/google-api-objectivec-client-for-rest/issues/400
+import GoogleAPIClientForREST_Gmail
 
 extension Notification.Name {
     static let unreadCountUpdated = Notification.Name("unreadCountUpdated")
