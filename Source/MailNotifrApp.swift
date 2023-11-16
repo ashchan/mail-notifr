@@ -8,11 +8,16 @@
 
 import AppKit
 import SwiftUI
+import LaunchAtLogin
 
 @main
 struct MailNotifrApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @State var screen: String?
+
+    init() {
+        LaunchAtLogin.migrateIfNeeded()
+    }
 
     var body: some Scene {
         WindowGroup {
