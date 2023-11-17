@@ -55,5 +55,7 @@
 	<string>NSApplication</string>
 	<key>CFBundleName</key>
 	<string>Mail Notifr</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
