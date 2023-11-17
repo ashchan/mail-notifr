@@ -243,7 +243,7 @@ extension AppDelegate {
             url += "&to=\(to)"
         }
         if let subject = subject, !subject.isEmpty {
-            url += "&su=\(subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"
+            url += "&su=\(subject)"
         }
         openURL(url: URL(string: url)!, in: account?.browser)
     }
