@@ -10,6 +10,10 @@ import AppKit
 import SwiftUI
 import LaunchAtLogin
 
+extension Notification.Name {
+    static let mailToReceived = Notification.Name("mailToReceived")
+}
+
 @main
 struct MailNotifrApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
@@ -28,6 +32,8 @@ struct MailNotifrApp: App {
                         screen = url.host
                     } else if url.absoluteString.starts(with: OAuthClient.redirectURL) {
                         OAuthClient.shared.resumeAuthFlow(url: url)
+                    } else if url.scheme == "mailto" {
+                        NotificationCenter.default.post(name: .mailToReceived, object: url.absoluteString.replacingOccurrences(of: "mailto:", with: ""))
                     }
                 }
         }
