@@ -50,8 +50,10 @@
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright 2008-2022 ashchan.com.</string>
+	<string>Copyright 2008-2023 ashchan.com.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>CFBundleName</key>
+	<string>Mail Notifr</string>
 </dict>
 </plist>
