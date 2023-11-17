@@ -121,6 +121,13 @@ private extension AppDelegate {
                 self.messagesFetched(notification.object as? String ?? "")
             }
             .store(in: &subscriptions)
+
+        NotificationCenter.default
+            .publisher(for: .mailToReceived)
+            .sink { notification in
+                self.handleMailTo(notification.object as? String ?? "")
+            }
+            .store(in: &subscriptions)
     }
 
     func rebuildFetchers() {
@@ -228,10 +235,16 @@ extension AppDelegate {
         fetchers.values.forEach { $0.fetch() }
     }
 
-    @objc func composeMail() {
+    @objc func composeMail(_ to: String? = nil, _ subject: String? = nil) {
         let account = Accounts.default.first
         let baseURL = account?.baseUrl ?? "https://mail.google.com/"
-        let url = baseURL + "?view=cm&tf=0&fs=1"
+        var url = baseURL + "?view=cm&tf=0&fs=1"
+        if let to = to, !to.isEmpty {
+            url += "&to=\(to)"
+        }
+        if let subject = subject, !subject.isEmpty {
+            url += "&su=\(subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"
+        }
         openURL(url: URL(string: url)!, in: account?.browser)
     }
 
@@ -277,6 +290,24 @@ extension AppDelegate {
 
     @objc func showPreferences() {
         NSWorkspace.shared.open(URL(string: "mailnotifr://preferences")!)
+    }
+}
+
+extension AppDelegate {
+    func handleMailTo(_ param: String) {
+        let components = param.split(separator: "?")
+        guard let to = components.first else {
+            return
+        }
+        var subject: String?
+        if components.count > 1 {
+            if let query = components[1].split(separator: "&").first(where: { s in
+                s.starts(with: "subject=")
+            }) {
+                subject = query.replacingOccurrences(of: "subject=", with: "")
+            }
+        }
+        composeMail(String(to), subject)
     }
 }
 
