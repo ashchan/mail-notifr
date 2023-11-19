@@ -35,4 +35,8 @@ struct Message {
     static func url(email: String, id: String) -> URL {
         URL(string: "https://mail.google.com/mail/u/\(email)?account_id=\(email)&message_id=\(id)&view=conv&extsrc=atom")!
     }
+
+    var decodedSnippet: String {
+        CFXMLCreateStringByUnescapingEntities(nil, snippet as CFString, nil) as String
+    }
 }
