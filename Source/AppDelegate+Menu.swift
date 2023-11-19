@@ -106,7 +106,7 @@ private extension AppDelegate {
             for message in (fetcher.messages) {
                 let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
                 messageItem.representedObject = message
-                messageItem.toolTip = message.snippet
+                messageItem.toolTip = message.decodedSnippet
                 menu.addItem(messageItem)
             }
 
@@ -165,7 +165,7 @@ private extension AppDelegate {
             for message in (fetcher.messages) {
                 let messageItem = NSMenuItem(title: "\(message.sender): \(message.subject)", action: #selector(openMessage(_:)), keyEquivalent: "")
                 messageItem.representedObject = message
-                messageItem.toolTip = message.snippet
+                messageItem.toolTip = message.decodedSnippet
                 items.append(messageItem)
             }
 

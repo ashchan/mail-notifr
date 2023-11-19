@@ -337,7 +337,7 @@ extension AppDelegate:  UNUserNotificationCenterDelegate {
                let content = UNMutableNotificationContent()
                 content.title = msg.sender
                 content.subtitle = msg.subject
-                content.body = msg.snippet
+                content.body = msg.decodedSnippet
                 content.userInfo = [
                     "messageId": msg.id,
                     "email": msg.email
