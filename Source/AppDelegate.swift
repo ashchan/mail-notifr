@@ -235,7 +235,11 @@ extension AppDelegate {
         fetchers.values.forEach { $0.fetch() }
     }
 
-    @objc func composeMail(_ to: String? = nil, _ subject: String? = nil) {
+    @objc func composeMail() {
+        composeMail(nil, nil)
+    }
+
+    func composeMail(_ to: String? = nil, _ subject: String? = nil) {
         let account = Accounts.default.first
         let baseURL = account?.baseUrl ?? "https://mail.google.com/"
         var url = baseURL + "?view=cm&tf=0&fs=1"
