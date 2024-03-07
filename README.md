@@ -2,6 +2,12 @@
 
 A Gmail Notifier for macOS
 
+## Mail Notifr sunset on March 8th, 2024.
+
+**As this app needs to access Gmail restricted APIs, it's required to complete a CASA security assessment, which is a progress I could NOT get through.**
+
+**I've decided to make the end of its service. Sorry, and thank you.**
+
 ![screenshot](screenshot.png)
 
 [Mail Notifr](https://bit.ly/gmail-notifr-store) features:
